@@ -6,9 +6,11 @@ description: Installing Fallout 2 and the Restoration Project Updated on Windows
 
 # Installation
 
-RPU is an installer that modifies a normal Fallout 2 installation in place. You need three
-things: a copy of the game, the RPU installer, and — on modern systems — something to run
-the game with.
+You need three things: a copy of Fallout 2, the **Restoration Project Updated** on top of it,
+and a **modern engine** to run it with.
+
+This guide assumes all three. The engine matters as much as the mod — it is what makes the
+game run natively on current hardware, and it fixes a great many bugs of its own.
 
 ## 1. Get the game
 
@@ -33,7 +35,7 @@ At the time of writing that is **v2.4.34**.
 1. Download `rpu_v*.exe`.
 2. Run it and point it at your Fallout 2 directory.
 3. Pick your language and installer options (see [Installer options](#installer-options) below).
-4. Launch the game with `fallout2.exe` as normal.
+4. Install the engine (below), then launch `fallout2-ce.exe`.
 
 ### Linux and macOS
 
@@ -44,25 +46,68 @@ You can run the Windows installer under Wine, or install manually:
 3. Extract the archive into the game directory, overwriting when asked.
 4. Run `rpu-install.sh` (Linux) or `rpu-install.command` (macOS).
 
-If you launch through Wine you **must** set the DLL override, or sfall will not load and the
-mod will silently fail to apply:
+:::caution[Only if you launch the original executable under Wine]
+You **must** set the DLL override, or sfall will not load and the mod will silently fail to
+apply:
 
 ```bash
 WINEDLLOVERRIDES='ddraw.dll=n,b' wine fallout2.exe
 ```
 
-## 3. Consider fallout2-ce
+This does not apply to FOR:CE, which runs natively and does not use `ddraw.dll` at all.
+:::
 
-[fallout2-ce](https://github.com/alexbatalov/fallout2-ce) is a reimplementation of the
-Fallout 2 engine that runs natively on modern Windows, Linux, macOS and Android. It is the
-most comfortable way to play on a Mac or on Linux without Wine.
+## 3. Install the engine
 
-RPU works with fallout2-ce, but be aware of the trade-off: fallout2-ce implements a subset
-of sfall, and a handful of RPU's sfall-dependent features behave differently or not at all.
-If something in this guide does not match what you see and you are on fallout2-ce, that is
-the first thing to suspect.
+**Use [FOR:CE](https://github.com/fallout2-ce/fallout2-ce).** It is a complete
+re-implementation of the Fallout 2 engine and it is what this guide assumes you are running —
+on every platform, not just the ones where the original executable will not run.
 
-**On Windows, the original executable plus sfall is still the most faithful way to play RPU.**
+Extract the release into your Fallout 2 directory and launch `fallout2-ce.exe` (or the
+executable for your platform) instead of `fallout2.exe`.
+
+**Why it is the default rather than a fallback:**
+
+- **It runs natively** on Windows, macOS, Linux, Android and iOS. No Wine, no compatibility
+  shims, no DLL overrides.
+- **Dozens of engine-level bug fixes** that no data mod can reach, because they are in the
+  executable rather than in the scripts.
+- **High resolution is built in.** You do not need Mash's High Resolution Patch as a separate
+  install.
+- **Quality-of-life the original engine never had:** a two-column inventory, a four-row barter
+  screen, an expanded AP bar, equipping companions directly instead of talking them into it,
+  looting and bartering *as* a companion, ctrl-click to move items and auto-balance caps, music
+  that continues across maps, doors that open on approach, and item and container highlighting.
+- **RPU is explicitly supported**, as are the mods RPU bundles — NPC Armor, Party Orders,
+  Talking Heads — and FO2tweaks (v14.5 or newer).
+
+:::note[FOR:CE, not the original Fallout2-CE]
+Searching for "fallout2-ce" will most likely land you on
+[alexbatalov/fallout2-ce](https://github.com/alexbatalov/fallout2-ce), the original project. It
+still has far more stars, but it has not seen a regular update in a long time.
+
+**[FOR:CE](https://github.com/fallout2-ce/fallout2-ce) is the maintained fork** and the one to
+install.
+:::
+
+:::caution[Sfall compatibility is broad, not total]
+FOR:CE implements most of sfall's opcodes and hooks, and everything RPU needs. It is not a
+100% reimplementation, and the project tracks the remaining gaps in
+[SFALL_COMPATIBILITY.md](https://github.com/fallout2-ce/fallout2-ce/blob/main/SFALL_COMPATIBILITY.md).
+
+In practice this affects mod authors far more than players. If something in this guide does
+not match what you see, check [Known Issues](/reference/known-issues) first.
+:::
+
+### If you stay on the original executable
+
+Everything in this guide still applies — the mod is the same. Two differences:
+
+- Settings live in `ddraw.ini` and `f2_res.ini` rather than `fallout2.cfg`. See
+  [Configuration](/getting-started/configuration).
+- On Linux and macOS you will be running under Wine, with the DLL override above.
+
+There is no content reason to prefer it.
 
 ## Installer options
 
@@ -70,7 +115,7 @@ The installer asks a number of questions. The ones worth thinking about:
 
 | Option | Recommendation |
 | --- | --- |
-| **High resolution patch** | **Yes.** Not optional in practice — parts of the EPA cannot be navigated at the original 640×480 without it. You can still *play* at 640×480 once it is installed. |
+| **High resolution patch** | **Yes** on the original engine — not optional in practice, since parts of the EPA cannot be navigated at 640×480 without it. **Skip it on FOR:CE**, which has high resolution built in. |
 | **Cassidy talking head** | Yes. A restored talking head with good voice work. |
 | **New Lenny model** | Personal taste. He looks better but uses rifles instead of pistols and has no run animation, so he trails behind the party. |
 | **New player model when boxing / ring fighting** | Cosmetic. Either is fine. |

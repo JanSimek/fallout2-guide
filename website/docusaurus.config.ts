@@ -134,7 +134,7 @@ const config: Config = {
           title: 'The Mod',
           items: [
             {label: 'Restoration Project Updated', href: 'https://github.com/BGforgeNet/Fallout2_Restoration_Project'},
-            {label: 'Fallout 2 Community Edition', href: 'https://github.com/alexbatalov/fallout2-ce'},
+            {label: 'FOR:CE Community Engine', href: 'https://github.com/fallout2-ce/fallout2-ce'},
             {label: 'RPU Walkthrough (BGforge)', href: 'https://f2rp.bgforge.net/'},
           ],
         },

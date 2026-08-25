@@ -1,82 +1,95 @@
 ---
 sidebar_position: 2
 title: Configuration
-description: The sfall and RPU settings worth changing before you start playing.
+description: The FOR:CE and RPU settings worth changing before you start playing.
 ---
 
 # Configuration
 
-RPU ships with sensible defaults. You can play the whole game without touching a single
-setting. This page covers the handful that are worth a look, and where to find them.
+RPU and FOR:CE both ship with sensible defaults, and you can play the whole game without
+touching a setting. This page covers the handful worth a look.
+
+It assumes you took the recommendation in [Installation](/getting-started/installation) and are
+running **FOR:CE**. If you are on the original executable, see
+[The original engine](#the-original-engine) at the bottom.
 
 ## Where the settings live
 
 | File | What it controls |
 | --- | --- |
-| `ddraw.ini` | sfall — resolution, engine tweaks, combat speed, hotkeys. |
+| `fallout2.cfg` | **The main one.** Resolution, scaling, UI, quality-of-life, and the original game's own settings. |
+| `<DAT>/config/game.cfg` | Content-mod settings — premade characters, combat tweaks, worldmap behaviour. Intended to be overridden by mods. |
 | `mods/rpu.ini` | Restoration Project content toggles. |
 | `mods/upu.ini` | Unofficial Patch toggles. |
-| `f2_res.ini` | High resolution patch — screen size and scaling. |
-| `fallout2.cfg` | The original game's own settings. |
 
-On fallout2-ce the equivalent of `ddraw.ini` is `f2_res.ini` plus the engine's own
-configuration; not every sfall key applies.
+:::tip[Run the game once first]
+Launch FOR:CE and quit. It rewrites `fallout2.cfg` with defaults for **every** supported
+setting, so you get a complete, commented file to edit rather than guessing at key names.
+:::
 
 ## Resolution
 
-Set this in `f2_res.ini`:
+In `fallout2.cfg`:
 
 ```ini
-[MAIN]
-SCR_WIDTH=1280
-SCR_HEIGHT=720
+[screen]
+resolution_x=1600   ; window size in pixels
+resolution_y=1080
+windowed=1          ; 0 = fullscreen
+scale=2             ; 1 = original, 2 = 2x, ...
 ```
 
-Fallout 2's interface is a fixed-size bar at the bottom of the screen — raising the
-resolution does not scale it up, it just shows you more of the map. That is usually what you
-want, but at 4K the interface becomes very small. `GRAPHICS_MODE` and the scaling options in
-the same file can compensate.
+Fallout 2's interface is a fixed-size bar at the bottom of the screen. Raising the resolution
+does not scale it up, it shows you more of the map — usually what you want, but at 4K the
+interface becomes very small.
 
-:::tip
-Do not go below 800×600. Several RPU areas — the EPA entrance in particular — need the extra
-vertical space to be navigable at all.
+**That is what `scale` is for.** At `scale=2` on a 1920×1080 screen the game renders at 960×540
+and every pixel is drawn twice as wide and tall, so the interface stays legible while the game
+still looks sharp.
+
+:::caution[Do not go below 800×600]
+Several RPU areas — the EPA entrance in particular — need the extra vertical space to be
+navigable at all.
 :::
+
+## Quality of life
+
+FOR:CE has a number of things the original engine never did. The ones worth turning on:
+
+```ini
+[ui]
+inventory_columns=2        ; two-column inventory and loot windows
+expand_barter_window=1     ; a fourth item slot per side (needs ce.dat)
+
+[qol]
+party_trade_from_menu=1    ; open a companion's inventory from the context menu
+party_loot_and_barter=1    ; switch to a companion's inventory in loot screens
+```
+
+`party_loot_and_barter` in particular changes how the game plays. Fallout 2 constantly makes you
+juggle what your companions are carrying, and being able to loot straight into their inventory
+removes most of that.
 
 ## Combat speed
 
-The single biggest quality-of-life change. In `ddraw.ini`:
+The single biggest quality-of-life change in a game where companions take their turns slowly.
+FOR:CE exposes combat speed and animation options in `fallout2.cfg` — run the game once and look
+through the generated file for the combat and speed keys.
 
-```ini
-[Speed]
-Enable=1
-SpeedMultiInitial=2
-```
+On the original engine this lives in `ddraw.ini`; see [below](#the-original-engine).
 
-This speeds up the whole game clock, including combat animations. Party members taking their
-turns is the slowest part of Fallout 2 and this fixes it. `2` is comfortable; `3` and above
-starts to feel twitchy.
+## RPU's own toggles
 
-You can also bind keys to change speed on the fly with `SpeedKeyUp` / `SpeedKeyDown` in the
-same section.
+Open `mods/rpu.ini` and `mods/upu.ini` and read the comments — every entry is documented in
+place. Rather than listing them all, the practical advice is to turn off anything you actively
+dislike.
 
-## Things you probably want on
+Two people commonly change:
 
-```ini
-[Misc]
-; Show the item's weight and value in the inventory
-ExtraSaveSlots=1
-```
-
-The RPU installer already enables most of what you want. Rather than listing every key, the
-practical advice is: open `mods/rpu.ini`, read the comments, and turn off anything you
-actively dislike. Each entry is documented in place.
-
-Two that people commonly change:
-
-- **Kaga encounters.** RPU adds a recurring rival who ambushes you five times over the
-  course of the game. Some players find him a nuisance. He can be disabled in `rpu.ini`.
-- **NPC armour appearance.** If you dislike seeing companions change sprite when equipped,
-  it can be turned off.
+- **Kaga encounters.** RPU adds a recurring rival who ambushes you five times over the course of
+  the game. Some players find him a nuisance. Disable him in `rpu.ini`.
+- **NPC armour appearance.** If you dislike companions changing sprite with their armour, turn
+  it off.
 
 ## Difficulty settings
 
@@ -85,13 +98,46 @@ Two separate sliders in the game's options menu:
 - **Combat Difficulty** affects damage taken and dealt.
 - **Game Difficulty** affects skill checks and how many skill points a level costs.
 
-There is a well-known trick here: skill point costs are calculated against your *current*
-skill level, and Game Difficulty shifts that level. Raising the difficulty temporarily
-lowers the displayed skill, which can make the next few points cheaper; lowering it
-temporarily raises your skills, which can carry you past a check you would otherwise fail.
-It is transparently an exploit, but it is available, and the game does not stop you.
+There is a well-known trick here. Skill point cost is calculated against your *current* skill
+level, and Game Difficulty shifts that level. Raising the difficulty temporarily lowers the
+displayed skill, making the next few points cheaper; lowering it temporarily raises your skills,
+which can carry you past a check you would otherwise fail. It is transparently an exploit, and
+the game does not stop you. See [Items](/systems/items) for the same trick applied to books.
 
-## Saving
+## The original engine
 
-`ExtraSaveSlots` in `ddraw.ini` raises the save slot limit well past the original ten. Turn
-it on. Fallout 2 rewards keeping a save from the start of each town.
+If you are running `fallout2.exe` with sfall rather than FOR:CE, the settings move:
+
+| File | What it controls |
+| --- | --- |
+| `ddraw.ini` | sfall — engine tweaks, combat speed, hotkeys, extra save slots |
+| `f2_res.ini` | High resolution patch — screen size and scaling |
+| `fallout2.cfg` | The original game's own settings only |
+
+**Resolution**, in `f2_res.ini`:
+
+```ini
+[MAIN]
+SCR_WIDTH=1280
+SCR_HEIGHT=720
+```
+
+**Combat speed**, in `ddraw.ini` — this speeds up the whole game clock including combat
+animations:
+
+```ini
+[Speed]
+Enable=1
+SpeedMultiInitial=2
+```
+
+`2` is comfortable; `3` and above starts to feel twitchy. `SpeedKeyUp` and `SpeedKeyDown` in the
+same section bind keys to change it on the fly.
+
+**Save slots:** `ExtraSaveSlots=1` in `ddraw.ini` raises the limit well past the original ten.
+Turn it on — Fallout 2 rewards keeping a save from the start of each town.
+
+:::note
+FOR:CE remembers your last used save slot and does not have the original ten-slot limit, so
+neither setting is needed there.
+:::
