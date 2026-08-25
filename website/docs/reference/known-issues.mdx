@@ -1,8 +1,162 @@
 ---
 sidebar_position: 3
 title: Known Issues
+description: The bugs that still bite in RPU, and how to avoid or recover from them.
 ---
 
 # Known Issues
 
-_Coming soon._
+RPU includes the Unofficial Patch, which fixes hundreds of the bugs that older Fallout 2 guides warn
+about. This page covers what is **still** a hazard.
+
+Bugs specific to a single quest are noted on that location's page.
+
+## Save your game properly
+
+The single best defence against everything below.
+
+1. **Turn on `ExtraSaveSlots`** in `ddraw.ini` — see [Configuration](/getting-started/configuration).
+2. **Rotate slots.** Keep a save from the start of each town.
+3. **Never save in combat mode**, especially with a dead companion on the map. Such saves reliably
+   freeze on end of turn when loaded.
+4. **Never save while explosives are waiting to detonate.** This can corrupt the save slot entirely.
+
+## The "too many items" bug
+
+The most serious remaining problem, and an engine-level one.
+
+**What happens:** late in the game, if a single map holds too many *different* items, the map becomes
+corrupted when you leave it. Next time you try to enter, the game locks up completely — the orbiting
+rocket cursor appears and never animates.
+
+The count includes what you and your companions carry, items on critters, items in containers
+(**including shops**), and everything in your car — whether the car is present or not.
+
+:::caution Warning signs
+The **skilldex button** on the main screen and the **sleep button** in the Pip-Boy turning into black
+squares means the bug is coming.
+
+There is a strong association with **Pip-Boy status entries**: eleven is reportedly fine, **twelve
+causes problems**, in both Fallout and Fallout 2. Some players avoid the status screen entirely and
+report never seeing the crash.
+:::
+
+**Prevention:**
+
+- Do not carry quest items you have finished with. If you want to keep them, store them in a container
+  on a map with **no shops** rather than in your car trunk.
+- Do not sell a great many different item types in one place. **San Francisco Chinatown**, with two
+  large shops, is where most players hit this first.
+
+**Recovery:** there is no way to repair a corrupted map, but you can substitute the file from an
+earlier save — `sfchina.sav` for Chinatown, for example. Critters and items revert to that save's
+state and local variables may change, but global variables (quest status) and your car's contents are
+stored elsewhere and survive.
+
+## The car
+
+The car is much better behaved than it was, and it can still be lost.
+
+:::danger
+- **Running out of fuel** is when the bug strikes: the car circle can teleport across the world map or
+  vanish. **Refuel regularly.**
+- The car circle can land **inside a town circle**, where clicking enters the town instead. The car is
+  then lost. Reload.
+- **The Arroyo bridge** map is replaced after the fourth dream. A car parked there is gone forever,
+  along with any companion left on any Arroyo map.
+- **Fake Vault 13** (Merk's holodisk) also replaces its map.
+- Being **teleported** by a quest — Big Jesus to the Stables, for instance — has been known to detach
+  the car. Driving around avoiding encounters until you run dry usually recovers it via the "Car Outta
+  Fuel" map.
+:::
+
+See [The Car](/systems/car) for the full list of places it misbehaves.
+
+## Companions
+
+:::danger
+- **Looting an unconscious companion** counts as stealing from a non-party member. Vic and Myron stop
+  communicating permanently; Goris turns hostile when dismissed.
+- **A dead companion's body and inventory vanish** if you save/load or change maps.
+- **Sleeping with Miria or Davin without going through with the wedding** freezes all your companions
+  in place. Fixed by getting married, the Val/Vic conversation in Vault City, or watching the Vault 13
+  or San Francisco video sequences.
+- Saving and reloading **upstairs at the Bishop residence** makes your whole party invisible. Sleep
+  with one of the Bishops again, or dismiss everyone before you go up.
+:::
+
+## Ring fights
+
+Every ring fight in the game — New Reno boxing, NCR's Lenny, San Francisco's martial artists — can trap
+you permanently.
+
+:::danger
+- **Do not save during a ring fight.** Reloading leaves you stuck inside the ring after you win.
+- **Do not end combat between killing your opponent and the "You win" sign.** Use **end turn**, always.
+- The extra round after "You win" exists so you can save. Using it to attack is what causes most of the
+  bugs.
+- **Drop the Bag** before the NCR Lenny fight — it comes back empty.
+:::
+
+## Conversations that lock the game
+
+:::danger
+- **Liz in Broken Hills** — asking about the weapons stash and choosing "it's all over town", saying
+  "You" when she asks what you plan to kill, or failing the Speech check after the "reliable source"
+  line all try to start combat during dialogue. You can press 1 and Esc to escape, but you must
+  **restart the game entirely** before it plays normally.
+- **Mr. Bishop's safe** — if you already disarmed the trap, being asked to replace it and trying
+  **crashes the game**. Go to the basement and back to re-arm it instead.
+- **Modoc** — killing Grisham before sleeping with Miria or Davin freezes the game when he is supposed
+  to walk in; killing Jo freezes the wedding ceremony.
+- **NCR's Lenny** — using the Mutagenic Serum on him in the ring before damaging him leaves him alive
+  but immobile and traps you in unending combat.
+- **The EPA computer** — reading the "penpal greetings" mail permanently disables that terminal.
+- **The Enclave foyer terminal** — activating the emergency shutdown without the Presidential Access
+  Key at Science 75%+ permanently disables it, which is the only terminal that can run counter
+  insurgence.
+:::
+
+## Places you can get permanently stuck
+
+:::danger
+- **Sierra Army Depot** — taking an elevator without an eye, with Repair below 41% and no explosives.
+  Keep Repair above 41% and carry explosives before going down.
+- **The Vault City vault armoury** — the door checks whether *it* sees you, not whether Martin does.
+  Sneak lets you in but not out, and companions pass through it uselessly. Being an actual citizen
+  avoids it entirely.
+- **The Hubologist base** — you can get stuck between forcefields with guards preventing you from
+  leaving combat to disable them. You can fire through the forcefields, at least.
+:::
+
+## RPU's own known issues
+
+These are deliberate decisions or engine limitations, not bugs. Do not report them.
+
+**EPA**
+
+- Holograms show up on the motion sensor.
+- You cannot reach the EPA entry area to return to the world map **without the resolution patch
+  installed**. You can still play at 640×480 once it is installed.
+- No animation when using plant spray — an sfall engine limitation.
+
+**New Reno**
+
+- Dancing at the Shark Club uses the default female critter regardless of your character's appearance.
+  In-universe: you are wearing a wig. Out of universe: new critters would have to be added to the game.
+- Some gangs around the city are not hostile despite floating text suggesting they should be.
+  Arguably they are patrolling to defend New Reno.
+- You can buy Three-Card Monte's cards through barter and he still complains about losing them.
+
+## Reporting bugs
+
+Genuine RPU bugs go to the
+[RPU issue tracker](https://github.com/BGforgeNet/Fallout2_Restoration_Project/issues) or the
+[BGforge forums](https://forums.bgforge.net/viewforum.php?f=39). **Attach a savegame and a
+screenshot**, and report each bug separately.
+
+Crashes have their own
+[reporting guide](https://github.com/BGforgeNet/Fallout2_Unofficial_Patch/blob/master/docs/crash.md).
+
+Inconsistencies in this guide go to
+[its own repository](https://github.com/JanSimek/fallout2-guide).

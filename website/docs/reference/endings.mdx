@@ -1,8 +1,223 @@
 ---
 sidebar_position: 2
 title: Endings
+description: Every ending slide, and exactly what triggers it.
 ---
 
 # Endings
 
-_Coming soon._
+:::caution Spoilers, obviously
+:::
+
+To get an ending for a location at all, it must be **named on your world map** — you must either have
+visited it or had someone mark it for you.
+
+Several endings are buggy or incomplete. Where that matters, it is noted.
+
+## Arroyo
+
+**Arroyo re-settled using the G.E.C.K.** — you always get this, even if you no longer have a G.E.C.K.
+(having let both of them blow up with the Enclave, for instance).
+
+## Modoc
+
+| Ending | Trigger |
+| --- | --- |
+| **Modoc flourishes** | Broker peace between Modoc and the Slags |
+| Razed after the Slags are killed by townspeople | Deliver the message, then offer to help and fail — or join the attack |
+| Disperses after the Slags are killed | Kill the Slags yourself, or deliver the message and immediately refuse further involvement |
+| Disperses due to drought | Never deliver the message and never kill the Slags |
+
+## The Den
+
+| Ending | Trigger |
+| --- | --- |
+| **The Den flourishes** | Kill Metzger, **not** Rebecca |
+| The Den disperses | Kill both Metzger and Rebecca |
+| Becomes a haven for raiders | Leave Metzger alive, kill Big Jesus Mordino |
+| Becomes slaver central | Leave both alive |
+
+## Vault City
+
+| Ending | Trigger |
+| --- | --- |
+| **Independent — Westin and Lynette marry** | Fix the power plant, kill the raiders, expose Bishop's plan, deliver both holodisks, **do not collect the final reward from Randal** (a bug is what makes this work), and leave Westin and Lynette alive |
+| Becomes part of NCR | Fix the plant, kill the raiders, bring the Account Book or Bishop's Holodisk to Lynette. You get this if you miss the marriage ending for any reason |
+| Annexed by NCR | Fix the plant, bring neither the Account Book nor Bishop's Holodisk |
+| Population driven to NCR by radiation | Do not fix the power plant — blowing it up counts |
+
+## Gecko
+
+| Ending | Trigger |
+| --- | --- |
+| Uneasy truce with Vault City | Fix the plant, but **do not** get the Reactor Holodisk from Festus |
+| Invaded by Vault City | Fix **and optimize** the plant |
+| Destroyed | Blow up the power plant |
+
+:::caution
+You can fall between the first two and get **no Gecko ending at all**, even having fixed the plant.
+
+The genuinely good Gecko ending — optimize the plant *and* get the Gecko Holodisk from Gordon after
+talking to the Brain — **cannot be obtained** because of a bug in the endings script.
+
+Rumours that giving McClure the Gecko Holodisk or doing Stark's scouting mission triggers the invasion
+ending are wrong. Optimizing the plant always does.
+:::
+
+## New Reno
+
+The two **impregnation endings take precedence over all others**, and are available to male characters
+only.
+
+| Ending | Trigger |
+| --- | --- |
+| Tribals arise | Impregnate either Bishop woman, leave her alive, and tell Mrs. Bishop she should move on |
+| Bishop child | Impregnate either Bishop woman and leave her alive, but do **not** tell Mrs. Bishop to move on |
+| Everyone dead | Kill all four bosses |
+| Bishops / Salvatores / Mordinos rule | Leave that family in control |
+| Mordinos wane | Leave the Mordinos in control, deliver jet to Dr. Troy but **never return for the antidote** (bug) |
+| **Wrights rule fairly** | Leave the Wrights in control, **do not enter the SAD**, and either finish the murder quest (any way), turn the Wrights hostile, or never take the quest at all |
+| Wrights seize power violently | Leave the Wrights in control **and enter the SAD** |
+| Wrights attack the Mordinos and are slaughtered | Leave the Wrights in control, do not enter the SAD, take but never finish the murder quest, and do not attack them |
+
+:::note RPU changes the Wright takeover
+**Contaminating the SAD with a virus prevents the Wrights taking New Reno by force.** They can still
+take it peacefully.
+<Vanilla>Contamination has no effect on the endings.</Vanilla>
+:::
+
+### The power struggle
+
+Each family starts with a **power counter of 100**:
+
+| Action | Effect |
+| --- | --- |
+| Kill a boss | That family drops to **0** |
+| Kill a bartender, casino bouncer, generic guard or unnamed adult Wright | −1 |
+| **Mordino:** kill or recruit Myron | **+20** (a bug) |
+| **Mordino:** kill Little Jesus | −1 |
+| **Bishop:** break the raiders' strength | −20 |
+| **Salvatore:** disturb the desert transaction | −20 |
+| **Salvatore:** kill Mason | −5 |
+| **Wright:** break the stills | −20 |
+| **Wright:** kill Keith Wright | −2 |
+| **Wright:** kill Chris Wright | −1 |
+
+Highest counter wins. On a tie the priority is **Mordino → Bishop → Salvatore → Wright**.
+
+In practice this rarely matters, since you will have killed the bosses of whichever families you
+disliked.
+
+## Richard Wright's murder
+
+| Ending | Trigger |
+| --- | --- |
+| Murder solved | Solve it correctly — name the Salvatores |
+| True murderer never found | Finger anyone else |
+
+:::caution
+You always get the second ending if you ever attack the Wrights, even if you never took the quest.
+:::
+
+## Myron
+
+**Myron dead and forgotten** — hear his name from Jules, Little Jesus, Renesco, Reed or Myron himself,
+and do not have him killed during the game.
+
+## Redding
+
+| Ending | Trigger |
+| --- | --- |
+| **Annexed by Vault City** | Deliver the Jet Antidote, leave, return to downtown Redding at least a day later, and never kill Dr. Johnson — even after the cure |
+| In league with New Reno | Sell the excavator chip to **McGrew** |
+| In league with NCR | Sell the chip to **LeBarge** |
+| Deserted | Never sell the chip |
+
+:::caution RPU
+**Killing all the miners prevents Redding's good ending** regardless of anything else you do.
+<Vanilla>The miners' fate does not affect the ending.</Vanilla>
+:::
+
+## Broken Hills
+
+| Ending | Trigger |
+| --- | --- |
+| Uranium runs out, Broken Hills disperses | Have Marcus jail the mutant-haters |
+| Mutants dead, Broken Hills disperses | Kill the mutants in the mine |
+| Racial wars erupt, Broken Hills disperses | Neither of the above |
+
+Broken Hills disperses no matter what you do. The first is the least bad.
+
+## New California Republic
+
+| Ending | Trigger |
+| --- | --- |
+| **NCR established** | Complete the deal between NCR and Vault 15 |
+| Expansion slowed | No deal, and Westin lives |
+| Carlson rules corruptly | No deal, kill Westin but not Carlson |
+| Under military rule | No deal, kill both Westin and Carlson |
+
+## Vault 15
+
+| Ending | Trigger |
+| --- | --- |
+| **Joins NCR** | Complete the deal with NCR |
+| Deserted | Do not |
+
+## Vault 13
+
+| Ending | Trigger |
+| --- | --- |
+| **Genocide** | Kill Gruthar, **or** return to Vault 13 after the massacre |
+
+:::caution
+You can avoid this — and get **no Vault 13 ending at all** — by never triggering the massacre, or by
+never returning afterwards.
+
+If you do get it, the game blames **you** for killing the deathclaws regardless of who actually did.
+:::
+
+:::note RPU restores the good ending
+In RPU it **is** possible to get a good ending for Vault 13. The key is not collecting Gruthar's
+reward for fixing the computer, which is what starts the two-week clock on the massacre.
+<Vanilla>There is no good Vault 13 ending at all.</Vanilla>
+:::
+
+## San Francisco
+
+| Ending | Trigger |
+| --- | --- |
+| **The Shi flourish** | Do not turn the Shi hostile, do not kill Dr. Wong |
+| Sentient plant problems | Kill Dr. Wong without turning the Shi hostile |
+| Population disperses after your rampage | Turn the Shi hostile |
+
+:::note RPU explains the plant ending
+The **[Dr. Sheng questline](/walkthrough/san-francisco)** is what the "sentient plant problems" slide
+was always describing. In the unmodded game it appears with no context whatsoever.
+:::
+
+:::caution The Shi are extremely sensitive
+Do everything correctly, then stand outside the tanker, throw a plant spike at a dockworker for **1
+point of damage**, and sail for the Enclave — and you get the "demoralized and leaderless after your
+rampage" ending.
+:::
+
+## Tanker vagrants
+
+**The vagrants move on** — you always get this, even if you killed every one of them.
+
+## Getting the best endings
+
+A rough checklist for the most positive outcome across the board:
+
+1. **Modoc** — broker peace with the Slags
+2. **The Den** — kill Metzger, spare Rebecca
+3. **Gecko** — fix the plant, do **not** optimize it
+4. **Vault City** — fix the plant, kill the raiders, deliver both holodisks, **skip Randal's final
+   reward**
+5. **Redding** — deliver the Jet Antidote, keep Dr. Johnson alive, leave the miners alone
+6. **Broken Hills** — have Marcus jail Jacob's group
+7. **New Reno** — leave the **Wrights** in control, never enter the SAD, resolve the murder correctly
+8. **NCR and Vault 15** — complete the deal
+9. **Vault 13** — fix the computer but **do not collect Gruthar's reward**
+10. **San Francisco** — do not kill Dr. Wong, do not annoy the Shi

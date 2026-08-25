@@ -1,8 +1,232 @@
 ---
 sidebar_position: 2
 title: Items and Equipment
+description: Books, chems, weapon upgrades, addiction, and the items that are actually worth carrying.
 ---
 
 # Items and Equipment
 
-_Coming soon._
+## Skill books
+
+Books raise a skill by an amount that shrinks as the skill grows: **6–7 points** at 20–30%, down to
+**1–2** at 70–90%. **Tagged skills gain double.**
+
+**They stop working at 91%** — 92% if you raise a tagged skill from 90.
+
+Reading takes `11 − Intelligence` hours.
+
+| Book | Raises | Where |
+| --- | --- | --- |
+| **Guns and Bullets** | Small Guns | Klamath |
+| **Scout Handbook** | Outdoorsman | Klamath (Trapper Town), Vault City vault |
+| **Big Book of Science** | Science | Vault City |
+| **First Aid Book** | First Aid | Modoc (Grisham's), Vault City (Randal, vault) |
+| **Dean's Electronics** | Repair | Ghost Farm, Vault City |
+
+:::tip Read books before spending points
+Repair, Science, First Aid and Outdoorsman can all reach 91% for free. Do not spend a single skill
+point on them until the books are exhausted.
+:::
+
+### One-off permanent bonuses
+
+| Item | Effect | Where |
+| --- | --- | --- |
+| **Cat's Paw Issue #5** | **Energy Weapons +10%** | Miss Kitty, New Reno — ask about "the stickiness of issue five" |
+| **Pip-Boy Medical Enhancer** | **Doctor +10%** and 500 XP | Renesco, New Reno — ask about the spectacles 20 times |
+| **Pip-Boy Lingual Enhancer** | **Speech +10%** and 500 XP | Mrs. Bishop's safe, New Reno — needs IN 9 |
+
+### The book exploit
+
+:::note
+Skills are calculated from stats, and the 91% cap is applied to your **current, artificially lowered**
+skill. Lower the governing stat, read the books, and let the stat recover — you keep the points.
+
+Ceilings reachable this way: **Small Guns, First Aid and Science 127%; Repair 118%; Outdoorsman 115%**,
+assuming PE, IN and AG at 10, EN above 3, and all skills already at 91%.
+
+- **−9 AG:** 2 Buffout, rest 5 hours, 2 Monument Chunks, rest 1 hour
+- **−9 IN:** 2 Mentats, rest 24 hours, 2 Psycho
+- **−9 PE:** a great deal of alcohol
+- **−3 EN:** 2 Buffout, rest 6 hours, 1 Buffout, rest 6 hours
+
+Read from the **inventory screen**, not a weapon slot — time does not pass until you close it, so your
+stats cannot recover mid-session.
+
+The **Game Difficulty** setting does the same thing more simply: easy → normal drops non-combat skills
+by 20%, normal → hard by another 10%. Read the books back up to 91% and set it back. (Guns and Bullets
+is exempt.) Combine both techniques **simultaneously** to maximise the gain.
+:::
+
+## Chems
+
+| Chem | Duration | Effect | Where |
+| --- | --- | --- | --- |
+| **Psycho** | 4+4 hrs | AG +3, IN −3, **DR +50** | The Den |
+| **Buffout** | 6 hrs | ST +2, AG +2, EN +3 | Den (Tubby, grave), Modoc (Balthas') |
+| **Mentats** | 24 hrs | **IN +2**, PE +2, CH +1 | Vault City (Lynette), Broken Hills (Eric, Professor) |
+| **Jet** | 5 mins | AP +2, ST +1, PE +1 | The Den |
+| **Rad-X** | 24+24 hrs | Radiation Resistance +50 | Toxic Caves |
+| **RadAway** | — | Radiation Level −150 | Klamath (Sajag), Toxic Caves |
+| **Antidote** | — | Poison Level −75 | Temple of Trials |
+
+**Psycho is the best combat drug** — real damage protection plus AP. **Mentats** are the utility drug:
++2 Intelligence opens dialogue you would otherwise miss entirely.
+
+:::caution
+- You **cannot benefit from more than two doses** of a chem at once — but additional doses can still
+  addict you.
+- Stats raised by chems **drop below their original values** afterwards, by roughly the size of the
+  bonus.
+- **Psycho and Rad-X** wear off in two halves.
+- **RadAway** takes full effect over 4 hours; **Antidote** over 2 minutes.
+:::
+
+:::note
+Saving and reloading gets around the two-dose limit. Useful for the book exploit above, and
+transparently a bug.
+:::
+
+## Healing
+
+| Item | Effect | Where |
+| --- | --- | --- |
+| **Stimpak** | +10–20 HP | Everywhere from Klamath onward |
+| **Super Stimpak** | **+75 HP**, then −6, then −3 | Vault City, Gecko |
+| **Healing Powder** | +8–18 HP, PE −1 for 6 hrs | Temple of Trials, Arroyo |
+| **Hypo** | **+75–100 HP** | Federation Shuttle encounter — 3 of them |
+| **Fruit** | +1–4 HP, Radiation +2 | Arroyo |
+| **Jet Antidote** | Cures jet addiction | Dr. Troy (Vault City), SF tanker |
+
+**Super Stimpaks are also a weapon.** Each does 9 damage to a healthy target after the initial heal
+wears off; enough of them in quick succession kills anyone without anyone noticing. See
+[NCR](/walkthrough/ncr) for the method.
+
+:::note
+The **Jet Antidote** is not consumed if you are addicted to jet when you use it.
+:::
+
+## Addiction
+
+| Chem | Risk | Withdrawal | Duration |
+| --- | --- | --- | --- |
+| **Jet** | **50%** | AP −2, ST −1, PE −1 | **Indefinite** |
+| Buffout | 25% | ST −2, EN −2, AG −3 | 7 days |
+| Psycho | 20% | IN −2 | 7 days |
+| Mentats | 15% | IN −3, AG −2 | 7 days |
+| Nuka-Cola | 10% | None detectable | 7 days |
+| RadAway | 10% | Radiation Resistance −20 | 7 days |
+
+:::danger
+**Jet addiction is permanent without the antidote**, and the antidote **does not work on companions**.
+One careless dose can permanently cripple a companion's Action Points.
+:::
+
+:::note RPU adds two more
+**Alcohol** and the card game **Tragic** can now addict you — both were defined in the original files
+and never implemented. Neither is dangerous.
+<Vanilla>Neither addiction can be acquired, despite persistent rumours.</Vanilla>
+:::
+
+## Alcohol
+
+Beer, Booze and Gamma Gulp Beer cost **PE −1** for 30 minutes; Rot Gut and Roentgen Rum cost **PE −2**.
+
+:::tip
+You can **use alcohol on other people** to lower their Perception before a Sneak or Steal attempt, or
+to interfere with scripts — Keith Wright guarding the Wright door, for instance. Beer and booze also
+make cows fall over.
+:::
+
+## Weapon upgrades
+
+| Upgrade | Eldridge / Skeeter | Valerie | Buster |
+| --- | --- | --- | --- |
+| Desert Eagle (Exp. Mag.) | $3,000 | $1,000 / $850 | — |
+| **.44 Magnum (Speed Load)** | $2,000 | $800 / $650 | — |
+| **Scoped Hunting Rifle** | $4,000 | — | **$500** |
+| Assault Rifle (Exp. Mag.) | $6,000 | $1,500 / $1,350 | — |
+| FN FAL (Night Sight) | $12,000 | $3,500 / $3,100 | — |
+| Super Cattle Prod | $3,000 | $750 / $650 | — |
+| Mega Power Fist | Algernon only | — | — |
+| Magneto-Laser Pistol | Algernon only | — | — |
+| Plasma Pistol (Ext. Cap.) | Algernon only | — | — |
+| Laser Rifle (Ext. Cap.) | Algernon only | — | — |
+| **Turbo Plasma Rifle** | Algernon only | — | — |
+| Improved Flamer | Algernon only | — | — |
+| Flamethrower Fuel MKII | Algernon only | — | — |
+
+:::tip Algernon does everything, for free
+**Algernon** in Eldridge's basement in New Reno performs **every** upgrade at **no charge**, which
+makes every other upgrader redundant.
+
+Failing that: **Skeeter and Eldridge** work for free at **Barter 91%+**, and Skeeter gives one free
+upgrade as a quest reward. Valerie's second price column is the CH 6 / Barter 75% discount — **but do
+not take the discount on the Cattle Prod**, which returns a normal one due to a bug.
+:::
+
+:::caution
+**Upgrades come back fully loaded**, so unload weapons before handing them over or you lose the
+ammunition.
+:::
+
+## The Bag
+
+The Bag from the Modoc mole rat cave is the single most exploitable item in the game.
+
+:::note
+Items positioned **below the Bag** in your inventory are "protected" from scripts that remove them —
+the engine mishandles the container item type.
+
+This lets you: give Cornelius's watch to **both** him and Farrel for both quest rewards; keep the
+original weapon **and** the upgrade from Algernon or Skeeter; have Myron make unlimited stimpaks from
+the same ingredients.
+
+Money and items stored **inside** the Bag are unaffected. If you want to carry the Bag without
+exploiting it, keep it at the **bottom** of your inventory.
+:::
+
+The Bag also has a legitimate use: put **armed explosives** in it and drop it next to someone. Nobody
+notices, and it is the cleanest assassination method in the game.
+
+:::danger
+The Bag is **confiscated and returned empty** before the Lenny fight in NCR. Drop it first.
+:::
+
+## Odds and ends
+
+| Item | Effect |
+| --- | --- |
+| **Monument Chunk** | ST +3, AG +3, DR +50 for 1 hour. From the Talking Head encounter. |
+| **Cookie** | AP +1 for 15 minutes. Modoc and the SAD. |
+| **Mutated Toe** | Max HP −3, Poison +2 for 7 days. Its only real use is on Frank Horrigan, where it does the same thing. |
+| **Fallout 2 Hintbook** | **10,000 XP per use** and raises every skill to 300%. Father Tully, after you finish the game. |
+
+:::note
+**Gold nuggets, uranium ore and refined uranium ore** can be switched to punch mode but cannot attack —
+their range is set to zero. **Rocks** work, and add your Melee Damage to maximum damage.
+
+**Pulse Grenades** do no damage to non-robot critters — but can do a lot to *you* unless you are
+armoured, because the player character uniquely carries EMP resistance in the armour definition rather
+than the critter definition.
+:::
+
+## Shops worth remembering
+
+| Shop | Why |
+| --- | --- |
+| **Randal's Amenities**, Vault City | Books, cheap stimpaks, combat shotgun at half the NCR price |
+| **Buster**, NCR bazaar | **2mm EC**, Pancor Jackhammer, Ripper, Power Fist, Avenger Minigun. Scoped Hunting Rifle conversion for $500. |
+| **Flying Dragon 8**, San Francisco | Power Armor, Tesla Armor, handbooks, stimpak ingredients |
+| **Red 888 Guns**, San Francisco | **Gauss Rifle**, Power Armor, ammunition |
+| **Mr. Chemmie**, EPA | Makes almost every consumable in the game from raw ingredients |
+
+**NCR and San Francisco have the best ammunition shops by far.**
+
+:::tip Selling is always at full value
+Your items sell for a fixed price. Barter skill, discounts and Charisma affect only **their** goods.
+So pay cash for expensive purchases and trade in your junk afterwards at leisure.
+
+The catch: shopkeepers restock money along with wares, and any cash above their normal amount
+**disappears** at restock.
+:::
