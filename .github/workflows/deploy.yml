@@ -48,16 +48,14 @@ jobs:
         with:
           path: website/build
 
-  # GitHub Pages is not available for private repositories on the free plan, so
-  # this job is gated behind a repository variable. To turn deployment on:
-  #   1. Settings → Pages → Source: "GitHub Actions"  (needs Pro/Team, or a public repo)
-  #   2. gh variable set ENABLE_PAGES --body true --repo JanSimek/fallout2-guide
-  # Until then the build job still runs on every push and catches broken links,
-  # MDX errors and type failures.
+  # Deployment is gated behind the ENABLE_PAGES repository variable so the build
+  # job stays useful (broken links, MDX errors, type failures) even when Pages is
+  # unavailable — as it is for private repos on the free plan. Currently ON.
+  #   gh variable set ENABLE_PAGES --body false   # to pause deployments
   deploy:
     if: >-
       github.ref == 'refs/heads/master'
-      && github.event_name == 'push'
+      && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
       && vars.ENABLE_PAGES == 'true'
     environment:
       name: github-pages

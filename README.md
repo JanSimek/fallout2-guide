@@ -101,18 +101,19 @@ which reads `if (metzger_dead) { if (becky_dead) 1 else 2 } else { if (big_jesus
 
 ## Deployment
 
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds the site on every push and
-pull request, which catches broken internal links, MDX errors and type failures.
+**Live at <https://jansimek.github.io/fallout2-guide/>.**
 
-**Deployment is switched off.** GitHub Pages is not available for private repositories on the free
-plan, so the deploy job is gated behind a repository variable. To turn it on:
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds on every push and pull request
+— which catches broken internal links, MDX errors and type failures — and deploys `master` to GitHub
+Pages.
 
-1. Make the repo public, or upgrade to GitHub Pro/Team
-2. Settings → Pages → Source: **GitHub Actions**
-3. `gh variable set ENABLE_PAGES --body true --repo JanSimek/fallout2-guide`
+Deployment is gated behind the `ENABLE_PAGES` repository variable, so it can be paused without
+touching the workflow:
 
-The site would then be served at `https://JanSimek.github.io/fallout2-guide/`, which is already
-what `baseUrl` in [`website/docusaurus.config.ts`](website/docusaurus.config.ts) expects.
+```bash
+gh variable set ENABLE_PAGES --body false   # pause
+gh variable set ENABLE_PAGES --body true    # resume
+```
 
 ## Credits
 
