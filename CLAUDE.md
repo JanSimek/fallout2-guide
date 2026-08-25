@@ -35,6 +35,28 @@ overrides every file RPU patches — `quests.txt`, `endgame.txt`, `vault13.gam`,
 `city.txt`, `maps.txt`, `ai.txt`. It fails silently: the tools answer confidently about vanilla.
 **Sanity check before trusting any answer: `quests` must report 157, not 110.**
 
+## Engine-level claims need checking against FOR:CE
+
+The guide inherited a set of engine bugs from Per Jorner, who documented the 1998 executable. The
+guide now recommends **FOR:CE**, which fixes a lot of them. Before repeating an engine bug, check
+`~/Development/fallout2-ce` (or wherever the CE checkout lives) — most fixes are labelled
+`// SFALL: Fix ...`, and behaviour toggles live in `files/ce.dat/config/game.cfg`.
+
+Audited so far:
+
+| Claim | Status |
+| --- | --- |
+| Bonus Move refills on save/reload | **Still works** — `_combat_turn` resets `_combat_free_move` unconditionally on the forced reload turn |
+| Level 98 skips to 99 | Fixed |
+| Pathfinder / Sharpshooter bugged | Fixed (`// SFALL: Fix ...`) |
+| Town-map number keys, `0` to exit dialogue | Fixed by default (`town_map_hotkeys_fix`, `no_exit_hotkey`) |
+| Tag! skill-point doubling | Intact (`TagSkillMode=0`) |
+| "Too many items" corruption | Probably fixed — the Pip-Boy lists are now paginated and bounds-checked. Not confirmed. |
+| Flare stack duplication, 0-damage crit XP loss, save-in-combat freeze, explosives corrupting a save | **Not confirmed either way** — marked as such in the guide |
+
+Where something cannot be settled from source in reasonable time, say so in the guide rather than
+asserting it. Do not silently delete an inherited claim either — it may well still be real.
+
 ## Gotchas that have already bitten
 
 - **Admonition titles are `:::note[Title]`**, not `:::note Title`. Docusaurus 3 dropped the v2

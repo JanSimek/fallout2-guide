@@ -6,10 +6,21 @@ description: The bugs that still bite in RPU, and how to avoid or recover from t
 
 # Known Issues
 
-RPU includes the Unofficial Patch, which fixes hundreds of the bugs that older Fallout 2 guides warn
-about. This page covers what is **still** a hazard.
+RPU includes the Unofficial Patch, which fixes hundreds of the bugs older Fallout 2 guides warn
+about, and **FOR:CE** fixes a further class of them in the engine itself. This page covers what is
+still a hazard.
 
 Bugs specific to a single quest are noted on that location's page.
+
+:::note[Which engine a bug belongs to]
+Older guides describe the 1998 executable. Some of what they document is fixed on FOR:CE
+(Pathfinder, Sharpshooter, the level 98 skip, the town-map and dialogue hotkey exploits), some is
+not (Bonus Move save-scumming).
+
+Where an entry below is **verified** against the FOR:CE source it says so. Where it is inherited
+from the original engine and **not confirmed** on FOR:CE, it says that too — rather than asserting
+it either way.
+:::
 
 ## Save your game properly
 
@@ -18,24 +29,38 @@ The single best defence against everything below.
 1. **Keep plenty of save slots.** FOR:CE has no ten-slot limit; on the original engine set
    `ExtraSaveSlots=1` in `ddraw.ini`. See [Configuration](/getting-started/configuration).
 2. **Rotate slots.** Keep a save from the start of each town.
-3. **Never save in combat mode**, especially with a dead companion on the map. Such saves reliably
-   freeze on end of turn when loaded.
-4. **Never save while explosives are waiting to detonate.** This can corrupt the save slot entirely.
+3. **Avoid saving in combat mode**, especially with a dead companion on the map. On the original
+   engine such saves froze on end of turn when loaded. *Not confirmed on FOR:CE* — and note that
+   loading a save made during combat restarts your turn, which is what refills Bonus Move AP.
+4. **Avoid saving while explosives are waiting to detonate.** Reported to corrupt the save slot
+   entirely on the original engine. *Not confirmed on FOR:CE.*
 
 ## The "too many items" bug
 
-The most serious remaining problem, and an engine-level one.
+The most serious problem on the original engine. **Status on FOR:CE: probably fixed, not confirmed.**
 
-**What happens:** late in the game, if a single map holds too many *different* items, the map becomes
-corrupted when you leave it. Next time you try to enter, the game locks up completely — the orbiting
-rocket cursor appears and never animates.
+**What happened:** late in the game, if a single map held too many *different* items, the map became
+corrupted when you left it. Next time you tried to enter, the game locked up completely — the
+orbiting rocket cursor appeared and never animated.
+
+:::note[Why "probably"]
+The cause was never precisely pinned down, even by the guides that documented it best — the leading
+theory was an overflow in the Pip-Boy's fixed-size lists.
+
+FOR:CE has rewritten exactly those code paths: the automap, status and holodisk lists are now
+**paginated** (`_view_page_quest`, `_view_page_holodisk`, `_view_page_automap_*`) with explicit
+bounds checks on every loop that fills them. That removes the most plausible cause.
+
+Because the original bug was never characterised precisely, this is reasoning about the likely
+mechanism rather than a confirmed fix. The prevention advice below costs nothing, so it stays.
+:::
 
 The count includes what you and your companions carry, items on critters, items in containers
 (**including shops**), and everything in your car — whether the car is present or not.
 
-:::caution[Warning signs]
+:::caution[Warning signs on the original engine]
 The **skilldex button** on the main screen and the **sleep button** in the Pip-Boy turning into black
-squares means the bug is coming.
+squares meant the bug was coming.
 
 There is a strong association with **Pip-Boy status entries**: eleven is reportedly fine, **twelve
 causes problems**, in both Fallout and Fallout 2. Some players avoid the status screen entirely and
