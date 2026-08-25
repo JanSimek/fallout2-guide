@@ -73,10 +73,21 @@ removes most of that.
 ## Combat speed
 
 The single biggest quality-of-life change in a game where companions take their turns slowly.
-FOR:CE exposes combat speed and animation options in `fallout2.cfg` — run the game once and look
-through the generated file for the combat and speed keys.
 
-On the original engine this lives in `ddraw.ini`; see [below](#the-original-engine).
+```ini
+[preferences]
+combat_speed=50     ; added to combat animation frame rate. 0 = original speed
+player_speedup=1    ; speed up your own animations too, not just everyone else's
+```
+
+`combat_speed` is also the **Combat Speed** slider in the in-game options menu, so you can set it
+without editing anything. `player_speedup` is off by default and has no slider — turning it on is
+what stops *your* turns feeling slow as well.
+
+:::note
+This is not the same mechanism as sfall's `[Speed]` section, which multiplied the whole game clock.
+CE raises the animation frame rate instead, so it speeds up combat without distorting time.
+:::
 
 ## RPU's own toggles
 
@@ -106,7 +117,12 @@ the game does not stop you. See [Items](/systems/items) for the same trick appli
 
 ## The original engine
 
-If you are running `fallout2.exe` with sfall rather than FOR:CE, the settings move:
+Everything above assumes FOR:CE. **FOR:CE does not read `ddraw.ini`** — it ships one, but it is an
+almost entirely commented-out stub kept for compatibility, and the settings that matter have been
+moved into `fallout2.cfg` and `game.cfg`. If a guide tells you to edit `ddraw.ini`, it is describing
+the original executable.
+
+If that *is* what you are running, the settings live elsewhere:
 
 | File | What it controls |
 | --- | --- |
@@ -138,6 +154,6 @@ same section bind keys to change it on the fly.
 Turn it on — Fallout 2 rewards keeping a save from the start of each town.
 
 :::note
-FOR:CE remembers your last used save slot and does not have the original ten-slot limit, so
-neither setting is needed there.
+FOR:CE has **multiple pages of save slots built in** and remembers your last used slot, so
+`ExtraSaveSlots` is not needed — and in fact is not implemented there.
 :::
