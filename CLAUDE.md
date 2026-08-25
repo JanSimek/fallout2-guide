@@ -30,6 +30,11 @@ walkthrough — both secondary sources. Before stating a number, check it.
 `describe_script`, `gvars`, `analyze`, `world_encounters`, `render_map`. `find_gvar` →
 `describe_script` is the fastest route from "what triggers this?" to the source line.
 
+**Later `--data` mounts win.** RPU's `data/` must be mounted *after* `master.dat`, or vanilla
+overrides every file RPU patches — `quests.txt`, `endgame.txt`, `vault13.gam`, `worldmap.txt`,
+`city.txt`, `maps.txt`, `ai.txt`. It fails silently: the tools answer confidently about vanilla.
+**Sanity check before trusting any answer: `quests` must report 157, not 110.**
+
 ## Gotchas that have already bitten
 
 - **Admonition titles are `:::note[Title]`**, not `:::note Title`. Docusaurus 3 dropped the v2

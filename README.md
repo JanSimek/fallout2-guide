@@ -67,6 +67,15 @@ directly. Configured in [`.mcp.json`](.mcp.json); it needs the editor built
 (`cmake --build build --target gecko-mcp`) and paths overridable via `GECKO_MCP`, `FALLOUT2_RPU`
 and `FALLOUT2_DATA`.
 
+> **Mount order matters — later `--data` mounts win.** `master.dat` and `critter.dat` must come
+> *first*, RPU's `data/` last, or vanilla silently overrides RPU for every file RPU patches:
+> `quests.txt`, `endgame.txt`, `vault13.gam`, `worldmap.txt`, `city.txt`, `maps.txt`, `ai.txt`,
+> `party.txt`, `karmavar.txt`. Getting this backwards is not an error — the tools just answer
+> about the wrong game (110 quests instead of 157, 52 ending slides instead of 59, 695 globals
+> instead of 791).
+>
+> Sanity check: `quests` should report **157**.
+
 The tools that matter for this guide:
 
 | Tool | What it settles |
