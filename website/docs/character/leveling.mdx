@@ -18,11 +18,26 @@ by the Oil Rig. You do not need to grind.
 
 ## Level cap
 
-The cap is **99**. Reaching the 4,753,000 XP needed for level 98 awards two levels at once,
-skipping straight to 99.
+The cap is **99**, and each level costs `level × (level − 1) ÷ 2 × 1000` XP — so the last few are:
 
-You will not get near this by playing normally. Getting there requires deliberately farming
-random encounters for a very long time.
+| Level | XP required |
+| --- | --- |
+| 97 | 4,656,000 |
+| 98 | 4,753,000 |
+| 99 | **4,851,000** |
+
+You will not get near this by playing normally. Getting there means deliberately farming random
+encounters for a very long time.
+
+:::note[On the original engine, 98 skipped straight to 99]
+Reaching 4,753,000 XP on the 1998 executable awarded **two** levels at once, jumping from 97 to
+99 and skipping 98 entirely.
+
+FOR:CE gets this right — it walks the level up one step at a time and checks each threshold, so
+98 costs 4,753,000 and 99 costs 4,851,000.
+<Vanilla>Level 98 is unreachable: the moment you qualify for it you are given level 99 as
+well.</Vanilla>
+:::
 
 ## The time limit
 
@@ -58,10 +73,26 @@ level.
 
 ## A note on exploits
 
-Fallout 2 is old and leaky. There are well-known tricks: pressing a number key on a town map
-to enter areas you have not unlocked, pressing `0` to abort any conversation, save-scumming
-Bonus Move for unlimited movement, the Tag! skill-point trick.
+Fallout 2 is old and leaky, and older guides list a set of well-known tricks. **Most of them no
+longer work**, because FOR:CE fixes them by default.
 
-They all work. Several of them can also corrupt a quest state or drop you inside a wall. The
-guide mentions them where they are genuinely useful for recovering from a stuck situation,
-and otherwise leaves them alone.
+| Trick | On FOR:CE |
+| --- | --- |
+| Number key on a town map to enter an area you have not unlocked | **Blocked.** `town_map_hotkeys_fix` |
+| Press `0` to abort any conversation | **Blocked.** `no_exit_hotkey` |
+| Save and reload mid-combat to refill **Bonus Move** AP | **Still works** |
+| The **Tag!** skill-point trick | **Still works** |
+
+The first two are switches in `<DAT>/config/game.cfg`, so you can turn them back on if you want
+the original behaviour. Both are on — meaning fixed — out of the box.
+
+:::note[Why Bonus Move still works]
+Loading a save during combat deliberately restarts your turn so the fight can resume, and
+restarting a turn is what refills free move AP. It is a consequence of handling the reload
+sanely rather than an oversight, so it is unlikely to change.
+<Vanilla>Identical behaviour — this one is inherited, not introduced.</Vanilla>
+:::
+
+Several of the tricks that *do* still work can corrupt a quest state or drop you inside a wall.
+The guide mentions them where they genuinely help you recover from a stuck situation, and
+otherwise leaves them alone.
