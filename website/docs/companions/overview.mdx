@@ -1,8 +1,182 @@
 ---
 sidebar_position: 1
 title: Companions
+description: How companions work — recruiting, equipping, levelling, and what will make them leave.
 ---
 
 # Companions
 
-_Coming soon._
+> *"Wow! I feel as if I've passed some arbitrary experience value and gained more power!"* — Marcus
+
+Companions fight for you, carry your loot, and occasionally die in ways you did not expect.
+Experience is **not** divided among them, so a companion is pure profit.
+
+**Your limit is Charisma ÷ 2, rounded down.** See [SPECIAL](/character/special).
+
+## Who to take
+
+| Companion | Where | Verdict |
+| --- | --- | --- |
+| **[Sulik](/companions/sulik)** | Klamath | Take him. First and best early companion. |
+| **[Vic](/companions/vic)** | The Den | Take him. Good with a rifle, useful Repair. |
+| **[Cassidy](/companions/cassidy)** | Vault City | **Best in the game.** Take him. |
+| **[Marcus](/companions/marcus)** | Broken Hills | Excellent damage, kills your party by accident. |
+| **[Goris](/companions/goris)** | Vault 13 | Strong criticals, arrives very late. |
+| **[Skynet](/companions/skynet)** | Sierra Army Depot | Good with the right brain, slow. |
+| **[Lenny](/companions/lenny)** | Gecko | A pack mule with a Doctor skill. |
+| **[Myron](/companions/myron)** | The Stables | Recruit, use, dismiss. A chemistry set with legs. |
+| **[K-9](/companions/k9)** | Navarro | The best of the dogs, which is not saying much. |
+| **[Dogmeat](/companions/dogmeat)** | Special encounter | Nostalgia. |
+| **[RPU companions](/companions/rpu-companions)** | EPA | Kitsune, Cat Jules, Dex — pick one. |
+
+**Miria and Davin** from Modoc, **Laddie**, the **Robodog** from NCR and the **pariah dog** are all
+available and none of them are worth the slot.
+
+## Equipping them
+
+Give each companion the best **armour** and **weapon they can actually use** that you are not using
+yourself, plus a handful of stimpaks.
+
+:::caution Animations, not skills
+A companion can equip any weapon they have **animation frames** for — which does not mean they are any
+good with it. Lenny can hold an Alien Blaster because it uses the pistol animation, and will miss with
+it constantly.
+
+They will not equip a weapon they have no ammunition for, or one that conflicts with their current
+combat settings.
+:::
+
+Two animations are non-obvious: the **14mm Pistol and .223 Pistol use the SMG animation**, and the
+**Tommy Gun uses the rifle animation**.
+
+:::note Grenades
+A companion can only throw grenades if their weapon preference is set to **"None"**. That rules out
+Sulik and Lenny despite them having the animations.
+:::
+
+:::tip Set combat options immediately
+Open each companion's custom combat settings the moment you recruit them. The defaults will get them
+killed, and will get *you* killed when they burst-fire through your back.
+:::
+
+:::note RPU: Party Orders
+The Party Orders mod is bundled with RPU. It lets you give standing combat orders rather than
+negotiating with the AI. Turn it on in the installer.
+<Vanilla>Combat behaviour is controlled only by the per-companion settings dialogue.</Vanilla>
+:::
+
+## Healing
+
+Told to heal, a companion works through: **Super Stimpak → Stimpak → Healing Powder → Doctor's Bag →
+First Aid Kit → their best healing skill**. That skill is First Aid for everyone except **Lenny**, who
+uses Doctor (10–25 HP against First Aid's 5–15).
+
+:::caution
+A companion using a healing **skill** counts against **your own** three-times-a-day limit.
+
+If they are holding a weapon you may have to end the conversation before they can heal — they need to
+play the put-away animation first.
+:::
+
+## Levelling
+
+Every time **you** level up, each companion who has not levelled recently has a **chance** to gain a
+level. Miss it and the odds improve next time. They do not need to be present when you earn the XP,
+only at the moment you level.
+
+Most companions level **four or five times** in a game, gaining HP, AP, carry weight and combat skill
+non-randomly.
+
+:::tip
+Read their level-up comments. They start bland and become genuinely funny at higher levels — Marcus
+and Myron especially.
+:::
+
+## Chems
+
+**Companions never get irradiated or poisoned.** They do suffer normal chem after-effects, and they
+can become addicted.
+
+:::danger Jet addiction is permanent for companions
+The Jet Antidote does not work on them. One careless dose can leave a companion permanently reduced to
+a handful of Action Points.
+:::
+
+:::note
+Levelling up interacts oddly with drugs. A companion who levels while boosted has the comedown applied
+to their *new* stats and ends up below where they should be. One who levels during withdrawal gets a
+lasting boost when it wears off. The next level-up corrects it either way.
+:::
+
+## What makes them leave or attack
+
+| Companion | Refuses to join / leaves |
+| --- | --- |
+| **Sulik** | Leaves if you become a Childkiller, Berserker, or karma −101 or lower. Attacks if you become a Slaver or cause trouble **in Klamath**. Will not rejoin if Klamath reputation is Hated. |
+| **Vic** | Attacks if you attack **Valerie** in Vault City while he is with you. |
+| **Cassidy** | Will not join a Slaver, Childkiller, or karma −101 or lower — but does not leave if you become one later. |
+| **Lenny** | Leaves for Childkiller, Slaver, karma −101, or **CH 1**. Attacks if you are in Gecko having wrecked the plant. |
+| **Marcus** | Will not join below 0 karma. Will not rejoin at −101, Slaver or Childkiller. Attacks anywhere if you are an enemy of Broken Hills. |
+| **Goris** | Will not join below 0 karma, negative Vault 13 reputation, Berserker or Childkiller. Leaves if your karma drops below 0. |
+| **K-9** | Leaves for Childkiller or karma −101 — and **cannot be re-recruited afterwards**, ever. |
+
+:::danger Never loot an unconscious companion
+Accessing the inventory of a downed companion counts as **stealing from a non-party member**.
+**Vic and Myron** will stop communicating permanently, and **Goris turns hostile** the moment you
+dismiss him.
+:::
+
+:::caution Dead companions vanish
+If a companion dies and you save/load or leave the map and return, the **body and everything on it is
+gone**. This applies before you recruit them too.
+
+Saving while in combat mode with a dead companion produces a save that **freezes on end of turn**.
+:::
+
+## Recovering from a fight
+
+If you attack a companion who is not currently in your party, they fight back. Whether you can recruit
+them afterwards depends on the individual:
+
+| Behaviour | Who |
+| --- | --- |
+| Peaceful if you leave and return | Laddie, Robodog |
+| Peaceful after letting them start one fight, then leaving and returning | Sulik, Lenny, K-9 |
+| Holds a grudge, but recruitable if you talk before they attack | Cassidy |
+| **Permanently hostile** | Vic, Marcus, Myron, Goris, Dogmeat |
+
+The Brain Bot never turns hostile from being shot — but turns **permanently** hostile if you steal from
+it.
+
+## Useful tricks
+
+:::tip Infinite carry weight
+Tell a companion to **wait**, then trade with them. While waiting, they evaluate goods by **price**
+rather than weight, so you can load them with anything. One player reports giving Vic 800 pounds of
+gear.
+
+The cost is a little under half their Action Points. If you overload them beyond what one barter
+session can unload, use **Steal** to get it back.
+:::
+
+:::note Weapon skill helpers
+**Vic, Lenny and Myron** will use their special non-combat skill automatically if you try to use that
+skill on something you are not standing next to — and their skill is higher than yours. So Lenny will
+heal people with Doctor, and Vic will disable forcefields.
+
+You can only trigger this from the skilldex, so you cannot have Myron hack a computer for you.
+:::
+
+:::note Outdoorsman
+A companion with a higher Outdoorsman than yours uses theirs automatically while travelling. Only
+**Sulik** has a meaningful figure — 80% at his highest level.
+
+A **Motion Sensor** applies its bonus to whoever has the highest skill, but only if **you** are
+carrying it.
+:::
+
+:::note The flare trick
+Give a lit **flare** to a companion with no other weapon and have them ready it. They become a
+permanent light source — the effect persists after the flare disappears. Works for **Vic, Davin,
+Marcus and Myron**.
+:::
