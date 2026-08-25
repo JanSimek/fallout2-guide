@@ -24,3 +24,6 @@ npm-debug.log*
 .env
 .env.local
 .env.*.local
+
+# Scratch output from scripts/generate-quest-index.py
+website/quest_index_body.md
