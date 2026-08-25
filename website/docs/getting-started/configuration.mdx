@@ -1,0 +1,97 @@
+---
+sidebar_position: 2
+title: Configuration
+description: The sfall and RPU settings worth changing before you start playing.
+---
+
+# Configuration
+
+RPU ships with sensible defaults. You can play the whole game without touching a single
+setting. This page covers the handful that are worth a look, and where to find them.
+
+## Where the settings live
+
+| File | What it controls |
+| --- | --- |
+| `ddraw.ini` | sfall — resolution, engine tweaks, combat speed, hotkeys. |
+| `mods/rpu.ini` | Restoration Project content toggles. |
+| `mods/upu.ini` | Unofficial Patch toggles. |
+| `f2_res.ini` | High resolution patch — screen size and scaling. |
+| `fallout2.cfg` | The original game's own settings. |
+
+On fallout2-ce the equivalent of `ddraw.ini` is `f2_res.ini` plus the engine's own
+configuration; not every sfall key applies.
+
+## Resolution
+
+Set this in `f2_res.ini`:
+
+```ini
+[MAIN]
+SCR_WIDTH=1280
+SCR_HEIGHT=720
+```
+
+Fallout 2's interface is a fixed-size bar at the bottom of the screen — raising the
+resolution does not scale it up, it just shows you more of the map. That is usually what you
+want, but at 4K the interface becomes very small. `GRAPHICS_MODE` and the scaling options in
+the same file can compensate.
+
+:::tip
+Do not go below 800×600. Several RPU areas — the EPA entrance in particular — need the extra
+vertical space to be navigable at all.
+:::
+
+## Combat speed
+
+The single biggest quality-of-life change. In `ddraw.ini`:
+
+```ini
+[Speed]
+Enable=1
+SpeedMultiInitial=2
+```
+
+This speeds up the whole game clock, including combat animations. Party members taking their
+turns is the slowest part of Fallout 2 and this fixes it. `2` is comfortable; `3` and above
+starts to feel twitchy.
+
+You can also bind keys to change speed on the fly with `SpeedKeyUp` / `SpeedKeyDown` in the
+same section.
+
+## Things you probably want on
+
+```ini
+[Misc]
+; Show the item's weight and value in the inventory
+ExtraSaveSlots=1
+```
+
+The RPU installer already enables most of what you want. Rather than listing every key, the
+practical advice is: open `mods/rpu.ini`, read the comments, and turn off anything you
+actively dislike. Each entry is documented in place.
+
+Two that people commonly change:
+
+- **Kaga encounters.** RPU adds a recurring rival who ambushes you five times over the
+  course of the game. Some players find him a nuisance. He can be disabled in `rpu.ini`.
+- **NPC armour appearance.** If you dislike seeing companions change sprite when equipped,
+  it can be turned off.
+
+## Difficulty settings
+
+Two separate sliders in the game's options menu:
+
+- **Combat Difficulty** affects damage taken and dealt.
+- **Game Difficulty** affects skill checks and how many skill points a level costs.
+
+There is a well-known trick here: skill point costs are calculated against your *current*
+skill level, and Game Difficulty shifts that level. Raising the difficulty temporarily
+lowers the displayed skill, which can make the next few points cheaper; lowering it
+temporarily raises your skills, which can carry you past a check you would otherwise fail.
+It is transparently an exploit, but it is available, and the game does not stop you.
+
+## Saving
+
+`ExtraSaveSlots` in `ddraw.ini` raises the save slot limit well past the original ten. Turn
+it on. Fallout 2 rewards keeping a save from the start of each town.

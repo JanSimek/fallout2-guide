@@ -1,0 +1,195 @@
+/**
+ * Global styles. Infima is bundled by the classic preset; the variables below
+ * retheme it towards the Pip-Boy green the game is known for.
+ */
+
+:root {
+  --ifm-color-primary: #1f7a3f;
+  --ifm-color-primary-dark: #1c6e39;
+  --ifm-color-primary-darker: #1a6835;
+  --ifm-color-primary-darkest: #15562c;
+  --ifm-color-primary-light: #228645;
+  --ifm-color-primary-lighter: #248c48;
+  --ifm-color-primary-lightest: #299e51;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --fo-vanilla-bg: #1c2b1c;
+  --fo-vanilla-fg: #e8f3e8;
+  --fo-vanilla-accent: #7ac97a;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4ede7c;
+  --ifm-color-primary-dark: #31d966;
+  --ifm-color-primary-darker: #24d25b;
+  --ifm-color-primary-darkest: #1dad4b;
+  --ifm-color-primary-light: #6be392;
+  --ifm-color-primary-lighter: #79e69d;
+  --ifm-color-primary-lightest: #a1eebb;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --fo-vanilla-bg: #0f1a0f;
+  --fo-vanilla-fg: #dcefdc;
+  --fo-vanilla-accent: #4ede7c;
+}
+
+/* ------------------------------------------------------------------ *
+ * Vanilla-difference marker
+ *
+ * An inline "i" badge that reveals a short note about how the vanilla
+ * game behaved. Shown on hover and on keyboard focus so it is reachable
+ * without a pointer; on touch it opens with a tap because the button
+ * takes focus.
+ * ------------------------------------------------------------------ */
+
+.vanilla-note {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 1;
+}
+
+.vanilla-note__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 0.15em;
+  padding: 0;
+  border: 1px solid var(--fo-vanilla-accent);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fo-vanilla-accent);
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.78em;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  cursor: help;
+  vertical-align: super;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.vanilla-note__icon:hover,
+.vanilla-note__icon:focus-visible {
+  background: var(--fo-vanilla-accent);
+  color: var(--fo-vanilla-bg);
+  outline: none;
+}
+
+.vanilla-note__body {
+  position: absolute;
+  bottom: calc(100% + 0.6em);
+  left: 50%;
+  z-index: 30;
+  display: block;
+  width: max-content;
+  max-width: min(24rem, 80vw);
+  padding: 0.7em 0.85em;
+  transform: translateX(-50%) translateY(0.25em);
+  border: 1px solid var(--fo-vanilla-accent);
+  border-radius: 6px;
+  background: var(--fo-vanilla-bg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  color: var(--fo-vanilla-fg);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.45;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease, visibility 120ms;
+}
+
+.vanilla-note__body::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0.6em;
+  height: 0.6em;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-right: 1px solid var(--fo-vanilla-accent);
+  border-bottom: 1px solid var(--fo-vanilla-accent);
+  background: var(--fo-vanilla-bg);
+  content: '';
+}
+
+.vanilla-note:hover .vanilla-note__body,
+.vanilla-note__icon:focus-visible + .vanilla-note__body,
+.vanilla-note__icon:focus + .vanilla-note__body {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.vanilla-note__title {
+  display: block;
+  margin-bottom: 0.25em;
+  color: var(--fo-vanilla-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.vanilla-note__text {
+  display: block;
+}
+
+/* Keep the bubble on screen when the marker sits near the page edges. */
+.vanilla-note:first-child .vanilla-note__body {
+  left: 0;
+  transform: translateX(0) translateY(0.25em);
+}
+
+.vanilla-note:first-child:hover .vanilla-note__body,
+.vanilla-note:first-child .vanilla-note__icon:focus + .vanilla-note__body {
+  transform: translateX(0) translateY(0);
+}
+
+.vanilla-note:first-child .vanilla-note__body::after {
+  left: 1em;
+}
+
+/* ------------------------------------------------------------------ *
+ * Quest names
+ * ------------------------------------------------------------------ */
+
+.quest {
+  font-weight: 600;
+}
+
+.quest--rpu {
+  border-bottom: 1px dotted var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  cursor: help;
+}
+
+/* ------------------------------------------------------------------ *
+ * Content tweaks
+ * ------------------------------------------------------------------ */
+
+.markdown table {
+  display: table;
+  width: 100%;
+}
+
+.markdown h2 {
+  margin-top: 2.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.markdown h3 {
+  margin-top: 1.8rem;
+}
+
+/* Quest headings in walkthrough pages carry a lot of text; keep them tight. */
+.markdown h3 .quest,
+.markdown h4 .quest {
+  font-weight: inherit;
+}

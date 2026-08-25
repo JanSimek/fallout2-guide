@@ -1,0 +1,155 @@
+---
+sidebar_position: 5
+title: Perks
+description: Every Fallout 2 perk rated, with a recommended pick order by level.
+---
+
+# Perks
+
+You get a perk every **three levels** (every four if you took Skilled). You must spend each
+one before you can earn the next, so a perk you skip is a perk you lose.
+
+Plan ahead. Some perks have stat requirements you will only meet after taking a *different*
+perk, and some can be reached by drinking a chem at the right moment — though **Luck
+requirements cannot be met with drugs**.
+
+## The three that matter most
+
+### Awareness
+*Level 3, PE 5*
+
+Shows every target's exact hit points, weapon and ammunition when you hover over them. You
+will use it in every single fight for the rest of the game, and it turns "is this winnable?"
+from a guess into a readout.
+
+**Take it at level 3.** This is the reason to start with PE 5.
+
+### Bonus Rate of Fire
+*Level 15, AG 7, PE 6, IN 4*
+
+−1 AP on every ranged attack. Stacks with Fast Shot. This is the difference between three
+shots a round and five.
+
+### Sniper
+*Level 24, AG 8, PE 8, LK 6*
+
+Rolls your Luck for a critical hit on **every** successful ranged attack. It does not replace
+your normal critical chance — it adds an independent second chance on top.
+
+The practical effect is dramatic and scales hard with Luck:
+
+| Luck | Crit chance without Sniper | With Sniper |
+| --- | --- | --- |
+| 4 | 4% | ~42% |
+| 6 | 6% | ~64% |
+| 8 | 8% | ~82% |
+| 10 | 10% | ~100% |
+
+:::note
+Aimed shots still help after Sniper — an eye shot adds +60% to the *normal* roll — but the
+marginal benefit shrinks a lot at high Luck (roughly +12% at LK 8, +6% at LK 9). At that
+point Fast Shot's extra attack is usually worth more. Conversely, **More Criticals becomes
+nearly worthless once you have Sniper** with decent Luck.
+:::
+
+Melee equivalent: **Slayer** (level 24, AG 8, ST 8, Unarmed 80%) turns every hand-to-hand hit
+into a critical with no Luck roll at all.
+
+## Strongly recommended
+
+| Perk | Level | Why |
+| --- | --- | --- |
+| **Better Criticals** | 9 | +20% on the critical effect table. More crippling, more damage multipliers. |
+| **Action Boy** (×2) | 12 | +1 AP each. Aim for a total AP that is an exact multiple of your weapon's attack cost, plus reload. |
+| **Living Anatomy** | 12 | +5 damage against all living targets, plus 10% Doctor. Quietly excellent. |
+| **Bonus HtH Attacks** | 15 | −1 AP per melee/unarmed attack. Essential for brawlers. |
+| **Bonus Move** (×2) | 6 | +2 free movement AP per rank. Superb for melee, and useful for gunners repositioning around companions. |
+| **Quick Pockets** | 15 | Inventory access for 2 AP instead of 4. A convenience that becomes a lifesaver when you need a Stimpak mid-fight. |
+| **Gain Agility** | 12 | Only if it takes you to an *even* Agility, which means a real extra Action Point. |
+
+:::note
+**Bonus Move is bugged**: saving and reloading during combat restores the extra movement AP,
+letting you cross any distance in one round.
+:::
+
+## Worth considering
+
+- **Dodger** (+5 AC) and **HtH Evade** — HtH Evade is strictly better for unarmed characters,
+  and unlike the description implies, it works while holding Unarmed-class weapons such as
+  the Power Fist. It only needs your *weapon* slots free of guns.
+- **More Criticals** (×3) — good until you get Sniper, then redundant.
+- **Toughness** (×3) — +10% damage resistance each. Damage resistance caps at 90% and you can
+  reach 80% through armour alone, so more than one rank often wastes itself.
+- **Lifegiver** (×2) — +4 max HP per level retroactively. Up to ~140 extra HP by level 30.
+  Better than putting character points into Endurance, still not a top pick.
+- **Gain Charisma / Gain Intelligence / Gain Luck / Gain Perception** — all situational.
+  Gain Charisma is worth it if it takes you to an even number (one more companion). Gain Luck
+  is genuinely strong if you have Sniper.
+- **Magnetic Personality** — +1 effective Charisma for party size only. If your Charisma is
+  odd, Gain Charisma is strictly better. Available from level 6, not level 3 as the manual claims.
+- **Mutate!** — swap one trait. The canonical use is trading **Finesse for Fast Shot** at
+  level 27 (or 21), just as Sniper makes Finesse redundant and removes the reason to aim.
+- **Explorer / Ranger / Scout** — better special encounter odds. Late-game fun, not a priority.
+- **Silent Death** — double damage sneaking up behind an enemy. Six conditions for a 2× multiplier.
+
+:::caution Cult of Personality and Karma Beacon work now
+Both perks are fully implemented in RPU, and **Cult of Personality** in particular has real
+consequences: it lets you take slaver-aligned quests (such as Vortis's job against the NCR
+Ranger safe houses) without tanking your karma.
+<Vanilla>In the unmodded game both perks are inert — they do literally nothing.</Vanilla>
+:::
+
+## Do not take these
+
+**Skill point perks** — Educated, Gambler, Harmless, Master Thief, Medic, Mr. Fixit,
+Negotiator, Salesman, Speaker, Survivalist, Comprehension. You will not run short of skill
+points. Spending a perk to get some is spending your most limited resource for your least.
+
+The one arguable exception is **Tag!**, because of a quirk: tagging a skill raises it by the
+same amount you had already raised it, and you can then *lower* it again before leaving the
+character screen, banking the difference as generic points. Tag a skill sitting at 299% and
+you get several hundred points. It is an exploit, and it is still only skill points.
+
+**Others to skip:**
+
+- **Swift Learner** (×3) and **Here and Now** — perks that help you get perks. The XP curve is
+  linear, so three ranks of Swift Learner leaves you about two levels ahead by level 30.
+- **Sharpshooter** — bugged. It is meant to add +2 PE for range calculations but delivers
+  less than +1 PE would.
+- **Pathfinder** (×2) — bugged. Rank 1 gives 20% instead of 25%; rank 2 does nothing.
+- **Light Step** — avoids floor traps, of which there are essentially two sets in the game
+  (Redding and outside the SAD), and it still makes you roll Agility for each.
+- **Mysterious Stranger** — RPU improves the Stranger's behaviour, but the perk still asks
+  you to give up a slot for an occasional uncontrolled ally.
+- **Bonus HtH Damage** (×3) — adds to *maximum* damage only, so about +1 average per rank.
+- **Bonus Ranged Damage** (×2) — too small unless you are firing a Bozar or minigun.
+- **Adrenaline Rush, Cautious Nature, Demolition Expert, Earlier Sequence, Empathy,
+  Faster Healing, Fortune Finder, Gain Endurance, Gain Strength, Ghost, Harmless, Heave Ho!,
+  Kama Sutra Master, Master Trader, Night Vision, Pack Rat, Presence, Pickpocket, Pyromaniac,
+  Quick Recovery, Rad Resistance, Silent Running, Smooth Talker, Snakeater, Stonewall,
+  Strong Back, Weapon Handling** — all marginal, situational, or both.
+
+:::note
+**Animal Friend, Flower Child, Mental Block and Scrounger** exist in the game files but
+cannot be obtained. They are Fallout 1 leftovers.
+:::
+
+## A workable pick order
+
+For the general-purpose gunner from [Suggested Builds](/character/builds):
+
+| Level | Perk |
+| --- | --- |
+| 3 | Awareness |
+| 6 | Bonus Move *(or Toughness)* |
+| 9 | Better Criticals |
+| 12 | Living Anatomy |
+| 15 | Bonus Rate of Fire |
+| 18 | Action Boy |
+| 21 | Action Boy |
+| 24 | **Sniper** |
+| 27 | Mutate! → Fast Shot *(if you took Finesse)* |
+| 30 | Gain Luck |
+
+For a brawler, replace Bonus Rate of Fire with **Bonus HtH Attacks** and Sniper with
+**Slayer**, and take **HtH Evade** early.

@@ -1,0 +1,122 @@
+---
+sidebar_position: 8
+title: Karma and Reputation
+description: Karma titles, town standings and the special reputations you can pick up.
+---
+
+# Karma and Reputation
+
+Fallout 2 tracks three separate things: a global **karma** number, a hidden **reputation**
+per town, and a set of named **special reputations** that behave like badges.
+
+None of them matter as much as you would expect. A handful of scripts check for a specific
+title or threshold; the general "everyone reacts to your reputation" system the manual
+describes is barely wired up and does not work properly. There is no practical difference
+between 500 karma and 1500.
+
+## Karma titles
+
+Every 250 karma in either direction earns a new title:
+
+| Karma | Title |
+| --- | --- |
+| +2000 and above | Savior of the Damned |
+| +1500 | Guardian of the Wastes |
+| +1000 | Shield of Hope |
+| +500 | Defender |
+| 0 | Wanderer |
+| −500 | Betrayer |
+| −1000 | Sword of Despair |
+| −1500 | Scourge of the Wastes |
+| −2000 and below | Demon Spawn |
+
+Playing as a shameless opportunist tends to land you at high positive karma anyway, simply
+because the game contains far more good deeds than bad ones.
+
+:::note
+RPU restores each karma level's unique icon on the character sheet, as originally intended,
+along with the cut **Virgin** title and the original Childkiller portrait.
+<Vanilla>The unmodded game shows a generic icon for every karma level and never displays the
+Virgin title.</Vanilla>
+:::
+
+## Town reputation
+
+Each settlement tracks a hidden number rendered as: **Idolized, Liked, Accepted, Neutral,
+Antipathy, Hated, Vilified.**
+
+You arrive Neutral almost everywhere. The exceptions:
+
+- **Arroyo** — Idolized. It is your home.
+- **Klamath** — Accepted, if your Charisma is 6 or higher.
+- **Vault City** — Antipathy. They dislike outsiders on principle.
+
+Not every town can be brought to Idolized. The Ghost Farm caps at Neutral no matter how
+thoroughly you save everyone in it.
+
+## Special reputations
+
+| Reputation | How you get it |
+| --- | --- |
+| **Berserker** | Kill significantly more good people than bad |
+| **Champion** | Kill significantly more bad people than good, and not be a Childkiller |
+| **Childkiller** | Kill a child, for any reason, including by accident |
+| **Gigolo** | Have sex frequently — or once, extremely well |
+| **Grave Digger** | Dig up any grave other than Anna's or the two legitimate ones at Golgotha |
+| **Made Man** | Join one of the New Reno families |
+| **Married** | Marry Miria or Davin in Modoc |
+| **Porn Star** | Shoot a film at the Golden Globes |
+| **Prizefighter** | Win the New Reno boxing title |
+| **Separated** | Get divorced, or have your spouse killed or sold |
+| **Sexpert** | Have sex ten times |
+| **Slaver** | Join Metzger's guild in the Den |
+
+Only **Prizefighter** has a mechanical effect (+1 to hit in unarmed combat).
+
+## Childkiller: the details
+
+This is the one reputation that will actively ruin a playthrough. Bounty hunters start
+appearing on the world map, several merchants refuse to deal with you, and some quest
+lines close.
+
+The important quirk: **you get the label after one child, but nearly every script in the
+game checks for two or more.** So a single accidental kill marks your character sheet
+without triggering most of the consequences.
+
+:::caution
+Three children increment the counter **twice** because of a scripting redundancy, making you
+a "real" Childkiller instantly: **Jonny in Modoc**, the **Slag children**, and **Curtis in
+Vault City**. Be careful with area-effect weapons anywhere near them.
+:::
+
+:::note
+If a *companion* kills a child, you do not get the reputation.
+:::
+
+## Radiation
+
+Radiation is a minor system. You pick it up from fruit, golden geckos, centaurs and aliens
+in random encounters, and from standing around in the Gecko reactor or the Toxic Caves.
+
+The radiation icon appears at **66 rem**. Some time after absorbing a dose you take a hit
+whose severity depends on your total rem count *and* how much you just absorbed:
+
+| Rem | Message | HR | HP | ST | PE | EN | CH | IN | AG |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| >0 | "very nauseous" | | | | | | | | |
+| >150 | "slightly fatigued" | | | −1 | | | | | |
+| >300 | "vomiting does not stop" | −3 | | −1 | | | | | −1 |
+| >450 | "hair is falling out" | −5 | −5 | −2 | | −1 | | | −2 |
+| >600 | "skin is falling off" | −10 | −15 | −4 | −3 | −3 | −3 | −1 | −5 |
+| >1000 | "intense agony" | −10 | −20 | −6 | −5 | −5 | −5 | −3 | −6 |
+
+Penalties clear after **7 days**, signalled by a second identical message. There is no
+permanent damage.
+
+:::danger
+You die instantly if any of these stats — Charisma included — is reduced to 0 or below. The
+check happens only at the moment of reduction, so a well-timed chem can keep you alive.
+:::
+
+In practice you would have to work hard to exceed 300 rem in a normal playthrough. Carry
+Rad-X if you are going into the reactor; RadAway afterwards is rarely necessary.

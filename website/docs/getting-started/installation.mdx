@@ -1,0 +1,101 @@
+---
+sidebar_position: 1
+title: Installation
+description: Installing Fallout 2 and the Restoration Project Updated on Windows, Linux and macOS.
+---
+
+# Installation
+
+RPU is an installer that modifies a normal Fallout 2 installation in place. You need three
+things: a copy of the game, the RPU installer, and — on modern systems — something to run
+the game with.
+
+## 1. Get the game
+
+Any retail copy works. The usual sources are [GOG](https://www.gog.com/game/fallout_2) and
+Steam. Both ship the game pre-patched to 1.02; RPU handles everything beyond that, so you
+do not need to hunt down any official patches yourself.
+
+:::warning Install on a clean game
+RPU **must** be installed over an unmodified Fallout 2. If you have previously installed
+other mods, reinstall the game first. RPU already contains the Unofficial Patch, so do not
+install that separately.
+:::
+
+## 2. Install RPU
+
+Download the latest release from the
+[RPU releases page](https://github.com/BGforgeNet/Fallout2_Restoration_Project/releases/latest).
+At the time of writing that is **v2.4.34**.
+
+### Windows
+
+1. Download `rpu_v*.exe`.
+2. Run it and point it at your Fallout 2 directory.
+3. Pick your language and installer options (see [Installer options](#installer-options) below).
+4. Launch the game with `fallout2.exe` as normal.
+
+### Linux and macOS
+
+You can run the Windows installer under Wine, or install manually:
+
+1. Download `rpu_v*.zip`.
+2. If your filesystem is case-sensitive, lowercase the whole game directory recursively.
+3. Extract the archive into the game directory, overwriting when asked.
+4. Run `rpu-install.sh` (Linux) or `rpu-install.command` (macOS).
+
+If you launch through Wine you **must** set the DLL override, or sfall will not load and the
+mod will silently fail to apply:
+
+```bash
+WINEDLLOVERRIDES='ddraw.dll=n,b' wine fallout2.exe
+```
+
+## 3. Consider fallout2-ce
+
+[fallout2-ce](https://github.com/alexbatalov/fallout2-ce) is a reimplementation of the
+Fallout 2 engine that runs natively on modern Windows, Linux, macOS and Android. It is the
+most comfortable way to play on a Mac or on Linux without Wine.
+
+RPU works with fallout2-ce, but be aware of the trade-off: fallout2-ce implements a subset
+of sfall, and a handful of RPU's sfall-dependent features behave differently or not at all.
+If something in this guide does not match what you see and you are on fallout2-ce, that is
+the first thing to suspect.
+
+**On Windows, the original executable plus sfall is still the most faithful way to play RPU.**
+
+## Installer options
+
+The installer asks a number of questions. The ones worth thinking about:
+
+| Option | Recommendation |
+| --- | --- |
+| **High resolution patch** | **Yes.** Not optional in practice — parts of the EPA cannot be navigated at the original 640×480 without it. You can still *play* at 640×480 once it is installed. |
+| **Cassidy talking head** | Yes. A restored talking head with good voice work. |
+| **New Lenny model** | Personal taste. He looks better but uses rifles instead of pistols and has no run animation, so he trails behind the party. |
+| **New player model when boxing / ring fighting** | Cosmetic. Either is fine. |
+| **NPC armor** | Yes. Companions visibly change appearance with the armour you give them, and it unlocks Dogmeat's kevlar armour in Broken Hills. |
+| **Party orders** | Yes. Lets you give companions standing combat orders instead of fighting the AI. |
+| **High quality music** | Yes, unless disk space is tight. |
+
+After installation, `mods/rpu.ini` and `mods/upu.ini` in the game directory expose a large
+number of individual toggles. See [Configuration](/getting-started/configuration).
+
+## Recommended extras
+
+These are not part of RPU but sit well on top of it:
+
+- **[FO2tweaks](https://github.com/BGforgeNet/FO2tweaks)** — a menu of quality-of-life
+  toggles (faster combat, better item highlighting, and so on).
+- **[Inventory Filter](https://github.com/rotators/InventoryFilter)** — tabs for the
+  inventory screen. By the midgame you will be carrying a great deal of junk.
+- **[Lossless music](https://github.com/BGforgeNet/Fallout2-HQ-music)** — if you care.
+
+## A note on saves
+
+RPU requires a **new game**. You cannot install it over a save in progress. The one
+exception is upgrading from an older RP or RPU version, which has its own
+[procedure](https://github.com/BGforgeNet/Fallout2_Restoration_Project/blob/master/docs/update.md).
+
+Keep several rotating saves. Fallout 2 has a number of points where a decision made twenty
+minutes ago quietly closed off a quest, and a single save slot will not help you.
