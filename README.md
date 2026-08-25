@@ -44,8 +44,18 @@ Three components are registered globally, so no imports are needed in `.mdx` fil
 
 ## Deployment
 
-Pushing to `master` builds and deploys to GitHub Pages via
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds the site on every push and
+pull request, which catches broken internal links, MDX errors and type failures.
+
+**Deployment is switched off.** GitHub Pages is not available for private repositories on the free
+plan, so the deploy job is gated behind a repository variable. To turn it on:
+
+1. Make the repo public, or upgrade to GitHub Pro/Team
+2. Settings → Pages → Source: **GitHub Actions**
+3. `gh variable set ENABLE_PAGES --body true --repo JanSimek/fallout2-guide`
+
+The site would then be served at `https://JanSimek.github.io/fallout2-guide/`, which is already
+what `baseUrl` in [`website/docusaurus.config.ts`](website/docusaurus.config.ts) expects.
 
 ## Credits
 
