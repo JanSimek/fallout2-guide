@@ -1,8 +1,202 @@
 ---
 sidebar_position: 27
 title: Navarro
+description: The Enclave outpost — Advanced Power Armor, the vertibird plans, K-9 and the Tanker FOB.
 ---
 
 # Navarro
 
-_Coming soon._
+> *"Now I suppose you're going to tell me you're just out looking for a water chip. Do I look dumb?"*
+> — Enclave patrolman
+
+The Enclave's mainland refuelling base. It holds the **Tanker FOB** you need to finish the game, the
+**vertibird plans** three factions want, a suit of **Advanced Power Armor**, and one of the hardest
+fights in the game if you handle it badly.
+
+## Getting here
+
+- **Matthew** at the San Francisco Brotherhood puts it on your map, as does **Harry** or **Ken Lee**
+  when they send you for the plans.
+- **Returning to Arroyo** after the fourth Hakunin dream reveals it.
+- RPU adds a third route: **stow away on the vertibird** during the Salvatore desert transaction in
+  New Reno.
+  <Vanilla>The vertibird cannot be boarded.</Vanilla>
+
+:::danger The vertibird route is a suicide run
+The crew find you when you reach the landing pad. You can **jump out and fight** or **surrender**.
+
+Surrender and you are taken to the base commander for questioning. You can answer some of his
+questions and ask a few of your own — and then he tries to kill you regardless. There is no way out
+of the fight.
+
+**Surrendering is still the better option**, because you start alone with him and can escape from
+there much more easily than from the landing pad. But do not take this route early or unprepared.
+:::
+
+## Chris
+
+A robed man greets you and tries to send you away.
+
+With Matthew's quest you can ask about the Enclave and say you want to join. Pull it off and you get
+**1500 XP and the password** — **one attempt only**. Bringing companions means a second Speech check.
+
+When you are done, ask him about vertibirds and mention the Brotherhood. You then have about **20
+seconds to kill him** before he raises the alarm: **500 XP**.
+
+:::caution
+Several dialogue options make him attack immediately, or sound the alarm and then attack.
+
+**Arrive in the car and he opens dialogue at once.** On a second visit that can leave you with no
+option but to attack — which risks putting the base on alert. **Deal with Chris on your first visit.**
+:::
+
+## Getting inside
+
+Three ways:
+
+1. **The shack with the trapdoor** — the easiest. Chris stops you if he is alive. Puts you in the
+   underground section.
+2. **The stony path through the woods** to the green exit grid, then talk to the guards. You need the
+   **password** and must be **alone**.
+3. **The air vent** in the southwest corner of the gas station map, with the **Blue Pass Key** from
+   the Gecko power plant. This lets you unlock the outer cell door and releases Xarn early.
+
+:::danger The woods are mined
+The mines there **cannot be spotted**, even at PE 10 with an absurd Traps skill.
+:::
+
+:::note The companion counting bug
+Most Navarro scripts assume the car counts as a companion, which it does not. The practical effect:
+**you can bring one companion and the guards still consider you alone.**
+
+Two exceptions: **Chris** needs you to bring one companion to think you are alone (if you have the
+car), and the **guard outside the commander's office** raises the alarm for anyone except K-9 — his
+script was fixed in the patch. Sneak past him.
+
+If you never bought the car, none of this applies.
+:::
+
+:::caution
+With a few exceptions, **people inside will not talk to you unless you are wearing Power Armor**.
+Show up with more than one companion and they attack.
+:::
+
+## The underground section
+
+**Loot the northwest room:** a suit of **Advanced Power Armor**, a **Blue Memory Module**, a **Plasma
+Rifle** and more.
+
+The **quartermaster** talks to you in any armour, even the Vault 13 jumpsuit, and just tells you to
+get suited up.
+
+**The computer room:** hack it with good Science — failure sets off the alarm — or ask a **scientist**
+and pass a Speech check for the password, **"Snookie"**. You can also learn the nickname from Cookie.
+Ask the computer about the main base to get quest 3.
+
+:::tip
+Once you have the password you can go and mock the female guard outside with it.
+:::
+
+## Ground level
+
+**Plasma turrets** make this map dangerous.
+
+:::danger
+A sign says tampering with the turrets means death. Using **any** skill on one makes it attack.
+:::
+
+**Quincy** in the northeast garage has the **Vertibird Plans** in the locker behind him. Two
+scientists — one next door, one in the comm central to the south — will tell you about the tanker and
+the plans. Once you have asked either of them, tell Quincy a tech sent you and he hands the plans
+over. **3500 XP.** Very good Sneak lets you simply take them.
+
+**Raul** is in the vertibird hangar. If you told Quincy that Raul sent you, tell Raul that Quincy
+wants to see him and he walks off to sort him out.
+
+:::caution
+**Save before talking to the sergeant** south of the comm central lift. He is worth hearing once — and
+then **reload**, because otherwise he patrols the grounds indefinitely and attacks if he finds you
+anywhere but beside the vertibird.
+:::
+
+:::caution
+Do not approach the southern gate from the inside unless you gave the guards the password from the
+outside.
+:::
+
+## Quests
+
+### 1. <Quest>Deal with the deathclaw</Quest>
+
+**Dr. Schreber** is in the soundproofed room. Ask him about the deathclaw and you can get past the
+cell door either way.
+
+| Choice | XP |
+| --- | --- |
+| Kill **Xarn** | 500 quest XP + 1200 kill XP |
+| **Free him** — needs the **Blue Pass Key** for the southern door | **1500 XP** |
+| Team up with him, if the alarm is already sounded | 1500 XP |
+
+There is a Blue Pass Key in **Dr. Schreber's desk** if you did not bring the one from Gecko.
+
+:::tip Kill Schreber anyway
+**1000 XP and +25 karma**, and nobody notices — the room is soundproofed. Threatening him makes him
+run; end combat and he is harmless, but killing him is better value.
+:::
+
+:::note
+Xarn stays with you until you approach the red exit grid on the gas station map, or until you open the
+cell door with the pass key. If you free him he turns up in Vault 13 later.
+
+The greedy route: **team up (1500 XP), open the door (1500 XP), then kill him on his way out (500
+XP)**. The base has to be on alert for this.
+:::
+
+### 2. <Quest>Fix K-9</Quest>
+
+From **Dr. Schreber** when you ask about the cyberdog, or from K-9 itself after you kill Schreber.
+
+Get the **K-9 Motivator** from the vertibird hangar above ground — tell **Raul** that Dr. Schreber
+sent you for permission to open the locker behind him — and use it on the dog. **3500 XP**, Science
+check required.
+
+With **karma −100 or higher** and no Childkiller status, K-9 joins immediately, **even over your
+Charisma limit**. You can walk around Navarro with him and nobody reacts.
+
+### 3. <Quest>Retrieve the FOB from the base Commander</Quest>
+
+Appears after you ask the computer about reaching the Enclave, or ask **Cookie** about it.
+
+Ask the guard outside the commander's office **who gets to come in** and he mentions the cleaning
+crew. Walk out of his sight, **wait one hour**, then tell him you have come to clean the office.
+
+Inside, the commander will not let you open the locker holding the **Tanker FOB**. Options:
+
+- **Sneak-Lockpick** it — needs **Sneak 60%** and a high Lockpick
+- Use a great many **Super Stimpaks** on the commander
+- **Easiest:** with this quest already active and good Speech, tell the guard outside you have come to
+  fetch the Tanker FOB. The commander lets you walk in and take it.
+
+**3500 XP.**
+
+## Fighting the whole base
+
+If you would rather shoot your way through:
+
+- **Kill the turrets first, from a distance.** They are not tough but they hit hard. **As long as any
+  turret survives on the ground level you cannot leave combat mode**, which is maddening.
+- **Keep your party together.** Use the "stay where you are" combat option.
+- **Work upward from the underground.** Take a lift to the surface, clear the immediate area, go back
+  down to heal, then take the next lift. Far easier than a frontal assault.
+- **Leave reckless companions behind.** Goris is impossible here.
+- You do not have to kill **Cookie**.
+- Apart from Chris, attacking from the start costs you **no quest XP**.
+
+:::tip A melee exploit
+Once the underground battle starts, stand directly in front of one of the **south-facing vents** — the
+hex edge should touch the wall. The one in the L-shaped corridor to an elevator works, as does the one
+in Xarn's room.
+
+Guards then cannot shoot you; they run up and stare. You cannot shoot them either — or use a Super
+Sledge — but **unarmed attacks and range-1 melee weapons work fine**.
+:::
