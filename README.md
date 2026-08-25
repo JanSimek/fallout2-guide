@@ -16,7 +16,8 @@ hover, so the guide body never has to stop and explain itself.
 - **Getting Started** — installing the game and the mod, and the settings worth changing
 - **Character Creation** — SPECIAL, traits, skills, perks, special perks, karma, and five complete builds
 - **Walkthrough** — 28 locations in playing order, quest by quest, linked to the Fallout Wiki
-- **Reference** — 182 quests indexed, 11 companions, combat, items, the car, random encounters, endings
+- **Reference** — all 182 quests indexed and linked to their descriptions, 11 companions, combat,
+  items, the car, random encounters, endings
 
 ## Development
 
@@ -36,11 +37,16 @@ Three components are registered globally, so no imports are needed in `.mdx` fil
 | Component | Use |
 | --- | --- |
 | `<Vanilla>…</Vanilla>` | An info icon whose tooltip explains what the unmodded game did |
-| `<Quest>Name</Quest>` | Links a quest name to its Fallout Wiki page |
-| `<Quest rpu>Name</Quest>` | Marks a quest RPU added, which has no wiki page |
+| `<Quest>Name</Quest>` | Marks a quest name in body text. Not a link — quests are described here |
+| `<Quest rpu>Name</Quest>` | Marks a quest RPU added |
+| `<QuestLink to="…" wiki="…">Name</QuestLink>` | Quest Index rows: links into this guide, plus an optional secondary wiki link |
 | `<Wiki page="X">text</Wiki>` | A general Fallout Wiki link |
 
-`<Quest>` infers the wiki page from its text; pass `page="…"` when they differ.
+### Regenerating the quest index
+
+`website/docs/reference/quest-index.mdx` is generated from the built site's own heading anchors, so
+every link is verified to resolve. After renaming or renumbering a quest heading, rebuild and
+regenerate rather than editing the index by hand.
 
 ## Deployment
 

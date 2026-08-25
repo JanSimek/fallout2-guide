@@ -1,23 +1,3 @@
----
-sidebar_position: 1
-title: Quest Index
-description: Every quest in Fallout 2 and RPU, linked to its description in this guide.
----
-
-# Quest Index
-
-All **182 quests** — the 146 from the base game and the **36 the Restoration Project adds** — each
-linked to the section of this guide that describes it.
-
-Locations are in the order the [walkthrough](/walkthrough/overview) visits them.
-
-:::note[Every quest is described here]
-Quest names link into **this guide**, not off-site. Base-game quests also carry a small `wiki` link
-if you want to cross-check a reward table against the
-[Fallout Wiki](https://fallout.fandom.com/wiki/Fallout_2_quests). Quests marked `RPU` have no wiki
-page — they exist only in the Restoration Project.
-:::
-
 ## Arroyo
 
 **[Full walkthrough →](/walkthrough/arroyo)**

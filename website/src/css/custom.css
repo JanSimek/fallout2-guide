@@ -163,10 +163,48 @@
   font-weight: 600;
 }
 
+/* A quest RPU adds. Not a link anywhere — it just reads as a quest. */
 .quest--rpu {
   border-bottom: 1px dotted var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
   cursor: help;
+}
+
+a.quest--rpu {
+  border-bottom: none;
+  cursor: pointer;
+}
+
+/* Quest Index badges */
+.quest-tag,
+.quest-wiki {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.05em 0.45em;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: 0.08em;
+}
+
+.quest-tag {
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.quest-wiki {
+  border: 1px solid var(--ifm-toc-border-color);
+  color: var(--ifm-color-emphasis-600);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 120ms ease, border-color 120ms ease;
+}
+
+.quest-wiki:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
 }
 
 /* ------------------------------------------------------------------ *
