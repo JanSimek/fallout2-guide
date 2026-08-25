@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "gecko": {
+      "type": "stdio",
+      "command": "${GECKO_MCP:-/Users/jansimek/Development/geck-map-editor/build/gecko-mcp}",
+      "args": [
+        "--data", "${FALLOUT2_RPU:-/Users/jansimek/Development/Fallout2_Restoration_Project}/data",
+        "--data", "${FALLOUT2_RPU:-/Users/jansimek/Development/Fallout2_Restoration_Project}/scripts_src",
+        "--data", "${FALLOUT2_DATA:-/Users/jansimek/Development}/master.dat",
+        "--data", "${FALLOUT2_DATA:-/Users/jansimek/Development}/critter.dat"
+      ],
+      "env": {}
+    }
+  }
+}

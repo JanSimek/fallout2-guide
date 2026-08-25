@@ -48,6 +48,48 @@ Three components are registered globally, so no imports are needed in `.mdx` fil
 every link is verified to resolve. After renaming or renumbering a quest heading, rebuild and
 regenerate rather than editing the index by hand.
 
+## Verifying the guide against the game
+
+Facts in this guide are checked against the Restoration Project's own data rather than against other
+walkthroughs. Two ways in:
+
+**The RPU source tree** — `scripts_src/*.ssl` and `headers/exppoint.h` in a local checkout of
+[Fallout2_Restoration_Project](https://github.com/BGforgeNet/Fallout2_Restoration_Project). XP
+awards, skill-check thresholds and karma changes are all there in the scripts.
+
+> **Careful:** some `EXP_*` constants are defined but never referenced — `EXP_SULIK_SISTER` and
+> `EXP_CHAD_EXPOSED` among them. Confirm the value is actually used by a `give_xp` call; do not
+> trust the header alone.
+
+**The `gecko` MCP server** — a JSON-RPC wrapper over
+[geck-map-editor](https://github.com/JanSimek/geck-map-editor) that reads the mounted game data
+directly. Configured in [`.mcp.json`](.mcp.json); it needs the editor built
+(`cmake --build build --target gecko-mcp`) and paths overridable via `GECKO_MCP`, `FALLOUT2_RPU`
+and `FALLOUT2_DATA`.
+
+The tools that matter for this guide:
+
+| Tool | What it settles |
+| --- | --- |
+| `quests` | The Pip-Boy quest registry from `quests.txt` — real quest names, areas and their GVARs |
+| `endings` | The endgame slide table from `endgame.txt` — each slide's GVAR and value |
+| `find_gvar` | Every script that reads or writes a GVAR, with file and line |
+| `describe_script` | A script's `.ssl` source **and** its dialogue `.msg` lines |
+| `gvars` | The full GVAR dictionary from `vault13.gam` |
+| `analyze` / `describe_map` | What is actually on a map: critters, scripts, containers |
+| `world_encounters` | Terrain types and random-encounter tables from `worldmap.txt` |
+| `render_map` | Renders a map to PNG, if the guide ever wants real maps |
+
+Worked example — confirming how the Den's ending is chosen:
+
+```
+find_gvar GVAR_ENDGAME_MOVIE_DEN   ->  enclave/qcfrank.ssl
+```
+
+which reads `if (metzger_dead) { if (becky_dead) 1 else 2 } else { if (big_jesus_dead...) 3 else 4 }`
+— i.e. kill Metzger but spare Rebecca for the good ending, exactly as
+[Endings](website/docs/reference/endings.mdx) describes.
+
 ## Deployment
 
 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds the site on every push and
