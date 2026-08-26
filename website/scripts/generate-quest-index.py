@@ -76,14 +76,21 @@ for qs in wiki.values():
         t = target(q['name'])
         if t: claimed.add(t)
 
+# quests.txt is the authoritative in-game registry; any heading matching one of its
+# descriptions counts as a quest even if it is not numbered.
+GAME = json.load(open(os.path.join(ROOT, 'scripts/quests-from-game.json')))
+game_names = {norm(q['description'].rstrip('.')) for q in GAME}
+
 def rpu_quests(page):
     res = []
     for h in real[page]:
         t = h['text']
-        ok = re.match(r'^\d+\.\s', t) or (page=='slavers-camp' and t.lower().startswith('rescue kurisu'))
+        name = re.sub(r'^\s*\d+\.\s*', '', t).strip()
+        ok = (re.match(r'^\d+\.\s', t)
+              or norm(name) in game_names
+              or (page == 'slavers-camp' and t.lower().startswith('rescue kurisu')))
         if not ok: continue
         if (page, h['id']) in claimed: continue
-        name = re.sub(r'^\s*\d+\.\s*', '', t).strip()
         if norm(name) in wiki_names: continue
         res.append((name, h['id']))
     return res

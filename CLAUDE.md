@@ -66,6 +66,16 @@ asserting it. Do not silently delete an inherited claim either — it may well s
   anchors are auto-generated, which is why the quest index is generated rather than hand-written.
 - **Quest headings are plain text.** No JSX in headings.
 
+## quests.txt is the authority on quest names
+
+`scripts/quests-from-game.json` is the in-game registry (157 entries) pulled from RPU's
+`quests.txt` via the `gecko` MCP `quests` tool. It has the exact Pip-Boy wording and the tracking
+GVAR. Prefer it over the Fallout Wiki's phrasing when they disagree — the wiki paraphrases, and it
+lists things that are not Pip-Boy quests at all.
+
+Refresh it with `quests` and re-run the index generator, which now treats any heading matching a
+`quests.txt` description as a quest even when it is not numbered.
+
 ## Quest index
 
 `docs/reference/quest-index.mdx` is generated from the anchors the built site actually emits, so a

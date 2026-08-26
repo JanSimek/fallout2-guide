@@ -75,9 +75,20 @@ Once you clear his garden he will make healing powder from a broc flower plus a 
 Since you may never come back, scout the hunting grounds until you have equal numbers of
 each and convert the lot.
 
-:::note
-If you have offended Hakunin, keep insulting him. His reaction level eventually drops so far
-that he forgets he was angry — a bug, but a useful one. The talking head stays unimpressed.
+:::caution[If you have offended Hakunin]
+**Do not try to insult your way out of it** — that no longer works, and never did anything but
+make things worse.
+
+He turns you away when either your **karma is below 0** or his reaction to you has fallen to
+**Bad or lower**. Reaction is a ladder with a floor, so further insults just keep you pinned at
+the bottom of it.
+
+The way back is to **get your karma to 0 or better**. If you have not yet cleared his garden he
+will also offer that quest as a way to make amends — but he still will not pay out until your
+karma is non-negative.
+<Vanilla>His reaction level was never recomputed from his reaction score, so it could hold a
+stale value and he would appear to forget he was angry. RPU calls `ReactToLevel` when you talk
+to him, which keeps the two in step.</Vanilla>
 :::
 
 ## Quests
