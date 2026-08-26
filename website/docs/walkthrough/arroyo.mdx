@@ -42,9 +42,25 @@ Free permanent skill points. Get all of them.
 | **Jordan** | Tent to the northeast | +10% Melee Weapons, if your Melee is already **36%+** |
 | **Cameron** | Top of the map | +10% Unarmed **and** +10% Melee — but only if **AG ≤ 6** and you tagged **none** of the six combat skills |
 
-:::caution[Order matters]
-Because of a bug, you must get **Cameron's training before talking to Hakunin at all**.
-Get Lucas's bonus before Jordan's if your starting Unarmed is low.
+:::tip[Take Cameron's training first]
+Not because of any bug — because his **+10% Unarmed and +10% Melee** can push you over the other
+two trainers' thresholds:
+
+- **Lucas** sets Unarmed to **40** if you are below 40, but to **55** if you are between 40 and 54.
+  So if your Unarmed starts under 40, taking Cameron first lifts you into the higher band and
+  Lucas then gives you **55 instead of 40**.
+- **Jordan** refuses below **Melee 36%**. Cameron's +10% can be what gets you over that line.
+
+Doing it the other way round costs you real skill points.
+:::
+
+:::note[Cameron and Lucas only overlap at exactly AG 6]
+Lucas refuses **below** AG 6; Cameron refuses **above** it. At AG 7 or higher — which is what most
+builds want — Cameron will not train you at all, and the ordering question does not arise.
+<Vanilla>Cameron's "trained" flag shared a local-variable slot with other state, so his training
+could be lost depending on what else you did first — which is where the old advice to see him
+before Hakunin came from. RPU moves the flag to its own slot, and the Unofficial Patch also fixed
+him not offering the promised second chance.</Vanilla>
 :::
 
 Lucas also carries a bag of healing powder. Take it and leave him some scorpion tails you
