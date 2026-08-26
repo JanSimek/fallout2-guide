@@ -83,9 +83,8 @@ is exempt.) Combine both techniques **simultaneously** to maximise the gain.
 :::
 
 :::note
-Saving and reloading gets around the two-dose limit.<Unverified>An engine behaviour, not something RPU
-changes; not re-checked against fallout2-ce.</Unverified> Useful for the book exploit above, and
-transparently a bug.
+Saving and reloading does **not** get you around the two-dose limit. The limit counts the drug
+effects still queued against you, and that queue is written into the save and restored with it.
 :::
 
 ## Healing
@@ -119,8 +118,9 @@ The **Jet Antidote** is not consumed if you are addicted to jet when you use it.
 | RadAway | 10% | Radiation Resistance −20 | 7 days |
 
 :::danger
-**Jet addiction is permanent without the antidote**, and the antidote **does not work on companions**.<Unverified>Companion
-addiction is engine drug state rather than script logic, so this was not confirmed.</Unverified>
+**Jet addiction is permanent without the antidote**, and the antidote **does not work on companions**
+— the engine gates the cure on whether *you* are addicted, not on whoever you use it on, so on a
+clean-blooded character it does nothing at all.
 One careless dose can permanently cripple a companion's Action Points.
 :::
 

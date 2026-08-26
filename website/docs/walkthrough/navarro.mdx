@@ -65,17 +65,16 @@ Three ways:
 The mines there **cannot be spotted**, even at PE 10 with an absurd Traps skill.
 :::
 
-:::note[The companion counting bug]
-Most Navarro scripts assume the car counts as a companion, which it does not. The practical effect:
-**you can bring one companion and the guards still consider you alone.**<Unverified>Whether the car
-counts turns on how party.txt flags the trunk as a hidden member, which the scripts do not
-show.</Unverified>
+:::note[Who counts as company]
+The engine never counts the car: the trunk is not a critter, so it is discounted from the party
+total. Every Navarro script goes through one shared test that allows for this, so **one companion
+makes you not-alone, with or without the car**.
 
-Two exceptions: **Chris** needs you to bring one companion to think you are alone (if you have the
-car), and the **guard outside the commander's office** raises the alarm for anyone except K-9 — his
-script was fixed in the patch. Sneak past him.
-
-If you never bought the car, none of this applies.
+**K-9 is the deliberate exception** — that test treats him as no company at all, which is why the
+guard outside the commander's office lets him past and raises the alarm for anyone else. Sneak past
+with anyone bigger.
+<Vanilla>The scripts counted the car as a companion, so one real companion still read as travelling
+alone.</Vanilla>
 :::
 
 :::caution

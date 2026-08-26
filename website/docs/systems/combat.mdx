@@ -45,14 +45,21 @@ ammunition onto the slot.
 ## Ammunition
 
 :::danger[AP ammunition does not work]
-Armour Piercing ammunition does not pierce armour in any meaningful sense.<Unverified>This is the
-engine's damage formula rather than anything RPU can change, and it was not re-derived against
-fallout2-ce for this guide.</Unverified> Its Damage Resistance
-modifier does not come close to compensating for its much lower base damage, and it **does not modify
-Damage Threshold at all**.
+Armour Piercing ammunition does not pierce armour in any meaningful sense. Ammunition carries a
+Damage *Resistance* modifier and no Damage Threshold field at all, and the engine subtracts the
+target's full DT **before** applying DR — so the modifier only ever discounts what is left after DT
+has already bitten. Meanwhile AP rounds halve base damage where JHP doubles it: 10mm AP is ×1/2 with
+DR −25, 10mm JHP ×2/1 with DR +25. Four times the damage beats twenty-five points of resistance
+against anything you will actually meet.
 
 **Use JHP.** Sell every AP round you find — the exceptions being **HN AP Needler Cartridges** and
-**AP Rockets**.
+**AP Rockets**, both of which keep full damage instead of halving it.
+:::
+
+:::note[If you want AP to work]
+FOR:CE ships the YAAM damage formula, which applies the ammunition's modifier against **Damage
+Threshold** instead. Set `damage_formula=5` in `game.cfg` and AP behaves the way its name suggests.
+The default is `0`, the original formula described above.
 :::
 
 **Compare ammunition modifiers, not weapon damage.** The damage multiplier on the ammunition matters
