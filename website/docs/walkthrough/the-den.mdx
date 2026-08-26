@@ -79,7 +79,9 @@ once you have the Anna quest.
 
 :::caution[Do not sleep with Joey]
 A patch bug means that after a female character sleeps with him, he relocates east of Becky's
-and then vanishes from the game permanently when you leave the map.
+and then vanishes from the game permanently when you leave the map.<Unverified>killap replaced the
+teleport that moved him with logic that walks him back to his post, so the relocation half looks
+fixed. Whether he still disappears for good is not something the script settles.</Unverified>
 :::
 
 ## Petey
@@ -99,9 +101,10 @@ $72 · 12 Beer · 1 Buffout · 1 Jet · 27 Rock · 1 Rubber Boots · 2 Throwing 
 ## The slaver guild
 
 You can **sell companions** to Metzger — any human except Vic. The rest of your party remain
-oblivious. Metzger's prices are bugged so that a *lower* Barter skill pays better: at Barter
-90% you get the base rate (Miria $1100, Davin $900, Myron $800, Sulik $1200, Cassidy $1300);
-at Barter 40% you get roughly 30% more.
+oblivious. What he pays scales with your Barter skill, so the better you barter the more you get.
+The base rates are Miria $1100, Davin $900, Myron $800, Sulik $1200 and Cassidy $1300.
+<Vanilla>The two sides of the price calculation were swapped, so a *lower* Barter skill paid
+better.</Vanilla>
 
 You can also **join** as a Slaver. This makes you hated by Sulik, Cassidy, Keith Wright and
 many others. The benefit is slave runs: you are teleported to a map, kill the unruly captives,
@@ -239,10 +242,11 @@ Demand **$200** — patience gets you there even with mediocre Intelligence and 
 him keep $100 or $150 and return to Becky for **$100 and 200 XP**.
 
 :::tip[Come back later]
-If you let Fred keep *any* money, return after 3–6 months (randomly decided). He has struck it
-rich at Becky's tables and rewards you with **$2000, 200 small energy cells, 250 micro fusion
-cells and a plasma grenade** — regardless of how much you actually let him keep. A scripting
-glitch always awards the best outcome.
+If you let Fred keep money, return after 3–6 months (randomly decided). He has struck it rich at
+Becky's tables, and what he hands over depends on how generous you were: letting him keep his $100
+pays **$1000**, while lending him $50 of your own pays **$2000, 200 small energy cells, 250 micro
+fusion cells and a plasma grenade**.
+<Vanilla>Every outcome paid the larger reward, whatever you had actually done.</Vanilla>
 :::
 
 :::caution

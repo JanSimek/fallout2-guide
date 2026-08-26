@@ -47,7 +47,9 @@ He walks into **Vault City** without comment, apparently on the strength of the 
 :::note[The rejoin bug]
 Try to recruit Goris after the Vault 13 massacre and he joins, then immediately leaves again — a
 variable that never resets. It happens if he is in Vault 13 and you never went through the "pack is in
-trouble" conversation.
+trouble" conversation.<Unverified>The join/leave path is a state machine killap reworked; I could not
+tell from the script whether the original fault survives. The workaround below is harmless either
+way.</Unverified>
 
 **Fix:** save and reload, or leave Vault 13 so you are outside the vault door and come back.
 :::

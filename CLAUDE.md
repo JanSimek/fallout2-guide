@@ -27,8 +27,31 @@ walkthrough — both secondary sources. Before stating a number, check it.
   Ignore the `.ssl.tmp` files.
 
 **`gecko` MCP server** (see `.mcp.json` and the README): `quests`, `endings`, `find_gvar`,
-`describe_script`, `gvars`, `analyze`, `world_encounters`, `render_map`. `find_gvar` →
-`describe_script` is the fastest route from "what triggers this?" to the source line.
+`find_text`, `find_script`, `describe_script`, `gvars`, `analyze`, `world_encounters`, `render_map`.
+
+- `find_gvar` → `describe_script` is the fastest route from "what triggers this?" to the source line.
+- `find_text` searches the dialog `.msg`, the `game/*.msg` (item, perk, quest text) and the script
+  sources — `.ssl` **and** `headers/*.h`, where the `GVAR_*`/`EXP_*` defines live — in one call, so
+  "which script says this line?" is one call. It returns the script basename, which
+  `describe_script` takes directly.
+- `find_script` answers the reverse — which shipped maps place a script, and in which section. It
+  also lists `mapsUnreadable`: **an empty `placements` is only trustworthy when that list is empty
+  too**. All 176 shipped maps parse as of gecko PR #134; before it, the two EPA main maps did not,
+  and quietly dropped out of every scan.
+
+**Use the MCP tools, not `grep` over `scripts_src`.** The source tree holds the logic but not the
+dialogue: what an NPC *says* lives in `data/text/english/dialog/*.msg`, and item/perk/quest wording in
+`game/*.msg`. `find_text` covers all three at once; grep over `scripts_src` silently misses two of
+them. Reach for grep only when you already know the script and want raw context.
+
+**Rebuilding `gecko-mcp` does not update this session.** Tool schemas are captured when the server
+connects, so new tools stay invisible until you reconnect it with `/mcp` (pick the `gecko` server →
+reconnect). Restarting Claude Code also works. Until then the new tools cannot be called at all — not
+a permissions problem, the schemas simply are not loaded.
+
+**Script indices are 0-based; `headers/scripts.h` is 1-based.** `SCRIPT_EPAC17 (1413)` is
+`programIndex` 1412, and passing the constant unadjusted silently describes `epac18` instead. Pass
+`name` ("epac17") rather than an index, and check the `sslConstant` each result echoes.
 
 **Later `--data` mounts win.** RPU's `data/` must be mounted *after* `master.dat`, or vanilla
 overrides every file RPU patches — `quests.txt`, `endgame.txt`, `vault13.gam`, `worldmap.txt`,

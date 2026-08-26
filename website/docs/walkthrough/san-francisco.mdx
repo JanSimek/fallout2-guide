@@ -45,13 +45,12 @@ the Brotherhood building, and the lockers, footlockers and one bookcase in the H
 
 Heals HP and crippled limbs for $100–$600, sells stimpaks, and performs implant surgery.
 
-:::danger[Do not buy implants from Dr. Fung]
-He is badly bugged. He fails to remove the basic perk when granting an enhancement, so **the
-enhancement has no effect**. Worse, if you already have an enhancement from elsewhere he offers you
-the *basic* implant again — which makes the game ignore the advanced one and **lowers your damage
-resistance**.
-
-**Painless Doc Johnson in Redding is cheaper and works properly.** Go there.
+:::note[Implants]
+Dermal armour costs **$5,500**, its enhancement **$33,000**; phoenix armour **$8,500** and **$49,000**.
+The enhancement correctly replaces the perk it supersedes. Each operation consumes a suit of combat
+armour and costs you days of game time.
+<Vanilla>The enhancement never removed the basic perk, so it did nothing at all, and Fung would
+offer the basic implant again to someone who already had the enhancement.</Vanilla>
 :::
 
 ## Martial arts training
@@ -77,6 +76,9 @@ over 99%.
 :::
 
 :::danger[Ring fight bugs]
+Inherited from Per Jorner, and not re-checked against the ring scripts.<Unverified>Every entry in this
+block wants confirming at the keyboard.</Unverified>
+
 - **End combat after killing your opponent but before the "You win" sign and you are trapped in the
   ring permanently.** Reload immediately. Always use **end turn**, never end combat.
 - Attacking "with armour and weapons" means fighting the whole town.
@@ -138,10 +140,11 @@ toilet), and the **upper corner of the sleeping area**.
 <Vanilla>There is one flat Science check and a single set of passwords.</Vanilla>
 :::
 
-:::tip[A workstation bug worth knowing]
-From a **chemistry workstation** you can divert fuel to the tanker **and** the space shuttle if you
-have both quests. The mainframe correctly notices there is no fuel left after the first transfer.
-The workstations do not.
+:::note[There is only one tank of fuel]
+Whichever way you divert it — mainframe, chemistry workstation, the Elron computer or Badger — the
+fuel goes to the tanker *or* the shuttle, never both. Diverting it to the tanker takes it back off
+the Hubologists.
+<Vanilla>Only the mainframe checked. The workstations would happily fuel both.</Vanilla>
 :::
 
 ## The Hubologists
@@ -241,7 +244,9 @@ fuel to the tanker (3000 XP) and get a copy of the plans. Use a Shi **workstatio
 the Hubologists again (6000 XP), wait, and return to Badger (6000 XP).
 
 That is **24,000 XP** from a system that should give you 12,000, and it relies on three separate
-bugs. Playing it straight gets you 9000 from the mainframe plus 3000 from Handy.
+bugs. Playing it straight gets you 9000 from the mainframe plus 3000 from Handy.<Unverified>The
+repeatable half is inherited and was not traced; the fuel double-dip it used to rely on is now
+closed, so the totals may no longer hold.</Unverified>
 :::
 
 :::note[RPU: use the Hubologist mainframe yourself]
@@ -440,9 +445,10 @@ chance). There is no way around paying.
 **The boat guard.** With **Speech 96%** you can convince him to pretend you gave him the password:
 **1000 XP**.
 
-:::tip[All three]
-You can get the password from all three — almost certainly a bug. Order: **boat guard, then Lao Chou,
-then the Emperor**.
+:::tip[Get it from one source only]
+Every source checks whether you already have the password before granting it, so visiting the others
+afterwards gains you nothing — and Lao Chou charges **$5,000–$10,000** for it either way. The boat
+guard is free if your Speech is above **95%**.
 :::
 
 :::note
