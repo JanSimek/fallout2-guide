@@ -56,10 +56,27 @@ against anything you will actually meet.
 **AP Rockets**, both of which keep full damage instead of halving it.
 :::
 
-:::note[If you want AP to work]
-FOR:CE ships the YAAM damage formula, which applies the ammunition's modifier against **Damage
-Threshold** instead. Set `damage_formula=5` in `game.cfg` and AP behaves the way its name suggests.
-The default is `0`, the original formula described above.
+### Damage formulas
+
+Everything above describes the original formula, which is what you get by default. FOR:CE also
+carries three community rebalances from sfall, selected with `damage_formula` in `game.cfg`. They
+differ in **how armour is applied**, not in weapon damage.
+
+| Value | Formula | What it changes |
+| --- | --- | --- |
+| **`0`** | **Original** *(default)* | The ammunition multiplier scales your damage, the target's full DT comes off afterwards, and the ammunition modifier only adjusts DR. This is why AP loses. |
+| `1` | **Glovz** | The multiplier and divisor act on the *armour* instead: DT is divided by the ammunition's divisor and DR by its multiplier. AP halves the target's DT rather than its own damage. Small bonus against targets with no armour at all. |
+| `2` | **Glovz + tweak** | As `1`, but the critical multiplier is added as a percentage bonus rather than used as a halving divisor, so damage runs higher throughout. |
+| `5` | **YAAM** | Subtracts DT *before* the multiplier, and spends the ammunition modifier on **DT** instead of DR, with any surplus converting to −10 DR per point. |
+
+:::caution[YAAM alone will make things worse]
+YAAM reads the ammunition modifier with the **opposite sign** to every other formula — it computes
+`DT − modifier`, so a round carrying −25 *gains* 25 points of DT instead of shedding them. RPU ships
+stock ammunition values, where AP is −25 and JHP +25, so turning on `damage_formula=5` by itself
+**inverts AP and JHP** and leaves AP worse than it started. It expects YAAM's own ammunition protos.
+
+If you just want AP ammunition to be worth carrying, use **`damage_formula=1`**. Glovz forces the
+modifier to help whichever sign it carries, so it works with the values RPU already ships.
 :::
 
 **Compare ammunition modifiers, not weapon damage.** The damage multiplier on the ammunition matters
