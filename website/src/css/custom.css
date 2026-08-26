@@ -72,6 +72,24 @@
   transition: background-color 120ms ease, color 120ms ease;
 }
 
+/* The "needs playtesting" variant: same tooltip machinery, amber accent, and a
+   '?' that should not inherit the italic styling the 'i' glyph uses. */
+.vanilla-note--unverified {
+  --fo-vanilla-bg: #2c2413;
+  --fo-vanilla-fg: #f6ecd6;
+  --fo-vanilla-accent: #d8a33f;
+}
+
+[data-theme='dark'] .vanilla-note--unverified {
+  --fo-vanilla-bg: #1e1809;
+  --fo-vanilla-fg: #f3e6cb;
+  --fo-vanilla-accent: #f0bf5a;
+}
+
+.vanilla-note--unverified .vanilla-note__icon {
+  font-style: normal;
+}
+
 .vanilla-note__icon:hover,
 .vanilla-note__icon:focus-visible {
   background: var(--fo-vanilla-accent);

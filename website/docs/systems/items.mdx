@@ -83,8 +83,8 @@ is exempt.) Combine both techniques **simultaneously** to maximise the gain.
 :::
 
 :::note
-Saving and reloading gets around the two-dose limit. Useful for the book exploit above, and
-transparently a bug.
+Saving and reloading does **not** get you around the two-dose limit. The limit counts the drug
+effects still queued against you, and that queue is written into the save and restored with it.
 :::
 
 ## Healing
@@ -118,7 +118,9 @@ The **Jet Antidote** is not consumed if you are addicted to jet when you use it.
 | RadAway | 10% | Radiation Resistance −20 | 7 days |
 
 :::danger
-**Jet addiction is permanent without the antidote**, and the antidote **does not work on companions**.
+**Jet addiction is permanent without the antidote**, and the antidote **does not work on companions**
+— the engine gates the cure on whether *you* are addicted, not on whoever you use it on, so on a
+clean-blooded character it does nothing at all.
 One careless dose can permanently cripple a companion's Action Points.
 :::
 
@@ -160,9 +162,11 @@ make cows fall over.
 **Algernon** in Eldridge's basement in New Reno performs **every** upgrade at **no charge**, which
 makes every other upgrader redundant.
 
-Failing that: **Skeeter and Eldridge** work for free at **Barter 91%+**, and Skeeter gives one free
-upgrade as a quest reward. Valerie's second price column is the CH 6 / Barter 75% discount — **but do
-not take the discount on the Cattle Prod**, which returns a normal one due to a bug.
+Failing that: **Skeeter and Eldridge** both scale their price with Barter, and Skeeter gives one free
+upgrade as a quest reward. Valerie's second price column is the CH 6 / Barter 75% discount, and it is
+safe on every weapon including the Cattle Prod.
+<Vanilla>Skeeter's and Eldridge's price formula reached zero at Barter 91%+, making every upgrade
+free, and Valerie's discount returned an ordinary Cattle Prod instead of the upgrade.</Vanilla>
 :::
 
 :::caution

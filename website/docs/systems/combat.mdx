@@ -45,12 +45,38 @@ ammunition onto the slot.
 ## Ammunition
 
 :::danger[AP ammunition does not work]
-Armour Piercing ammunition does not pierce armour in any meaningful sense. Its Damage Resistance
-modifier does not come close to compensating for its much lower base damage, and it **does not modify
-Damage Threshold at all**.
+Armour Piercing ammunition does not pierce armour in any meaningful sense. Ammunition carries a
+Damage *Resistance* modifier and no Damage Threshold field at all, and the engine subtracts the
+target's full DT **before** applying DR — so the modifier only ever discounts what is left after DT
+has already bitten. Meanwhile AP rounds halve base damage where JHP doubles it: 10mm AP is ×1/2 with
+DR −25, 10mm JHP ×2/1 with DR +25. Four times the damage beats twenty-five points of resistance
+against anything you will actually meet.
 
 **Use JHP.** Sell every AP round you find — the exceptions being **HN AP Needler Cartridges** and
-**AP Rockets**.
+**AP Rockets**, both of which keep full damage instead of halving it.
+:::
+
+### Damage formulas
+
+Everything above describes the original formula, which is what you get by default. FOR:CE also
+carries three community rebalances from sfall, selected with `damage_formula` in `game.cfg`. They
+differ in **how armour is applied**, not in weapon damage.
+
+| Value | Formula | What it changes |
+| --- | --- | --- |
+| **`0`** | **Original** *(default)* | The ammunition multiplier scales your damage, the target's full DT comes off afterwards, and the ammunition modifier only adjusts DR. This is why AP loses. |
+| `1` | **Glovz** | The multiplier and divisor act on the *armour* instead: DT is divided by the ammunition's divisor and DR by its multiplier. AP halves the target's DT rather than its own damage. Small bonus against targets with no armour at all. |
+| `2` | **Glovz + tweak** | As `1`, but the critical multiplier is added as a percentage bonus rather than used as a halving divisor, so damage runs higher throughout. |
+| `5` | **YAAM** | Subtracts DT *before* the multiplier, and spends the ammunition modifier on **DT** instead of DR, with any surplus converting to −10 DR per point. |
+
+:::caution[YAAM alone will make things worse]
+YAAM reads the ammunition modifier with the **opposite sign** to every other formula — it computes
+`DT − modifier`, so a round carrying −25 *gains* 25 points of DT instead of shedding them. RPU ships
+stock ammunition values, where AP is −25 and JHP +25, so turning on `damage_formula=5` by itself
+**inverts AP and JHP** and leaves AP worse than it started. It expects YAAM's own ammunition protos.
+
+If you just want AP ammunition to be worth carrying, use **`damage_formula=1`**. Glovz forces the
+modifier to help whichever sign it carries, so it works with the values RPU already ships.
 :::
 
 **Compare ammunition modifiers, not weapon damage.** The damage multiplier on the ammunition matters
