@@ -90,6 +90,22 @@ python3 scripts/generate-quest-index.py > /tmp/body.md   # prints base/rpu count
 Regenerate it after renaming or renumbering any quest heading. Quests described under a
 differently-named section are mapped in `scripts/quest-section-overrides.json`.
 
+## After an RPU update
+
+```bash
+cd website && npm run build
+python3 scripts/check-rpu-drift.py --refresh    # re-pulls quests.txt via the gecko MCP
+```
+
+It compares the built site against RPU's own data and reports six things: quests in `quests.txt`
+with no heading here, XP figures no script awards, dead `EXP_*` constants whose value the guide
+quotes, broken quest-index links, unparsed admonitions, and `GVAR_*` names that no longer exist.
+Exit status is 1 if anything blocking turns up, so it works in CI.
+
+`scripts/drift-baseline.json` holds accepted differences — quest-name aliases (the guide uses
+Fallout Wiki phrasing in places) and XP figures that are sums rather than a single `give_xp`.
+**Read the report before running `--update-baseline`**, or you will bless real drift as accepted.
+
 ## Checks worth running before pushing
 
 ```bash

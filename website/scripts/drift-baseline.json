@@ -1,0 +1,40 @@
+{
+ "note": "Accepted differences. quest_aliases maps a quests.txt description to the guide heading that covers it (the guide uses Fallout Wiki phrasing in places); xp_allowlist holds figures that are sums or derived rather than a single give_xp call. Regenerate with --update-baseline once you have checked the report by hand.",
+ "quest_aliases": {
+  "Find out how Becky can sell her booze for such low prices": "6. Sabotage Becky's still",
+  "Collect Rebecca's money from Fred": "4. Collect money from Fred",
+  "Get Rebecca's book from Derek": "5. Get book from Derek",
+  "Find a way to get the orphans off the streets": "8. Find a way to get the orphans off the street",
+  "Deliver the Slag's message to Jo in Modoc": "9. Deliver Slag message to Jo in Modoc",
+  "Guard Grisham's brahmin": "4. Guard the brahmin",
+  "Repair the powerplant": "The power plant",
+  "Retrieve the Economy Disk and deliver it to McClure in Vault City": "2. Optimize the powerplant",
+  "Beat Francis at arm wrestling": "4. Beat Francis at armwrestling",
+  "Bust up Wright's still beneath the train station": "4. Bust up Wright's still",
+  "Deliver Big Jesus' package to Ramirez at the Stables": "11. Deliver Big Jesus's package to Ramirez at the Stables",
+  "Bring a bottle of Abbey's hootch to Father Tully": "5. Inform Brother Samuel and Father Tully about the whereabouts of each other",
+  "Give the Spy Holodisk to the authorities in NCR": "3. Give Spy Holodisk to authority in NCR",
+  "Complete the brahmin drive": "12. Stop brahmin raids",
+  "Kill the Hubologist for Merk": "1. Kill Hubologist in NCR for Merk",
+  "Wipe out the Rangers' safe houses to the north, for Vortis the slaver": "5. Wipe out the Rangers' safe houses to the north, for Vortis",
+  "Wipe out the Slaver Camp to the north west, for the Rangers": "7. Wipe out the Slaver's Camp to the north west, for the Rangers",
+  "Clear out the mine": "5. Clear Wanamingo Mine",
+  "Take care of the Widow Rooney situation": "1. Evict the widow",
+  "Steal the vertibird plans from the Shi": "16. Get the vertibird plans for the Brotherhood of Steel",
+  "Steal the vertibird plans from the Hubologists": "7. Steal the vertibird plans from the Shi / Steal the vertibird plans from the Hubologists",
+  "Get Chip's spleen back": "15. Get Chip's spleen",
+  "Disable the Shi submarine threatening the tanker": "The Shi submarine",
+  "Clear out Dr. Sheng's lab": "17. Investigate the whereabouts of Dr. Sheng",
+  "Repair the waterpump and report the status to the headmonk": "3. Repair the water pump and report the status to the head monk",
+  "Find Sulik's missing sister": "5. Sulik's sister is missing, find her",
+  "Reunite Sulik and his sister, Kurisu": "Rescue Kurisu, Sulik's sister",
+  "Bring some herbs (5 Xander Roots, 3 Broc Flowers) to the Shaman": "8. Get medicinal plants for the shaman"
+ },
+ "xp_allowlist": [
+  4500,
+  9000,
+  14315,
+  24000,
+  4753000
+ ]
+}

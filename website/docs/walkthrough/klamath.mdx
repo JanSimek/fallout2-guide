@@ -27,9 +27,13 @@ Worth buying: **all the 10mm AP**, healing powder if you have fewer than ten, an
 **leather armor** if you can afford it — especially as a melee character, since there is
 nothing else to spend money on for hours yet. Skip stimpaks; they are overpriced at this stage.
 
-:::note[Renting a room]
-$25 buys eight hours of rest and HP equal to four times your healing rate. Companions are not
-healed at all. Practising your Doctor skill is a better use of the time.
+:::note[Renting a room is a bad deal]
+$25 buys eight hours and HP equal to **four times your healing rate** — and it heals **you only**.
+The script explicitly targets your character, so companions get nothing.
+
+**Just rest from the Pip-Boy instead.** It is free, and unlike the rented room it heals your whole
+party — there is even a *rest until party is healed* option. Rent a room only when you need to be
+somewhere you are not allowed to rest.
 :::
 
 :::tip[Selling is always free money]
@@ -78,10 +82,14 @@ First thing to do: take Sulik's **leather jacket** and wear it yourself.
 | **Slim Picket** | Trapper Town | Outdoorsman, if your skill is **28% or lower**. Adds double your Intelligence (minimum 7). |
 | **Smiley** | After the rescue | Gecko Skinning perk, plus +1–6% Outdoorsman |
 
-:::note[Slim pays you]
-Slim asks for $50 or $100 depending on town reputation, but a glitch means you **receive** the
-money instead of paying it. If you turn him down after he names a price, you get no second
-chance. If he says something about your tribe being "mostly farmers", just ask again.
+:::caution[Slim charges you — he no longer pays]
+**$50**, or **$100** if your Klamath reputation is poor. Training takes 8 hours and adds
+`2 × Intelligence`, minimum 7.
+
+Turn him down after he names a price and you get **no second chance**. If he says something about
+your tribe being "mostly farmers", just ask again.
+<Vanilla>A sign error meant `dude_caps_adjust` ran positive, so you *gained* $50 instead of
+paying it. RPU corrects it to −$50 / −$100.</Vanilla>
 :::
 
 :::caution
@@ -363,8 +371,18 @@ point you can **Repair** its broken motivator.
   decades of rumour. It is not present in the unpatched game at all.
 - **Locking doors** gives 25 XP each, if you are that sort of player.
 
-:::caution[Lockpicking]
-Save before picking anything important at low skill. A critical failure jams the lock until the
-clock next passes midnight — though lockpick *items* still work on jammed doors. Lockpicks
+:::caution[Jamming a lock is temporary, not permanent]
+A critical failure **jams** the lock. While jammed, using your **Lockpick skill** on it is refused
+outright — you do not even get a roll.
+
+**It clears on its own.** Every jammed lock in the game is released:
+
+- **at midnight**, on the game clock, and
+- **on entering a map you have not visited for 24 hours or more**.
+
+So a jammed door costs you a night's rest at worst. Nothing is lost permanently, and lockpicks
 themselves never break.
+
+Lockpick *items* go through a different code path from the skill, so they are not refused the way
+the skill is. Saving before picking anything important at low skill is still the simplest answer.
 :::
