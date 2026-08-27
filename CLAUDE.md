@@ -75,7 +75,8 @@ Audited so far:
 | Town-map number keys, `0` to exit dialogue | Fixed by default (`town_map_hotkeys_fix`, `no_exit_hotkey`) |
 | Tag! skill-point doubling | Intact (`TagSkillMode=0`) |
 | "Too many items" corruption | Probably fixed — the Pip-Boy lists are now paginated and bounds-checked. Not confirmed. |
-| Flare stack duplication, 0-damage crit XP loss, save-in-combat freeze, explosives corrupting a save | **Not confirmed either way** — marked as such in the guide |
+| 0-damage crit XP loss | **Still works** — `_damage_object` returns early on `damage <= 0`, before both the XP award and `itemDestroyAllHidden` |
+| Flare stack duplication, save-in-combat freeze, explosives corrupting a save | **Not confirmed either way** — marked as such in the guide |
 
 Where something cannot be settled from source in reasonable time, say so in the guide rather than
 asserting it. Do not silently delete an inherited claim either — it may well still be real.

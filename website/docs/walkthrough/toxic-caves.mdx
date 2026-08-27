@@ -93,9 +93,12 @@ You can also use it here simply to sprint past the robot to the doorway, where y
 :::
 
 :::note[The Robo Rocket Launcher]
-An exotic collector's item. Kill the robot with a **critical head hit that does no damage** —
-flares or bare fists, with Better Criticals. The bug that denies you combat XP also stops the
-bot purging its restricted inventory.
+An exotic collector's item. The launcher and its rockets are flagged as part of the robot rather
+than as loot, so an ordinary kill destroys them along with it. Kill it instead with a **critical
+head hit that does no damage** — flares or bare fists, with Better Criticals. The engine skips the
+whole death routine when the killing blow lands for zero, which costs you the combat XP and, in the
+same breath, spares the inventory. Leave combat animations on; turning them off takes a different
+code path that destroys the items anyway.
 
 Then knock a companion unconscious **on the robot's hex**, open their inventory, and click the
 arrow to switch to the robot. Two purple boxes appear: one **Robo Rocket Launcher** and up to
