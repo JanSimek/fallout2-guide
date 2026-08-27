@@ -147,6 +147,7 @@ const sidebars: SidebarsConfig = {
         },
         'reference/endings',
         'reference/known-issues',
+        'reference/keyboard-shortcuts',
         'reference/credits',
       ],
     },

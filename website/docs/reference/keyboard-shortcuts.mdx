@@ -1,0 +1,156 @@
+---
+sidebar_position: 4
+title: Keyboard Shortcuts
+description: Every key the engine listens for, by screen, as read from the FOR:CE source.
+---
+
+# Keyboard Shortcuts
+
+Read from the FOR:CE source rather than the 1998 manual, so it includes the keys the original
+documentation never mentioned and the handful FOR:CE has changed.
+
+## Anywhere
+
+| Key | Action |
+| --- | --- |
+| **Alt+C** | Screenshot |
+| **Ctrl+Q**, **Ctrl+X**, **F10** | Quit |
+| **+** / **−** | Brightness up / down |
+
+:::note[The screenshot key is Alt+C, not F12]
+**F12** also takes a screenshot, but only on the four screens that handle it themselves: the
+automap, the Pip-Boy, options and preferences. Everywhere else it does nothing. **Alt+C** is
+intercepted before anything else sees it, so it always works.
+:::
+
+## In the world
+
+| Key | Action |
+| --- | --- |
+| **A** | Enter combat |
+| **I** | Inventory |
+| **C** | Character screen |
+| **P** | Pip-Boy |
+| **Z** | Pip-Boy, opened straight onto rest |
+| **S** | Skilldex |
+| **O** or **Esc** | Options |
+| **Tab** | Automap |
+| **N** | Cycle the weapon's attack mode |
+| **B** | Swap to the other hand |
+| **M** | Cycle the mouse between movement and targeting |
+| **Ctrl+P** | Pause |
+| **Home** | Centre on your character, switching elevation if needed |
+| **Arrow keys**, mouse wheel | Scroll the map |
+| **,** and **.** | Rotate your character anticlockwise / clockwise |
+| **/** | Print the date and time to the message window |
+| **Ctrl+V** | Print the engine version and build |
+
+### Skills
+
+The number row uses a skill directly on whatever you click next — much faster than the Skilldex.
+
+| Key | Skill | | Key | Skill |
+| --- | --- | --- | --- | --- |
+| **1** | Sneak | | **5** | First Aid |
+| **2** | Lockpick | | **6** | Doctor |
+| **3** | Steal | | **7** | Science |
+| **4** | Traps | | **8** | Repair |
+
+### Saving
+
+| Key | Action |
+| --- | --- |
+| **Ctrl+S** or **F4** | Save |
+| **Ctrl+L** or **F5** | Load |
+| **F6** / **F7** | Quick save / quick load |
+| **F1** | Help |
+| **F2** / **F3** | Master volume down / up |
+
+## Combat
+
+| Key | Action |
+| --- | --- |
+| **Space** | End turn |
+| **Enter** | End combat |
+
+Every other key still works as it does outside combat, except that **P** and **Z** refuse to open the
+Pip-Boy.
+
+## Dialogue
+
+| Key | Action |
+| --- | --- |
+| **1**–**9** | Choose that reply |
+| **Space** | Advance a reply too long for the box |
+| **↑** / **↓** | Page back and forth through a long reply |
+| **B** | Barter |
+| **Esc** | End the conversation |
+
+:::note[0 no longer drops you out of a conversation]
+Pressing **0** used to end the dialogue outright, which was easy to hit by accident when reaching for
+a reply. FOR:CE disables it by default.
+<Vanilla>0 ended the conversation from any node, at any time.</Vanilla>
+:::
+
+In a companion's control panel: **A** for armour, **D** to trade, **W** to take their weapon, **Esc**
+to go back.
+
+## Inventory, barter and looting
+
+| Key | Action |
+| --- | --- |
+| **Esc** or **I** | Close |
+| **Ctrl+click** | Move the item immediately, without dragging |
+| **Arrows**, **PgUp** / **PgDn**, **Home** / **End** | Scroll the list |
+| **Ctrl+** the same keys | Scroll the other pane |
+
+**Ctrl+click** is the one worth learning: it moves an item in a single click instead of a drag, and
+as of a 2026 change it also loads a stack of ammunition straight into the weapon in your hand.
+
+When looting or trading, **←** / **→** (or **PgUp** / **PgDn**) switch between party members, and
+**A** takes everything. In barter, **T** returns to the conversation and **M** offers the trade. In
+the quantity box, type a number or press **A** for all, then **Enter**.
+
+## Pip-Boy, automap and world map
+
+| Screen | Keys |
+| --- | --- |
+| **Pip-Boy** | **P**, **Z**, **Esc** or **Enter** close it; **PgUp** / **PgDn** page within a tab |
+| **Automap** | **Tab**, **Esc** or **A** close it; **H** high detail, **L** low detail, **S** jump to your current elevation |
+| **World map** | **T** enters the location you are standing on; **Home** centres on your party; arrows scroll; **Ctrl+↑/↓** scroll the destination list; **Ctrl+F1**–**Ctrl+F7** travel straight to a listed destination |
+| **Town map** | **1**, **2**, **3**… take the numbered entrances; **T** or **W** leaves |
+
+:::note[Town map number keys]
+The number keys work on town maps in FOR:CE.
+<Vanilla>They were wired to the wrong entrances, so pressing one could drop you somewhere you had
+not chosen.</Vanilla>
+:::
+
+## Character screen
+
+| Key | Action |
+| --- | --- |
+| **C** or **Esc** | Exit |
+| **Enter** or **D** | Done |
+| **Tab** | Move between sections |
+| **←** / **→**, **−** / **+**, **J** / **N** | Lower / raise the selected value |
+| **↑** / **↓** | Move the selection |
+
+During character creation, **N** edits your name, **A** your age, **S** your gender and **O** opens
+options. On the printed sheet: **D** done, **E** erase, **P** print to file, **L** load, **S** save.
+The perk picker takes **↑** / **↓**, **PgUp** / **PgDn** and **Home** / **End**.
+
+## Menus
+
+| Screen | Keys |
+| --- | --- |
+| **Load / Save** | **↑** / **↓** move slot, **←** / **→** change page, **Home** / **End** first and last slot on the page, **Enter** confirm, **Esc** cancel |
+| **Options** | **Esc**, **Enter**, **O** or **D** done; **S** save, **L** load, **P** preferences, **H** help, **E** exit |
+| **Skilldex** | **S** or **Esc** close, **Enter** confirm |
+| **Main menu** | **Ctrl+R** runs the self-playing demo, **D** the screensaver, **Esc** exits |
+| **Character selection** | **←** / **→** cycle the premade characters, **C** create, **M** modify, **T** take, **B** or **Esc** back |
+
+:::note[Save slots go up to 100]
+FOR:CE ships **ten pages of ten slots**, which is why the load and save screens take **←** / **→**.
+<Vanilla>There were ten slots in total, and no paging.</Vanilla>
+:::
