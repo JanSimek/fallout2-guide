@@ -249,3 +249,216 @@ a.quest--rpu {
 .markdown h4 .quest {
   font-weight: inherit;
 }
+
+/* ── Object database ────────────────────────────────────────────────────────
+   Item/critter references in prose, and the /database page they open. The hover
+   card reuses the vanilla-note geometry but carries an icon and description, so
+   it is wider and left-aligned rather than a centred tooltip. */
+.item-ref {
+  position: relative;
+  display: inline-block;
+}
+
+.item-ref__link {
+  border-bottom: 1px dotted var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.item-ref--plain {
+  border-bottom: 1px dotted var(--ifm-color-emphasis-400);
+}
+
+.item-ref__card {
+  position: absolute;
+  bottom: calc(100% + 0.5em);
+  left: 0;
+  z-index: 30;
+  display: block;
+  width: max-content;
+  max-width: min(22rem, 80vw);
+  padding: 0.7em 0.85em;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 120ms ease, visibility 120ms;
+}
+
+.item-ref:hover .item-ref__card,
+.item-ref__link:focus-visible + .item-ref__card {
+  opacity: 1;
+  visibility: visible;
+}
+
+.item-ref__head {
+  display: flex;
+  gap: 0.7em;
+  align-items: center;
+}
+
+.item-ref__icon {
+  width: 40px;
+  height: auto;
+  image-rendering: pixelated; /* 45x61 sprites; smoothing turns them to mush */
+}
+
+.item-ref__name {
+  display: block;
+}
+
+.item-ref__places {
+  display: block;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.78rem;
+}
+
+.item-ref__desc {
+  display: block;
+  margin-top: 0.5em;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.db-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.db-search {
+  flex: 1 1 16rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  color: inherit;
+  font: inherit;
+}
+
+.db-chip {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+.db-chip--on {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
+  color: var(--ifm-background-color);
+}
+
+.db-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .db-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.db-list {
+  max-height: 70vh;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.db-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.db-row:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.db-row--on {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.db-row__icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.db-row__name {
+  flex: 1;
+}
+
+.db-row__count {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.db-pane {
+  min-height: 12rem;
+}
+
+.db-detail__head {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.db-detail__icon {
+  width: 64px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.db-detail__name {
+  margin: 0;
+}
+
+.db-detail__meta {
+  margin: 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85rem;
+}
+
+.db-detail__desc {
+  margin-top: 0.8rem;
+  font-style: italic;
+}
+
+.db-table {
+  display: table;
+  width: 100%;
+}
+
+.db-table__pos {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.db-empty {
+  color: var(--ifm-color-emphasis-600);
+}
