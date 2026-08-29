@@ -51,11 +51,11 @@ function Detail({
   maps: Map<string, MapInfo>;
   baseUrl: string;
 }) {
-  const icon = proto.kind === 'item' ? `${baseUrl}img/db/${proto.pid}.png` : null;
+  const icon = `${baseUrl}img/db/${proto.pid}.png`;
   return (
     <div className="db-detail">
       <div className="db-detail__head">
-        {icon && <img className="db-detail__icon" src={icon} alt="" />}
+        <img className="db-detail__icon" src={icon} alt="" />
         <div>
           <h2 className="db-detail__name">{proto.name}</h2>
           <p className="db-detail__meta">
@@ -185,9 +185,7 @@ export default function Database(): React.ReactElement {
                   type="button"
                   className={`db-row${selected === p.pid ? ' db-row--on' : ''}`}
                   onClick={() => setSelected(p.pid)}>
-                  {p.kind === 'item' && (
-                    <img className="db-row__icon" src={`${baseUrl}img/db/${p.pid}.png`} alt="" loading="lazy" />
-                  )}
+                  <img className="db-row__icon" src={`${baseUrl}img/db/${p.pid}.png`} alt="" loading="lazy" />
                   <span className="db-row__name">{p.name}</span>
                   <span className="db-row__count">{p.n || '—'}</span>
                 </button>

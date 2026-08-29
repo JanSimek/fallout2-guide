@@ -11,7 +11,7 @@ writes the results where Docusaurus can serve them. Nothing here parses game dat
 Outputs:
     static/data/protos.json     what things are — name, description, art  (~25 KB gzipped)
     static/data/entities.json   where they are — the location rows       (~172 KB gzipped)
-    static/img/db/<pid>.png     icon per item proto
+    static/img/db/<pid>.png     sprite per proto (items and critters)
 
 Both are generated, not committed — see .gitignore and the deploy workflow.
 """
@@ -55,9 +55,11 @@ def export_entities():
 
 
 def render_icon(fid, path):
-    """One item's inventory icon. Returns True if it was written."""
+    """One proto's sprite: a single direction and frame, on transparency rather than the
+    inspection checkerboard, which would otherwise be baked into the PNG as grey squares."""
     rc = subprocess.run(
-        [GECKO_CLI, 'frm', 'render', hex(fid), '--out', path, '--dir', '0', '--frame', '0'] + MOUNTS,
+        [GECKO_CLI, 'frm', 'render', hex(fid), '--out', path,
+         '--dir', '0', '--frame', '0', '--transparent'] + MOUNTS,
         capture_output=True, text=True)
     return rc.returncode == 0 and os.path.exists(path)
 
@@ -100,10 +102,11 @@ def main():
         return 0
 
     os.makedirs(OUT_ICONS, exist_ok=True)
-    # Only items: their inventory icon is a small, self-contained sprite. A critter's art is a
-    # directional animation, which is not what a hover card wants.
-    items = [p for p in export['protos'] if p['kind'] == 'item' and p['fid'] >= 0]
-    print(f'rendering {len(items)} item icons...', flush=True)
+    # Everything with art, critters included. A critter's FRM is a directional animation, so take
+    # one direction and one frame and you get a clean standing sprite — which is exactly what a
+    # hover card wants.
+    items = [p for p in export['protos'] if p['fid'] >= 0]
+    print(f'rendering {len(items)} sprites...', flush=True)
     t0, written, failed = time.time(), 0, []
     for i, proto in enumerate(items, 1):
         path = os.path.join(OUT_ICONS, f'{proto["pid"]}.png')
@@ -116,7 +119,7 @@ def main():
             failed.append(proto['name'] or proto['pid'])
         if i % 50 == 0:
             print(f'  {i}/{len(items)}', flush=True)
-    print(f'  {written} icons in {time.time() - t0:.0f}s')
+    print(f'  {written} sprites in {time.time() - t0:.0f}s')
     if failed:
         print(f'  {len(failed)} without art: {", ".join(str(x) for x in failed[:8])}'
               f'{" ..." if len(failed) > 8 else ""}')

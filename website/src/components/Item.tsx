@@ -36,7 +36,9 @@ export default function Item({
     return <span className="item-ref item-ref--plain">{text}</span>;
   }
 
-  const icon = proto.kind === 'item' ? `${baseUrl}img/db/${proto.pid}.png` : null;
+  // Every proto has a sprite now — a critter's is one frame of its walk cycle, which reads fine
+  // at card size.
+  const icon = `${baseUrl}img/db/${proto.pid}.png`;
   const places =
     proto.n === 0
       ? 'Not placed on any map'
