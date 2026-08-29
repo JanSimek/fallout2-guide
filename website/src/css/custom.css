@@ -468,3 +468,55 @@ a.quest--rpu {
 .db-empty {
   color: var(--ifm-color-emphasis-600);
 }
+
+/* Map view: a render with markers pinned to hexes. The image is responsive, so marker positions
+   are percentages rather than pixels — the projection is resolution-independent that way. */
+.mapview {
+  margin-top: 1.5rem;
+}
+
+.mapview__levels {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.mapview__frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: #000;
+  line-height: 0;
+}
+
+.mapview__img {
+  width: 100%;
+  height: auto;
+}
+
+.mapview__marker {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px; /* centre on the hex rather than hanging off its top-left */
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #e6482e;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8), 0 0 8px rgba(230, 72, 46, 0.9);
+  pointer-events: auto;
+}
+
+.mapview__caption {
+  margin-top: 0.5rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85rem;
+}
+
+.db-table__row {
+  cursor: pointer;
+}
+
+.db-table__row--on {
+  background: var(--ifm-color-emphasis-200);
+}

@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useProtos, type Proto} from '@site/src/data/protos';
+import MapView, {useMaps, type MapEntry} from '@site/src/components/MapView';
 
 interface Entity {
   kind: string;
@@ -44,13 +45,23 @@ function Detail({
   proto,
   rows,
   maps,
+  mapEntries,
   baseUrl,
 }: {
   proto: Proto;
   rows: Entity[];
   maps: Map<string, MapInfo>;
+  mapEntries: MapEntry[] | null;
   baseUrl: string;
 }) {
+  // Which location row the map is showing. Reset whenever the entry changes, so opening something
+  // new never leaves the previous thing's map on screen.
+  const [shown, setShown] = React.useState(0);
+  React.useEffect(() => setShown(0), [proto.pid]);
+  const active = rows[shown];
+  const entry = mapEntries?.find((m) => m.file === active?.map);
+  const [elevation, setElevation] = React.useState(active?.elevation ?? 0);
+  React.useEffect(() => setElevation(active?.elevation ?? 0), [active]);
   const icon = `${baseUrl}img/db/${proto.pid}.png`;
   return (
     <div className="db-detail">
@@ -84,7 +95,10 @@ function Detail({
             {rows.map((row, i) => {
               const info = maps.get(row.map);
               return (
-                <tr key={i}>
+                <tr
+                  key={i}
+                  className={`db-table__row${i === shown ? ' db-table__row--on' : ''}`}
+                  onClick={() => setShown(i)}>
                   <td>{info?.displayName || info?.name || row.map}</td>
                   <td>{row.elevation + 1}</td>
                   <td>
@@ -108,6 +122,18 @@ function Detail({
           </tbody>
         </table>
       )}
+
+      {entry && active && (
+        <MapView
+          entry={entry}
+          baseUrl={baseUrl}
+          elevation={elevation}
+          onElevation={setElevation}
+          markers={rows
+            .filter((r) => r.map === active.map)
+            .map((r) => ({hex: r.hex, elevation: r.elevation, label: proto.name}))}
+        />
+      )}
     </div>
   );
 }
@@ -116,6 +142,7 @@ export default function Database(): React.ReactElement {
   const baseUrl = useBaseUrl('/');
   const protos = useProtos(baseUrl);
   const data = useEntities(baseUrl);
+  const mapEntries = useMaps(baseUrl);
   const [query, setQuery] = useState('');
   const [kind, setKind] = useState('all');
   const [selected, setSelected] = useState<number | null>(null);
@@ -197,7 +224,7 @@ export default function Database(): React.ReactElement {
           <div className="db-pane">
             {chosen ? (
               data ? (
-                <Detail proto={chosen} rows={rows} maps={mapIndex} baseUrl={baseUrl} />
+                <Detail proto={chosen} rows={rows} maps={mapIndex} mapEntries={mapEntries} baseUrl={baseUrl} />
               ) : (
                 <p>Loading locations…</p>
               )

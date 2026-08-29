@@ -32,3 +32,5 @@ website/quest_index_body.md
 # The whole directory, so a renamed output can't slip back in the way database.json did.
 website/static/data/
 website/static/img/db/
+
+website/static/img/maps/
