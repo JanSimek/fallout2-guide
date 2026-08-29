@@ -335,7 +335,7 @@ a.quest--rpu {
   padding: 0.5rem 0.7rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 6px;
-  background: var(--ifm-background-color);
+  background: var(--ifm-background-surface-color);
   color: inherit;
   font: inherit;
 }
@@ -350,10 +350,16 @@ a.quest--rpu {
   font: inherit;
 }
 
+/* Infima leaves --ifm-background-color as `transparent` in light mode — only the dark theme gives it
+   a real value — so using it as a foreground turns the label invisible. Set both ends explicitly. */
 .db-chip--on {
   border-color: var(--ifm-color-primary);
   background: var(--ifm-color-primary);
-  color: var(--ifm-background-color);
+  color: #fff;
+}
+
+[data-theme='dark'] .db-chip--on {
+  color: #1b1b1d; /* the primary is a bright green in dark mode; white on it is unreadable */
 }
 
 .db-layout {
