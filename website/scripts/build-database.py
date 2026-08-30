@@ -70,6 +70,24 @@ PROJECTION = re.compile(r'projection origin=([-\d.]+),([-\d.]+) scale=([\d.]+)')
 WROTE = re.compile(r'\((\d+)x(\d+)\)')
 
 
+MAP_MAX_DIM = 3200  # ~0.47x native; sharp enough to zoom into, and lossless WebP keeps it small
+
+
+def to_webp(png_path):
+    """Re-encode a render as lossless WebP and drop the PNG.
+
+    Lossless, not lossy: these are flat-colour renders, so lossless WebP beats q80 (34 KB against
+    111 KB on a 3200px map) instead of losing to it the way it would on a photograph.
+    """
+    webp_path = png_path[:-4] + '.webp'
+    rc = subprocess.run(['cwebp', '-quiet', '-lossless', png_path, '-o', webp_path],
+                        capture_output=True, text=True)
+    if rc.returncode != 0 or not os.path.exists(webp_path):
+        return None
+    os.remove(png_path)
+    return os.path.basename(webp_path)
+
+
 def render_map(map_path, elevation, out_path):
     """One map elevation as a semantic render, with the world->pixel mapping it was drawn with.
 
@@ -79,7 +97,8 @@ def render_map(map_path, elevation, out_path):
     """
     rc = subprocess.run(
         [GECKO_CLI, 'map', 'render', '--map', map_path, '--out', out_path,
-         '--semantic', '--elevation', str(elevation)] + MOUNTS,
+         '--semantic', '--elevation', str(elevation),
+         '--max-dim', str(MAP_MAX_DIM)] + MOUNTS,
         capture_output=True, text=True)
     proj = PROJECTION.search(rc.stdout)
     size = WROTE.search(rc.stdout)
@@ -103,8 +122,10 @@ def render_maps(maps):
             path = os.path.join(OUT_MAPS, f'{stem}-{elevation}.png')
             frame = render_map(info['file'], elevation, path)
             if frame:
-                frame['image'] = f'{stem}-{elevation}.png'
-                levels.append(frame)
+                image = to_webp(path)
+                if image:
+                    frame['image'] = image
+                    levels.append(frame)
         if levels:
             out.append({**info, 'levels': levels})
         if i % 25 == 0:

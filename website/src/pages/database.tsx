@@ -131,7 +131,12 @@ function Detail({
           onElevation={setElevation}
           markers={rows
             .filter((r) => r.map === active.map)
-            .map((r) => ({hex: r.hex, elevation: r.elevation, label: proto.name}))}
+            .map((r, i) => ({
+              hex: r.hex,
+              elevation: r.elevation,
+              label: proto.name,
+              active: rows.indexOf(r) === shown,
+            }))}
         />
       )}
     </div>
