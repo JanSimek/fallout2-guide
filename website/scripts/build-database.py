@@ -70,7 +70,9 @@ PROJECTION = re.compile(r'projection origin=([-\d.]+),([-\d.]+) scale=([\d.]+)')
 WROTE = re.compile(r'\((\d+)x(\d+)\)')
 
 
-MAP_MAX_DIM = 3200  # ~0.47x native; sharp enough to zoom into, and lossless WebP keeps it small
+# Two tiers of the same textured render. The base is what everyone downloads; the detail tier is
+# fetched only by readers who actually zoom in, so a casual look costs 307 KB rather than a megabyte.
+MAP_TIERS = [('', 1600), ('@2x', 3200)]
 
 
 def to_webp(png_path):
@@ -88,17 +90,18 @@ def to_webp(png_path):
     return os.path.basename(webp_path)
 
 
-def render_map(map_path, elevation, out_path):
+def render_map(map_path, elevation, out_path, max_dim):
     """One map elevation as a semantic render, with the world->pixel mapping it was drawn with.
 
     The projection is read back from gecko rather than re-derived here. A marker's pixel is
     (hex.x - originX) * scale, and only the renderer knows how it framed the map — deriving it
     twice is how the markers would quietly drift the day the framing changes.
     """
+    # The natural style: the map as the game draws it, textures and all. The semantic style renders
+    # markers instead of art, which is unhelpful under markers of our own.
     rc = subprocess.run(
         [GECKO_CLI, 'map', 'render', '--map', map_path, '--out', out_path,
-         '--semantic', '--elevation', str(elevation),
-         '--max-dim', str(MAP_MAX_DIM)] + MOUNTS,
+         '--elevation', str(elevation), '--max-dim', str(max_dim)] + MOUNTS,
         capture_output=True, text=True)
     proj = PROJECTION.search(rc.stdout)
     size = WROTE.search(rc.stdout)
@@ -119,13 +122,22 @@ def render_maps(maps):
         stem = info['name'].rsplit('.', 1)[0]
         levels = []
         for elevation in range(3):
-            path = os.path.join(OUT_MAPS, f'{stem}-{elevation}.png')
-            frame = render_map(info['file'], elevation, path)
-            if frame:
+            frame = None
+            images = {}
+            for suffix, max_dim in MAP_TIERS:
+                path = os.path.join(OUT_MAPS, f'{stem}-{elevation}{suffix}.png')
+                got = render_map(info['file'], elevation, path, max_dim)
+                if not got:
+                    break  # an elevation the map does not have; the same answer at every tier
                 image = to_webp(path)
-                if image:
-                    frame['image'] = image
-                    levels.append(frame)
+                if not image:
+                    break
+                images['detail' if suffix else 'base'] = image
+                if not suffix:
+                    frame = got  # the base tier's projection is the one markers are placed with
+            if frame and 'base' in images:
+                frame.update(images)
+                levels.append(frame)
         if levels:
             out.append({**info, 'levels': levels})
         if i % 25 == 0:

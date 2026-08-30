@@ -3,7 +3,10 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 /** One map elevation's render, and the world→pixel mapping gecko drew it with. */
 export interface MapLevel {
   elevation: number;
-  image: string;
+  /** Shown immediately. */
+  base: string;
+  /** Twice the resolution, fetched only once someone zooms in. */
+  detail?: string;
   w: number;
   h: number;
   originX: number;
@@ -27,6 +30,9 @@ export interface Marker {
 const GRID_WIDTH = 200;
 const HEX_WIDTH = 16;
 const HEX_HEIGHT = 12;
+
+/** Past this the base render starts to soften, so it is worth paying for the detail tier. */
+const DETAIL_AT = 1.5;
 
 const MIN_ZOOM = 1;
 const MAX_ZOOM = 8;
@@ -107,6 +113,13 @@ export default function MapView({
   const [pan, setPan] = useState({x: 0, y: 0});
   const drag = useRef<{x: number; y: number; panX: number; panY: number} | null>(null);
   const frameRef = useRef<HTMLDivElement>(null);
+  // Once the detail tier has been paid for, keep it: dropping back to the base on zoom-out would
+  // only make it load again the next time. Reset when the picture itself changes.
+  const [wantDetail, setWantDetail] = useState(false);
+  useEffect(() => setWantDetail(false), [entry.file, level?.elevation]);
+  useEffect(() => {
+    if (zoom >= DETAIL_AT) setWantDetail(true);
+  }, [zoom]);
 
   const here = useMemo(
     () => markers.filter((m) => level && m.elevation === level.elevation),
@@ -208,7 +221,7 @@ export default function MapView({
           style={{transform: `scale(${zoom}) translate(${pan.x * 100}%, ${pan.y * 100}%)`}}>
           <img
             className="mapview__img"
-            src={`${baseUrl}img/maps/${level.image}`}
+            src={`${baseUrl}img/maps/${wantDetail && level.detail ? level.detail : level.base}`}
             alt={`${entry.displayName ?? entry.name}, level ${level.elevation + 1}`}
             width={level.w}
             height={level.h}
