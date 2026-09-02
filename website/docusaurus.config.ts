@@ -103,6 +103,12 @@ const config: Config = {
           label: 'Reference',
         },
         {
+          // A page rather than a doc, so it is linked by path instead of a sidebar id.
+          to: '/database',
+          position: 'left',
+          label: 'Database',
+        },
+        {
           type: 'search',
           position: 'right',
         },
