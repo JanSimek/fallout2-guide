@@ -119,14 +119,7 @@ differently-named section are mapped in `scripts/quest-section-overrides.json`.
 ```bash
 cd website && npm run build
 python3 scripts/check-rpu-drift.py --refresh    # re-pulls quests.txt via the gecko MCP
-python3 scripts/build-database.py                # slow; renders every map and sprite
-scripts/database-release.sh publish database-YYYY-MM-DD
 ```
-
-The object database is **not committed** — CI cannot build it (it needs gecko and the `.dat`
-files), so it ships as a GitHub Release and the deploy workflow fetches the tag pinned in
-`scripts/database-release.txt`. `publish` updates that pin; commit it, or the site keeps serving
-the old build.
 
 It compares the built site against RPU's own data and reports six things: quests in `quests.txt`
 with no heading here, XP figures no script awards, dead `EXP_*` constants whose value the guide
@@ -136,6 +129,22 @@ Exit status is 1 if anything blocking turns up, so it works in CI.
 `scripts/drift-baseline.json` holds accepted differences — quest-name aliases (the guide uses
 Fallout Wiki phrasing in places) and XP figures that are sums rather than a single `give_xp`.
 **Read the report before running `--update-baseline`**, or you will bless real drift as accepted.
+
+## The object database follows RPU on its own
+
+The database behind `/database` and `<Item>` is **not committed** and **not built in CI** — it
+needs gecko and the `.dat` files, which never leave this machine. It ships as a GitHub Release, and
+the deploy workflow fetches the tag pinned in `website/scripts/database-release.txt`
+(`database-rpu-v2.4.NN`).
+
+The pre-commit hook (`.githooks/pre-commit`, enabled by `npm install`) keeps that pin current: it
+asks GitHub for the newest **2.4.x** RPU release, and when the pin is behind it clones that tag
+into `~/.cache/fallout2-guide/`, rebuilds, checks, publishes, and stages the new pin into the
+commit. That commit takes a while; `SKIP_DATABASE_UPDATE=1` defers it. Run the same thing by hand
+with `scripts/database-release.sh update`.
+
+That clone is the database's source, **not** `$FALLOUT2_RPU`, which the gecko MCP reads — the two
+can be on different RPU versions. Check which one a claim was verified against.
 
 ## Checks worth running before pushing
 

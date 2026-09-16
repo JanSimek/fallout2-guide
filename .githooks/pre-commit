@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Keep the object database in step with the latest RPU release (see
+# website/scripts/database-release.sh). Usually one API call. When RPU has shipped a version the
+# pin does not match, this rebuilds and publishes the database first — which takes a while — and
+# the updated pin joins the commit.
+#
+# Enabled by `npm install` (the prepare script), or: git config core.hooksPath .githooks
+# Skip once with: SKIP_DATABASE_UPDATE=1 git commit ...
+set -euo pipefail
+[[ -n ${SKIP_DATABASE_UPDATE:-} ]] && exit 0
+
+root=$(git rev-parse --show-toplevel)
+pin="$root/website/scripts/database-release.txt"
+[[ -f $pin ]] || exit 0
+
+before=$(<"$pin")
+"$root/website/scripts/database-release.sh" update
+if [[ $(<"$pin") != "$before" ]]; then
+  git add "$pin"
+fi
