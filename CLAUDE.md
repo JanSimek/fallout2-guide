@@ -119,7 +119,14 @@ differently-named section are mapped in `scripts/quest-section-overrides.json`.
 ```bash
 cd website && npm run build
 python3 scripts/check-rpu-drift.py --refresh    # re-pulls quests.txt via the gecko MCP
+python3 scripts/build-database.py                # slow; renders every map and sprite
+scripts/database-release.sh publish database-YYYY-MM-DD
 ```
+
+The object database is **not committed** — CI cannot build it (it needs gecko and the `.dat`
+files), so it ships as a GitHub Release and the deploy workflow fetches the tag pinned in
+`scripts/database-release.txt`. `publish` updates that pin; commit it, or the site keeps serving
+the old build.
 
 It compares the built site against RPU's own data and reports six things: quests in `quests.txt`
 with no heading here, XP figures no script awards, dead `EXP_*` constants whose value the guide
@@ -137,5 +144,10 @@ cd website && npm run build          # onBrokenLinks: throw, so this catches dea
 grep -rn ':::' build --include=index.html | head   # should find nothing
 ```
 
-`master` builds on every push. Pages deployment is gated behind the `ENABLE_PAGES` repo variable
-because Pages is not available for private repos on the free plan.
+`master` builds on every push and deploys to <https://jansimek.github.io/fallout2-guide/>. The
+deploy job is gated behind the `ENABLE_PAGES` repo variable (currently `true`); PRs build but never
+deploy.
+
+**Only `master` is published.** A stacked PR whose base branch has already been merged lands on
+that dead branch, not on `master` — retarget it before merging. PR #3 (the object database) was
+stranded on `docs/guide-corrections` this way until #5 brought it over.

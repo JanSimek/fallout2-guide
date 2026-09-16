@@ -249,3 +249,312 @@ a.quest--rpu {
 .markdown h4 .quest {
   font-weight: inherit;
 }
+
+/* ── Object database ────────────────────────────────────────────────────────
+   Item/critter references in prose, and the /database page they open. The hover
+   card reuses the vanilla-note geometry but carries an icon and description, so
+   it is wider and left-aligned rather than a centred tooltip. */
+.item-ref {
+  position: relative;
+  display: inline-block;
+}
+
+.item-ref__link {
+  border-bottom: 1px dotted var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.item-ref--plain {
+  border-bottom: 1px dotted var(--ifm-color-emphasis-400);
+}
+
+.item-ref__card {
+  position: absolute;
+  bottom: calc(100% + 0.5em);
+  left: 0;
+  z-index: 30;
+  display: block;
+  width: max-content;
+  max-width: min(22rem, 80vw);
+  padding: 0.7em 0.85em;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 120ms ease, visibility 120ms;
+}
+
+.item-ref:hover .item-ref__card,
+.item-ref__link:focus-visible + .item-ref__card {
+  opacity: 1;
+  visibility: visible;
+}
+
+.item-ref__head {
+  display: flex;
+  gap: 0.7em;
+  align-items: center;
+}
+
+.item-ref__icon {
+  width: 40px;
+  height: auto;
+  image-rendering: pixelated; /* 45x61 sprites; smoothing turns them to mush */
+}
+
+.item-ref__name {
+  display: block;
+}
+
+.item-ref__places {
+  display: block;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.78rem;
+}
+
+.item-ref__desc {
+  display: block;
+  margin-top: 0.5em;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.db-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.db-search {
+  flex: 1 1 16rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-surface-color);
+  color: inherit;
+  font: inherit;
+}
+
+.db-chip {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Infima leaves --ifm-background-color as `transparent` in light mode — only the dark theme gives it
+   a real value — so using it as a foreground turns the label invisible. Set both ends explicitly. */
+.db-chip--on {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
+  color: #fff;
+}
+
+[data-theme='dark'] .db-chip--on {
+  color: #1b1b1d; /* the primary is a bright green in dark mode; white on it is unreadable */
+}
+
+.db-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .db-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.db-list {
+  max-height: 70vh;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.db-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.db-row:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.db-row--on {
+  background: var(--ifm-color-emphasis-300);
+}
+
+.db-row__icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.db-row__name {
+  flex: 1;
+}
+
+.db-row__count {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.db-pane {
+  min-height: 12rem;
+}
+
+.db-detail__head {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.db-detail__icon {
+  width: 64px;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.db-detail__name {
+  margin: 0;
+}
+
+.db-detail__meta {
+  margin: 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85rem;
+}
+
+.db-detail__desc {
+  margin-top: 0.8rem;
+  font-style: italic;
+}
+
+.db-table {
+  display: table;
+  width: 100%;
+}
+
+.db-table__pos {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.db-empty {
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* Map view: a render with markers pinned to hexes. The image is responsive, so marker positions
+   are percentages rather than pixels — the projection is resolution-independent that way. */
+.mapview {
+  margin-top: 1.5rem;
+}
+
+.mapview__bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.mapview__spacer {
+  flex: 1;
+}
+
+.mapview__zoom {
+  min-width: 3rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* The stage is what scales; the image and markers ride on it. transform-origin stays at the centre
+   so zooming feels like moving a camera rather than dragging a corner. */
+.mapview__stage {
+  transform-origin: 50% 50%;
+  transition: transform 220ms ease;
+  will-change: transform;
+}
+
+.mapview__frame--grabbable {
+  cursor: grab;
+}
+
+.mapview__frame--grabbable:active {
+  cursor: grabbing;
+}
+
+.mapview__frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: #000;
+  line-height: 0;
+}
+
+.mapview__img {
+  width: 100%;
+  height: auto;
+}
+
+/* Positioned by its centre via the translate in the inline transform, which also carries the
+   un-scale — so no negative margins here, and the marker stays put at any zoom. */
+.mapview__marker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: #d8a33f;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8);
+  transform-origin: 50% 50%;
+  pointer-events: auto;
+}
+
+.mapview__marker--on {
+  border-color: #fff;
+  background: #e6482e;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.9), 0 0 10px 2px rgba(230, 72, 46, 0.9);
+}
+
+.mapview__caption {
+  margin-top: 0.5rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.85rem;
+}
+
+.db-table__row {
+  cursor: pointer;
+}
+
+.db-table__row--on {
+  background: var(--ifm-color-emphasis-200);
+}

@@ -148,6 +148,8 @@ const sidebars: SidebarsConfig = {
         'reference/endings',
         'reference/known-issues',
         'reference/keyboard-shortcuts',
+        // A React page, not a doc, so it joins the sidebar as a plain link.
+        {type: 'link', label: 'Object Database', href: '/database'},
         'reference/credits',
       ],
     },
