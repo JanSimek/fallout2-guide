@@ -32,6 +32,10 @@ npm run build
 Requires Node 20+. Without `fetch-database` the site still builds, but `/database` and the item
 hover cards have nothing to show.
 
+`npm install` also points git at [`.githooks/`](.githooks). Its pre-commit hook keeps the object
+database in step with RPU (see [Deployment](#deployment)); `SKIP_DATABASE_UPDATE=1 git commit …`
+skips it once.
+
 ### Custom MDX components
 
 Three components are registered globally, so no imports are needed in `.mdx` files:
@@ -120,13 +124,16 @@ gh variable set ENABLE_PAGES --body true    # resume
 The object database is the one part CI cannot build: `scripts/build-database.py` needs gecko and
 the game's `.dat` files. Its output (about 150 MB, mostly map renders) is published as a GitHub
 Release instead, and the workflow downloads the tag pinned in `website/scripts/database-release.txt`.
-To ship a new build:
+
+Keeping it current needs no manual step. On every commit, the pre-commit hook checks the newest
+RPU **2.4.x** release. When the pin is behind, it downloads that release's source, runs
+`build-database.py`, refuses to publish a build with unreadable maps or missing renders, uploads
+the result as `database-rpu-<version>`, and adds the new pin to the commit. Merging that commit to
+`master` deploys it. A machine without gecko or the game files just prints a warning and commits.
+To run the same thing without committing:
 
 ```bash
-cd website
-python3 scripts/build-database.py
-scripts/database-release.sh publish database-YYYY-MM-DD   # uploads it and updates the pin
-git commit scripts/database-release.txt
+cd website && scripts/database-release.sh update
 ```
 
 ## Credits

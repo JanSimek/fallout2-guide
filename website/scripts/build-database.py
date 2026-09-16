@@ -15,8 +15,9 @@ Outputs:
     static/img/db/<pid>.png     sprite per proto (items and critters)
     static/img/maps/*.webp      each map elevation, at two zoom tiers
 
-None of it is committed. Publish a fresh build with `scripts/database-release.sh publish <tag>`;
-the deploy workflow fetches whichever tag scripts/database-release.txt pins.
+None of it is committed. The pre-commit hook runs `scripts/database-release.sh update`, which
+calls this into a scratch directory (--out) whenever RPU ships a release, publishes the result and
+pins it; the deploy workflow fetches whichever tag scripts/database-release.txt pins.
 """
 import argparse, json, os, re, subprocess, sys, time
 
@@ -26,13 +27,20 @@ DATA = os.environ.get('FALLOUT2_DATA', os.path.expanduser('~/Development'))
 GECKO_MCP = os.environ.get('GECKO_MCP', os.path.expanduser('~/Development/geck-map-editor/build/gecko-mcp'))
 GECKO_CLI = os.environ.get('GECKO_CLI', os.path.expanduser('~/Development/geck-map-editor/build/gecko-cli'))
 
-# Split deliberately. A walkthrough page with one <Item> in it should not pull the whole location
-# index down; it needs a name, a sentence and an icon. Only /database wants the rows.
-OUT_PROTOS = os.path.join(ROOT, 'static/data/protos.json')
-OUT_ENTITIES = os.path.join(ROOT, 'static/data/entities.json')
-OUT_ICONS = os.path.join(ROOT, 'static/img/db')
-OUT_MAPS = os.path.join(ROOT, 'static/img/maps')
-OUT_MAPDATA = os.path.join(ROOT, 'static/data/maps.json')
+
+def use_output(out):
+    """Point every output at `out` — static/ by default, a scratch directory for a release build."""
+    global OUT_PROTOS, OUT_ENTITIES, OUT_ICONS, OUT_MAPS, OUT_MAPDATA
+    # Split deliberately. A walkthrough page with one <Item> in it should not pull the whole location
+    # index down; it needs a name, a sentence and an icon. Only /database wants the rows.
+    OUT_PROTOS = os.path.join(out, 'data/protos.json')
+    OUT_ENTITIES = os.path.join(out, 'data/entities.json')
+    OUT_ICONS = os.path.join(out, 'img/db')
+    OUT_MAPS = os.path.join(out, 'img/maps')
+    OUT_MAPDATA = os.path.join(out, 'data/maps.json')
+
+
+use_output(os.path.join(ROOT, 'static'))
 
 MOUNTS = ['--data', os.path.join(DATA, 'master.dat'),
           '--data', os.path.join(DATA, 'critter.dat'),
@@ -152,14 +160,19 @@ def render_maps(maps):
 def write(path, payload):
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(payload, f, separators=(',', ':'))
-    print(f'wrote {os.path.relpath(path, ROOT)} ({os.path.getsize(path) / 1e6:.2f} MB)')
+    print(f'wrote {path} ({os.path.getsize(path) / 1e6:.2f} MB)')
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--no-icons', action='store_true', help='skip icon rendering (needs a GL context)')
     ap.add_argument('--no-maps', action='store_true', help='skip map rendering (slow; needs a GL context)')
+    ap.add_argument('--out', help='write data/ and img/ here instead of static/')
+    ap.add_argument('--strict', action='store_true',
+                    help='fail if any map is unreadable, instead of warning (for a published build)')
     args = ap.parse_args()
+    if args.out:
+        use_output(os.path.abspath(args.out))
 
     print('exporting entities...', flush=True)
     t0 = time.time()
@@ -171,6 +184,8 @@ def main():
         print(f'  WARNING: {len(export["mapsUnreadable"])} map(s) unreadable:', file=sys.stderr)
         for m in export['mapsUnreadable']:
             print(f'    {m["map"]}: {m["reason"]}', file=sys.stderr)
+        if args.strict:
+            return 1
 
     # How many places each proto turns up, so a hover card can say "found in 3 places" without
     # holding the rows that say where.
