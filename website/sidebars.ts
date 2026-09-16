@@ -1,5 +1,12 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
+// Every sidebar ends with the repository, so the source is one click away from any page.
+const githubLink = {
+  type: 'link',
+  label: 'GitHub repository',
+  href: 'https://github.com/JanSimek/fallout2-guide',
+} as const;
+
 const sidebars: SidebarsConfig = {
   startSidebar: [
     {
@@ -13,6 +20,7 @@ const sidebars: SidebarsConfig = {
         'getting-started/using-this-guide',
       ],
     },
+    githubLink,
   ],
 
   characterSidebar: [
@@ -32,6 +40,7 @@ const sidebars: SidebarsConfig = {
         'character/leveling',
       ],
     },
+    githubLink,
   ],
 
   walkthroughSidebar: [
@@ -105,6 +114,7 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    githubLink,
   ],
 
   referenceSidebar: [
@@ -151,6 +161,7 @@ const sidebars: SidebarsConfig = {
         'reference/credits',
       ],
     },
+    githubLink,
   ],
 };
 

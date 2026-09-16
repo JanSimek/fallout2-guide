@@ -137,5 +137,10 @@ cd website && npm run build          # onBrokenLinks: throw, so this catches dea
 grep -rn ':::' build --include=index.html | head   # should find nothing
 ```
 
-`master` builds on every push. Pages deployment is gated behind the `ENABLE_PAGES` repo variable
-because Pages is not available for private repos on the free plan.
+`master` builds on every push and deploys to <https://jansimek.github.io/fallout2-guide/>. The
+deploy job is gated behind the `ENABLE_PAGES` repo variable (currently `true`); PRs build but never
+deploy.
+
+**Only `master` is published.** A stacked PR whose base branch has already been merged lands on
+that dead branch, not on `master` — retarget it before merging. PR #3 (the object database) was
+stranded on `docs/guide-corrections` this way.
