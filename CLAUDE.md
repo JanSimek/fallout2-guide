@@ -119,7 +119,14 @@ differently-named section are mapped in `scripts/quest-section-overrides.json`.
 ```bash
 cd website && npm run build
 python3 scripts/check-rpu-drift.py --refresh    # re-pulls quests.txt via the gecko MCP
+python3 scripts/build-database.py                # slow; renders every map and sprite
+scripts/database-release.sh publish database-YYYY-MM-DD
 ```
+
+The object database is **not committed** — CI cannot build it (it needs gecko and the `.dat`
+files), so it ships as a GitHub Release and the deploy workflow fetches the tag pinned in
+`scripts/database-release.txt`. `publish` updates that pin; commit it, or the site keeps serving
+the old build.
 
 It compares the built site against RPU's own data and reports six things: quests in `quests.txt`
 with no heading here, XP figures no script awards, dead `EXP_*` constants whose value the guide

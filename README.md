@@ -24,11 +24,13 @@ hover, so the guide body never has to stop and explain itself.
 ```bash
 cd website
 npm install
-npm start          # http://localhost:3000
+npm run fetch-database   # the object database's generated files; needs the gh CLI
+npm start                # http://localhost:3000
 npm run build
 ```
 
-Requires Node 20+.
+Requires Node 20+. Without `fetch-database` the site still builds, but `/database` and the item
+hover cards have nothing to show.
 
 ### Custom MDX components
 
@@ -113,6 +115,18 @@ touching the workflow:
 ```bash
 gh variable set ENABLE_PAGES --body false   # pause
 gh variable set ENABLE_PAGES --body true    # resume
+```
+
+The object database is the one part CI cannot build: `scripts/build-database.py` needs gecko and
+the game's `.dat` files. Its output (about 150 MB, mostly map renders) is published as a GitHub
+Release instead, and the workflow downloads the tag pinned in `website/scripts/database-release.txt`.
+To ship a new build:
+
+```bash
+cd website
+python3 scripts/build-database.py
+scripts/database-release.sh publish database-YYYY-MM-DD   # uploads it and updates the pin
+git commit scripts/database-release.txt
 ```
 
 ## Credits

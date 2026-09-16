@@ -11,9 +11,12 @@ writes the results where Docusaurus can serve them. Nothing here parses game dat
 Outputs:
     static/data/protos.json     what things are — name, description, art  (~25 KB gzipped)
     static/data/entities.json   where they are — the location rows       (~172 KB gzipped)
+    static/data/maps.json       which renders exist, and how each was framed
     static/img/db/<pid>.png     sprite per proto (items and critters)
+    static/img/maps/*.webp      each map elevation, at two zoom tiers
 
-Both are generated, not committed — see .gitignore and the deploy workflow.
+None of it is committed. Publish a fresh build with `scripts/database-release.sh publish <tag>`;
+the deploy workflow fetches whichever tag scripts/database-release.txt pins.
 """
 import argparse, json, os, re, subprocess, sys, time
 
