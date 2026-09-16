@@ -160,3 +160,6 @@ deploy.
 **Only `master` is published.** A stacked PR whose base branch has already been merged lands on
 that dead branch, not on `master` — retarget it before merging. PR #3 (the object database) was
 stranded on `docs/guide-corrections` this way until #5 brought it over.
+The same goes for pushing more commits to a PR branch: check `gh pr view <n> --json state` first,
+because a PR merged in the meantime keeps its branch, and anything pushed afterwards goes nowhere.
+The hook commit meant for #5 went to that branch after #5 had been merged, and had to be moved to #6.
