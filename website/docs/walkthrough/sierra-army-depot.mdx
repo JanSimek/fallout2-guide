@@ -201,8 +201,11 @@ Activating the robot before it is complete makes it **explode**.
 
 :::danger[Angry Skynet]
 Assemble the bot with the **Cybernetic Brain** after angering Skynet and it will not thank you.
-The moment you leave the depot it **instantly kills one of your other companions** — not Marcus,
-Goris or any dog — and attacks.
+The moment you leave the depot it goes for **whichever companion is nearest** — nobody is exempt,
+not Marcus, not Goris, not a dog — hits them for **1000 explosion damage** and turns on
+you.<Unverified>RPU's routine looks broken: it picks the closest member of a list that includes the
+robot itself, then measures the distance with a tile number where the engine wants an object. Whether
+the kill ever lands was not tested in play.</Unverified>
 
 Assemble the bot **before talking to Skynet at all** and it is friendly, even if the level 3 alarm
 is active.
@@ -219,18 +222,25 @@ The alarm computer here is offline, and the robots do not turn hostile unless at
 
 ### The organ extractor
 
-Despite what you select, it only extracts **brains**.
+Whatever you pick on the organ dial, it only extracts **brains**.
 
-Put a companion in the extraction chamber — they must still be in your party — and tell the
-computer to extract. They take enormous damage, die, and produce a **Human Brain**.
+Set the **species** dial, get somebody into the extraction chamber and tell the computer to extract.
+Everything alive in the chamber dies — **in your party or not** — and every corpse matching the
+species leaves one brain. **Human** gives a Human Brain; **Canine** and the scratched-in **Mutant**
+and **Deathclaw** give an Abnormal Brain; Feline, Road Runner and Rodent give none. Two matching
+victims give two brains.
 
-**500 XP** for your first extraction attempt, even with nobody in the chamber.
+**500 XP**, once, for the first extraction that actually has a victim in the chamber.
 
 :::danger
-**−100 karma each time.** Put more than one companion in and they all die and you get no brain.
+**−100 karma per victim**, whether or not it produced a brain. An empty chamber costs nothing and
+gives nothing.
 
-The extractor does not work on Laddie, K-9, the Robodog, or the Brain Bot unless it has the best
-brain.<Unverified>Inherited; not checked against the extractor script.</Unverified>
+Dogs work: Laddie, K-9, the Robodog, Dogmeat and the pariah dog all match **Canine** and leave an
+Abnormal Brain. The Brain Bot dies as readily as anyone else, but robots match no species, so it
+costs you the karma and gives you nothing.
+
+Stand in the chamber yourself and you die too.
 :::
 
 ### Storage
