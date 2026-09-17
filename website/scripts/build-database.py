@@ -81,6 +81,33 @@ def export_entities():
     return gecko('export_entities')
 
 
+def areas():
+    """map file -> the world-map area it belongs to, from city.txt: what a reader calls the place
+    ("Den"), as against the map's own name ("Residential"). 169 of the 176 shipped maps are an
+    entrance of some area; the rest are alternates and cut maps, and get no area."""
+    out = {}
+    for area in gecko('world_map')['areas']:
+        for entrance in area.get('maps', []):
+            if entrance.get('mapFile'):
+                out.setdefault(os.path.basename(entrance['mapFile']).lower(),
+                               area.get('displayName') or area['name'])
+    return out
+
+
+def slugs(protos):
+    """A readable URL for every proto: /database/10mm_SMG. Names repeat (two Flares, two
+    Lightsabers), so a repeat carries its pid — the first one keeps the clean name."""
+    used, out = {}, {}
+    for proto in sorted(protos, key=lambda p: p['pid']):
+        base = re.sub(r'_+', '_', re.sub(r'[^A-Za-z0-9]+', '_', proto['name'] or '')).strip('_')
+        if not base:
+            base = str(proto['pid'])
+        slug = base if base not in used else f'{base}_{proto["pid"]}'
+        used[base] = True
+        out[proto['pid']] = slug
+    return out
+
+
 # What the engine does with a weapon's attack-mode index (fallout2-ce item.cc _attack_subtype and
 # _attack_skill): the page needs the mode and the skill, and the skill is not stored anywhere.
 ATTACK_MODES = {1: ('punch', 'unarmed'), 2: ('kick', 'unarmed'), 3: ('swing', 'melee_weapons'),
@@ -111,8 +138,26 @@ def perk_of(perk):
     return {'id': perk['id'], 'name': perk['name']} if perk else None
 
 
+def drug_effects(stats, amounts):
+    """What a chem does, as {stat, min, max}. A first stat id of -2 means the next stat's amount is
+    rolled between the first two numbers instead of taken from its own slot — fallout2-ce item.cc
+    _perform_drug_effect (stats[0] == -2 -> randomBetween(mods[index - 1], mods[index]))."""
+    out, ranged = [], stats[0]['id'] == -2
+    for index in range(1 if ranged else 0, 3):
+        stat = stats[index]
+        if stat['id'] < 0:
+            continue
+        if ranged:
+            low, high, ranged = amounts[index - 1], amounts[index], False
+        else:
+            low = high = amounts[index]
+        if low or high:
+            out.append({'stat': stat['name'] or str(stat['id']), 'min': low, 'max': high})
+    return out
+
+
 def build_equipment():
-    """Every weapon, ammunition and armour proto, reduced to what the comparison page computes with."""
+    """What every item proto is, beyond its name: the stats the database page tabulates."""
     def listed(item_type):
         export = gecko('export_protos', {'itemType': item_type})
         if export.get('unreadable'):
@@ -163,8 +208,39 @@ def build_equipment():
         'perk': perk_of(p['armor']['perk']),
     } for p in listed('armor')]
 
-    print(f'  {len(weapons)} weapons, {len(ammo)} ammunition, {len(armor)} armour')
-    return {'weapons': weapons, 'ammo': ammo, 'armor': armor}
+    # Everything else an item can be, so the page can put a stat table under any of them. A drug's
+    # effects are (stat, now, later, later still) triples; the engine reads them in that order
+    # (fallout2-ce proto.cc protoItemDataRead, drugs applied in item.cc).
+    drugs = [{
+        'pid': p['pid'], 'name': p['name'], 'description': p['description'],
+        'weight': p['weight'], 'cost': p['cost'],
+        'now': drug_effects(p['drug']['stats'], p['drug']['immediate']),
+        'then': {'minutes': p['drug']['delayed1']['minutes'],
+                 'effects': drug_effects(p['drug']['stats'], p['drug']['delayed1']['amounts'])},
+        'later': {'minutes': p['drug']['delayed2']['minutes'],
+                  'effects': drug_effects(p['drug']['stats'], p['drug']['delayed2']['amounts'])},
+        'addictionChance': p['drug']['addictionChance'],
+        'withdrawalPerk': perk_of(p['drug']['withdrawalPerk']),
+        'withdrawalOnset': p['drug']['withdrawalOnset'],
+    } for p in listed('drug')]
+
+    containers = [{
+        'pid': p['pid'], 'name': p['name'], 'description': p['description'],
+        'weight': p['weight'], 'cost': p['cost'], 'capacity': p['container']['maxSize'],
+    } for p in listed('container')]
+
+    other = [{
+        'pid': p['pid'], 'name': p['name'], 'description': p['description'],
+        'weight': p['weight'], 'cost': p['cost'],
+        'itemType': p['itemType'],
+        **({'charges': p['misc']['charges'], 'powerPid': p['misc']['powerTypePid']}
+           if p['itemType'] == 'misc' and p['misc']['charges'] else {}),
+    } for p in listed('misc') + listed('key')]
+
+    print(f'  {len(weapons)} weapons, {len(ammo)} ammunition, {len(armor)} armour, '
+          f'{len(drugs)} chems, {len(containers)} containers, {len(other)} other')
+    return {'weapons': weapons, 'ammo': ammo, 'armor': armor, 'drugs': drugs,
+            'containers': containers, 'other': other}
 
 
 def render_icon(fid, path):
@@ -293,10 +369,15 @@ def main():
     for row in export['entities']:
         counts[row['pid']] = counts.get(row['pid'], 0) + 1
     protos = [{**p, 'n': counts.get(p['pid'], 0)} for p in export['protos']]
+    slug_of = slugs(protos)
+    protos = [{**p, 'slug': slug_of[p['pid']]} for p in protos]
+
+    area_of = areas()
+    maps = [{**m, 'area': area_of.get(os.path.basename(m['file']).lower())} for m in export['maps']]
 
     os.makedirs(os.path.dirname(OUT_PROTOS), exist_ok=True)
     write(OUT_PROTOS, {'protos': protos})
-    write(OUT_ENTITIES, {'maps': export['maps'], 'entities': export['entities'],
+    write(OUT_ENTITIES, {'maps': maps, 'entities': export['entities'],
                          'mapsUnreadable': export['mapsUnreadable']})
 
     print('exporting equipment...', flush=True)
