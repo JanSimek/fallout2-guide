@@ -35,3 +35,6 @@ website/static/data/
 website/static/img/db/
 
 website/static/img/maps/
+
+# Python bytecode from the generator scripts.
+__pycache__/
