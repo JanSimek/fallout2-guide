@@ -478,7 +478,8 @@ export default function Database(): React.ReactElement {
 
   const open = useCallback(
     (proto: Proto) => {
-      history.push(`${baseUrl}database/${proto.slug}`);
+      // No slug means a database built before slugs existed: there is no per-entry route to go to.
+      history.push(proto.slug ? `${baseUrl}database/${proto.slug}` : `${baseUrl}database?id=${proto.pid}`);
     },
     [history, baseUrl],
   );
