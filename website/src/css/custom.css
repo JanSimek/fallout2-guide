@@ -558,3 +558,115 @@ a.quest--rpu {
 .db-table__row--on {
   background: var(--ifm-color-emphasis-200);
 }
+
+/* Weapons and armour page. Tables scroll sideways on their own; the page never does. */
+.eq-setup {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+}
+
+.eq-setup summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.eq-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.eq-fields fieldset {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem 0.75rem;
+}
+
+.eq-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.3rem 0;
+}
+
+.eq-field input,
+.eq-field select {
+  width: 9rem;
+  max-width: 55%;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  background: var(--ifm-background-surface-color);
+  color: inherit;
+  font: inherit;
+}
+
+.eq-scroll {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.eq-scroll table {
+  display: table;
+  font-variant-numeric: tabular-nums;
+}
+
+.eq-table td,
+.eq-table th {
+  white-space: nowrap;
+}
+
+.eq-table tbody tr {
+  cursor: pointer;
+}
+
+.eq-row--on {
+  background: var(--ifm-color-emphasis-200) !important;
+}
+
+.eq-sort,
+.eq-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.eq-sort {
+  font-weight: 700;
+}
+
+.eq-link {
+  color: var(--ifm-link-color);
+}
+
+.eq-muted {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.85rem;
+}
+
+.eq-warn {
+  color: var(--ifm-color-danger);
+  font-weight: 700;
+}
+
+.eq-detail {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ifm-color-emphasis-300);
+}
+
+.eq-detail__meta {
+  color: var(--ifm-color-emphasis-700);
+}
+
+.eq-detail__desc {
+  font-style: italic;
+}
