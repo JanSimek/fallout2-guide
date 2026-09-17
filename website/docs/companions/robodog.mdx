@@ -1,0 +1,168 @@
+---
+sidebar_position: 10
+title: Robodog
+description: Dr. Henry's cyberdog in NCR, your pay for testing his mutagenic serum — a weak melee dog, but immune to EMP and repairable in the field.
+---
+
+# Robodog
+
+Dr. Henry offers "a Cyber-Hound Mk. II, Personal Security Model" as payment for field-testing his
+serum. The game calls it the **Cyberdog**. It has only 9–12 AP and 97–137 HP, and it fights only with
+its teeth. In its favour, it is **immune to EMP** and you can repair it anywhere with a toolkit. Take it
+if you have a slot and nothing better. [K-9](/companions/k9) has far more AP and AC.
+
+| | |
+| --- | --- |
+| **Where** | [NCR](/walkthrough/ncr), Downtown: next to Dr. Henry in his lab |
+| **Joins if** | Dr. Henry gives it to you after the serum test (Science 80% and Intelligence 4 to get the job), Henry is alive to pay, and you have a free party slot |
+| **Costs** | One super mutant. The test itself gives 1000 XP. |
+| **Best at** | Unarmed 110%, immune to EMP |
+| **Weapons** | None: teeth only |
+| **Levels** | 4 level-ups: the first at player level 9–12 if it is with you by then, then one in every 4 of your level-ups ([how levelling works](/companions/overview)) |
+
+## Recruiting
+
+This is Dr. Henry's quest, <Quest>Test the mutagenic serum on a super-mutant. Try Broken Hills</Quest>;
+see [NCR](/walkthrough/ncr) for the walkthrough.
+
+### Getting the serum
+
+Henry offers the job only while he is standing at his lab. Every option needs Intelligence 4.
+
+1. Introduce yourself: "I'm &lt;name&gt;, the Chosen One. I'm looking for Vault 13." Henry mentions
+   cyber-genetics.
+2. With **Science 80%** you can ask about it: "Cyber-genetics? I don't remember ever studying that
+   one." or "Vault Behavioral project?" → "What's this about cyber-genetics?".
+3. Continue through his explanation: "Field testing? What do you mean?" → "I'm not letting you stick
+   any needles in me!" → "What's in it for me?".
+4. He offers the Cyber-Hound. Answer "Cyber-hound? Sure, why not." and he hands you the Mutagenic
+   Serum, "fitted up in a stim hypo".
+
+The quest brings no karma change at any point.
+
+### Testing the serum
+
+Use the serum on any **super mutant**. The first use completes the quest for **1000 XP**. The target
+melts and dies about two seconds later. On anything else you get "You are supposed to use this on a
+super-mutant." and you keep the serum.
+
+:::danger[Not on Marcus]
+The serum only checks that its target is a super mutant, so it works on
+[Marcus](/companions/marcus) too, and kills him.
+:::
+
+The script does not check that the target is alive, so a super mutant's corpse should also count.
+<Unverified>Derived from the serum's script; not tested in game.</Unverified>
+
+### Collecting the dog
+
+Go back to Henry: "So, how did it go? Is the test done?" → "Yes." → "It killed him! You said it would
+cure mutants!" or "He's dead, Jim." → "What about my pay?". He answers "Of course. The cyberdog is all
+yours."
+
+If you tell him "You're a monster! I want nothing to do with you." instead, the conversation just ends.
+Nothing else happens, and you can talk to him again and still ask for your pay.
+
+:::caution[Keep Henry alive]
+Nothing else can hand the dog over. **If Henry dies before paying you, Robodog can never join.**
+:::
+
+Now talk to the dog. Before Henry pays, it only floats noises like "Arf! &lt;click&gt; Woof!".
+Afterwards it opens its menu with "Woof! Wo-wo-wo-&lt;click&gt;woof?". Pick **"Let's go."**:
+
+- with a free slot, it joins;
+- with a full party, it says ".whirrrrr... I am not a Daggit." and stays where it is. Ask again once
+  you have room.
+
+It has no karma or reputation requirement.
+
+## Stats by level
+
+A level-up also heals it fully. The player-level ranges assume Robodog has been in your party since
+player level 9: the earliest level at which each stage can come, and the level by which it is certain.
+
+| Stage | Player level | HP | AP | AC | Unarmed | Melee damage | Critical chance |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Joined | — | 97 | 9 | 18 | 110% | 10 | 10% |
+| 1 | 9–12 | 107 | 10 | 18 | 115% | 12 | 17% |
+| 2 | 13–16 | 117<Vanilla>Stage 2 has 107 HP, the same as stage 1.</Vanilla> | 11 | 18 | 120% | 15 | 22% |
+| 3 | 17–20 | 127 | 11 | 18 | 125% | 18 | 25% |
+| 4 | 21–24 | 137 | 12 | 18 | 130% | 21 | 30% |
+
+Nothing else changes: ST 6, PE 9, EN 8, CH 1, IN 3, AG 8, LK 5, Sequence 18, carry weight 175, and DT 4 /
+DR 30% against normal damage. Its DR against EMP is so high that **EMP does it no damage at all**. All
+its other skills stay put, including a Melee Weapons 100% it has no use for.
+
+## Gear
+
+**There is nothing to equip.** Robodog uses the same art as K-9, which has no weapon animations, and
+FOR:CE never has a dog pick a weapon from its inventory. **It cannot wear armour** either: FOR:CE does
+not let four-legged companions wear it, and the NPC Armor mod does not cover dogs. Its menu has no gear
+option.
+
+**You cannot give it anything.** It has no Trade screen ("This critter can't carry anything.") and
+cannot be stolen from, so it never carries healing items. "You should heal yourself now." therefore
+always falls back on its own First Aid (24%): 5–15 HP on a success, and 15 minutes pass. Carry a
+<Item>Super Tool Kit</Item> or <Item>Tool</Item> yourself for repairs (below).
+
+**Combat settings:** Weapon Pref. is locked to "Unarmed", and there is no "Snipe" distance and no burst
+setting. Robodog shares its default custom combat settings with K-9, so a change made for one applies to
+both.
+
+## Repairing it
+
+Unlike K-9, Robodog can be repaired. Use your **Repair** skill on it, or use a toolkit on it:
+
+| Used on Robodog | Bonus to your Repair roll |
+| --- | --- |
+| Repair skill | none |
+| <Item>Tool</Item> | +10% |
+| <Item>Super Tool Kit</Item> | +30% |
+
+A successful roll heals **10–40 HP**. Either way, the message is "Cyberdog has been repaired some." as
+long as it is still hurt. **That message does not mean the roll passed**, so watch its HP.
+
+Repairs are limited by a counter. Each **successful** repair adds 50 to it. You can try again only while
+the counter is **below your Repair skill**; otherwise you get "Cyberdog can't be repaired anymore at
+this time." The counter drops by 50 about once an hour. In practice:
+
+- Repair 50% allows one success in a row, Repair 51–100% two, Repair 101–150% three, and so on.
+- You usually get one extra, because the counter's first drop tends to come straight after your
+  first repair.
+
+It also heals like a living creature: stimpaks, First Aid and Doctor all work on it.
+
+## Using it
+
+- **It bites less often than K-9.** An attack with no weapon costs 3 AP, so it bites three times a turn
+  at 9 AP and four times at 12 AP. Its Melee Damage is added to the maximum damage of every bite.
+- **Pulse grenades cannot hurt it.** As far as Robodog is concerned, you can throw them at robots
+  freely.
+- **Its levels start early,** from player level 9, but they are small: +10 HP each, and +1 AP at every
+  stage except the third.
+
+## Orders
+
+Its menu offers:
+
+- "You should heal yourself now." (only when it is hurt);
+- "We need to change our distance from one another.": close, medium or far ("Arf-arf proximity set to
+  close.");
+- "I need you to wait here until I come back.": "Ee-bee-dee-bee-ee-bee-dee-bee!";
+- "That's it for now.".
+
+## Losing it
+
+- **Waiting:** "Let's go." brings it back, subject to the party-size check. **There is no way to dismiss
+  it for good.**
+- **Hurting it:** its script ignores damage you deal it, and while it is in your party the game does
+  not even run that part of it. <Unverified>Whether the engine turns it against you for the rest of
+  that fight was not traced.</Unverified>
+- **Parked dogs rejoin NCR's side.** Whenever Robodog is not in your party, including while it waits
+  for you, it is put back on NCR's team the next time you enter its map. <Unverified>Whether a
+  waiting Robodog then fights alongside NCR's guards against you was not traced.</Unverified>
+- **Stealing from it** is impossible: the game does not let you steal from Robodog.
+- **The EPA:** it cannot follow you down the broken elevator shaft. It leaves the party and waits at the
+  top.
+- **Death:** killing it yourself costs 10 karma and 5 points of NCR reputation, and counts as killing a
+  good character towards the Champion and Berserker reputations.

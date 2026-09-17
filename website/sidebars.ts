@@ -107,6 +107,30 @@ const sidebars: SidebarsConfig = {
     },
   ],
 
+  companionsSidebar: [
+    {
+      type: 'category',
+      label: 'Companions',
+      collapsed: false,
+      items: [
+        'companions/overview',
+        'companions/sulik',
+        'companions/vic',
+        'companions/cassidy',
+        'companions/myron',
+        'companions/lenny',
+        'companions/marcus',
+        'companions/skynet',
+        'companions/goris',
+        'companions/dogmeat',
+        'companions/k9',
+        'companions/robodog',
+        'companions/rpu-companions',
+        'companions/other-companions',
+      ],
+    },
+  ],
+
   referenceSidebar: [
     {
       type: 'category',
@@ -114,25 +138,6 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'reference/quest-index',
-        {
-          type: 'category',
-          label: 'Companions',
-          collapsed: false,
-          items: [
-            'companions/overview',
-            'companions/sulik',
-            'companions/vic',
-            'companions/cassidy',
-            'companions/myron',
-            'companions/lenny',
-            'companions/marcus',
-            'companions/skynet',
-            'companions/goris',
-            'companions/dogmeat',
-            'companions/k9',
-            'companions/rpu-companions',
-          ],
-        },
         {
           type: 'category',
           label: 'Systems',
@@ -148,8 +153,9 @@ const sidebars: SidebarsConfig = {
         'reference/endings',
         'reference/known-issues',
         'reference/keyboard-shortcuts',
-        // A React page, not a doc, so it joins the sidebar as a plain link.
+        // React pages, not docs, so they join the sidebar as plain links.
         {type: 'link', label: 'Object Database', href: '/database'},
+        {type: 'link', label: 'Weapons and Armour', href: '/equipment'},
         'reference/credits',
       ],
     },

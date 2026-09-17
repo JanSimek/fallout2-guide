@@ -1,60 +1,241 @@
 ---
 sidebar_position: 6
 title: Lenny
+description: The old ghoul doctor of Gecko — worth +5 karma, with plenty of hit points and a Doctor skill that reaches 125%.
 ---
 
 # Lenny
 
-**Found in:** [Gecko](/walkthrough/gecko), the Manager's Office
+> *"I'm h'happier than a bull b'brahmin in a pasture-full o' cows! I'd b'be honored to j'join you. I m'may
+> be old and I cain't m'move t'too darn fast, leastwasy not for too long, b'but I kin sure p'patch you up
+> when y'you need it."* — Lenny
 
-A ghoul doctor. Useful as a pack mule with a healing skill, and not much more. Take him only if you
-favour large parties.
-
-Talk to him about your ancestor the Vault Dweller and he joins, provided your karma is at least 1.
-Recruiting him is **+5 karma** and improves your standing in Gecko, so do it even if you dismiss him
-straight away.
-
-:::caution
-Do not get into his **"Vault 13 owes us one"** G.E.C.K. thread — it shares a variable with Harold's
-stimpak reward, and you cannot have both.
-:::
-
-## Statistics
+Lenny is Harold's assistant in Gecko, a ghoul who was a doctor before the war. He is no great fighter —
+7 AP for good and Small Guns as his only real combat skill — but he has plenty of hit points, a Doctor
+skill that climbs from 85% to 125%, and recruiting him is worth **+5 karma**. Before he joins, he also
+heals you cheaply, or for nothing.
 
 | | |
 | --- | --- |
-| **Main skill** | **Doctor** |
-| **Also good at** | Small Guns |
-| **Animations** | Knife, pistol, SMG |
-| **HP by level** | 129 · 154 · 181 · 206 |
-| **AP by level** | 7 · 7 · 7 · 7 |
+| **Where** | [Gecko](/walkthrough/gecko), on the Settlement map, standing by Harold |
+| **Joins if** | you asked about the G.E.C.K. and your ancestor, karma above 0, his reaction above 30, CH 2+, IN 4+, a free slot |
+| **Costs** | Nothing. +5 karma and +10 Gecko reputation the first time; no XP |
+| **Best at** | Doctor 85%, Barter 80%, First Aid 75%, Small Guns 70% |
+| **Weapons** | Knife, spear and rifle (default look); knife, pistol and SMG with `lenny_new_look=0`. Fists and throwing with either |
+| **Levels** | 3 level-ups, one for every five of your level-ups from level 10 while he is with you ([how it works](/companions/overview)) |
 
-Enormous HP, and **7 AP forever** — he never gets faster.
+## Recruiting
 
-He is the only companion who heals with **Doctor** rather than First Aid: 10–25 HP instead of 5–15.
+He has nothing to say to a character with **IN 3 or less** except to go home.
 
-## Weapons
+The way in is his memory of your ancestor, and it starts with the G.E.C.K.:
 
-Anything with a **Strength requirement of 4** — a Desert Eagle is ideal. A 10mm SMG then H&K P90c if
-you do not mind him spraying the party. In Power Armor he can manage a **.223 Pistol**, **H&K G11E**
-or **Gauss Pistol**.
+1. *"Lenny, have you ever heard of something called a Garden of Eden Creation Kit?"* →
+   *"Well, my ancestor, the Vault Dweller, said that Vault 13 owes us one. I need to find it."*
+   Now he knows who you are.
+2. *"You met my ancestor?"* → *"You saw the Vault Dweller? Where?"* → *"Running?"* → *"You wanted to join
+   my grandsire?"* → *"What do you mean?"* → *"My ancestor was the founder of our tribe…"*
+3. *"I am following in my ancestor's footsteps. Would you like another chance? Will you join me?"* —
+   shown only when you have a free slot.
 
-## RPU changes
+He says yes if your **karma is above 0** and his **reaction to you is above 30**; otherwise *"I have work
+to do here. I c'cannot join you."* He also turns you down at CH 1.
 
-- He carries a **zip gun** when you first meet him.
-- Give him a **radioactive drink** and he **glows in the dark**. A RadAway turns it off.
-- The optional **new Lenny model** looks better but uses rifles instead of pistols and has **no
-  running animation**, so he permanently trails behind.
+:::danger[Ask him before you take the G.E.C.K.]
+The G.E.C.K. question disappears for good once Gruthar hands you the G.E.C.K. in
+[Vault 13](/walkthrough/vault-13). If you had not asked it by then, *"You met my ancestor?"* never
+appears — Lenny can never be recruited, and his healing is never free.
+:::
 
-<Vanilla>No zip gun, no glow, and only the one model.</Vanilla>
+### Getting his reaction above 30
+
+Your karma itself adds nothing to Lenny's reaction. It starts at **5 × (your CH − 2)**; half your Gecko
+reputation is added, a good karma title adds up to 20 and the Presence perk 10, and Sex Appeal gives a
+female character 20 but costs a male one 20. The conversation above adds 25, so with **CH 4 or more** and nothing counting
+against you, you are over the line.
+
+If he still refuses, ask *"What do you do here?"* → *"You can heal people?"* and hear out his pre-war
+story, taking the sympathetic answers down to *"I'm sorry to hear that, but I think you're right. Let me
+ask you about something else."* That adds 50, and **it can be repeated**.
+
+### Healing in Gecko
+
+Until he joins, Lenny is a doctor for hire. Ask what he does and he offers:
+
+| Option | Heals | Price |
+| --- | --- | --- |
+| *"I'm wounded. Can you help me?"* | You, to full HP, crippled limbs included. Takes 8 hours. | $30, or $60 with a crippled limb |
+| *"One of my friends is hurt. Can you help them?"* | You and every hurt or crippled companion, to full. Takes 8 hours. | $30, or $60 for more than one patient (you count) |
+
+It is **free once he knows you are the Vault Dweller's descendant** (the G.E.C.K. line above), and if you
+are short he takes what you have and heals you anyway. He does not treat poison or radiation.
+
+:::caution[The healing ends when he joins]
+While he is in your party, or waiting for you, talking to him opens the party menu, which has no healing
+service. Get patched up first.
+:::
+
+## Westin's heart pills
+
+This belongs to the RPU content in [New Reno](/walkthrough/new-reno). Once you know about Westin's drugs,
+or have Cassidy along, his party menu offers *"I need a professional opinion, Lenny. What do you know
+about managing a heart condition?"*; while you carry <Item>Heart Pills</Item>, *"Can you tell me anything
+about these pills I found, Doc?"* His verdict on heart pills taken with New Reno's pep pills:
+*"Your heart'll explode like a b'blood s'sausage."*
+
+Hearing him out unlocks:
+
+- Renesco's *"I need you to fix me up with a special order."* without going through Doc Jubilee, and his
+  *"complex PDE5-inhibitor compound"* option without Science 80%;
+- a line at Doc Jubilee that needs Science 80% **and** Lenny's advice.
+
+## Stats by level
+
+| Stage | Your level | HP | AP | AC | Doctor | First Aid | Small Guns | Other changes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Recruited | — | 129 | 7 | 5 | 85% | 75% | 70% | ST 4. **No DT or DR at all.** Carry weight 125 lb |
+| 1 | 10–14 | 154 | 7 | 5 | 92% | 85% | 75% | CH 3, IN 7. DT/DR 1/10% normal, 2/15% laser, fire and explosion |
+| 2 | 15–19 | 181 | 7 | 5 | 105% | 100% | 85% | EN 6, CH 4. Laser and fire DR 20%, healing rate 2 |
+| 3 | 20–24 | 206 | 7 | 5 | 125% | 100% | 95% | PE 7, CH 5, LK 6. DT/DR 2/15% normal, 2/25% laser and fire |
+
+"Your level" assumes he is in the party from level 10 on: each stage can come at the first level shown
+and is certain by the last. Melee Weapons (50%), Unarmed (48%), Barter (80%) and carry weight never
+change, and neither does his AP.
+
+## Gear
+
+He carries a <Item>Pipe Rifle</Item> in his pack, not in his hands, with one round of
+<Item>10mm JHP</Item> loaded and a pack of 24 more. Its ST 5 requirement costs him 20% to hit.
+<Vanilla>He carries nothing.</Vanilla>
+
+### Weapons and the new look
+
+RPU's `lenny_new_look` option (in `mods/rpu.ini`) picks his art, and the art decides what he can hold.
+**The default is `1`**, the new look.
+
+| Setting | Look | Weapon classes |
+| --- | --- | --- |
+| `lenny_new_look=1` *(default)* | New ghoul art | Knife, spear, rifle (rifles and shotguns) |
+| `lenny_new_look=0` | Original ghoul art | Knife, pistol, SMG |
+
+The option can be changed mid-game in either direction. It is read when a game is loaded and applied
+then and on every map change, and a weapon the new art cannot hold is taken out of his hand first. His
+*"what weapons can you use"* answer follows the setting. The new art has no running frames, so he may
+trail behind when you run.
+<Unverified>The missing frames are confirmed; whether he actually falls behind in play is
+not.</Unverified>
+
+He has **ST 4** (each point short of a weapon's requirement is −20% to hit), **7 AP** (one shot a turn
+with any of the guns below) and Small Guns as his only real weapon skill. Compare the options on
+[Weapons and Armour](/equipment).
+
+**Default look — rifles and shotguns:**
+
+- <Item>Shotgun</Item> — 12–22, ST 4, and its Accurate perk adds 20% to hit. The best fit early on.
+- <Item>Sawed-Off Shotgun</Item> — 12–24, ST 4 and Accurate, but only 7 hexes of range.
+- <Item>Combat Shotgun</Item> (15–25) and <Item>Pancor Jackhammer</Item> (18–29) — ST 5, so the −20%
+  cancels against Accurate's +20%. Both can burst, see below.
+- <Item>M72 Gauss Rifle</Item> — 32–43 at 50 hexes; ST 6 costs 40%, less 20% for Accurate.
+- <Item>Hunting Rifle</Item> (8–20) and <Item>Sniper Rifle</Item> (14–34) — long range, but ST 5 with
+  nothing to offset the penalty.
+
+**With `lenny_new_look=0` — pistols and SMGs:**
+
+- <Item>Desert Eagle .44</Item> (10–16), <Item>14mm Pistol</Item> (12–22, Accurate), <Item>H&K P90c</Item>
+  (12–16; single shots for 4 AP, 12-round bursts for 5) and <Item>10mm SMG</Item> (5–12) all need only
+  ST 4.
+- <Item>PPK12 Gauss Pistol</Item> — 22–32, ST 4, Accurate, 50 hexes. The pick of them late in the game.
+
+Knives work in either look, spears only in the new one, all on his Melee Weapons of 50%. A
+<Item>Combat Knife</Item> (3 AP) gets two stabs a turn.
+
+:::caution[He bursts without asking]
+His Burst setting offers only *Always!* or *Sometimes* — none of the careful options. With a Combat
+Shotgun, Jackhammer or SMG he bursts half the time on his default *Sometimes*, checked only by the engine's weak last-moment
+safety test. Party Orders' **D** key ("Don't use bursts!") makes him — and the rest of the party — fire
+single shots with those weapons.
+:::
+
+### Armour
+
+Lenny is one of the companions the combat control screen's *Use Best Armor* works on: give him armour
+and press it. His look never changes, since the bundled NPC Armor mod does not cover him.
+
+<Item>Power Armor</Item> and Hardened Power Armor give party members **+3 Strength** as well, which takes
+Lenny to ST 7 — enough for every rifle and shotgun above. They weigh 85 and 100 lb against his 125 lb
+carrying capacity. The two Advanced Power Armors give +4 (ST 8) and weigh 90 and 100 lb.
+
+His gear menu has *"I need you to remove the armor that you're wearing."* while he wears some.
+
+### Radioactive drinks
+
+Give him <Item>Gamma Gulp Beer</Item>, <Item>Roentgen Rum</Item> or <Item>Rot Gut</Item> and he says
+*"I'm f'feeling a b'bit warm now."* — and **glows** until you give him <Item>RadAway</Item>
+(*"That's b'better."*).
+<Vanilla>He does not glow.</Vanilla>
+
+## Healing
+
+- **Skilldex Doctor.** If his Doctor skill is higher than yours and everyone else's in the party, using
+  Doctor from your Skilldex has Lenny do it. It is his best skill at every stage.
+- **"You should heal yourself now."** uses a healing item he carries if he has one. Only with none does
+  he roll his **Doctor** skill — 10–25 HP for an hour. Take his stimpaks away first if you would rather he
+  spent the hour than the stimpak.
+- **Automatically, out of combat**, he uses a carried <Item>Super Stimpak</Item>, <Item>Stimpak</Item>,
+  <Item>Healing Powder</Item>, <Item>Doctor's Bag</Item> or <Item>First Aid Kit</Item> when he drops to
+  60% HP (his default *Stimpaks when hurt a bit*), 30% (*hurt a lot*) or 50% (*any drug*). A First Aid
+  Kit or Doctor's Bag uses up one of the same three daily uses you have.
+- **In combat** he takes healing items below 60% HP on the default setting, 2 AP each.
+- **He never heals you or the other companions** while he is in the party.
+
+Party Orders' **F** key works for him too; its free medical roll uses his Doctor skill.
+
+## Using him
+
+**Combat settings.** Distance can only be *Stay close to me* or *Stay where you are* — he never charges.
+Weapon preference is *None* or *Ranged then melee* (the default); only *None* lets him throw anything.
+By default he goes for the weakest enemy.
+
+**Places that object to him:**
+
+- **Vault City** shuts and locks its gate while he is in your party, unless you are Captain of the Guard
+  or the Enclave is destroyed. Tell him to **wait** outside — a waiting companion is no longer in the
+  party list, so the guard stops objecting.
+- **Dr. Troy** shouts *"A ghoul! Guards!"* and turns hostile if Lenny is with you, unless you are Captain
+  of the Guard. (Talking to him also works once the Enclave is destroyed, but the check he repeats every
+  20–40 seconds ignores that.)
+- **Lynette** is set against you from the start if you talk to her with him along, and two of the replies
+  make her hostile.
+- **Lou** and **Josh** in [Redding](/walkthrough/redding) only brush you off with a remark.
+
+:::danger[Do not loot him while he is unconscious]
+Looting an unconscious Lenny runs the same script handler as stealing from him, and his has no exception
+for party members: he turns hostile at once.
+:::
 
 ## Losing him
 
-- **Leaves** if you become a Childkiller or Slaver, drop to karma −101, or have **CH 1**
-- **Attacks** if you are in Gecko having wrecked the plant or turned the ghouls hostile
-- **Will not rejoin** if your Gecko reputation is Hated or worse — killing one or two ghouls is fine
+He checks these constantly while he is in the party:
 
-:::danger
-If you cause a meltdown in Gecko, everyone there **vanishes 24 hours later**, Lenny included — along
-with everything he was carrying.
-:::
+| Cause | Result |
+| --- | --- |
+| Karma below −100 (the Karma Beacon does not count) | Leaves: *"Too many bad things happen around you. I am leaving before something happens to me."* |
+| Childkiller reputation | Leaves and **never speaks to you again** |
+| Slaver reputation | Leaves — and again every time you take him back |
+| **The Gecko plant is destroyed, a meltdown has started, or its destruction is set up** | Leaves, never speaks to you again, and **attacks on sight** |
+| Your CH drops to 1 | Leaves |
+| Gecko is hostile to you while you are on a Gecko map | **Attacks you** as soon as he can see you — his script checks this before any reason to leave. Only if he cannot see you does he leave, for good |
+
+Settle <Quest>Solve the Gecko powerplant problem</Quest> peacefully if you want to keep him.
+
+- **After "wait here"**, *"Let's go."* is refused — and he leaves the party — at CH 1, with a full party,
+  or when your Gecko reputation is −15 or worse (*"…You're a d'disgrace to the Vault Dweller's
+  m'memory…"*).
+- **Hitting him while he is not in your party** (before he joins, or while he waits) makes him attack you;
+  on any Gecko map the town turns hostile too. While he is with you, the game never runs that check, so
+  a stray shot does not set him off.
+- **Being caught stealing** from him while he is not in your party makes him hostile.
+- **After a meltdown**, a timer starts the first time you enter the Settlement; come back **more than 24
+  hours later** and the townsfolk are gone — Lenny with them, unless he is in your party.
+
+If he dies, nothing special happens to his gear. He has no ending slide.

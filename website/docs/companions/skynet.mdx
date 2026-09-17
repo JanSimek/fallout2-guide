@@ -1,70 +1,287 @@
 ---
 sidebar_position: 8
 title: Skynet
+description: The robot you build on Level 3 of the Sierra Army Depot — a levelling Small Guns gunner with the Cybernetic Brain, much less with any other.
 ---
 
 # Skynet
 
-**Found in:** [Sierra Army Depot](/walkthrough/sierra-army-depot), level 3
-
-Officially the "Brain Bot". **Skynet** properly refers to the version built with the Cybernetic
-Brain — the only one that can level up.
-
-See [Sierra Army Depot](/walkthrough/sierra-army-depot) for assembly: a **Robot Motivator**, a
-**Bio Med Gel**, and a **brain**.
-
-## Which brain
-
-| Brain | Result |
-| --- | --- |
-| Abnormal | Pack mule. You have to **kill** it to get rid of it. |
-| Chimpanzee | Pack mule, but you can tell it to wait. |
-| Human | Mediocre sniper. **Cannot level up.** |
-| **Cybernetic** | The real Skynet: auto-repair, levels up, genuinely useful. |
-
-**Science 121%** is needed to retrieve the Cybernetic Brain from level 4 storage.
-
-## Statistics (Cybernetic Brain)
+The Sierra Army Depot has an unfinished robot on Level 3. You build it yourself from three parts, and
+the brain you give it decides what you get. The game calls it the **Robobrain**, and with the
+Cybernetic Brain it calls itself Skynet. Only that version levels up, and its Small Guns rise from
+110% to 155%. **Take it only with the Cybernetic Brain.** The Human brain gives a gunner that never
+improves, and the Abnormal and Chimpanzee brains can never use a gun.
 
 | | |
 | --- | --- |
-| **Main skill** | Small Guns |
-| **Also good at** | Unarmed at high levels |
-| **Animations** | SMG, rifle |
-| **AC/DT/DR** | 20/8/40 (lv 1) · 20/5/40 (lv 2–6) |
-| **HP by level** | 115 · 143 · 155 · 179 · 197 · 210 |
-| **AP by level** | 10 throughout |
+| **Where** | [Sierra Army Depot](/walkthrough/sierra-army-depot), Level 3 (the Robotics Lab): the Deactivated Robobrain |
+| **Joins if** | You install a Robot Motivator, Biomed Gel and a brain, activate it at the control terminal, and have a free party slot. Intelligence 4 to use the terminals and to talk to it. |
+| **Costs** | The three parts. Installing the brain gives **500 XP**. |
+| **Best at** | Small Guns 110%, Unarmed 100% (Cybernetic brain) |
+| **Weapons** | SMGs and rifles only (see [Gear](#gear)) |
+| **Levels** | 5 level-ups with the Cybernetic Brain: the first at player level 10–13 if it is with you by then, then one in every 4 of your level-ups ([how levelling works](/companions/overview)). The other brains never level. |
 
-## Weapons
+## The four brains
 
-**.223 Pistol** → **Pancor Jackhammer** or **H&K P90c** → **Gauss Rifle**. An **H&K G11E** works if
-you do not mind expensive ammunition being sprayed around. It can use a **Power Fist** at high levels,
-though not as well as a gun.
+Every brain gives the same body: 115 HP, 10 AP, AC 27, Strength 8, carry weight 225, and DT 5 / DR 40%
+against normal damage. The rest depends on the brain.
 
-## Quirks
+| | Cybernetic | Human | Chimpanzee | Abnormal |
+| --- | --- | --- | --- | --- |
+| **Effective Science needed** (below) | 121+ | 81+ | 41+ | 1+ |
+| **PE / IN / LK** | 7 / 10 / 5 | 7 / 5 / 5 | 1 / 2 / 5 | 1 / 3 / 1 |
+| **Sequence** | 14 | 14 | 2 | 2 |
+| **Small Guns** | 110% | 100% | 33% | 33% |
+| **Unarmed** | 100% | 60% | 60% | 60% |
+| **Melee damage** | 8 | 7 | 13 | 8 |
+| **Critical chance** | 5% | 10% | 10% | 6% |
+| **Can use a gun** | Yes | Yes | **No** | **No** |
+| **Levels up** | 5 times | No | No | No |
+| **Orders in dialogue** | Wait, leave, weapons, auto-repair | Wait, leave, weapons | Wait | **None** |
+| **If the depot is hostile** | Joins even with a full party, and takes no orders | Cannot be recruited | Cannot be recruited | Cannot be recruited |
 
-:::note
-Skynet is the **only companion that cannot be healed** with First Aid, Doctor or chems. It repairs
-itself to full HP on command using its internal repair systems.
+The Chimpanzee and Abnormal robots are allowed only "Unarmed" as a weapon preference and only "Stay where
+you are" as a distance. In combat they stand still and punch whatever comes next to them.
 
-You can also use **Repair** on it for a few points, three times a day — but not tools.
+## Building the robot
+
+Use each part from your inventory on the body.
+
+1. **<Item>Robot Motivator</Item>**. Every hostile Robobrain placed on Levels 1–3 carries one: four
+   stand in a row on Level 1, four more are on Level 2 and two on Level 3. Robobrains that the repair
+   bay builds later carry no motivator.
+2. **<Item>Biomed Gel</Item>**. Two jars lie on the floor: one on Level 3 near the body, one on Level 1.
+3. **A brain**, from Level 4 (next section). Installing it gives **500 XP**, whichever brain it is.
+   **The body accepts only the first brain you install.** You cannot swap it later.
+
+Using Science or Repair on the body tells you whether it is ready: "Look's all set to be activated."
+
+To switch it on, use the **Control Terminal** on the same level ("Project: Organic and Robotic Synthesis
+Experiment"). You need Intelligence 4 to read it. **"Systems Check."** lists any missing parts.
+
+:::danger[You get one activation]
+"Activate Robot" works only once. After that the terminal only offers "End Program". **If any part is
+missing, the body explodes** and there is no second attempt. Run the systems check first.
 :::
 
-:::caution
-It starts with **no EMP protection whatsoever**. One level-up gives it full protection.
+With all three parts in place, a working robot appears where the body was.
+
+## Getting a brain
+
+The **Bio Storage Control Terminal** on Level 4 (Intelligence 4) has all four brains: Retrieve →
+Organs → Retrieve Brain. First you must "Attempt to make adjustments", and **you get one attempt,
+ever**. It makes a Science roll at −30:
+
+- if the roll passes, your effective Science is your Science skill;
+- if it fails, your effective Science is your skill − 40.
+
+The roll is made with the Science of a companion such as Myron if theirs is the party's highest and it
+is their own best skill. The brains offered still depend on your own Science.
+
+| Effective Science | Brains offered |
+| --- | --- |
+| 0 or less | None. All the brains die, and you cannot try again. |
+| 1–40 | Abnormal |
+| 41–80 | Abnormal, Chimpanzee |
+| 81–120 | Abnormal, Chimpanzee, Human |
+| 121 or more | All four, including **Cybernetic** |
+
+So the Cybernetic Brain needs **Science 121** and a passed roll, and is certain only at **Science 161**.
+**Save before you adjust.**
+
+:::caution[One brain, then the terminal breaks]
+Retrieving a brain puts it in your inventory, blows up the storage repair robot and leaves the terminal
+permanently "Out of Order". Do everything else you want from that terminal first — see
+[Level 4](/walkthrough/sierra-army-depot).
 :::
 
-**It is painfully slow.** And because you may not reach the SAD until quite late, Vic and Cassidy may
-already have Gauss Rifles, in which case you do not need a third sniper.
+### The organ extractor
 
-:::danger[Do not anger Skynet first]
-Tell the terminal you are "Dixon", or be sarcastic, and then build the bot with the Cybernetic Brain,
-and the moment you leave the depot it **instantly kills one of your other companions** — not Marcus,
-Goris or a dog — and attacks you.
+The **Vault-Tec organ extraction unit** on Level 4 can make more brains if storage failed you. The
+organ setting does nothing, because the machine only ever extracts brains. Set the species (Mutant and
+Deathclaw are names you scratch onto the console) and choose "Proceed with extraction.". The unit then kills **every living creature in the extraction room**,
+whether it is in your party or not. If you are standing in the room, it kills you too.
 
-**Assemble the bot before talking to Skynet at all** and it is friendly regardless.
+| Species setting | Victims that yield a brain | Brain |
+| --- | --- | --- |
+| Human | men, women, children | Human Brain |
+| Canine | dogs (K-9, Robodog and Laddie included) | Abnormal Brain |
+| Mutant | super mutants and ghouls | Abnormal Brain |
+| Deathclaw | deathclaws | Abnormal Brain |
+| Rodent | rats | none |
+| Feline, Road Runner | nobody | none |
+
+You get one brain for each matching victim. Robots never match. Each victim costs **−100 karma**,
+robots included, unless it is a Floating Eye Bot or a Sentry Bot. Your first extraction with anyone in
+the room gives **500 XP**, once.
+
+## Recruiting
+
+Talk to the robot. Every option needs Intelligence 4; with less you only get "Urg". There is no karma,
+reputation or skill requirement.
+
+- **Depot not hostile to you:** "Take robot with you." It joins if you have a free slot. With a full
+  party you get "[I'm a loner. I don't want this hunk of junk following me around.]" and it stays.
+- **Depot hostile, Cybernetic brain:** "Skynet will travel with you." Its only option, "Exit", adds it
+  to your party **even if the party is full**. This is the robot RPU scripts to betray you (next
+  section).
+- **Depot hostile, any other brain:** no usable option. It can never be recruited.
+
+## Angering Skynet
+
+Skynet itself lives in the **Computer Console** on Level 3. Either of these marks you as an enemy of
+the depot, and that is what a Cybernetic robot's betrayal checks:
+
+- telling the Level 3 camera terminal "I'm Corporal Dixon.";
+- answering Skynet "It's nice to want." and then "Exit.". The apology, "Wait! It was a joke.", needs
+  **Speech 76%**.
+
+After that, Skynet's console shows its hostile screen ("You Will Obey Or You Will Cease To Function").
+"Bring it on!" and "Exit." there start the robot fight. **Agreeing to help Skynet does not undo it.**
+
+You do not need to talk to Skynet to build the robot; none of the parts, terminals or brains check
+whether you did. If you do help it ("How can I help you?"), it can reset the depot's security: its
+message says Levels 1–4, but the alarms it clears are those on Levels 1–3.
+
+Once a Cybernetic Brain is installed, both of those terminals show only error screens, so after that
+you can no longer anger Skynet. A Dixon answer given before you install the brain still counts, though.
+
+:::danger[The betrayal, and why it misfires]
+If the depot is hostile, a Cybernetic robot is scripted to turn on you when you reach the depot's
+surface map (the Battlefield). You can tell in advance: while the depot is hostile, talking to it gets
+only "Give weapon / Proceed to surface." and "Bye", so you cannot order it to wait or leave.
+
+The script means it to run at your nearest companion, deal them 1000 explosion damage, then leave the
+party and attack you: "Skynet is FREE! Your purpose is at an end." As written, it never gets that far
+while the robot is in your party. The "nearest party member" it looks for is always the robot itself,
+and its distance check is handed a tile number where the engine expects a character. Under FOR:CE that
+stops the robot's script with an error: on that map it attacks nobody, stops following you and cannot
+be talked to. Once you leave the map its script runs again, and it does not try a second time. <Unverified>Worked out from the RPU script and the FOR:CE source; not tested
+in game.</Unverified>
 :::
 
-:::note
-Skynet **cannot climb down the EPA elevator shaft**. It waits at the top.
+## Stats by level
+
+For the Cybernetic brain only. Each level-up also heals it fully. The player-level ranges assume the
+robot has been in your party since player level 10: the earliest level at which each stage can come,
+and the level by which it is certain.
+
+| Stage | Player level | HP | AP | AC | Small Guns | Unarmed | Critical chance |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Built | — | 115 | 10 | 27 | 110% | 100% | 5% |
+| 1 | 10–13 | 143 | 10 | 27 | 110% | **70%** | 15% |
+| 2 | 14–17 | 155 | 10 | 27 | 120% | 80% | 20% |
+| 3 | 18–21 | 179 | 10 | 27 | 130% | 90% | 23% |
+| 4 | 22–25 | 197 | 10 | 27 | 145% | 100% | 25% |
+| 5 | 26–29 | 210 | 10 | 27 | 155% | 110% | 25% |
+
+These never change: SPECIAL, carry weight 225, DT 5 / DR 40% against normal damage<Vanilla>The
+built robot starts with DT 8 and drops to 5 at its first level-up.</Vanilla>, Big Guns 80%, Energy
+Weapons 75%, Melee Weapons 70%.
+
+:::caution[No EMP protection, ever]
+It has DR 0 and DT 0 against EMP at every stage, so EMP hits it for full damage. One
+<Item name="Grenade (Pulse)">Pulse Grenade</Item> does up to 150 EMP damage, more than the 115 HP it
+starts with. Do not throw them anywhere near it.
+<Vanilla>The level-up stages make it immune to EMP (DR 500).</Vanilla>
 :::
+
+## Gear
+
+It arrives with nothing. [Weapons and Armour](/equipment) compares everything in the game.
+
+**Its art has SMG and rifle animations only**, so those are the only guns it can use:
+
+| Class | Weapons |
+| --- | --- |
+| SMG | <Item>10mm SMG</Item>, <Item>14mm Pistol</Item>, <Item>.223 Pistol</Item>, <Item>H&K P90c</Item>, <Item>M3A1 "Grease Gun" SMG</Item>, <Item>H&K G11</Item>, <Item>H&K G11E</Item> |
+| Rifle (rifles and shotguns) | <Item>Hunting Rifle</Item>, Scoped Hunting Rifle, <Item>Assault Rifle</Item>, Assault Rifle (Exp. Mag.), <Item>Shotgun</Item>, <Item>Sawed-Off Shotgun</Item>, <Item>Combat Shotgun</Item>, <Item>H&K CAWS</Item>, <Item>Pancor Jackhammer</Item>, <Item>Sniper Rifle</Item>, <Item>Tommy Gun</Item>, <Item>Pipe Rifle</Item>, <Item>FN FAL</Item>, FN FAL (Night Sight), <Item>FN FAL HPFA</Item>, <Item>XL70E3</Item>, <Item>M72 Gauss Rifle</Item>, Red Ryder BB Gun, Red Ryder LE BB Gun, <Item>Jonny's BB Gun</Item> |
+
+It cannot use any other pistol, any melee weapon, big gun or energy weapon, and it cannot throw
+grenades. Weapons with no animation of their own, like <Item>Brass Knuckles</Item> or the
+<Item>Power Fist</Item>, use its punch.
+
+:::danger[Change its weapon preference first]
+Its default combat setting has **Weapon Pref. "Unarmed"**, so it will not fire a gun you give it. Set
+Weapon Pref. to "Ranged" in its custom settings, or switch it to Aggressive, Berserk or Defensive (the
+Human robot cannot pick Defensive). Coward is also unarmed only.
+:::
+
+With Strength 8 it meets the Strength requirement of every gun it can use. With 10 AP, the AP cost decides how often it
+fires:
+
+- **5-AP single shots fire twice a turn.** The <Item>M72 Gauss Rifle</Item> (32–43, range 50,
+  Accurate: +20% to hit) is the best of these. Before you have one, the <Item>Pancor Jackhammer</Item>
+  (18–29, range 35, Accurate), the <Item>Combat Shotgun</Item> (15–25, range 22, Accurate) or the
+  <Item>.223 Pistol</Item> (20–30, range 30, single shots only) will do.
+- **6-AP bursts fire once a turn** (G11, G11E, Jackhammer, CAWS, Combat Shotgun, assault rifles, FN
+  FALs, XL70E3, Tommy Gun, 10mm SMG).
+- **The <Item>H&K P90c</Item> and <Item>M3A1 "Grease Gun" SMG</Item> burst for 5 AP**, so they fire two
+  bursts a turn.
+
+Cybernetic Skynet can use every burst setting, so set it to "Be absolutely sure you won't hit me". Even
+then the engine only simulates one random burst to decide whether it is safe. The Human robot only gets
+"Always!" and "Sometimes, don't worry about hitting me", so **give it single-shot weapons**.
+
+**It cannot wear armour.** FOR:CE lets only two-legged companions wear it, and the NPC Armor mod does
+not cover the Robobrain.
+
+## Using it
+
+- **Plan the Science roll before you touch the storage terminal.** You get one attempt, and with
+  Science 40 or lower a failed roll kills every brain.
+- **Get all three parts before you press "Activate Robot".**
+- **Keep the depot friendly** if you want Skynet. While the depot is hostile it takes no orders, and its
+  betrayal script breaks it on the surface (above). If you install the brain first, the terminals can
+  no longer turn the depot against you.
+- **Fix its weapon preference as soon as it joins.**
+- **Healing is limited.** Stimpaks and other chems do not work on robots, and First Aid and Doctor
+  always fail on it. What works:
+  - Skynet's own **auto-repair** (below);
+  - your **Repair** skill: 4–10 HP per success, three times a day. A <Item>Tool</Item> or
+    <Item>Super Tool Kit</Item> used on it does nothing;
+  - resting (2 HP per 3 hours) and world-map travel (2 HP about every second of travel). "Rest until
+    party healed" ignores a wounded robot, so rest for a set time instead.
+
+## Auto-repair and other orders
+
+Skynet's menu ("You wish to interact with Skynet?") offers:
+
+- **"Initiate auto repair sequence."**: heals it to full HP. The screen fades and **2 game hours
+  pass**. It works as often as you like, out of combat.
+- "Wait for me here." and "You are no longer needed. Leave.".
+- "What weapons can you use?": "Database contains general knowledge of use and operation of small
+  rifles and large handguns.", with an option to put its weapon away.
+- "Let's change formation.": **does nothing**. The setting it stores is never read, so it keeps
+  following at its usual distance.
+- "Do you have any other skills?": a line about research, with no effect.
+
+There is no "move out of my way" order. Push it instead.
+
+The Human robot's menu has wait, leave and the weapons question, but no repair. The Chimpanzee robot's
+menu has only "Wait here.", and the Abnormal robot's has nothing but "Bye.".
+
+:::tip[It switches off the depot's security]
+Robots of every brain type switch off the alarm on whichever depot level they are on. Each time it
+does, it resets that level's alert and floats "Deactivating all Security - Level N".
+:::
+
+## Losing it
+
+- **Wait and leave can both be undone.** Talk to it again and pick "Take robot with you."; the
+  party-size check applies.
+- **The Abnormal robot has no wait or leave order at all.** The EPA elevator shaft (below) still parks
+  it like any other robot.
+- **If the depot turns hostile while a non-Cybernetic robot is parked, it can never rejoin.** A parked
+  Cybernetic robot rejoins through "Exit" even with a full party, and the betrayal script still applies
+  (see above).
+- **Stealing:** get caught stealing from it while it is **not** in your party and it attacks you on
+  sight from then on. While it is in your party, nothing happens.
+- **Shooting it:** its script does not react, and while it is in your party the game does not even run
+  that part of it. <Unverified>Whether the engine turns it against you for the rest of that fight was
+  not traced.</Unverified>
+- **The EPA:** it cannot follow you down the broken elevator shaft. It leaves the party and waits at
+  the top, and you can talk to it there to take it along again.
+- **Gear:** a robot that leaves keeps what it carries; nothing is dropped or destroyed.
+- **Death:** killing it yourself costs 10 karma and counts as killing a good character towards the
+  Champion and Berserker reputations. It has no quest effect.

@@ -1,182 +1,592 @@
 ---
 sidebar_position: 1
 title: Companions
-description: How companions work — recruiting, equipping, levelling, and what will make them leave.
+description: Who to take and how companions work — party size, levelling, combat settings, gear, healing, carrying, and what makes them leave.
 ---
 
 # Companions
 
 > *"Wow! I feel as if I've passed some arbitrary experience value and gained more power!"* — Marcus
 
-Companions fight for you, carry your loot, and occasionally die in ways you did not expect.
-Experience is **not** divided among them, so a companion is pure profit.
-
-**Your limit is Charisma ÷ 2, rounded down.** See [SPECIAL](/character/special).
+Companions fight for you, carry your loot and use their best skills in your place. They cost you
+nothing in experience: **every kill they make pays you in full**, and nothing is shared out. This page
+covers who is worth a slot and the rules they all follow; each companion's own page has the details.
 
 ## Who to take
 
-| Companion | Where | Verdict |
-| --- | --- | --- |
-| **[Sulik](/companions/sulik)** | Klamath | Take him. First and best early companion. |
-| **[Vic](/companions/vic)** | The Den | Take him. Good with a rifle, useful Repair. |
-| **[Cassidy](/companions/cassidy)** | Vault City | **Best in the game.** Take him. |
-| **[Marcus](/companions/marcus)** | Broken Hills | Excellent damage, kills your party by accident. |
-| **[Goris](/companions/goris)** | Vault 13 | Strong criticals, arrives very late. |
-| **[Skynet](/companions/skynet)** | Sierra Army Depot | Good with the right brain, slow. |
-| **[Lenny](/companions/lenny)** | Gecko | A pack mule with a Doctor skill. |
-| **[Myron](/companions/myron)** | The Stables | Recruit, use, dismiss. A chemistry set with legs. |
-| **[K-9](/companions/k9)** | Navarro | The best of the dogs, which is not saying much. |
-| **[Dogmeat](/companions/dogmeat)** | Special encounter | Nostalgia. |
-| **[RPU companions](/companions/rpu-companions)** | EPA | Kitsune, Cat Jules, Dex — pick one. |
+Stats are at recruitment. Every one of them also needs a free party slot, except where
+[Party size](#party-size) says otherwise.
 
-**Miria and Davin** from Modoc, **Laddie**, the **Robodog** from NCR and the **pariah dog** are all
-available and none of them are worth the slot.
+| Companion | Where | Joins if | Best at | Level-ups | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| **[Sulik](/companions/sulik)** | [Klamath](/walkthrough/klamath) | His $350 debt is settled (or paid off with a rescue reward); karma −100 or better; not a Slaver or Childkiller | Melee 95%, Unarmed 90% | 6 | Take him. He is available from the second town, and Melee and Unarmed top his sheet at every stage. Knife, hammer, spear or SMG. |
+| **[Vic](/companions/vic)** | [The Den](/walkthrough/the-den) | Freed: <Item>Vic's Radio</Item> plus $1000 to Metzger, or Metzger dead | Repair 70%, Small Guns 50% | 6 | Take him. He is weak at first (70 HP) but levels from your level 5, ends with Small Guns 135% and Energy Weapons 145%, and does your Repair. Never leaves over your karma. |
+| **[Cassidy](/companions/cassidy)** | [Vault City](/walkthrough/vault-city), Courtyard | Karma −100 or better; not a Slaver or Childkiller | Small Guns 95%, Melee 90%, Energy 80% | 4 | Take him. He is a good gunman from day one (Small Guns reaches 160%), arrives in leather armour and is worth 300 XP. Pistols, rifles and shotguns. Keep Jet, Buffout and Psycho away from him. |
+| **[Myron](/companions/myron)** | [The Stables](/walkthrough/the-stables) | Past his guards, then talked round | Science 87%; Small Guns, Big Guns, Energy Weapons, Unarmed and Melee 50% (Throwing 16%) | 4 | Use him as a crafter, not a fighter (70 HP, 7 AP). He makes stimpaks and antidotes and is worth 750 XP to recruit. |
+| **[Lenny](/companions/lenny)** | [Gecko](/walkthrough/gecko) | Karma above 0; his reaction above 30; you asked him about the G.E.C.K. | Doctor 85%, Barter 80%, First Aid 75% | 3 | A medic with lots of HP (129, rising to 206), but his AP stays at 7 and he carries only 125 lb. If the Gecko plant is wrecked he leaves and turns on you. |
+| **[Marcus](/companions/marcus)** | [Broken Hills](/walkthrough/broken-hills) | Purifier fixed; the conspiracy exposed (or the NCR scientist reported); karma 0 or better | Big Guns 115%, Unarmed 110%, Melee 110% | 5 | The heavy hitter: 130 HP, AC 28, carries 275 lb, and comes with a loaded Minigun and 1000 XP. He can use big guns only, and many of those fire nothing but bursts. |
+| **[Skynet](/companions/skynet)** | [Sierra Army Depot](/walkthrough/sierra-army-depot) | You build it: <Item>Robot Motivator</Item>, <Item>Biomed Gel</Item> and a brain. The Cybernetic brain needs Science above 120% and a passed Science roll at −30 (or Science 161%+), and you get one try. | Small Guns 110%, Unarmed 100% | 5 (Cybernetic brain only) | A good gunner (Small Guns reaches 155%) that uses SMGs and rifles only. It will not fire a gun until you change its Weapon Pref., and it takes no chems or armour. |
+| **[Goris](/companions/goris)** | [Vault 13](/walkthrough/vault-13) | Karma 0 or better; Vault 13 reputation 0 or better; not a Childkiller or Berserker | Unarmed 110%, 11 AP | 6 | Unarmed 110% rising to 170%, no gear to manage, and his claws cut through armour. He walks home if your karma dips below 0. |
+| **[Dogmeat](/companions/dogmeat)** | Cafe of Broken Dreams [special encounter](/systems/random-encounters#special-encounters), from your level 6 | You wear no armour, or you feed him | Unarmed 91%, 15 AP | 6 | Up to 17 AP and Unarmed 165%, and the $2000 K-9 Kevlar gives him combat-armour protection. You can't hand him anything to carry. |
+| **[K-9](/companions/k9)** | [Navarro](/walkthrough/navarro) | Schreber dead; you repair it (Repair roll at −10); karma −100 or better and not a Childkiller at that moment | Unarmed 100%, 14 AP, AC 33 | 4 | It reaches 19 AP, more than any other companion, keeps AC 33 at every stage, and joins over your party limit. It fights with its teeth only and carries nothing. |
+| **[Robodog](/companions/robodog)** | [NCR](/walkthrough/ncr) | Dr. Henry pays you with it for his serum test (Science 80%) | Unarmed 110% | 4 | The weakest dog (9–12 AP, 97–137 HP), but immune to EMP and repairable in the field. |
+| **[Kitsune](/companions/rpu-companions#kitsune)** | [EPA](/walkthrough/epa#blue-level), Blue Level | The ERSI canister; Charisma 5 (or Speech 81%+ as a second chance) | Lockpick 135%, Unarmed 125%, Melee 115% | 5 | Picks locks for you, can use every weapon class, and teaches you +10 Sneak, Steal and Lockpick. No DT or DR. |
+| **[Cat Jules](/companions/rpu-companions#cat-jules)** | [EPA](/walkthrough/epa#blue-level), Blue Level | The ERSI canister; you ask him along | Small Guns 111%, Unarmed 110%, Energy 98% | 5 | The easiest of the three to recruit. He can use every weapon class and teaches you +10 Small Guns, Energy Weapons and Big Guns. |
+| **[Dex](/companions/rpu-companions#dex)** | [EPA](/walkthrough/epa#blue-level), Blue Level | The ERSI canister; you take him — any refusal and he attacks | Melee 144%, Unarmed 114% | 5 | A strong fighter, but he can only use knives, pistols, SMGs and his fists. He teaches you +15 Speech and Barter. |
+| **[Pariah dog](/companions/other-companions#the-pariah-dog)** | Special encounter, from your level 6 | You fail a Luck roll | 750 HP; never fights | None | Kill it. It drops your Luck to 1 (3 with Gifted) and gives you the Jinxed perk. |
+| **[Laddie](/companions/other-companions#laddie)** | [Modoc](/walkthrough/modoc) | PE 6, IQ 6 and Modoc reputation 1+ (or karma 500+) when you first ask Balthas about his son | Unarmed 72%, 20 HP | None | Free — he takes no slot — until he finds Jonny and leaves. Keep him out of fights. |
+| **[Davin, Miria](/companions/other-companions#davin-and-miria)** | [Modoc](/walkthrough/modoc) | The shotgun wedding | Unarmed 46%, 35 HP | None | Avoid them. They take a slot, never level, can't be told to wait, and are hard to get rid of. |
 
-## Equipping them
-
-Give each companion the best **armour** and **weapon they can actually use** that you are not using
-yourself, plus a handful of stimpaks.
-
-:::caution[Animations, not skills]
-A companion can equip any weapon they have **animation frames** for — which does not mean they are any
-good with it. Lenny can hold an Alien Blaster because it uses the pistol animation, and will miss with
-it constantly.
-
-They will not equip a weapon they have no ammunition for, or one that conflicts with their current
-combat settings.
+:::note[Only one of the EPA three]
+Only one ERSI canister exists, and a sleeper woken without one dies. You get Kitsune, Cat Jules **or**
+Dex — see [their page](/companions/rpu-companions).
 :::
 
-Two animations are non-obvious: the **14mm Pistol and .223 Pistol use the SMG animation**, and the
-**Tommy Gun uses the rifle animation**.
+## Party size
 
-:::note[Grenades]
-A companion can only throw grenades if their weapon preference is set to **"None"**. That rules out
-Sulik and Lenny despite them having the animations.
-:::
+**Your limit is half your Charisma, rounded down — one more with Magnetic Personality — and never
+more than five.**
 
-:::tip[Set combat options immediately]
-Open each companion's custom combat settings the moment you recruit them. The defaults will get them
-killed, and will get *you* killed when they burst-fire through your back.
-:::
+| Charisma | 1 | 2–3 | 4–5 | 6–7 | 8–9 | 10 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Companions | 0 | 1 | 2 | 3 | 4 | 5 |
+| With Magnetic Personality | 1 | 2 | 3 | 4 | 5 | — |
 
-:::note[RPU: Party Orders]
-The Party Orders mod is bundled with RPU. It lets you give standing combat orders rather than
-negotiating with the AI. Turn it on in the installer.
-<Vanilla>Combat behaviour is controlled only by the per-companion settings dialogue.</Vanilla>
-:::
+- **[Magnetic Personality](/character/perks)** is a perk from level 6, and needs Charisma 9 or less.
+  It adds a slot, not a point of Charisma.
+- The Charisma that counts is your **current** value, so chems, the Gain Charisma perk and
+  <Item>Mirrored Shades</Item> all help. The shades only count while they are in one of your hands.
+  See [Charisma](/character/special#charisma).
+- **The engine has no limit; the recruiting scripts do.** A companion checks your limit when they
+  first join, and again **when a companion you told to wait rejoins**. Nobody is thrown out
+  if your Charisma drops later — except Lenny, who leaves a Charisma 1 character.
+- **Everyone in the party counts**, dogs and robots included. These don't count: Laddie, Bess (the
+  Modoc brahmin), anyone told to wait, the dead, and invisible members such as Goris on his way home.
+- **These join without checking your limit:** Laddie, Bess, Davin or Miria (at the wedding), the
+  pariah dog, K-9 the first time, and Skynet when the depot is your enemy. After that, all of
+  them except Laddie and Bess count against it.
+- **Charisma 1:** Sulik, Cassidy, Lenny and the three EPA companions refuse you even if Magnetic
+  Personality leaves you a free slot.
 
-## Healing
-
-Told to heal, a companion works through: **Super Stimpak → Stimpak → Healing Powder → Doctor's Bag →
-First Aid Kit → their best healing skill**. That skill is First Aid for everyone except **Lenny**, who
-uses Doctor (10–25 HP against First Aid's 5–15).
-
-:::caution
-A companion using a healing **skill** counts against **your own** three-times-a-day limit.
-
-If they are holding a weapon you may have to end the conversation before they can heal — they need to
-play the put-away animation first.
+:::caution[Intelligence 3 or less]
+A low-Intelligence character cannot recruit Cassidy, Myron, Marcus, Lenny, Skynet, Robodog or the EPA
+three: their recruiting lines all need Intelligence 4. Sulik, Vic, Goris and Dogmeat have low-Intelligence
+lines that work. See [low Intelligence](/systems/low-intelligence#companions).
 :::
 
 ## Levelling
 
-Every time **you** level up, each companion who has not levelled recently has a **chance** to gain a
-level. Miss it and the odds improve next time. They do not need to be present when you earn the XP,
-only at the moment you level.
+Companions have no experience of their own. They gain levels when **you** do, following two numbers
+per companion in the game's `party.txt`:
 
-Most companions level **four or five times** in a game, gaining HP, AP, carry weight and combat skill
-non-randomly.
+- **A starting level.** Levels you gain before it don't count.
+- **An interval.** The companion gains exactly **one level-up per so many** of your level-ups that
+  count. A dice roll decides where in that window it lands, not whether it happens.
 
-:::tip
-Read their level-up comments. They start bland and become genuinely funny at higher levels — Marcus
-and Myron especially.
+A level-up of yours counts for a companion only if:
+
+- they are **in the party at that moment** — not told to wait, not dead;
+- your new level is at least their starting level;
+- they still have level-ups left.
+
+The check happens the instant an XP award takes you over a level threshold, once for each level
+gained. **Here and Now's free level never counts.** The count is kept per companion in your save, so
+it survives dismissing and re-recruiting them. Level-ups of yours they miss while waiting don't
+count, so they fall behind.
+
+| Companion | Level-ups | Counting starts at your level | One level-up per | First one at your level | Last one at your level |
+| --- | --- | --- | --- | --- | --- |
+| Vic | 6 | 5 | 4 | 5–8 | 25–28 |
+| Myron | 4 | 6 | 4 | 6–9 | 18–21 |
+| Sulik, Dogmeat | 6 | 6 | 3 | 6–8 | 21–23 |
+| Robodog | 4 | 9 | 4 | 9–12 | 21–24 |
+| Lenny | 3 | 10 | 5 | 10–14 | 20–24 |
+| Cassidy | 4 | 10 | 4 | 10–13 | 22–25 |
+| Skynet (Cybernetic brain) | 5 | 10 | 4 | 10–13 | 26–29 |
+| Goris | 6 | 10 | 4 | 10–13 | 30–33 |
+| Marcus, Kitsune, Dex, Cat Jules | 5 | 12 | 3 | 12–14 | 24–26 |
+| K-9 | 4 | 12 | 4 | 12–15 | 24–27 |
+| Pariah dog, Laddie, Davin, Miria, Skynet with another brain | never | — | — | — | — |
+
+The ranges assume the companion has been with you since their starting level; one recruited later
+starts counting from the first of your level-ups they are present for. Within a window the chance
+climbs with each level-up that passes without one:
+
+| One level-up per | 1st of your level-ups | 2nd | 3rd | 4th | 5th |
+| --- | --- | --- | --- | --- | --- |
+| 3 | 34% | 66% | certain | | |
+| 4 | 26% | 50% | 75% | certain | |
+| 5 | 21% | 41% | 60% | 80% | certain |
+
+**What a level-up does:**
+
+- **Heals fully.** Crippled limbs are not mended.
+- **Replaces their stats and skills with fixed values** for that stage — nothing is random. Not
+  everything goes up: Lenny, Kitsune and Skynet never gain AP, carry weight rises only for Sulik,
+  Goris, Vic and Dogmeat, and some skills drop between stages. Each companion's page has the table.
+- **Takes off their armour and weapon and puts them back on.** Armour bonuses are kept.
+- **Clears any drug effect on their stats** — see [Chems](#chems).
+
+The message log says "*name* has gained in some abilities.", and most companions also comment above
+their heads. Marcus has no line for his fifth level-up.
+
+## Experience
+
+- **Nothing is divided.** Every XP award goes to you in full, with Swift Learner's bonus.
+- **Your companions' kills count as yours.** A kill by anyone on your team adds the victim's XP to
+  what you are paid at the end of the fight, and goes into your kill statistics.
+- **Kill karma is yours alone.** RPU's karma and reputation rules for kills only count your own
+  killing blows, so a child killed by a companion does not make you a Childkiller that way, and
+  their kills do not push you towards Berserker.
+- Quest XP goes to you whoever is in the party.
+- Killing a companion yourself counts like any other kill. Myron and the pariah dog count as evil
+  (+5 karma). Sulik, Vic, Cassidy, Lenny, Marcus, Goris, Dogmeat, Robodog, Skynet, Laddie, Davin and
+  Miria count as good (−10 karma). K-9 counts as neutral (no karma change), and the EPA three's
+  scripts record nothing.
+
+## Combat settings
+
+Talk to a companion who is in your party and open **Combat Control** from the dialogue window. It has
+**Use Best Weapon**, **Use Best Armor** and **Trade** buttons, the five dispositions — **Berserk,
+Aggressive, Defensive, Coward, Custom** — and the **Custom** settings screen.
+
+- Each disposition is a fixed set of AI settings. **Custom is the default for every companion**, and
+  the only set you can edit. It is also the only one saved with your game.
+- **Each companion only has some of the options.** Anything their entry in `party.txt` doesn't list
+  is greyed out — Marcus, for instance, can only Charge or act On his own. Each companion's page lists
+  what they get.
+- **K-9 and Robodog share one set of Custom settings.** Changing one changes the other.
+- Dogmeat only has Custom, Aggressive and Berserk. His AI sets are numbered differently from everyone
+  else's, and an RPU script keeps his buttons working.
+
+### The Custom settings
+
+| Setting | Choice | What it does |
+| --- | --- | --- |
+| **Burst** | Always! | Always uses the weapon's second attack mode (usually a burst). |
+| | Sometimes, don't worry about hitting me | Uses it now and then. |
+| | Be sure / Be careful / Be absolutely sure you won't hit me | Uses it only if the chance to hit is at least **85% / 50% / 95%**, and the safety check (below) passes. |
+| **Run Away** | Abject coward … You need a tourniquet | Runs when HP falls below **100% / 75% / 60% / 40% / 25%** of maximum (Abject coward: any damage). |
+| | Never! | Never runs. |
+| **Weapon Pref.** | None | Ranged, then thrown, then melee, then unarmed. **The only choice that lets them throw grenades.** |
+| | Melee / Melee then ranged / Ranged then melee / Ranged / Unarmed | Only those attack types, in that order. A weapon whose main attack is not on the list is never used. |
+| **Distance** | Stay close to me | Stays within 5 hexes of you, and won't chase enemies that are far from you. |
+| | Charge! | Closes in before attacking, and also goes after fleeing enemies. |
+| | Snipe the enemy | Backs away (up to 10 hexes) from a close enemy when it can afford only one attack, or when it is outgunned. |
+| | On your own | No special movement. |
+| | Stay where you are | Never moves. |
+| **Attack Who** | Whoever is attacking me | Despite the wording, the enemy attacking **you**. |
+| | The strongest / The weakest / Whoever is closest | Picks from everyone attacking the party. |
+| | Whomever you want | Whoever last hit this companion. |
+| **Chem Use** | I'm clean | Never. |
+| | Stimpaks when hurt a bit / a lot | Healing items below **60% / 30%** HP. |
+| | Any drug some of the time / any time | Healing items below 50% HP, plus a 25% / 75% chance every third turn of taking other drugs they carry. |
+
+Fleeing enemies are left alone except on Berserk or Charge!. Each drug costs the companion 2 AP, and
+only two-legged companions use them (see [Healing](#healing)).
+
+:::caution[Set Run Away yourself — and again after a level-up]
+Until you pick a Run Away option, most companions flee only **below 10 HP** — or when crippled or
+blinded. Robodog and K-9 don't flee on HP at all. The threshold you pick is worked out from their
+maximum HP **at the moment you pick it**, so it falls behind when they level up. Pick it again.
 :::
 
-## Chems
+:::danger[The burst safety check is weak]
+Before a burst, the game fires one imaginary random spray. It objects only for an ally caught in it
+who has **some damage resistance** to the weapon's damage type (and whose threshold the weapon can
+beat) — an ally with 0% resistance is ignored. The real burst is then rolled afresh. **Keep yourself
+and your other companions out of their line of fire.**
 
-**Companions never get irradiated or poisoned.** They do suffer normal chem after-effects, and they
-can become addicted.
-
-:::danger[Jet addiction is permanent for companions]
-The Jet Antidote does not work on them. One careless dose can leave a companion permanently reduced to
-a handful of Action Points.
+The Burst setting only governs a weapon's *second* attack mode. Weapons that can **only** fire bursts
+— the Minigun, Avenger Minigun, Vindicator Minigun, Bozar, M60, Light Support Weapon, Gatling Laser —
+ignore it, and Party Orders' burst switch too. So do the two flamers, which only fire continuously.
 :::
 
-:::note
-Levelling up interacts oddly with drugs. A companion who levels while boosted has the comedown applied
-to their *new* stats and ends up below where they should be. One who levels during withdrawal gets a
-lasting boost when it wears off. The next level-up corrects it either way.
+Defaults worth changing straight away:
+
+- **Skynet** and **Kitsune** start on Weapon Pref. *Unarmed*, so they never use a gun until you
+  change it. Skynet also starts on *Stay where you are*.
+- **Myron** starts on *Any drug some of the time*, and his welcome gift puts two <Item>Jet</Item> in his
+  pack.
+- Most companions start on Burst *Be careful not to hit me*; Lenny starts on *Sometimes*, Skynet on
+  *Always!*.
+
+### Party Orders
+
+RPU always installs the **Party Orders** mod, and FOR:CE loads it. It turns hotkeys into one-off
+orders for **every** companion at once. Only the burst switch lasts. Orders do nothing on the world
+map or while a dialogue, inventory, barter screen, Pip-Boy or menu is open.
+
+| Key | Order | In combat? | What happens |
+| --- | --- | --- | --- |
+| **F** | Heal | Yes | Each companion missing 10+ HP heals itself (below). |
+| **G** | Loot | No | The companion with the most free carry weight loots nearby bodies. Press G again to call it back. |
+| **H** | Holster | No | Everyone puts their weapon away at once. |
+| **R** | Regroup | No | Anyone more than 3 hexes away runs back to you. |
+| **X** | Spread out | No | Anyone within 5 hexes moves 4–6 hexes further off. |
+| **D** | Burst | Yes | Switches the whole party between "Burst at will!" and "Don't use bursts!". **Bursts are on by default.** |
+| **Ctrl+B** | Ammo type | No | Everyone reloads with armour-piercing ammo, or back to normal ammo, from their own packs. |
+| **T** / **0** | Pick up | No | *You* pick up items within 3 hexes; **0** switches T to looting bodies instead. |
+
+- **Heal and Loot are for two-legged humans, ghouls and super mutants only** — not the dogs, the
+  robots or Goris.
+- **Heal (F)**, per companion:
+  - missing 60+ HP and carrying a <Item>Super Stimpak</Item>: uses it (+75 HP, then 9 damage);
+  - otherwise, **out of combat** and at 75% HP or less: a **free** First Aid or Doctor roll. On a
+    success it heals up to (100 + their skill) ÷ 5 HP. It uses **no item, no time and none of your
+    daily uses**, and you can repeat it every few seconds;
+  - otherwise, with a <Item>Stimpak</Item>: uses it for 10–20 HP.
+
+  None of these costs them AP.
+- **Loot (G):** the looter visits dead bodies within 24 hexes one by one. If a body holds more than
+  it can carry, it **dumps the body's inventory on the ground** and takes only what fits. It also
+  picks up loose items within 3 hexes. While looting it is out of your party, and starting a fight
+  calls it off.
+- The keys can be changed in `mods/party_orders.ini`.
+
+## Equipment
+
+Give each companion the best armour and weapon **they can use** that you are not using yourself.
+Compare the options on [Weapons and Armour](/equipment).
+
+### Which weapons they use
+
+Only two-legged companions, Skynet and Goris pick weapons from their inventory; the dogs never do. A
+weapon is usable only if **all** of these hold:
+
+1. **Their art has frames for the weapon's animation class** (table below). This depends on their
+   current look, which armour can change.
+2. Their skill with it is at least the AI's minimum — 10% for most companions.
+3. Its **main** attack type is allowed by their Weapon Pref.
+4. Their arms are not both crippled, or one arm for a two-handed weapon.
+5. For companions the NPC Armor mod covers, the mod allows it (see [Armour](#armour)).
+6. **Ranged weapons need ammo** — loaded or in their pack. In combat, the attack must also fit
+   within their remaining AP.
+
+**There is no Strength check.** A companion happily uses a weapon they are too weak for, at −20% to
+hit for every point of Strength they lack.
+
+When choosing, the AI takes the weapon whose attack type comes earliest in their Weapon Pref. It
+breaks ties on average damage (doubled for weapons with a perk), and between two weapons within 5
+points it takes the more expensive one. A companion switches weapons when theirs becomes unusable,
+unsafe or empty with no ammo to reload, and if their pack has nothing usable they walk to a usable
+weapon on the ground within Perception + 5 hexes. **Use Best Weapon** on the Combat Control screen
+applies the same rules, ignoring AP, and reloads.
+
+| Companion | Weapon classes | Throws grenades |
+| --- | --- | --- |
+| Sulik | knife, hammer, spear, SMG | Yes |
+| Vic | knife, pistol, rifle | Yes |
+| Cassidy | pistol, rifle, spear (not in combat armour) | Not in his starting look |
+| Myron | knife, pistol | Yes |
+| Lenny | knife, spear, rifle; with `lenny_new_look=0`: knife, pistol, SMG | Yes |
+| Marcus | big guns: laser rifle, minigun and rocket launcher classes | Yes |
+| Skynet | SMG, rifle | No |
+| Goris | none — punching weapons only | No |
+| Dogmeat, K-9, Robodog, pariah dog, Laddie | none | No |
+| Kitsune, Cat Jules | every class | Yes |
+| Dex | knife, pistol, SMG | Yes |
+| Davin / Miria | knife, club, pistol / knife, SMG | Davin only |
+
+The classes hold a few surprises:
+
+- The <Item>14mm Pistol</Item> and <Item>.223 Pistol</Item> are **SMG class**, not pistols.
+- The <Item>Tommy Gun</Item> and <Item>Sawed-Off Shotgun</Item> are **rifle class**.
+- The **laser rifle class** covers the <Item>Laser Rifle</Item>, Laser Rifle (Ext. Cap.),
+  <Item>Plasma Rifle</Item>, <Item>Turbo Plasma Rifle</Item>, <Item>YK42B Pulse Rifle</Item>,
+  <Item>Flamer</Item>, Improved Flamer, <Item>Bozar</Item>, <Item>M60</Item> and
+  <Item>Light Support Weapon</Item>.
+- The **minigun class** covers the <Item>Minigun</Item>, <Item>Avenger Minigun</Item>,
+  <Item>Vindicator Minigun</Item> and <Item>Gatling Laser</Item>.
+- **Punching weapons** such as <Item>Brass Knuckles</Item>, <Item>Spiked Knuckles</Item> and
+  <Item>Power Fist</Item> need no animation, but count as unarmed attacks. They are only used on
+  Weapon Pref. *Unarmed* or *None*.
+
+:::note[Grenades]
+A companion throws grenades only on Weapon Pref. **None**, and only if their art has a throwing
+animation (the table's last column). Even then a usable gun always comes first: they throw only when
+they have no ranged weapon they can use — none, out of ammo, or unsafe for the shot.
 :::
 
-## What makes them leave or attack
+**Reloading.** Companions reload from their own packs. In combat they reload an empty weapon (paying
+the AP), walk to ammo on the ground if they have none, or switch weapons. **After every fight** they
+top their weapon up, and they also reload when you close the Trade screen and after Use Best Weapon.
+Give them spare ammo.
 
-| Companion | Refuses to join / leaves |
+### Armour
+
+- **Companions never change armour on their own.** Give it to them, then press **Use Best Armor**. It
+  picks the armour with the highest AC plus all its DT and DR values, if that beats what they wear.
+- **FOR:CE also gives the Steal screen of a companion in your party an armour slot and a weapon
+  slot** when `inventory_columns=2` is set in `fallout2.cfg` (its sample config sets it). Drag an item
+  onto a slot to put it on them; the same limits apply as everywhere else. See
+  [Carrying and trading](#carrying-and-trading) for opening that screen.
+- Either way, only two-legged companions other than Marcus can be put in armour. Goris, Skynet and
+  the dogs can't, and Marcus and Dogmeat wear only the RPU armour described below.
+- Worn armour adds its AC, DT and DR to theirs, and **armour perks apply to companions too**:
+  <Item>Power Armor</Item> gives them +3 Strength.
+
+**Visible armour — the NPC Armor mod.** RPU always installs NPC Armor (v3.6), and FOR:CE loads it and
+runs its script. It covers **six companions only**, changes their look to match the armour they wear,
+and limits which weapon classes they may wield:
+
+| Companion | Own look for | Your look for | No change | Weapons the mod allows |
+| --- | --- | --- | --- | --- |
+| Sulik, Vic, Cassidy | jacket, leather, metal, combat and power armour | advanced power armour, robes | — | Sulik: knife, hammer, spear, SMG. Vic: knife, pistol, rifle. Cassidy: spear, pistol, rifle |
+| Myron | combat and power armour | advanced power armour, robes | jacket, leather, metal | knife, pistol |
+| Kitsune | leather, metal and combat armour | power and advanced power armour, robes | jacket | all |
+| Cat Jules | leather, metal and combat armour; robes (a separate robe look) | power and advanced power armour | jacket | all |
+
+- The mod groups armour as follows. **Jacket:** <Item>Leather Jacket</Item>,
+  <Item>Combat Leather Jacket</Item>. **Leather:** <Item>Leather Armor</Item>,
+  <Item>Leather Armor Mark II</Item>. **Metal:** <Item>Metal Armor</Item>,
+  <Item>Metal Armor Mark II</Item>, <Item>Tesla Armor</Item>. **Combat:** <Item>Combat Armor</Item>,
+  <Item>Combat Armor Mark II</Item>, <Item>Brotherhood Armor</Item>. **Power:** Power Armor,
+  Hardened Power Armor. **Advanced power:** <Item>Advanced Power Armor</Item>,
+  <Item>Adv. Power Armor MKII</Item>. **Robes:** <Item>Robes</Item>, <Item>Bridgekeeper's Robes</Item>.
+  Any other armour leaves their normal look.
+- **The mod covers nobody else.** Lenny, Dex, Davin and Miria keep their look in any armour, though it
+  still protects them. Marcus can wear only his own armour (below), and the rest can't wear armour
+  at all.
+- RPU has its own armour for two of them, switched on in `mods/rpu.ini` (both on by default):
+  - **Marcus** — Trader Bill at [the Abbey](/walkthrough/abbey) sells Mutant Armor for **$3000** while
+    Marcus is with you (`marcus_armor`). It is AC 15 with no normal DR, weighs 100 lb, and changes his
+    look. Marcus's own dialogue takes it off and puts it back on.
+  - **Dogmeat** — Liz in [Broken Hills](/walkthrough/broken-hills) sells the K-9 Kevlar for **$2000**
+    while Dogmeat is with you (`dogmeat_armor`). You fit it through Dogmeat's dialogue. It is for
+    Dogmeat only; K-9 can't wear it.
+
+:::tip[The flare trick]
+When a companion wields a lit <Item>Flare</Item>, their light radius goes up, and nothing turns it
+back down when the flare burns out. They stay a walking light source.
+<Unverified>The light staying on is from the FOR:CE source. Getting a companion to wield the flare
+has not been tried in play.</Unverified>
+:::
+
+## Healing and chems
+
+### Healing
+
+**"You should heal yourself now."** appears in a companion's dialogue while they are hurt. Each time,
+they use **one** thing — the first of these they carry: <Item>Super Stimpak</Item>,
+<Item>Stimpak</Item>, <Item>Healing Powder</Item>, <Item>Doctor's Bag</Item>,
+<Item>First Aid Kit</Item>. With none of those they use their own skill:
+
+- **Doctor**, if it is higher than their First Aid: 10–25 HP on a success, and an hour passes. Among
+  the companions only **Lenny** qualifies.
+- **First Aid** otherwise: 5–15 HP on a success, and 15 minutes pass.
+
+:::caution[First Aid Kits and Doctor's Bags share your daily limit]
+The game keeps a single three-uses-a-day count for First Aid, and another for Doctor, shared by
+everyone in the party. A companion healing with a kit or bag uses up **your** uses, and neither can
+be used in combat. A companion healing with their bare skill does not touch the count.
+:::
+
+Using an item is an animation, and a companion with a weapon out puts it away first.
+<Unverified>The old advice that you may have to close the conversation before they heal was not
+tested.</Unverified>
+
+Other ways they heal:
+
+- **Between fights**, most companions heal themselves with items from their own pack, depending on
+  their Chem Use: below 60% HP (*hurt a bit*), 30% (*hurt a lot*) or 50% (*any drug*), and never on
+  *I'm clean*. Marcus doesn't do this. The dogs and robots never do, because *I'm clean* is their
+  only option.
+- **In combat**, only two-legged companions take healing items: Stimpaks, Super Stimpaks and Healing
+  Powder, **in the order they sit in the pack**, 2 AP each. Goris, the dogs and the robots never do.
+  First Aid Kits, Doctor's Bags and skills are never used in combat.
+- **Resting and travelling** heal the whole party by each member's healing rate every three hours.
+  "Rest until party healed" ignores hurt robots, although resting heals them too.
+- **Skynet** is a robot: chems don't work on it, and First Aid and Doctor fail. Fix it with your
+  Repair skill; with the Cybernetic brain it can also repair itself. **K-9 and Robodog** count as
+  dogs, so stimpaks, First Aid and Doctor work on them. Robodog can also be repaired; K-9 cannot.
+- A **level-up** heals fully. For Dogmeat, a can of <Item>Dog Food</Item> does too — there is one in
+  the whole game.
+
+### Chems
+
+- **Companions are never poisoned or irradiated.** Poisoned attacks still do their normal damage.
+  <Item>Antidote</Item>, <Item>Rad-X</Item> and <Item>RadAway</Item> do nothing useful for them.
+- Drugs affect them just as they affect you, after-effects included, and a dose that would take a
+  companion to 0 HP kills them.
+- **They can become addicted**, rolling the drug's normal chance — except that a companion never
+  rolls for a drug **you** are addicted to. Withdrawal lasts seven days.
+
+:::danger[Jet withdrawal never ends for a companion]
+A companion's Jet withdrawal (−1 AP, −1 Strength, −1 Perception) has no end. The Jet Antidote only
+works on them **while you are addicted to Jet yourself**, and does nothing otherwise; even then, a
+withdrawal that hasn't started yet still arrives. The penalty is wiped by their next level-up, since
+that replaces their stats. After their last level-up nothing clears it.
+
+Check what chems your companions carry, and their Chem Use setting — see [Myron](/companions/myron).
+Using Jet, Buffout or Psycho on **Cassidy** kills him unless he has had
+<Item>Heart Pills</Item> first — see [his page](/companions/cassidy).
+:::
+
+**Levelling up while on chems** leaves a companion's stats wrong until their next level-up. A level-up
+replaces their stats, but the drug's later effects still arrive. So a companion who levels while
+boosted ends up **below** their new values once the drug wears off, and one who levels during the
+comedown ends up **above** them.
+
+## Carrying and trading
+
+Carry weight at recruitment, and after their last level-up where it changes:
+
+| Carry weight | Companions |
 | --- | --- |
-| **Sulik** | Leaves if you become a Childkiller, Berserker, or karma −101 or lower. Attacks if you become a Slaver or cause trouble **in Klamath**. Will not rejoin if Klamath reputation is Hated. |
-| **Vic** | Attacks if you attack **Valerie** in Vault City while he is with you. |
-| **Cassidy** | Will not join a Slaver, Childkiller, or karma −101 or lower — but does not leave if you become one later. |
-| **Lenny** | Leaves for Childkiller, Slaver, karma −101, or **CH 1**. Attacks if you are in Gecko having wrecked the plant. |
-| **Marcus** | Will not join below 0 karma. Will not rejoin at −101, Slaver or Childkiller. Attacks anywhere if you are an enemy of Broken Hills. |
-| **Goris** | Will not join below 0 karma, negative Vault 13 reputation, Berserker or Childkiller. Leaves if your karma drops below 0. |
-| **K-9** | Leaves for Childkiller or karma −101 — and **cannot be re-recruited afterwards**, ever. |
+| 125 lb | Myron (135 after his "carry more" favour), Lenny |
+| 150 → 200 lb | Vic |
+| 175 lb | Cassidy, Kitsune, Dex, Cat Jules |
+| 200 → 225 lb | Sulik |
+| 225 lb | Skynet |
+| 225 → 275 lb | Goris |
+| 275 lb | Marcus |
 
-:::danger[Never loot an unconscious companion]
-Accessing the inventory of a downed companion counts as **stealing from a non-party member**.
-**Vic and Myron** will stop communicating permanently, and **Goris turns hostile** the moment you
-dismiss him.
+- **Overloading costs them AP.** A companion over their limit loses 1 AP, plus 1 more for every full
+  40 lb over, down to a minimum of 1 AP. For example, 200 lb over costs 6 AP.
+- **Dogmeat, K-9 and Robodog can't trade.** The Trade button answers "This critter can't carry
+  anything." You can't steal from or loot them either.
+- **Trading with a companion in your party** ignores value completely. The only limits are what you
+  can carry and what they can carry. When the screen closes, they reload.
+- **Stealing from a companion in your party always works**, is never noticed, and gives no XP.
+- **FOR:CE options.** Two settings in the `[qol]` section of `fallout2.cfg` are off unless set, but
+  FOR:CE's sample config turns them on:
+  - `party_trade_from_menu` makes the Use entry of a companion's action menu open their Steal
+    screen, out of combat;
+  - `party_loot_and_barter` lets the loot and barter screens switch between companions.
+
+:::tip[The waiting-companion carry trick]
+Tell a companion to **wait**, then talk to them again and press **Barter**. A waiting companion is
+no longer in your party, so the ordinary barter rules apply: only **your** carry weight is checked,
+and the deal goes through as long as you take back no more value than you hand over. **Give them
+anything, however heavy**, and they take it.
+
+The cost is AP by the rule above, not a fixed share. To get it back, ask them to rejoin, then trade
+or steal it back. Only your own carry weight limits what you can take from a party member.
+<Unverified>Worked out from the FOR:CE source; not tried in a running game.</Unverified>
 :::
 
-:::caution[Dead companions vanish]
-If a companion dies and you save/load or leave the map and return, the **body and everything on it is
-gone**. This applies before you recruit them too.
+## Skills they use for you
 
-Saving while in combat mode with a dead companion produces a save that **freezes on end of turn**.
+**A companion takes over a skill when they are the best in the party at it, and it is also their own
+best skill.** Your own skill counts in the comparison, and a tie goes to you.
+
+- **Using a skill on something** — First Aid, Doctor, Lockpick, Traps, Science or Repair from the
+  Skilldex: that companion walks over and does it, out of combat. If you are standing next to the
+  target, you do it yourself. They must be standing or walking at the time.
+- **Skill rolls** — any roll the game or a script makes for your skill, except Steal, uses that
+  companion's value. Checks that simply compare your skill with a number still use yours.
+
+Only five companions have a non-combat best skill. Everyone else's best skill is a combat skill, so
+they never take over any of these.
+
+| Companion | Best skill (first stage → last) | Takes over |
+| --- | --- | --- |
+| Vic | Repair 70% → 155% | Repair. At stages 4 and 5 it leads his Small Guns by a single point. |
+| Myron | Science 87% → 145% | Science |
+| Lenny | Doctor 85% → 125% | Doctor |
+| Kitsune | Lockpick 135% → 180% | Lockpick (not in combat) |
+| Dex | Speech 145% → 195% | Speech rolls |
+
+Two more skills use the party's best value without that condition:
+
+- **Outdoorsman.** Avoiding world-map encounters uses the **highest Outdoorsman in the party**, +20
+  if **you** carry a <Item>Motion Sensor</Item>, capped at 95%. The best companions are Kitsune (64% →
+  109%), Sulik (40% → 90%), Goris (24% → 60%) and Cassidy (20% → 55%).
+- **Barter.** Prices use the party's best Barter. Lenny and Cassidy both have 80%.
+
+The Combat Control screen shows each companion's best skill.
+
+## Dead, unconscious and dismissed companions
+
+### Death
+
+:::danger[Dead companions vanish]
+A companion killed in combat loses their script, and the game destroys such bodies **the next time
+the map loads, or when you load a save** — together with everything they carried. **Loot the body
+before you leave the map or reload.** This applies whether or not they had joined you.
 :::
 
-## Recovering from a fight
+- Death removes them from the party at once.
+- <Unverified>Saving in combat with a dead companion is said to produce a save that freezes at the
+  end of the turn. Not confirmed either way.</Unverified>
 
-If you attack a companion who is not currently in your party, they fight back. Whether you can recruit
-them afterwards depends on the individual:
+### A knocked-out companion
 
-| Behaviour | Who |
+Opening a downed companion's inventory runs their "stolen from" script.
+
+- **Safe while they are in the party:** Sulik, Vic, Cassidy, Marcus, Goris, Skynet. Kitsune, Dex and
+  Cat Jules don't react at all. The dogs can't be looted.
+- **Not safe: Myron and Lenny.** Myron turns hostile, and attacks you the next time you talk to him.
+  Lenny turns hostile and attacks as soon as he sees you.
+
+### Waiting and dismissal
+
+- **"I need you to wait here until I come back."** takes a companion out of your party. They don't
+  follow, don't count against your limit and **don't level up**. There is no time limit.
+  Rejoining checks your party limit again, plus whatever else that companion checks.
+- Davin and Miria refuse to wait, the pariah dog can't be spoken to, and Skynet with the Abnormal
+  brain only says goodbye.
+- Using the broken elevator shaft at the [EPA](/walkthrough/epa) leaves Dogmeat, K-9, Robodog and
+  Skynet waiting at the top. Dogs can't open doors either.
+- Where a companion goes when they leave for good, and whether they come back, is on each page.
+
+### What makes them leave
+
+| Companion | Leaves, refuses or turns |
 | --- | --- |
-| Peaceful if you leave and return | Laddie, Robodog |
-| Peaceful after letting them start one fight, then leaving and returning | Sulik, Lenny, K-9 |
-| Holds a grudge, but recruitable if you talk before they attack | Cassidy |
-| **Permanently hostile** | Vic, Marcus, Myron, Goris, Dogmeat |
+| Sulik | Leaves at karma below −100, or as a Berserker. Leaves **for good** if you become a Childkiller, or cause trouble in Klamath; if you become a Slaver he also turns on you. Won't rejoin from waiting at Klamath reputation −15 or lower. |
+| Vic | Never over your karma. Turns on you if you hurt Valerie while he is with you. |
+| Cassidy | Never leaves once in. Refuses to join or rejoin at Charisma 1, as a Slaver or Childkiller, or at karma below −100. |
+| Myron | Never over your karma. Big Jesus Mordino starts a fight if he sees Myron with you. |
+| Lenny | Leaves at karma below −100, as a Slaver, or at Charisma 1. Leaves **for good** if you become a Childkiller. If Gecko turns on you while you are there, he attacks you when he can see you, and leaves for good if he can't. If the Gecko plant is destroyed or doomed, he leaves for good **and attacks**. Won't rejoin at Gecko reputation −15 or lower. |
+| Marcus | Never leaves once in. Won't rejoin from waiting at Charisma 1, as a Slaver or Childkiller, or at karma below −100. Hostile in Broken Hills if the town is. |
+| Goris | Walks home at karma below 0, or as a Childkiller or Berserker. Also leaves for home about two weeks after you fix the Vault 13 computer, unless Gruthar or Dr. Schreber is dead. Won't rejoin at Vault 13 reputation −15 or lower. |
+| K-9 | Refuses you for good if you are at karma below −100, or a Childkiller, **when you repair it**. Never checks again. |
+| Skynet | With the Cybernetic brain and the depot hostile, it is scripted to turn on the party on the depot's surface map. Under FOR:CE that script stops with an error instead: on that map it stops following you and can't be talked to, and it attacks nobody. See [Skynet](/companions/skynet). <Unverified>From the RPU script and the FOR:CE source; not tested in game.</Unverified> |
+| Kitsune, Cat Jules | Rejoining from waiting at Charisma 1 **deletes them**, with their gear. |
+| Davin, Miria | Leave, for good, if Modoc turns on you. |
+| Laddie | Leaves when he reaches Jonny, or if you hit Jonny. Turns on you if Modoc does. |
+| Dogmeat, Robodog, Dex, pariah dog | Never leave on their own. |
 
-The Brain Bot never turns hostile from being shot — but turns **permanently** hostile if you steal from
-it.
+### Attacking a companion
 
-## Useful tricks
+Shooting a companion **who is in your party** — on purpose or with a stray burst — hurts them, but
+never triggers their grudge. That only happens when they are **out of your party**: before you
+recruit them, or while they wait.
 
-:::tip[Infinite carry weight]
-Tell a companion to **wait**, then trade with them. While waiting, they evaluate goods by **price**
-rather than weight, so you can load them with anything. One player reports giving Vic 800 pounds of
-gear.
+| What happens | Who |
+| --- | --- |
+| No grudge <Unverified>Their scripts ignore the attack. Whether they fight back during that fight was not checked.</Unverified> | Laddie, Robodog, Skynet, Kitsune, Cat Jules |
+| Fights back once, then can be talked to again | Sulik (not in Klamath, which turns hostile if you hit him there), Lenny (not in Gecko, likewise), K-9 while waiting |
+| Holds a grudge, but can still be recruited if you talk to him before he sees you | Cassidy |
+| **Hostile for good** | Vic, Myron, Goris, Dogmeat (who also brings a friend); Marcus if you attack him in Broken Hills |
 
-The cost is a little under half their Action Points. If you overload them beyond what one barter
-session can unload, use **Steal** to get it back.
-:::
+**Being caught stealing** from Sulik, Vic, Cassidy, Marcus, Lenny, Goris or Skynet while they are out
+of your party makes them hostile too. For Skynet it is permanent.
 
-:::note[Weapon skill helpers]
-**Vic, Lenny and Myron** will use their special non-combat skill automatically if you try to use that
-skill on something you are not standing next to — and their skill is higher than yours. So Lenny will
-heal people with Doctor, and Vic will disable forcefields.
+## RPU options that affect companions
 
-You can only trigger this from the skilldex, so you cannot have Myron hack a computer for you.
-:::
+NPC Armor and Party Orders are not installer options — RPU always installs both, and FOR:CE loads
+them and runs their scripts. RPU's own switches are in `mods/rpu.ini`:
 
-:::note[Outdoorsman]
-A companion with a higher Outdoorsman than yours uses theirs automatically while travelling. Only
-**Sulik** has a meaningful figure — 80% at his highest level.
+| `rpu.ini` key | What it does | Default |
+| --- | --- | --- |
+| `marcus_armor` | Trader Bill at the Abbey sells Marcus's Mutant Armor ($3000, Marcus in the party). With 0 there is no way to get it. | 1 (on) |
+| `dogmeat_armor` | Liz in Broken Hills sells the K-9 Kevlar for Dogmeat ($2000, Dogmeat in the party). | 1 (on) |
+| `lenny_new_look` | 1: Lenny's new look — knife, spear and rifle, no running animation. 0: the old look — knife, pistol and SMG. A change applies at the next map change or load. Switching to the new look takes away a held SMG, pistol or spear; switching back takes away a rifle. | 1 (on) |
+| `smoking`, `vault_boxer` | Affect you only. | 1 (on) |
 
-A **Motion Sensor** applies its bonus to whoever has the highest skill, but only if **you** are
-carrying it.
-:::
+Other files:
 
-:::note[The flare trick]
-Give a lit **flare** to a companion with no other weapon and have them ready it. They become a
-permanent light source — the effect persists after the flare disappears. Works for **Vic, Davin,
-Marcus and Myron**.
-:::
+- **`mods/upu.ini`** has two cosmetic settings that do nothing under FOR:CE: both scripts rewrite
+  animation files with sfall file functions (`fs_seek`, `fs_read_short`, `fs_write_short`) that
+  FOR:CE does not have.
+  - `goris_derobing_speed` (default 50) is meant to speed up Goris's robe animation.
+  - `critters_walk_faster` (default 1) is meant to speed up some slow walkers, Lenny's old look among
+    them.
+- **`mods/party_orders.ini`** holds the [Party Orders](#party-orders) keys, and `PLootNearbyItems`
+  (default 1), which makes looters pick up loose items near bodies.
+- **Installer components.** The optional new rifle animations add rifle frames to Cassidy, Skynet,
+  Vic, Kitsune and Cat Jules; the wakizashi and extended flamer components add frames to others.
+  See each companion's page.

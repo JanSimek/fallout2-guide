@@ -1,61 +1,168 @@
 ---
 sidebar_position: 11
 title: Dogmeat
+description: The dog from the Cafe of Broken Dreams — fast, hard-biting and laser-resistant, with RPU kevlar armour to buy.
 ---
 
 # Dogmeat
 
-**Found in:** the **Cafe of Broken Dreams** special encounter
-
-The Vault Dweller's dog, and a Fallout 1 reference. Take him early for the novelty, or not at all.
-
-## Statistics
+A cameo from the first game, waiting in the Cafe of Broken Dreams special encounter. He can't use
+weapons, armour or chems. He makes up for it with 15–17 Action Points, an Unarmed skill that
+reaches 165%, and six level-ups. He takes a party slot like anyone else, so take him if you have one
+to spare and like the idea of a dog that hits hard.
 
 | | |
 | --- | --- |
-| **Skill** | Unarmed |
-| **AC/DT/DR** | 10/4/30 (lv 1–4) · 15/4/35 (lv 5–6) |
-| **HP by level** | 98 · 108 · 118 · 128 · 141 · 151 |
-| **AP by level** | 15 · 15 · 15 · 15 · 16 · 16 |
+| **Where** | The [Cafe of Broken Dreams](/systems/random-encounters#special-encounters) special encounter, from player level 6 |
+| **Joins if** | You wear no armour (or Environmental Armor), **or** you feed him; and you have a free party slot |
+| **Costs** | Nothing |
+| **Best at** | Unarmed 91%, 15 AP, 98 HP at recruitment |
+| **Weapons** | None. He always fights unarmed. |
+| **Levels** | 6 level-ups: one in every three of your level-ups from your level 6 on — see [how levelling works](/companions/overview) |
 
-## RPU additions
+## Recruiting
 
-:::tip[Kevlar armour]
-With the **NPC Armor** mod, talk to **Liz** in the [Broken Hills](/walkthrough/broken-hills) hardware
-store and ask if she has anything special off the shelves. **$2000**, with Dogmeat in your party.
-Talk to Dogmeat to put it on or take it off.
+The cafe is a **special encounter** that can only happen **from level 6**, and only once. It is in
+the desert encounter tables around Navarro, the EPA, San Francisco, New Reno, NCR and Vault 15, and on
+the routes between them. The northern tables (Arroyo, Klamath, the Den, Modoc, Vault City, Gecko,
+Redding, Broken Hills) don't have it.
 
-Fully levelled and armoured, he has roughly the protection of combat armor with better laser
-resistance.
+Talk to him and he growls unless one of two things is true:
+
+- **You wear no armour, or Environmental Armor.** The check turns away every other body armour in the
+  game, the Bridgekeeper's Robes included. *"The dog gives a low whine when it sees the vault suit. It
+  looks like it wants to come with you."*
+  <Vanilla>The Bridgekeeper's Robes also pass the check.</Vanilla>
+- **You have fed him.** Use an <Item>Iguana-on-a-stick</Item> or <Item>Dog Food</Item> on him. The
+  food is used up and the join offer opens straight away, whatever you are wearing. There is a loose
+  Iguana-on-a-stick on the cafe map, and a crate holding eight more.
+  <Unverified>The Random Encounters page says recruiting him with food usually crashes the game. The
+  script path is ordinary, but a crash can't be ruled out from source.</Unverified>
+
+**He counts against your Charisma limit.** With a full party the only reply is *"I'll come back and get
+you when I have some room in my party."* Turning him down costs nothing: he just wanders around near
+you.
+
+:::danger[Don't hit him first]
+Damaging him while he is not in your party makes him permanently hostile and brings **Mel**.
+See [Losing him](#losing-him).
+:::
+
+## Stats by level
+
+| Stage | HP | AP | AC | Unarmed | Melee damage | Critical chance | Other changes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Recruited | 98 | 15 | 16 | 91% | 14 | 27% | ST 6, PE 6, EN 6, CH 3, IN 2, AG 6, LK 2; carry 175 |
+| 1 | 108 | 15 | 16 | 100% | 14 | 28% | LK 3 |
+| 2 | 118 | 15 | 16 | 125% | 15 | 29% | LK 4 |
+| 3 | 128 | 15 | 17 | 135% | 16 | 31% | AG 7, LK 5 |
+| 4 | 141 | 16 | 23 | 145% | 18 | 35% | ST, PE, EN 7; CH 2; IN 3; AG 8; LK 6; carry 200; better resistances |
+| 5 | 151 | 16 | 24 | 155% | 19 | 39% | AG 9, LK 7 |
+| 6 | 161 | 17 | 25 | 165% | 20 | 43% | AG 10, LK 8 |
+
+His Sequence is 12–13 until Stage 3, then **35** at Stage 4 and 16 after that. That is what the game
+data says.
+
+| Stages | DT (normal / laser / fire / plasma / electrical / explosion) | DR (same order) |
+| --- | --- | --- |
+| Recruited–3 | 4 / 6 / 4 / 4 / 0 / 4 | 30% / 75% / 10% / 20% / 0% / 25% |
+| 4–6 | 4 / 7 / 4 / 4 / 1 / 4 | 35% / 80% / 15% / 25% / 10% / 30% |
+
+If he is with you from your level 6, his first level-up comes between levels 6 and 8 and his last
+between 21 and 23. Level-ups spent waiting don't count.
+
+## Gear
+
+He can't use any of it. His art has no weapon animations, the game only lets him fight unarmed, and
+the engine never hands a dog a weapon from its inventory. *Use Best Armor* only works on two-legged
+companions. So [Weapons and Armour](/equipment) has nothing for him except the kevlar below.
+
+He never takes chems either. Only two-legged companions use them in combat, and **"I'm clean"** is the
+only Chem Use setting he has, so he never heals himself between fights. What heals him:
+
+- **<Item>Dog Food</Item>**, used on him while he is in the party: a full heal. There is **one** in
+  the whole game, in a box on the [EPA](/walkthrough/epa#the-surface) surface.
+  <Unverified>The EPA page places it in the locked storage shed north of the white shed. The tools
+  used don't report which building the box is in or whether it is locked.</Unverified>
+  <Vanilla>Dog Food does not exist.</Vanilla>
+- Resting and world-map travel, which heal the whole party.
+- A level-up, which is always a full heal.
+
+An Iguana-on-a-stick used on him once he has joined is eaten (*"Woof! Woof!"*) and **heals nothing**.
+
+## Kevlar armour
+
+RPU adds a set of armour made for him, the **K-9 Kevlar**. **Liz** in
+[Broken Hills](/walkthrough/broken-hills#dogmeats-armour) sells it:
+
+- Ask her *"Do you have anything special you could set me up with that isn't on the shelves?"* The
+  line needs **IQ 4**.
+- She only offers it while **Dogmeat is in your party**. It costs **$2000** and she sells it **once**.
+- It depends on `dogmeat_armor=1` in `mods/rpu.ini`, which is on by default. The NPC Armor mod plays no
+  part in it.
+
+To fit it, talk to Dogmeat with the kevlar in your inventory: *"Here boy, I got something for you!"*
+He wears it, and his sprite changes to show it. *"Is the armor weighting you down, boy?"* takes it off
+and gives it back to you. Both lines need IQ 4. It stays on through his level-ups, bonus and all. If he
+dies wearing it, it drops next to his body.
+
+| | AC | DT (normal / laser / fire / plasma / electrical / explosion) | DR (same order) |
+| --- | --- | --- | --- |
+| K-9 Kevlar alone | +20 | +1 / +1 / 0 / 0 / +1 / +2 | +5% / 0% / +15% / +25% / +40% / +10% |
+| Dogmeat, recruited, with kevlar | 36 | 5 / 7 / 4 / 4 / 1 / 6 | 35% / 75% / 25% / 45% / 40% / 35% |
+| Dogmeat, Stage 6, with kevlar | 45 | 5 / 8 / 4 / 4 / 2 / 6 | 40% / 80% / 30% / 50% / 50% / 40% |
+| <Item>Combat Armor</Item>, for comparison | 20 | 5 / 8 / 4 / 4 / 2 / 6 | 40% / 60% / 30% / 50% / 50% / 40% |
+
+**Fully levelled and in the kevlar, his DT and DR match Combat Armor's own values**, with 80% laser
+resistance instead of 60%, and his own AC on top.
 <Vanilla>There is no dog armour.</Vanilla>
-:::
 
-:::tip[Dog food]
-The locked storage shed on the [EPA](/walkthrough/epa) surface contains **cans of dog food**. Use one
-on Dogmeat and he is restored to full health.
-<Vanilla>The EPA does not exist.</Vanilla>
-:::
+## Using him
 
-## Quirks
+- **Speed is his strength.** 15–17 AP, an Unarmed skill of 91–165% and a critical chance of 27–43% make
+  every turn count. His 75–80% laser resistance makes him a good choice against laser-armed enemies.
+- **Combat Control** offers him only Custom, Aggressive and Berserk. Distance can be Stay close, Charge!,
+  On your own or Stay where you are, and Run Away can be Not feeling good, You need a tourniquet or
+  Never!. By default (Custom) he goes after whoever is attacking you, charges, and runs once he is below
+  10 HP. An RPU script keeps him from ending up with the Coward or Defensive packet.
+  <Vanilla>Changing his disposition could leave him on the wrong AI packet, because his packets are
+  not in the order the engine expects.</Vanilla>
+- **He can't open doors.**
+- **He can't go down the EPA elevator shaft.** Using it tells him to wait at the top: *"Sorry my non
+  two-legged friend. You're going to have to wait up here for me."* Waiting takes him out of the party,
+  so taking him back needs a free slot. **Count your slots before you recruit anyone at the EPA.**
+
+## Orders
+
+His menu is short:
+
+| IQ | Options |
+| --- | --- |
+| 4 or more | Follow distance (close, medium, far), *"Stay, Dogmeat. Stay!"*, fit or remove the kevlar, leave him alone |
+| 3 or less | *"Uh-uh, doggie. Yu stay."*, or shamble off |
+
+There is **no heal option, no gear option and no way to dismiss him**. To leave him somewhere, tell him
+to stay. That takes him out of the party, so he stops using a slot. While he can see you, he howls
+*"Awooooooooooo"* every 30–90 seconds. Talk to him to get the join offer again. **It checks your
+Charisma limit again.**
+
+## Losing him
 
 :::danger[Mel]
-Hurt Dogmeat while he is **not** in your party and **Mel** shows up with an H&K G11E, and they both
-attack. Early in the game that is very dangerous. Kill Dogmeat in a single round and Mel does not
-appear.
+Hit Dogmeat while he is **not** in your party (before you recruit him, or while he is told to stay) and
+he becomes **permanently hostile**. Unless that hit kills him, combat ends and **Mel** appears beside
+him, holding an <Item>H&K G11E</Item> with <Item>4.7mm Caseless</Item> to spare: *"Ey'e mate, you
+screwen with me dog."* Then both of them attack. His script would react the same way to being stolen
+from, but the game never lets you steal from (or loot) a dog.
+
+**Kill him with the first hit and Mel never appears.** His script is removed when he dies, before it
+can call Mel.
 :::
 
-:::caution
-When Dogmeat is not in your party the game considers him to be **on the NCR team**. Attack him in NCR
-and the police open fire on you.
-:::
+- Stray hits while he is in your party, such as a companion's burst, don't count.
+- Nothing ever calms him down again. Once hostile, he only growls when you talk to him.
+- Killing him yourself costs **10 karma**.
+- Nothing else in his script makes him leave.
 
-:::note
-Dogs cannot open doors, and cannot climb down the EPA elevator shaft.
-:::
-
-## The other dogs
-
-**Laddie** (Modoc) joins over the party limit and leaves when Jonny is found. **Robodog** (NCR, from
-Dr. Henry's mutagenic serum quest) is not worth taking. The **pariah dog** from a special encounter
-joins over the limit, follows you forever, cannot be instructed, has **750 HP**, will not fight, and
-gives you the **Jinxed** trait permanently. Kill it or leave the map.
+Laddie and the pariah dog are on [Other Companions](/companions/other-companions), and K-9 has
+[his own page](/companions/k9).
