@@ -9,11 +9,14 @@ export interface Proto {
   fid: number;
   /** How many places on the shipped maps it turns up. */
   n: number;
+  /** The readable URL segment the generator assigned: /database/10mm_SMG. */
+  slug: string;
 }
 
 export interface ProtoIndex {
   byPid: Map<number, Proto>;
   byName: Map<string, Proto>;
+  bySlug: Map<string, Proto>;
   all: Proto[];
 }
 
@@ -26,8 +29,10 @@ let pending: Promise<ProtoIndex> | null = null;
 function indexOf(protos: Proto[]): ProtoIndex {
   const byPid = new Map<number, Proto>();
   const byName = new Map<string, Proto>();
+  const bySlug = new Map<string, Proto>();
   for (const proto of protos) {
     byPid.set(proto.pid, proto);
+    if (proto.slug) bySlug.set(proto.slug.toLowerCase(), proto);
     // Several protos share a display name (ammo variants, generic critters). First wins, and ties
     // are broken towards the one that actually appears on a map, which is the one a reader means.
     const key = proto.name.toLowerCase();
@@ -36,7 +41,7 @@ function indexOf(protos: Proto[]): ProtoIndex {
       byName.set(key, proto);
     }
   }
-  return {byPid, byName, all: protos};
+  return {byPid, byName, bySlug, all: protos};
 }
 
 export function loadProtos(baseUrl: string): Promise<ProtoIndex> {

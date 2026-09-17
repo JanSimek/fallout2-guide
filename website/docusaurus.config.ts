@@ -49,6 +49,11 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    // One URL per database entry (/database/10mm_SMG), built from the fetched database.
+    './plugins/database-routes.js',
+  ],
+
   themes: [
     '@docusaurus/theme-mermaid',
     [
@@ -140,7 +145,6 @@ const config: Config = {
             {label: 'Character Creation', to: '/character/overview'},
             {label: 'Walkthrough', to: '/walkthrough/overview'},
             {label: 'Companions', to: '/companions/overview'},
-            {label: 'Weapons and Armour', to: '/equipment'},
             {label: 'Quest Index', to: '/reference/quest-index'},
           ],
         },
