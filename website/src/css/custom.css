@@ -373,6 +373,16 @@ a.quest--rpu {
   .db-layout {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  /* One column: an entry's own page opens on the entry, with the list under it rather than a
+     screenful of other names to scroll past. */
+  .db-layout--detail .db-pane {
+    order: -1;
+  }
+
+  .db-layout--detail .db-list {
+    max-height: 22rem;
+  }
 }
 
 .db-list {
@@ -669,4 +679,100 @@ a.quest--rpu {
 
 .eq-detail__desc {
   font-style: italic;
+}
+
+/* Database: the stat table under an entry's description, and locations grouped by map. */
+.db-stats {
+  display: table;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.db-stats th[scope='row'] {
+  width: 12rem;
+  text-align: left;
+  vertical-align: top;
+  color: var(--ifm-color-emphasis-700);
+  font-weight: 600;
+}
+
+.db-stats__list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.db-stats__inner {
+  display: table;
+  margin: 0;
+  border: 0;
+}
+
+.db-stats__inner td {
+  padding: 0 1rem 0 0;
+  border: 0;
+  white-space: nowrap;
+}
+
+.db-stats__note {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .db-stats th[scope='row'] {
+    width: 7rem;
+  }
+}
+
+.db-stats__inner td:first-child {
+  color: var(--ifm-color-emphasis-600);
+  text-transform: capitalize;
+}
+
+/* A map row: click it to open its placements and the map itself. */
+.db-group {
+  cursor: pointer;
+}
+
+.db-group th {
+  text-align: left;
+  font-weight: 600;
+}
+
+.db-group__toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.db-group__chevron {
+  display: inline-block;
+  width: 1.2rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.db-place {
+  cursor: pointer;
+}
+
+.db-place td:first-child {
+  padding-left: 2.2rem;
+}
+
+.db-place:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.db-place--on {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.db-mapcell td {
+  padding: 0 0 1rem 2.2rem;
 }

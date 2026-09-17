@@ -46,7 +46,7 @@ export default function Item({
 
   return (
     <span className="item-ref">
-      <Link className="item-ref__link" to={`${baseUrl}database?id=${proto.pid}`}>
+      <Link className="item-ref__link" to={proto.slug ? `${baseUrl}database/${proto.slug}` : `${baseUrl}database?id=${proto.pid}`}>
         {text}
       </Link>
       <span role="tooltip" className="item-ref__card">
