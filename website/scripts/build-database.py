@@ -12,11 +12,13 @@ Outputs:
     static/data/protos.json     what things are — name, description, art  (~25 KB gzipped)
     static/data/entities.json   where they are — the location rows       (~172 KB gzipped)
     static/data/maps.json       which renders exist, and how each was framed
+    static/data/equipment.json  every weapon, ammunition and armour, for the /equipment page
     static/img/db/<pid>.png     sprite per proto (items and critters)
     static/img/maps/*.webp      each map elevation, at two zoom tiers
 
-None of it is committed. Publish a fresh build with `scripts/database-release.sh publish <tag>`;
-the deploy workflow fetches whichever tag scripts/database-release.txt pins.
+None of it is committed. The pre-commit hook runs `scripts/database-release.sh update`, which
+calls this into a scratch directory (--out) whenever RPU ships a release, publishes the result and
+pins it; the deploy workflow fetches whichever tag scripts/database-release.txt pins.
 """
 import argparse, json, os, re, subprocess, sys, time
 
@@ -24,15 +26,25 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RPU = os.environ.get('FALLOUT2_RPU', os.path.expanduser('~/Development/Fallout2_Restoration_Project'))
 DATA = os.environ.get('FALLOUT2_DATA', os.path.expanduser('~/Development'))
 GECKO_MCP = os.environ.get('GECKO_MCP', os.path.expanduser('~/Development/geck-map-editor/build/gecko-mcp'))
+# Recorded in the output so the page can say which release its numbers come from. The hook sets it.
+RPU_VERSION = os.environ.get('RPU_VERSION', os.path.basename(os.path.normpath(RPU)))
 GECKO_CLI = os.environ.get('GECKO_CLI', os.path.expanduser('~/Development/geck-map-editor/build/gecko-cli'))
 
-# Split deliberately. A walkthrough page with one <Item> in it should not pull the whole location
-# index down; it needs a name, a sentence and an icon. Only /database wants the rows.
-OUT_PROTOS = os.path.join(ROOT, 'static/data/protos.json')
-OUT_ENTITIES = os.path.join(ROOT, 'static/data/entities.json')
-OUT_ICONS = os.path.join(ROOT, 'static/img/db')
-OUT_MAPS = os.path.join(ROOT, 'static/img/maps')
-OUT_MAPDATA = os.path.join(ROOT, 'static/data/maps.json')
+
+def use_output(out):
+    """Point every output at `out` — static/ by default, a scratch directory for a release build."""
+    global OUT_PROTOS, OUT_ENTITIES, OUT_ICONS, OUT_MAPS, OUT_MAPDATA, OUT_EQUIPMENT
+    # Split deliberately. A walkthrough page with one <Item> in it should not pull the whole location
+    # index down; it needs a name, a sentence and an icon. Only /database wants the rows.
+    OUT_PROTOS = os.path.join(out, 'data/protos.json')
+    OUT_ENTITIES = os.path.join(out, 'data/entities.json')
+    OUT_ICONS = os.path.join(out, 'img/db')
+    OUT_MAPS = os.path.join(out, 'img/maps')
+    OUT_MAPDATA = os.path.join(out, 'data/maps.json')
+    OUT_EQUIPMENT = os.path.join(out, 'data/equipment.json')
+
+
+use_output(os.path.join(ROOT, 'static'))
 
 MOUNTS = ['--data', os.path.join(DATA, 'master.dat'),
           '--data', os.path.join(DATA, 'critter.dat'),
@@ -40,23 +52,119 @@ MOUNTS = ['--data', os.path.join(DATA, 'master.dat'),
           '--data', os.path.join(RPU, 'scripts_src')]
 
 
-def export_entities():
-    """One gecko MCP call; returns the parsed export."""
+def gecko(tool, arguments=None):
+    """One gecko MCP tool call; returns the parsed result."""
     msgs = [
         {"jsonrpc": "2.0", "id": 1, "method": "initialize",
          "params": {"protocolVersion": "2024-11-05", "capabilities": {},
                     "clientInfo": {"name": "build-database", "version": "1"}}},
         {"jsonrpc": "2.0", "id": 2, "method": "tools/call",
-         "params": {"name": "export_entities", "arguments": {}}},
+         "params": {"name": tool, "arguments": arguments or {}}},
     ]
     out = subprocess.run([GECKO_MCP] + MOUNTS,
                          input='\n'.join(json.dumps(m) for m in msgs),
                          capture_output=True, text=True, timeout=900).stdout
     for line in out.splitlines():
         d = json.loads(line)
-        if d.get('id') == 2:
-            return json.loads(d['result']['content'][0]['text'])
-    raise SystemExit(f'export_entities: no response from {GECKO_MCP}')
+        if d.get('id') != 2:
+            continue
+        if 'error' in d or d['result'].get('isError'):
+            detail = d.get('error') or d['result']['content'][0]['text']
+            if tool == 'export_protos':
+                detail = f'{detail} — export_protos needs gecko built from master at or after JanSimek/gecko#144'
+            raise SystemExit(f'{tool}: {detail}')
+        return json.loads(d['result']['content'][0]['text'])
+    raise SystemExit(f'{tool}: no response from {GECKO_MCP}')
+
+
+def export_entities():
+    return gecko('export_entities')
+
+
+# What the engine does with a weapon's attack-mode index (fallout2-ce item.cc _attack_subtype and
+# _attack_skill): the page needs the mode and the skill, and the skill is not stored anywhere.
+ATTACK_MODES = {1: ('punch', 'unarmed'), 2: ('kick', 'unarmed'), 3: ('swing', 'melee_weapons'),
+                4: ('thrust', 'melee_weapons'), 5: ('throw', 'throwing'), 6: ('single', 'small_guns'),
+                7: ('burst', 'small_guns'), 8: ('flame', 'small_guns')}
+# fallout2-ce DamageType order — the ids the export reports.
+DAMAGE_TYPES = ['normal', 'laser', 'fire', 'plasma', 'electrical', 'emp', 'explosion']
+# fallout2-ce art_defs.h WeaponAnimation — which critter animation set a weapon needs.
+# 11-15 are sfall's extra sets, named by the letter they use in critter art names.
+WEAPON_ANIMATIONS = {1: 'knife', 2: 'club', 3: 'hammer', 4: 'spear', 5: 'pistol', 6: 'smg',
+                     7: 'rifle', 8: 'laser_rifle', 9: 'minigun', 10: 'launcher',
+                     11: 'sfall_s', 12: 'sfall_o', 13: 'sfall_p', 14: 'sfall_q', 15: 'sfall_t'}
+# Protos the game never hands out carry this name; they are not equipment.
+PLACEHOLDER = 'Nothing out of the ordinary'
+
+
+def weapon_skill(attack_skill, damage_type, big_gun):
+    """fallout2-ce item.cc weaponGetSkillForHitMode: a gun is an Energy Weapon if it does laser, plasma
+    or electrical damage, otherwise a Big Gun if flagged so, otherwise a Small Gun."""
+    if attack_skill != 'small_guns':
+        return attack_skill
+    if damage_type in ('laser', 'plasma', 'electrical'):
+        return 'energy_weapons'
+    return 'big_guns' if big_gun else 'small_guns'
+
+
+def perk_of(perk):
+    return {'id': perk['id'], 'name': perk['name']} if perk else None
+
+
+def build_equipment():
+    """Every weapon, ammunition and armour proto, reduced to what the comparison page computes with."""
+    def listed(item_type):
+        export = gecko('export_protos', {'itemType': item_type})
+        if export.get('unreadable'):
+            raise SystemExit(f'export_protos: {len(export["unreadable"])} unreadable {item_type} protos')
+        return [p for p in export['protos'] if p.get('name') and p['name'] != PLACEHOLDER]
+
+    weapons = []
+    for p in listed('weapon'):
+        w = p['weapon']
+        damage_type = DAMAGE_TYPES[w['damageType']['id']]
+        attacks = []
+        for slot in ('primary', 'secondary'):
+            mode = ATTACK_MODES.get(p['attackModes'][slot]['index'])
+            if not mode:
+                continue
+            attack = {'mode': mode[0],
+                      'skill': weapon_skill(mode[1], damage_type, p['extendedFlags']['bigGun']),
+                      'ap': w['apCost'][slot], 'range': w['range'][slot]}
+            if mode[0] == 'burst':
+                attack['rounds'] = w['burstRounds']
+            attacks.append(attack)
+        weapons.append({
+            'pid': p['pid'], 'name': p['name'], 'description': p['description'],
+            'weight': p['weight'], 'cost': p['cost'],
+            'damage': [w['damage']['min'], w['damage']['max']], 'damageType': damage_type,
+            'minStrength': w['minStrength'], 'twoHanded': p['extendedFlags']['twoHanded'],
+            'attacks': attacks,
+            'caliber': w['caliber'] if w['ammoCapacity'] > 0 else None,
+            'capacity': w['ammoCapacity'],
+            'defaultAmmo': w['ammoPid'] if w['ammoPid'] > 0 else None,
+            'perk': perk_of(w['perk']),
+            'animation': WEAPON_ANIMATIONS.get(w['animationCode']),
+            'hidden': p['extendedFlags']['hiddenItem'],
+        })
+
+    ammo = [{
+        'pid': p['pid'], 'name': p['name'], 'description': p['description'],
+        'weight': p['weight'], 'cost': p['cost'],
+        'caliber': p['ammo']['caliber'], 'quantity': p['ammo']['quantity'],
+        'acMod': p['ammo']['acModifier'], 'drMod': p['ammo']['drModifier'],
+        'mult': p['ammo']['damageMultiplier'], 'div': p['ammo']['damageDivisor'],
+    } for p in listed('ammo')]
+
+    armor = [{
+        'pid': p['pid'], 'name': p['name'], 'description': p['description'],
+        'weight': p['weight'], 'cost': p['cost'],
+        'ac': p['armor']['ac'], 'dt': p['armor']['dt'], 'dr': p['armor']['dr'],
+        'perk': perk_of(p['armor']['perk']),
+    } for p in listed('armor')]
+
+    print(f'  {len(weapons)} weapons, {len(ammo)} ammunition, {len(armor)} armour')
+    return {'weapons': weapons, 'ammo': ammo, 'armor': armor}
 
 
 def render_icon(fid, path):
@@ -152,14 +260,19 @@ def render_maps(maps):
 def write(path, payload):
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(payload, f, separators=(',', ':'))
-    print(f'wrote {os.path.relpath(path, ROOT)} ({os.path.getsize(path) / 1e6:.2f} MB)')
+    print(f'wrote {path} ({os.path.getsize(path) / 1e6:.2f} MB)')
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--no-icons', action='store_true', help='skip icon rendering (needs a GL context)')
     ap.add_argument('--no-maps', action='store_true', help='skip map rendering (slow; needs a GL context)')
+    ap.add_argument('--out', help='write data/ and img/ here instead of static/')
+    ap.add_argument('--strict', action='store_true',
+                    help='fail if any map is unreadable, instead of warning (for a published build)')
     args = ap.parse_args()
+    if args.out:
+        use_output(os.path.abspath(args.out))
 
     print('exporting entities...', flush=True)
     t0 = time.time()
@@ -171,6 +284,8 @@ def main():
         print(f'  WARNING: {len(export["mapsUnreadable"])} map(s) unreadable:', file=sys.stderr)
         for m in export['mapsUnreadable']:
             print(f'    {m["map"]}: {m["reason"]}', file=sys.stderr)
+        if args.strict:
+            return 1
 
     # How many places each proto turns up, so a hover card can say "found in 3 places" without
     # holding the rows that say where.
@@ -183,6 +298,9 @@ def main():
     write(OUT_PROTOS, {'protos': protos})
     write(OUT_ENTITIES, {'maps': export['maps'], 'entities': export['entities'],
                          'mapsUnreadable': export['mapsUnreadable']})
+
+    print('exporting equipment...', flush=True)
+    write(OUT_EQUIPMENT, {'source': f'RPU {RPU_VERSION}', **build_equipment()})
 
     if not args.no_maps:
         print(f'rendering maps for {len(export["maps"])} maps...', flush=True)
