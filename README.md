@@ -128,7 +128,9 @@ Release instead, and the workflow downloads the tag pinned in `website/scripts/d
 Keeping it current needs no manual step. On every commit, the pre-commit hook checks the newest
 RPU **2.4.x** release. When the pin is behind, it downloads that release's source, runs
 `build-database.py`, refuses to publish a build with unreadable maps or missing renders, uploads
-the result as `database-rpu-<version>`, and adds the new pin to the commit. Merging that commit to
+the result as `database-rpu-<version>-r<revision>`, and adds the new pin to the commit. The revision
+is `DATABASE_REVISION` in `database-release.sh` — bump it whenever `build-database.py` writes something
+new, and the next commit rebuilds. Merging that commit to
 `master` deploys it. A machine without gecko or the game files just prints a warning and commits.
 To run the same thing without committing:
 

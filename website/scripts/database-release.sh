@@ -22,6 +22,10 @@ PIN=scripts/database-release.txt
 # Relative to static/ — every directory build-database.py writes into.
 DIRS=(data img/db img/maps)
 
+# Bump when build-database.py's output changes (a new file, a new field). Part of the release tag, so
+# the hook rebuilds for a new generator as well as for a new RPU release.
+DATABASE_REVISION=2
+
 # The release line the database follows. 2.4.x is 2.3.x plus Pixote's updated maps.
 RPU_REPO=BGforgeNet/Fallout2_Restoration_Project
 RPU_LINE=2.4
@@ -118,11 +122,11 @@ update() {
     say "could not reach GitHub to check RPU releases — skipped"
     return 0
   fi
-  tag="database-rpu-$latest"
+  tag="database-rpu-$latest-r$DATABASE_REVISION"
   pinned=$(<"$PIN")
   [[ $pinned == "$tag" ]] && return 0
 
-  say "pinned $pinned, but the latest RPU is $latest"
+  say "pinned $pinned, but the current build would be $tag"
   if gh release view "$tag" --repo "$REPO" >/dev/null 2>&1; then
     say "$tag is already published — pinning it"
     echo "$tag" > "$PIN"
@@ -154,7 +158,7 @@ update() {
   out="$CACHE/database-$latest"
   rm -rf "$out"
   say "rebuilding for RPU $latest — this takes a while (skip with SKIP_DATABASE_UPDATE=1)"
-  FALLOUT2_RPU="$src" FALLOUT2_DATA="$FALLOUT2_DATA" \
+  RPU_VERSION="$latest" FALLOUT2_RPU="$src" FALLOUT2_DATA="$FALLOUT2_DATA" \
     GECKO_MCP="$GECKO_DIR/gecko-mcp" GECKO_CLI="$GECKO_DIR/gecko-cli" \
     python3 scripts/build-database.py --strict --out "$out" >&2
   check_build "$out"

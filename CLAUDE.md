@@ -135,13 +135,17 @@ Fallout Wiki phrasing in places) and XP figures that are sums rather than a sing
 The database behind `/database` and `<Item>` is **not committed** and **not built in CI** — it
 needs gecko and the `.dat` files, which never leave this machine. It ships as a GitHub Release, and
 the deploy workflow fetches the tag pinned in `website/scripts/database-release.txt`
-(`database-rpu-v2.4.NN`).
+(`database-rpu-v2.4.NN-rN`, the RPU release plus the generator's revision).
 
 The pre-commit hook (`.githooks/pre-commit`, enabled by `npm install`) keeps that pin current: it
 asks GitHub for the newest **2.4.x** RPU release, and when the pin is behind it clones that tag
 into `~/.cache/fallout2-guide/`, rebuilds, checks, publishes, and stages the new pin into the
 commit. That commit takes a while; `SKIP_DATABASE_UPDATE=1` defers it. Run the same thing by hand
 with `scripts/database-release.sh update`.
+
+**Changing what `build-database.py` writes? Bump `DATABASE_REVISION` in `database-release.sh`**, or the
+hook keeps pinning the old build. The rebuild needs gecko with the `export_protos` tool
+(JanSimek/gecko#144 or later); point `GECKO_DIR` at another build if the default one is older.
 
 That clone is the database's source, **not** `$FALLOUT2_RPU`, which the gecko MCP reads — the two
 can be on different RPU versions. Check which one a claim was verified against.
