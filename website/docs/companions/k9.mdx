@@ -1,51 +1,183 @@
 ---
 sidebar_position: 10
 title: K-9
+description: Dr. Schreber's switched-off cyberdog in Navarro — repair it once Schreber is dead for 3500 XP and a fast, hard-biting melee companion.
 ---
 
 # K-9
 
-**Found in:** [Navarro](/walkthrough/navarro), Dr. Schreber's lab
-
-A cybernetic dog, and the best of the game's several dog companions — which is a low bar. Formally the
-game calls it "Cybernetic Dog".
-
-Get the quest from **Dr. Schreber** (or from K-9 itself after you kill him), fetch the **K-9
-Motivator** from the vertibird hangar, and use it: **3500 XP**, Science check required.
-
-## Statistics
+Dr. Schreber gave his dog a cybernetic brain. "It worked but he developed a bad case of morals", so
+Schreber pulled its motivator and left it switched off by his lab door. Fixing it is worth **3500 XP**
+whether or not it then joins you, and **it joins even if your party is full**. It fights only with its
+teeth, but with 14–19 AP and AC 33 it far outclasses [Robodog](/companions/robodog).
 
 | | |
 | --- | --- |
-| **Skill** | Unarmed |
-| **AC/DT/DR** | 25/10/30 (lv 1) · **0**/10/30 (lv 2–5) |
-| **HP by level** | 127 · 129 · 131 · 133 · 137 |
-| **AP by level** | **14 · 15 · 16 · 17 · 19** |
+| **Where** | [Navarro](/walkthrough/navarro), Underground level: the Deactivated Cyberdog by the door of Dr. Schreber's lab |
+| **Joins if** | Schreber is dead, you repair it with the K-9 Motivator (Repair roll at −10), your karma is −100 or higher and you are not a Childkiller |
+| **Costs** | Schreber's life. Killing him yourself gives 1000 XP and +20 karma. |
+| **Best at** | Unarmed 100%, 14 AP, AC 33 |
+| **Weapons** | None: teeth only |
+| **Levels** | 4 level-ups: the first at player level 12–15 if it is with you by then, then one in every 4 of your level-ups ([how levelling works](/companions/overview)) |
 
-Enormous Action Points, negligible HP growth.
+## Recruiting
 
-:::note
-K-9 keeps its innate **AC 8** across every level-up.
-<Vanilla>The level-up protos dropped the AC bonus, so it vanished after the first one.</Vanilla>
+This is the quest <Quest>Fix K-9</Quest>. The order that works:
+
+1. Ask Schreber about the dog.
+2. Get Raul's permission and take the motivator from the locker.
+3. Kill Schreber.
+4. Repair the dog.
+
+### Asking Schreber
+
+Schreber is in his lab on the Underground level. He talks to you only if all of these hold:
+
+- the base is not on alert;
+- you wear power armour;
+- you are alone. K-9 does not count as company. With any other companion he calls for the guard
+  ("Intruders! Call the guard!" or similar), and the base can go on alert.
+
+Ask "What's with the dog statue by the door?" and then "Can he be fixed?". He tells you he gave its
+motivator circuit to **Raul up in maintenance**. That starts the quest.
+
+If Schreber is already dead, the dog itself can start the quest instead (below).
+
+### The motivator
+
+The <Item>K-9 Motivator</Item> is in the locker next to **Raul**, in the vertibird hangar on the
+Vertibird Base level. Once the quest is active, put on power armour (without it Raul only floats a line
+at you) and tell him "The doc wants to fix his dog. He sent me for the part." He answers "it's in the
+locker over there. Take it and tell the doc Raul says hi." From then on he ignores the locker.
+
+Without his permission, Raul watches the locker whenever he can see you:
+
+- he sees you unless you are sneaking and either have Sneak 90% or more, or have Sneak 40–89% and pass
+  a Sneak roll at −10;
+- the first time you tamper with the locker he warns you;
+- the second time he puts the base on alert and attacks.
+
+He also stops watching it while he is fighting Quincy.
+
+Picking the motivator up gives no XP.
+
+### Schreber must die
+
+**The dog does nothing for you while Schreber lives.** Until then it only says "You are not my master.
+I cannot speak to you. Good bye.", and using a skill or an item on it just opens that line. It does not
+matter who kills him. If you do it yourself, you get **1000 XP and +20 karma**.
+
+### The repair
+
+With Schreber dead, use your **Repair** skill on the dog while carrying the motivator, or use the
+motivator on it. Either way you make a **Repair roll at −10**. A companion such as Vic makes the roll
+for you if their Repair is the party's highest and it is their own best skill.
+
+- **Success:** the motivator is used up, you get **3500 XP**, the quest is complete, and K-9 is
+  switched on.
+- **Failure:** "That is not where that goes, master. Are you sure you know what you are doing?" You
+  keep the motivator and can try again.
+
+Using Repair without the motivator gives "You seem to be missing a part."
+
+Talking to the dog first is optional. After Schreber's death it asks "The life functions of my master
+have terminated. Are you my new master?". Saying yes starts the quest if Schreber had not, which is
+what Raul's permission needs, but it changes nothing about the repair. Saying no has no lasting effect.
+
+### Joining
+
+The moment it is switched on, K-9 decides whether to join. This check happens **only once**:
+
+- **karma below −100** or the **Childkiller** reputation: "You are a bigger asshole than Schreber. I
+  will not join you." It refuses **for good**, but you keep the 3500 XP.
+- otherwise: "I appear to be fully functional now, master. Shall I join you?" and it joins
+  immediately, **with no party-size or Charisma check**.
+
+After it has joined, your karma and reputation never matter to it again.
+
+:::note[Navarro does not count K-9 as company]
+The shared "are you alone?" test in Navarro's scripts ignores K-9, so with only K-9 along you still
+count as alone. That includes the commander's door guard. Power armour checks still apply.
 :::
 
-:::caution
-K-9 counts as **organic** for healing, but has only **50% EMP resistance** — worth remembering before
-you lob pulse grenades over a dog fighting robots.
-:::
+## Stats by level
 
-## Joining
+A level-up also heals it fully. The player-level ranges assume K-9 has been in your party since player
+level 12: the earliest level at which each stage can come, and the level by which it is certain.
 
-With **karma −100 or higher** and no Childkiller status, K-9 joins immediately — **even over your
-Charisma limit**. You can walk around Navarro with it and nobody reacts.
+| Stage | Player level | HP | AP | AC | Unarmed | Melee damage | Critical chance | Other changes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Repaired | — | 127 | 14 | 33 | 100% | 16 | 32% | |
+| 1 | 12–15 | 129 | 15 | 33 | 110% | 17 | 34% | |
+| 2 | 16–19 | 131 | 16 | 33 | 120% | 18 | 36% | |
+| 3 | 20–23 | 133 | 17 | 33 | 130% | 19 | 38% | |
+| 4 | 24–27 | 137 | **19** | 33 | **152%** | 21 | 43% | PE 10, IN 8, AG 9, LK 8 |
 
-It is also the **only companion the guard outside the Navarro commander's office will overlook**.
+It keeps its **AC 33** at every stage.<Vanilla>The level-up stages have no AC bonus, so K-9 dropped to
+AC 8 (9 at the last stage) after its first level-up.</Vanilla> These never change: Strength 6, Endurance
+8, Charisma 3, carry weight 175, DT 10 / DR 30% against normal damage, DR 75% against lasers, and
+**DT 5 / DR 50% against EMP**.
 
-:::danger[Losing K-9 is permanent]
-It leaves if you become a Childkiller or drop to karma −101 or lower — and **once it has left this
-way, you can never recruit it again**, even if your karma recovers.
-:::
+## Gear
 
-:::note
-K-9 cannot climb down the [EPA](/walkthrough/epa) elevator shaft. It waits at the top.
-:::
+**There is nothing to equip.** Its art has no weapon animations, and FOR:CE never has a dog pick a
+weapon from its inventory. Asked what it can use, it says "Teeth, master. The shiny white things
+installed in my mouth."
+
+**No armour either.** FOR:CE does not let four-legged companions wear armour, and the NPC Armor mod does
+not cover K-9. The K-9 Kevlar sold in [Broken Hills](/walkthrough/broken-hills) is scripted for Dogmeat
+only.
+
+**You cannot give it anything.** It has no Trade screen ("This critter can't carry anything.") and
+cannot be stolen from, so it never carries healing items. "You should heal yourself now." therefore
+always falls back on its own First Aid (30%, 36% at the last stage): 5–15 HP on a success, and 15
+minutes pass. It does not take chems in combat.
+
+**Combat settings:** Weapon Pref. is locked to "Unarmed", and there is no "Snipe" distance and no burst
+setting. K-9 shares its default custom combat settings with Robodog, so a change made for one applies
+to both.
+
+## Using it
+
+- **It bites often.** An attack with no weapon costs 3 AP, so it bites four times a turn at 14 AP and
+  six times at 19 AP. Its Melee Damage is added to the maximum damage of every bite.
+- **It is a free extra slot.** It joins over your Charisma limit. That lasts only until you tell it to
+  wait, because getting it back goes through the normal party-size check.
+- **Heal it like a living creature.** Stimpaks, First Aid and Doctor all work. Repair does not: the
+  engine refuses to repair anything that isn't a robot. The doctors in Broken Hills and Vault City
+  (Dr. Troy and Andy), and Lenny in Gecko, heal it along with the rest of the party. Dr. Johnson in
+  Redding treats one patient per visit: you if you are hurt, otherwise the first companion on his list
+  who is with you, and K-9 is near the end of that list.
+- **Don't hit it while it waits.** A stray burst on a K-9 that follows you only costs it HP, but a
+  waiting K-9 attacks you for it (below).
+- **Check your karma before the repair**, not after.
+
+## Orders
+
+K-9's menu opens with "Yes, master?":
+
+- "You should heal yourself now." (only when it is hurt).
+- "We need to change our distance from one another.": close, medium or far ("I will follow at your
+  heel, master.").
+- "I need to talk to you about your gear.": "I have fur, master. I carry no other gear.", and the
+  weapons question.
+- "I need you to wait here until I come back.": "I will await your return, master."
+
+There is no order to dismiss it for good.
+
+## Losing it
+
+- **Hurting it:** while K-9 is in your party, nothing happens beyond the damage: the game does not run
+  its "you hurt me" script when one party member hits another, deliberately or with a stray burst.
+  Only while it waits does your attack count. It then attacks you the next time it sees you, though
+  its script attacks only that once. <Unverified>Whether it stays hostile after that fight was not
+  traced.</Unverified> It still offers its menu afterwards, and "Let's go." still works. Your
+  companions' attacks never count.
+- **Rejoining:** while it waits, "Let's go." brings it back, unless you have Charisma 1 ("You are a
+  cretin. I will not go anywhere with you. Go away.") or a full party ("I will wait here until a
+  position opens."). Either way it keeps waiting, and you can ask again later.
+- **Karma and Childkiller** matter only at the moment of the repair (see above).
+- **The EPA:** it cannot follow you down the broken elevator shaft. It leaves the party and waits at the
+  top.
+- **Stealing from it** is impossible: the game does not let you steal from K-9.
+- **Death:** killing it costs no karma.

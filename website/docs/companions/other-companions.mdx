@@ -1,0 +1,279 @@
+---
+sidebar_position: 12
+title: Other Companions
+description: The pariah dog, Laddie, Davin and Miria — the minor party members, what they cost and how to get rid of them — plus the quest followers who tag along for a while.
+---
+
+# Other Companions
+
+Four more critters can join your party for longer than a quest. None of them ever levels up.
+**Laddie** is free and harmless. The **pariah dog** is a curse you should
+kill. **Davin** and **Miria** come with a shotgun wedding and are hard to get rid of. General rules
+are on the [Companions](/companions/overview) page.
+
+## The pariah dog
+
+A ragged dog with a glass eye that *"could expire at any moment"*. It joins you whether you like it or
+not, drags your Luck down to nothing and never fights. **Kill it.**
+
+| | |
+| --- | --- |
+| **Where** | The Pariahs [special encounter](/systems/random-encounters#special-encounters), from player level 6 |
+| **Joins if** | You fail a Luck roll while it can see you. You don't get a say. |
+| **Costs** | Your Luck, the Jinxed perk, and a party slot |
+| **Best at** | Surviving: 750 HP, AC 25, 40% normal DR. It never attacks. |
+| **Weapons** | None |
+| **Levels** | None |
+
+### How it joins
+
+The encounter can happen **from level 6**, anywhere in the desert, and normally only once. While the
+dog can see you and isn't in your party, it rolls against your Luck. The roll is repeated every 10
+seconds, and again as soon as a map loads. The first time a roll fails, *"The dog seems to take a
+liking to you. This can't be good."*, and it has joined.
+
+- A roll fails when a random 1–10 is higher than your Luck. **Luck 10 is immune.** At Luck 9 a
+  roll fails 10% of the time, at Luck 5 half the time.
+- There is **no party-size check**. It joins over your Charisma limit, then **counts against it** like
+  any other companion.
+- It has no dialogue, so there is no refusing it. **Leave the map before a roll fails**, or accept
+  that you will have to kill it.
+
+### What it does to you
+
+- **Jinxed.** You get the Jinxed perk. While you have it, **any** missed attack has a 50% chance to
+  become a critical failure. That goes for you, your companions and your enemies.
+- **Luck.** Once, while the dog is with you and your Luck is above 1 (above 2 with Gifted), your base
+  Luck is set to 1 — 2 for a Gifted character, whose trait then adds its own +1 — and any bonus Luck is
+  cleared. A Gifted character ends at **Luck 3**, everyone else at **Luck 1**.
+- **It never fights.** Its script makes it flee every combat turn, whatever its Combat Control settings
+  say.
+
+### Getting rid of it
+
+There is **no dismissal**. Its script has no dialogue and no way to leave the party. Once it has
+joined, **killing it is the only way out**.
+
+When it dies, Jinxed is removed and your base and bonus Luck go back to what they were when it took
+them. **Any base Luck you gained while it was with you is lost**, so don't raise Luck until it is
+dead. With 750 HP and 30–60% DR it takes a while. Killing it yourself earns **5 karma**.
+
+## Laddie
+
+Jonny's border collie in [Modoc](/walkthrough/modoc#4-jonny-is-missing-find-him-and-bring-him-home-to-balthas),
+*"really alert and intelligent"*. Balthas sends him with you to look for his son. He is **free**: he
+never counts against your Charisma limit. He is also very fragile.
+
+| | |
+| --- | --- |
+| **Where** | Modoc main street. Balthas, at the tannery, sends him with you. |
+| **Joins if** | PE 6, IQ 6, and a Modoc reputation of at least 1 (or karma 500+) **when you first ask Balthas about Jonny** |
+| **Costs** | Nothing. He doesn't even take a party slot. |
+| **Best at** | Unarmed 72%. 20 HP, AC 5, no DT or DR. |
+| **Weapons** | None |
+| **Levels** | None |
+
+### Recruiting
+
+1. With **PE 6** (and IQ 4), ask Balthas *"You seem a bit preoccupied; is there something wrong?"*
+2. With **IQ 6**, pick *"Pardon me, my name is… Now that we're properly introduced, you seem troubled."*
+3. Now your standing decides:
+   - **Modoc reputation 1 or more** (what the script calls Accepted), or **karma 500 or more**: he opens
+     up. Go on to step 4.
+   - Negative reputation, or karma −500 or lower: he won't say. You can come back later.
+   - **Reputation exactly 0**: he gives you the quest **without Laddie**, and the question in step 1
+     is gone for good.
+4. Ask *"Why don't you tell me what your problem is…"*, then either *"Where does Jonny normally play?
+   Does he usually play with someone else?"* (**IQ 8**) or *"I'm sorry about your kid, but what could I
+   possibly do?"* followed by *"Well, yes! I am quite a skillful tracker…"*, which always works. Either way
+   you get <Quest>Jonny is missing. Find him and bring him home to Balthas</Quest>, and Laddie joins
+   you a moment later.
+
+:::caution[Raise your reputation first]
+A neutral standing starts the quest without the dog and closes the offer. Earn some Modoc reputation
+**before** you first ask Balthas what is wrong.
+:::
+
+Laddie adds no XP of his own. The quest's 2500 XP, +10 Modoc reputation and
+<Item>Combat Leather Jacket</Item> come from Balthas.
+
+### Using him
+
+- On Modoc's main street he **runs to the town well** and waits there until you have found Jonny's BB
+  gun. Ask him *"What's the matter boy, are you trying to tell me something?"* (IQ 4) or *"Did Jonny
+  fall down the well, Laddie?"* (IQ 10) for a game of twenty questions. It is pure flavour.
+- Elsewhere his menu has *"Do you know where Jonny is, boy?"* (IQ 10), *"Stay here, Laddie."* and
+  *"Let's go find Jonny."* To take back a Laddie you told to stay, talk to him and end the conversation.
+- **While you carry <Item>Jonny's BB Gun</Item>, he only barks.** Carry it onto the main street while he
+  is there and that becomes permanent. After that he can't be given orders or called back from waiting.
+- Every Combat Control option is open to him, but with 20 HP and no armour it hardly matters. **Keep him
+  out of fights.**
+
+### Losing him
+
+- **He leaves when he finds Jonny.** At the Slags' underground lake he runs to the boy and leaves your
+  party. Once Jonny is home, he leaves you on the main street and stays by him. His dialogue has no
+  join option, so **a Laddie who has left you this way never rejoins**.
+- He also leaves if you **hit Jonny** while he is with you, and leaves and **attacks** if you become an
+  enemy of Modoc.
+- Hitting Laddie himself while he isn't in your party doesn't make him hostile.
+- Killing him yourself costs **10 karma** and 5 Modoc reputation.
+
+## Davin and Miria
+
+Grisham's son and daughter, on Modoc's main street
+([walkthrough](/walkthrough/modoc#miria-and-davin)). The only way to recruit either is to sleep with
+them and be caught by their father. Neither ever levels up. Both have 35 HP and no damage resistance,
+both refuse to wait, and neither can be dismissed. They are worth taking for the wedding scene, or to
+sell.
+
+| | Davin | Miria |
+| --- | --- | --- |
+| **Where** | Modoc main street | Modoc main street |
+| **Joins if** | You marry them (below). No party-size check. | Same |
+| **Costs** | A party slot, until you sell, divorce or bury them | Same |
+| **Best at** | Unarmed 46%, Melee 36% | Unarmed 46%, Melee 36% |
+| **Weapons** | Knife, club, pistol | Knife, SMG |
+| **Levels** | None | None |
+| **Wedding gifts** | 2 <Item>Stimpak</Item>s, 1 <Item>Tool</Item> | 4 Stimpaks, 2 <Item>Antidote</Item>s |
+
+### The seduction
+
+Both use the same test: **Charisma + 1 if a Charisma roll succeeds + 1 if your Modoc reputation is
+positive** must reach 9. The Charisma roll succeeds when a random 1–10 is at most your Charisma, and it
+is rolled again each time the line could appear.
+
+| Charisma | Chance |
+| --- | --- |
+| 9 or 10 | Always |
+| 8 | 80%, or always with a positive Modoc reputation |
+| 7 | 70%, and only with a positive Modoc reputation |
+| 6 or less | Never |
+
+Neither checks your gender.
+
+- **Davin:** *"Why don't we get more comfortable?"* isn't in his very first greeting. It appears when you
+  come back, and after you have asked him one of his questions. Either of the replies that follow (IQ 8 or IQ 4)
+  goes through.
+- **Miria:** ask *"What do you do around here?"*, then *"I really would like to know more about you."*
+  (this is the Charisma test), then *"Well, I've never known anyone as interesting as you are."*, then
+  *"I think this going too far. Can't we just talk?"* Despite the wording, that last line is the one
+  that leads to bed and the wedding. *"I thought you'd never ask…"* and, for a man, *"You know, I'm just
+  a normal guy…"* end it there. *"You slut!…"* and *"You are a slut, aren't you!"* insult her
+  for good.
+
+:::danger[Never take the "you know you want it" line]
+With Miria, *"You're right, enough talk. Let's get it on! You know you want it."* has **no Charisma
+test**. It, and *"All right! You know what I want, baby!"* later in the conversation, lead to an
+assault scene:
+**−50 karma**, Miria cries for help, Grisham confronts you, and **all of Modoc turns hostile**. Male and
+female characters alike can pick these lines, and there is no wedding.
+:::
+
+### The wedding
+
+Afterwards the screen fades, the clock jumps to noon if it is not daytime, and **your armour is taken
+off** and put in your inventory. Nothing else leaves your pack. Grisham walks in with a
+<Item>Shotgun</Item>. If Grisham is already dead, "Uncle Biff" turns up in his place with a
+<Item>Sawed-Off Shotgun</Item>. If Jo is dead, he is brought back for the ceremony.
+<Unverified>The Modoc page reports that a dead Grisham or a dead Jo freezes the game. RPU's scripts
+handle both cases, but a freeze can't be ruled out from source.</Unverified>
+
+Talk to Grisham:
+
+- **Same-sex pairing:** it's a wedding either way.
+- **Opposite-sex pairing:** *"Let me explain it to you gently, pops…"* and *"This isn't what it appears
+  to be."* both end in a wedding. *"I'm a doctor, and I was just giving her/him a complete physical."*,
+  followed by *"Germs? I mean GERMS!…"*, makes a **Speech roll**. Pass it and there is no wedding and
+  everything goes back to normal. Fail it and you're married.
+- **Don't run.** Walk out of Grisham's area and he turns hostile. Leave the map during the scene and
+  **Modoc becomes your enemy**. Hitting Grisham does the same.
+
+The scene stops your companions from following you. The wedding and the doctor story both undo this.
+
+After the ceremony your new spouse joins you, **even over your Charisma limit**, and counts against it
+from then on. They bring the gifts listed above. If this is your first marriage, you get the
+**Married** reputation: *"You got hitched. Hey, it's your problem, not ours."* There is no XP.
+
+### Stats
+
+| | Davin | Miria |
+| --- | --- | --- |
+| HP / AP / AC | 35 / 7 / 4 | 35 / 7 / 5 |
+| SPECIAL | ST 4, PE 5, EN 5, CH 4, IN 5, AG 4, LK 4 | ST 3, PE 5, EN 4, CH 5, IN 5, AG 5, LK 4 |
+| Small Guns / Melee / Unarmed | 21% / 36% / 46% | 25% / 36% / 46% |
+| First Aid / Doctor | 20% / 15% | 20% / 15% |
+| Speech / Barter | 20% / 16% | 25% / 20% |
+| Carry weight | 125 | 100 |
+| DT / DR | None | None |
+
+### Gear
+
+Their art decides what they can hold. **Davin** can use knives, clubs and pistols, **Miria** knives and
+SMGs. The 14mm Pistol and .223 Pistol count as SMGs here. Their own words agree: Davin is *"pretty handy
+with the knife… I guess I could use a club… shoot a pistol once"*, and Miria prefers *"Sharp weapons
+like knives… I can use weapons like an SMG in a pinch"*. Compare everything in
+[Weapons and Armour](/equipment).
+
+- **Melee 36% is their best weapon skill.** A <Item>Combat Knife</Item> suits both: 3–10 damage, ST 2,
+  and 3 AP, so two stabs a turn on their 7 AP.
+- **Davin** (ST 4) can also take a <Item>Super Cattle Prod</Item> (20–32, ST 4, 4 AP, one swing a
+  turn, needs <Item>Small Energy Cell</Item>s) or a Louisville Slugger (12–30, ST 4, 3 AP, two swings
+  a turn).
+- **Miria** (ST 3) should stay with knives. Every SMG-class weapon needs **ST 4 or more**, so she always
+  takes at least −20% to hit, on top of Small Guns 25%.
+- Davin's art can throw grenades (with Weapon Pref. set to "None"). Miria's can't.
+- **Armour** works on both, and *Use Best Armor* can pick it for them. Their look never changes,
+  because the NPC Armor mod doesn't cover them. Their gear menu can take armour off again.
+- **Healing:** told *"You should heal yourself now."*, they use the first Super Stimpak, Stimpak,
+  Healing Powder, Doctor's Bag or First Aid Kit they carry. With none of those, they fall back on First
+  Aid for 5–15 HP. Keep the wedding Stimpaks on them.
+
+### Using them
+
+- **35 HP and no DR.** Keep them behind you.
+- **They won't wait.** *"No, baby; I wanna come with you."* They also refuse medium and far follow
+  distance, so close is the only setting.
+- Every Combat Control option is available to them.
+- Neither has a "leave the party" option.
+
+### Getting rid of them
+
+| Way | Where | You get | Karma | Their gear |
+| --- | --- | --- | --- | --- |
+| Sell to **Metzger** | [The Den](/walkthrough/the-den#the-slaver-guild) | Davin $900, Miria $1100 when your Barter equals his; more with better Barter | −15 | Stays with Metzger. The spouse turns up as a slave in his pen. |
+| Sell to **Barkus** (Servant Allocation Center) | [Vault City](/walkthrough/vault-city#inside-the-city) | Davin $200, Miria $250; $400 / $500 if a Barter roll succeeds | −10, plus −3 once for considering it and −3 once for haggling | Goes into Barkus's box |
+| Sell to **Big Jesus Mordino** | [New Reno](/walkthrough/new-reno#virgin-street) | Davin $200, Miria $250; $400 / $500 if a Barter roll at +10 succeeds | −10, plus −3 once for offering and −3 once for haggling | **Handed to you** |
+| **Divorce** from Father Tully | [New Reno church](/walkthrough/new-reno#the-church) | Costs one bottle | None | **Lost with them** |
+
+- **Barkus** makes his offer while you have any companion. He picks Miria first, then Davin, then Sulik,
+  then Vic.
+- **Father Tully** offers *"Can you do divorces?"* while your spouse is in the party, if you have never
+  divorced before. He
+  wants a bottle of <Item>Roentgen Rum</Item>, <Item>Gamma Gulp Beer</Item>, <Item>Booze</Item>,
+  <Item>Beer</Item> or <Item>Rot Gut</Item>. Your spouse runs off and vanishes **with everything they
+  carry**, so strip them first.
+- Metzger, Barkus and the divorce all end the marriage, and you become **Separated**: *"Your spouse is no
+  longer with you. I hope you're happy."* **A sale to Big Jesus leaves you Married.**
+- **Death** also ends the marriage. Killing them yourself costs **10 karma** and 5 Modoc reputation.
+- Once the marriage is over, Grisham asks after your spouse. Tell him they are dead and he has a fatal
+  heart attack: **−20 karma**.
+- They also leave if you become an enemy of Modoc, and attack if you talk to them in that state.
+  Hitting either of them in Modoc before the wedding makes the town your enemy.
+- Once the marriage has ended, a living ex-spouse only has a line or two for you. There is no way back.
+
+## Temporary followers
+
+These join your party for part of a quest, or for mechanical reasons. None of them is under your
+control for long.
+
+| Who | Quest | What happens | Covered in |
+| --- | --- | --- | --- |
+| **Smoke** | <Quest>Rescue Nagor's dog, Smoke, from the wilds</Quest> | Joins when you reach him in the hunting grounds. He leaves the party as soon as you take him off that map. | [Arroyo](/walkthrough/arroyo#2-rescue-nagors-dog-smoke-from-the-wilds) |
+| **Bess** | None | Heal her crippled leg (First Aid won't do it) for **200 XP** and +5 karma. She then follows you on the Modoc maps, without taking a party slot. | [Modoc](/walkthrough/modoc#bess) |
+| **The "chicken"** | None | Once out of its coop, it joins your party to follow you between Modoc maps. It kills everyone on a map it hasn't cleared yet, including companions you left there, and attacks you whenever it is visible and can see you. | [Modoc](/walkthrough/modoc#the-chicken) |
+| **Pretty Boy Lloyd** | <Quest>Track down Pretty Boy Lloyd, recover the stolen money, and make an... example of him</Quest> | Joins when he agrees to take you to the money. He leaves the party as soon as you arrive in Golgotha. | [New Reno](/walkthrough/new-reno#5-track-down-pretty-boy-lloyd-recover-the-stolen-money-and-make-an-example-of-him) |
+| **The car trunk** | None | Joins the party once you own the car, so that it travels with you. It is an item, so it never counts against your limit. | [The Car](/systems/car#the-trunk) |
+
+Jonny, Karl and Doc Jones also have entries in the game's party list, but no script ever adds them to
+your party.

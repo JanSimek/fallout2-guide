@@ -1,72 +1,194 @@
 ---
 sidebar_position: 9
 title: Goris
+description: The robed deathclaw scholar of Vault 13 — a hard-hitting unarmed fighter with no gear to manage, who walks home if your karma slips.
 ---
 
 # Goris
 
-**Found in:** [Vault 13](/walkthrough/vault-13)
+> *"I'm sorry to have deceived you, but humans have a habit of shooting deathclaws on sight."* — Goris
 
-An intelligent, scholarly deathclaw in a hooded robe. Gruthar points you at him with
-<Quest>Talk to Goris</Quest>; ask him everything before asking him to join.
-
-:::danger[Ask every question first]
-Leave the conversation early and you can only ever ask him to join. The rest of his dialogue —
-including the one that puts the **Military Base** on your map — is gone.
-:::
-
-## Statistics
+Goris is the scholar of the Vault 13 deathclaws, hiding his nature under a hooded robe. He fights only
+with his claws, but his Unarmed skill runs from 110% to 170%, his claws cut through armour, and he ends
+with 15 AP. He costs nothing and needs no equipment; the price is a long list of things that send him
+home. His conversation is also how you find the Military Base.
 
 | | |
 | --- | --- |
-| **Skill** | Unarmed |
-| **AC/DT/DR** | 20/5/40 (lv 1–4) · 25/6/40 (lv 5–6) |
-| **HP by level** | 125 · 134 · 145 · 155 · 166 · 175 |
-| **AP by level** | 11 · 11 · 12 · 12 · 13 · 13 |
-| **Weapon** | His claws. Nothing else. |
+| **Where** | [Vault 13](/walkthrough/vault-13), on level 3 of the vault |
+| **Joins if** | karma 0 or higher, Vault 13 reputation 0 or higher, not a Childkiller or Berserker, a free slot — and, the first time, the right questions asked |
+| **Costs** | Nothing; no XP either |
+| **Best at** | Unarmed 110%, with melee damage 23 and 11 AP |
+| **Weapons** | Unarmed only — his claws |
+| **Levels** | 6 level-ups, one for every four of your level-ups from level 10 while he is with you ([how it works](/companions/overview)) |
 
-He cannot wear armour, and the animation of him removing and putting on his robe is slow enough to be
-genuinely irritating.
+## Recruiting
 
-## Is he worth it?
+Gruthar's <Quest>Talk to Goris</Quest> (Gordon can start it too) points you at him; **any** conversation
+with Goris completes it, for no XP.
 
-He lands a high proportion of **critical hits** and carries a lot — he can take a floater down in one
-or two turns. Against that: he arrives very late, his lack of combat options leaves him exposed, and a
-fully equipped Sulik or Cassidy in Power Armor with a Mega Power Fist outclasses him.
+### The first conversation
 
-:::caution[Where he cannot go]
-- **The Enclave** — he simply dies there. Leave him behind.
-- **Navarro** — impossible to keep alive.
-- **Redding** — Lou and Josh will not talk to you with him along.
+Only on the Vault 13 map, he opens with *"Hello, I'm Goris. I don't recognize you; are you new here?"*.
+*"Can I ask you some questions?"* or *"Mind if I ask you some questions?"* leads to his question list —
+and **this is the only conversation that has it**.
 
-He walks into **Vault City** without comment, apparently on the strength of the cloak.
+| Question | What it does |
+| --- | --- |
+| *"What can you tell me about the deathclaws here?"* | Opens the travel option. Read on through MORE and he mentions the Enclave — Dr. Henry and the slave overseer in NCR both check whether you have heard this. |
+| *"Do you know what happened to the people who used to live here in the vault?"* | Also mentions the Enclave. Needed, with the deathclaw question, before you can ask him to join. |
+| *"How long have you been here?"* | Needed for the Enclave question. |
+| *"Do you have any information on this Enclave you spoke of?"* | **Marks the Military Base on your world map** (*"The Enclave showed an interest in some ruins to the west of here."*). Appears once he has mentioned the Enclave and you have asked how long he has been here. |
+| *"You mentioned you wanted to do some traveling. How about joining me?"* | The join check below. Appears after the deathclaw and vault-people questions. |
+
+The other questions (what he is doing here, whether he is a prisoner, Gruthar, the threat the deathclaws
+pose, the virus) are conversation only.
+
+:::danger[Ask about the Enclave before you leave]
+Later conversations offer only *"Hey, I'm looking for a traveling companion. You up for it?"* and
+goodbyes, so the Military Base question is gone once you walk away. The one way back to the list is being
+turned down: *"I understand. Perhaps you'll reconsider later."* or *"Ok, I understand."* return you to
+the questions.
 :::
 
-## Quirks
+If you tell him you have had adventures (*"Yes, I've had some adventures…"*), he answers your questions
+in exchange for your stories when you say goodbye: *"Gladly…"* passes three hours, *"Yeah, sure."* one,
+and *"Promise? What promise?"* gets you out of it. There is no reward either way.
 
-:::note[The rejoin bug]
-Try to recruit Goris after the Vault 13 massacre and he joins, then immediately leaves again — a
-variable that never resets. It happens if he is in Vault 13 and you never went through the "pack is in
-trouble" conversation.<Unverified>The join/leave path is a state machine killap reworked; I could not
-tell from the script whether the original fault survives. The workaround below is harmless either
-way.</Unverified>
+### The join check
 
-**Fix:** save and reload, or leave Vault 13 so you are outside the vault door and come back.
+He refuses — *"(Goris hesitates and you get the feeling you are being carefully scrutinized.) I'm sorry,
+but I don't think that you and I share the same ideals…"* — if any of these apply:
+
+- karma below 0;
+- Vault 13 reputation below 0;
+- the Childkiller or Berserker reputation (see [Reputation](/character/reputation)).
+
+Otherwise he joins when the conversation ends. With a full party he says he will wait for a place to open.
+
+**On a later visit** — or wherever you left him waiting — *"Hey, I'm looking for a traveling companion.
+You up for it?"* goes straight to this check; no questions needed.
+
+:::note[Low Intelligence]
+With IN 3 or less, the first conversation runs *"Me [your name]. Me new here."* → *"Uh... 'seasoned'?"*
+→ *"Food seasoned, not me."* → *"Uh... Okay."*, and he joins if he does not dislike you. That path only
+checks your party size and whether Vault 13 hates you; with negative karma, or as a Childkiller or
+Berserker, he walks off again on his next heartbeat (see [Losing him](#losing-him)). Later, *"You come
+me?"* runs the full check. See [Low Intelligence](/systems/low-intelligence).
 :::
 
-:::note
-When Goris leaves your party he **tags along invisibly**, waiting to reappear in his usual spot when
-you next pass Vault 13. In that state he does **not** count against your party limit — and he
-**continues to gain levels** as if he were with you.
+## Stats by level
+
+| Stage | Your level | HP | AP | AC | Unarmed | Crit | Melee damage | Other changes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Recruited | — | 125 | 11 | 28 | 110% | 11% | 23 | ST 8, AG 8. Carry weight 225 lb. DT/DR 5/40% normal, 8/60% laser, 4/30% fire |
+| 1 | 10–13 | 134 | 11 | 28 | 120% | 13% | 28 | |
+| 2 | 14–17 | 145 | 12 | 28 | 130% | 18% | 30 | EN 8, IN 6 |
+| 3 | 18–21 | 155 | 12 | 29 | 140% | 18% | 36 | ST 9, AG 9. Carry weight 250 lb |
+| 4 | 22–25 | 166 | 13 | 34 | 150% | 24% | 39 | EN 9, IN 7, LK 7. DT/DR 6/40% normal, 9/65% laser, 5/35% fire; healing rate 3 |
+| 5 | 26–29 | 175 | 13 | 34 | 160% | 24% | 41 | Speech drops from 40% to 20% |
+| 6 | 30–33 | 187 | 15 | 35 | 170% | 29% | 45 | ST 10, EN 10, IN 8, AG 10. Carry weight 275 lb |
+
+"Your level" assumes he is in the party from level 10 on: each stage can come at the first level shown
+and is certain by the last — so the last one arrives in the thirties. Each level-up comes with a comment,
+from *"I do believe I have gained some knowledge!"* to *"I am now the mightiest amongst my pack."*
+
+## Gear
+
+He has a **claw in each hand**: 3–4 damage, 3 AP a swipe, and the Penetrate perk, which cuts the target's
+damage threshold to a fifth. His melee damage is added to the top of that range, so a swipe does 3–27 at
+recruitment. With 11 AP that is three attacks a turn, four from stage 2, five at stage 6.
+
+His art can **punch and nothing else** — no kick, no throw, no weapon of any class. He has no gear
+menu, and nothing puts armour on him: *Use Best Armor* works only for two-legged companions, and the
+bundled NPC Armor mod does not cover him.
+
+The only items his art could use are punching weapons: <Item>Brass Knuckles</Item>,
+<Item>Spiked Knuckles</Item>, <Item>Boxing Gloves</Item>, <Item>Plated Boxing Gloves</Item>, the
+<Item>Power Fist</Item> (12–24) and the Mega Power Fist (20–40) — the last two with Penetrate, like his
+claws.
+<Unverified>FOR:CE explicitly lets Goris pick weapons from his inventory, and a punching weapon passes
+every engine check on paper, but nobody has confirmed that he actually wields one in play.</Unverified>
+Compare them on [Weapons and Armour](/equipment).
+
+## The deathclaw underneath
+
+When combat starts, FOR:CE plays his disrobing animation and turns him into a grey deathclaw; when it ends
+he puts the robe back on. Examined mid-fight, he is *"a gray deathclaw. It's Goris."*
+
+RPU can speed that animation up: `goris_derobing_speed` in `mods/upu.ini` is **50** frames per second by
+default (16 is the original speed, 100 the maximum, 0 leaves it alone). **Under FOR:CE this setting does
+nothing**: RPU applies it by rewriting the animation files with sfall's file functions (`fs_seek`,
+`fs_write_short`), which FOR:CE does not implement. The installer's *Faster derobing for Goris* →
+*Low FPS* option takes a different route — it installs a separate data file with the animation, loaded
+like any other mod.
+
+After your first map change together, his menu gains *"You're a deathclaw? Is there a reason you didn't
+mention this to me before?"*, once. *"I understand why you felt it necessary to hide your identity…"*
+keeps him; *"I'm sorry, but I don't like being deceived. You should leave."* only makes him **wait where
+he is**.
+
+## Using him
+
+**Combat settings** are nearly fixed: Weapon Pref. is *Unarmed* only, Distance is *Charge!* only, and
+there are no Burst options. Attack Who is open — the default is *Whoever is closest*; *Whoever is
+attacking me* keeps him on the enemies going for you. Run Away offers *You need a tourniquet* (the
+default) or *Never!*.
+
+**Healing.** He **never uses stimpaks in combat** — the engine only lets two-legged critters take drugs
+there, whatever his Chem Use says. Out of combat he uses carried healing items by himself when he is
+down to 60% (*Stimpaks when hurt a bit*) or 30% (*hurt a lot*, the default). *"You should heal yourself
+now."* uses an item, or rolls his First Aid for 5–15 HP. Party Orders' heal and loot orders skip him.
+
+**Towns.** Vault City's gate guard has no objection to him. Lou and Josh in
+[Redding](/walkthrough/redding) only brush you off with a remark while he is along.
+
+:::caution[The Enclave and Navarro]
+Goris is said to simply die at the Enclave, and to be impossible to keep alive in Navarro.
+<Unverified>Both warnings are inherited. No Enclave or Navarro script treats Goris specially — the one
+Enclave script that names him, the reactor, shocks you and every companion alike when it is blown
+up.</Unverified>
 :::
 
 ## Losing him
 
-- **Will not join** below 0 karma, with a negative Vault 13 reputation, or as a Berserker or
-  Childkiller
-- **Leaves** and returns to Vault 13 if your karma falls below 0, or you become a Berserker or
-  Childkiller
-- **Will not rejoin** if your Vault 13 reputation is Hated or worse
+**He walks home** when, while he is in the party:
 
-If he is with you at the time of the Vault 13 massacre he leaves to return there, and you can pick him
-up again afterwards.
+- your karma drops below 0, or you become a Childkiller or Berserker — *"Your not anyone I want to be
+  around I am leaving."*;
+- his pack is in trouble (below).
+
+Walking home, he stays in your party list as an **invisible** member until you next enter Vault 13, where
+he reappears. In that state he **does not count** against your party limit — and he **keeps levelling**
+with you.
+
+### The pack in trouble
+
+Gruthar's reward for <Quest>Fix the Vault 13 computer</Quest> starts a two-week timer. After that, the
+next time you are outside Vault 13 — provided Gruthar is alive and Dr. Schreber in
+[Navarro](/walkthrough/navarro) is not dead — the Vault 13 massacre takes place. The next time Goris is
+with you and visible, he tells you *"I suddenly sense that my pack is in trouble. I am sorry to leave
+you, but I must check on my brothers."* and heads home (it waits until any fight is over).
+
+In Vault 13 he then only says *"The security cameras recorded what has happened. You should go check
+it."* Once you have watched the recording, *"I wish to avenge my brethren."* → *"All right. Let's do it."*
+runs the normal join check, and the pack-in-trouble departure cannot happen afterwards — at worst his
+party menu opens by itself once. If he is with you when the recording ends: *"Their blood will run like
+the Nile!"*
+<Vanilla>If he had not been through the pack-in-trouble talk, recruiting him after the massacre made him
+leave again at once.</Vanilla>
+
+### Other ways to lose him
+
+- **Right after "wait here"**, *"Let's go."* is refused with a full party, or at Vault 13 reputation −15
+  or worse (*"I think I will do better on my own."*). Talk to him later and it is the full join check
+  again.
+- **Hitting him while he is not in your party** (before he joins, or while he waits) makes him a
+  permanent enemy who attacks on sight. While he is with you — visibly or walking home — the game never
+  runs that check.
+- **Being caught stealing** from him while he is not in your party makes him hostile. Looting him while
+  he is in the party and unconscious does nothing.
+- His script has a check meant to turn him on you when he targets a Vault 13 deathclaw; under FOR:CE it
+  never fires.
+
+If he dies, nothing special happens to his claws. He has no ending slide.

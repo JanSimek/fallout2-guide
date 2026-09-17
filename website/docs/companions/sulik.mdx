@@ -1,61 +1,295 @@
 ---
 sidebar_position: 2
 title: Sulik
+description: The tribal working off a bar tab in Klamath — a hard-hitting melee fighter you can have from the second town on.
 ---
 
 # Sulik
 
-**Found in:** [Klamath](/walkthrough/klamath), Buckner House
+> *"We be good with fists, spear, big hammer or sub-machine gun. We be a handful."* — Sulik
 
-Your first companion, and he should be with you to the end. A tribal from the
-[Umbra Tribe](/walkthrough/umbra-tribe) looking for his sister, working off a $350 bar tab.
-
-See [Klamath](/walkthrough/klamath) for the three ways to free him — always talk to **Sulik**, not
-Maida, for the 500 XP.
-
-## Statistics
+A warrior from the [Umbra Tribe](/walkthrough/umbra-tribe) who came to Klamath looking for his sister
+after slavers took her, got drunk, broke things, and now owes $350. Take him: he is available almost at once, his
+Melee Weapons and Unarmed skills are the highest on his sheet at every stage, and bringing him along
+is worth an extra 500 XP when you find his sister.
 
 | | |
 | --- | --- |
-| **Main skill** | Melee Weapons |
-| **Also good at** | Small Guns, Unarmed, Throwing, **Outdoorsman** |
-| **Animations** | Knife, sledgehammer, spear, SMG |
-| **HP by level** | 85 · 93 · 103 · 113 · 123 · 134 |
-| **AP by level** | 9 · 10 · 10 · 11 · 11 · 12 |
+| **Where** | [Klamath](/walkthrough/klamath), Buckner House, a few steps from Maida |
+| **Joins if** | His debt is settled, your Charisma is 2 or more, you have a free party slot, your karma is −100 or better, and you are not a Childkiller, Slaver or Berserker |
+| **Costs** | $350, or a rescue reward from Maida or Ardin Buckner |
+| **Best at** | Melee Weapons 95%, Unarmed 90%, Throwing 80%, Sneak 75%, Small Guns 70% |
+| **Weapons** | Knife, hammer, spear and SMG; also unarmed weapons, and thrown knives, spears and grenades |
+| **Levels** | 6 level-ups, one for every 3 of yours from your level 6 — see [how levelling works](/companions/overview) |
 
-He reaches **Outdoorsman 80%** at his highest level, the best of any companion, and it applies
-automatically on the world map.
+## Recruiting
 
-## Weapons
+He is standing in Buckner House. Whatever route you take, freeing him is worth **500 XP** and
+**+10 Klamath reputation**, and you get it once:
 
-:::tip[Take the sledgehammer away immediately]
-He prefers the slow sledgehammer attack and gets **one** swing per round with it — against **two**
-with a spear and **three** with a knife.
+| Route | Cost | What to do |
+| --- | --- | --- |
+| Pay Sulik | $350 | Ask him "What are you doing here?", then "You have to pay for damages?", then "Here's the $350." |
+| Pay Maida | $350 | Ask Maida "Tell me about Sulik." and work round to "What if someone else paid Sulik's damages?" Both ways of saying you will pay lower her opinion of you. |
+| Maida's reward | Nothing | Once <Quest>Rescue Torr</Quest> has succeeded, ask Maida to free Sulik in return for finding Torr. |
+| Ardin's reward | Nothing | When Ardin thanks you for finding Torr or Smiley (<Quest>Rescue Smiley the Trapper</Quest>) — each only if you took that job from her — ask her to "consider Sulik's debt paid" (**+75 karma**). Then **talk to Maida** — he is not free until you do, and she hands out the XP. |
+
+The Ardin route is the best deal: no money, and the karma on top. Each rescue earns its own thank-you
+from Ardin, so if you do both you can take Sulik's freedom for one and **$100** for the other.
+
+Once Ardin has forgiven the debt, Sulik stops offering to take your money ("…I just now need to make
+all the arrangements with Maida."), so you cannot collect the 500 XP twice. RPU's script notes that
+this closes an exploit that paid it twice.
+<Unverified>How the original game handled this was not checked: its scripts ship only in compiled
+form.</Unverified>
+
+:::caution[Low Intelligence]
+With IQ 3 or less, paying Sulik himself is the only route: Maida has nothing to say about him, and
+Ardin's reward never comes. His "stupid spirits" talk still leads to the payment: answer "Uh?", "Uh-huh!", "Huh?" and "Uh?",
+then "Uh-huh!" to pay. It need not be your first meeting — later conversations usually offer "Uh?"
+again.
 :::
 
-| Stage | Weapon |
-| --- | --- |
-| Klamath | **Sharpened Spear** or **Combat Knife** |
-| The Den / Vault City | 10mm SMG |
-| NCR / Vault 15 | H&K P90c, or **(Mega) Power Fist** |
-| San Francisco | H&K G11E, once you have caseless ammunition |
+### Asking him to join
 
-A **.223 Pistol** is the safer gun choice if you dislike being burst-fired through. The **Super
-Sledge** is worth considering if you want him knocking enemies away so you can shoot them.
+Once he is free, ask him along ("Now that you're free, why not travel with me?", or "That'd be
+great." straight after paying him). He refuses a Charisma 1 character, and a full party gets "You
+have your army. Don't need we and I for help now." There is no money, karma or skill check at the
+join itself, but he turns away a character he objects to:
+
+- **Slaver** reputation: at your first meeting he will not talk to you ("One of you took our sis. Bad
+  karma... for you."); talk to him again and he turns on you for good.
+- **Childkiller**: he refuses you for good.
+- **Karma below −100**: he refuses until it recovers.
+- **Berserker**: he talks and agrees, but walks out again at once.
+
+Your very first conversation checks only for Slaver, so a Childkiller or a character with karma below
+−100 can get his agreement then — and he leaves again straight away.
+
+His sister's quest starts the moment he agrees to join.
+
+## His sister
+
+<Quest rpu>Find Sulik's missing sister</Quest> starts when Sulik joins, or when you meet his sister
+Kurisu without him. She is caged in the [Slaver's Camp](/walkthrough/slavers-camp), which is not on
+your map until someone tells you where it is — and every one of them wants the quest already active:
+
+| Who | What it takes |
+| --- | --- |
+| A slave you freed in [the Den](/walkthrough/the-den) | Ask "Wait, one more thing. I'm looking for someone specific…" |
+| Metzger, the Den | **Charisma 6+ or Speech 51%+** to get him talking, then a Speech roll at −10. One try. |
+| Vortis, [NCR](/walkthrough/ncr) | Ask to buy slaves; he sells the location for **$1000**, or **$2000** if your karma is over 500 (over 250 with Karma Beacon; never with Cult of Personality) |
+
+The Umbra Tribe's chief only sends you to Metzger and the Den; he does not mark the camp.
+
+**Bring Sulik to the camp.** With him in the party:
+
+- talking to Kurisu pays **500 XP** on the spot and completes
+  <Quest rpu>Reunite Sulik and his sister, Kurisu</Quest>;
+- you can say "Alright Sulik, it's time for your plan." (or nod at him): he attacks the guard outside
+  and the slavers attack you on sight.
+
+The rest of the rescue — the key, picking the cage, slipping away — is on the
+[Slaver's Camp](/walkthrough/slavers-camp) page. Leaving with Kurisu takes you to the Umbra Tribe (a
+day by car, three on foot), where you get **1000 XP** and **+15 Umbra Tribe reputation**. The Pip-Boy
+quest completes a moment later, when Kurisu starts her homecoming talk.
+
+If you rescued her without Sulik, tell her "No problem, I'll bring him here." and bring him to the
+village for the same 500 XP. He then leaves the party, as below.
+
+| Event | XP | Other |
+| --- | --- | --- |
+| Free Sulik | 500 | +10 Klamath reputation |
+| Ardin forgives the debt | — | +75 karma |
+| Reunite him with Kurisu | 500 | — |
+| Bring Kurisu home | 1000 | +15 Umbra Tribe reputation |
+
+## Stats by level
+
+| Stage | HP | AP | AC | Melee | Unarmed | Small Guns | Outdoorsman | Melee dmg | Crit | Other changes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Recruited | 85 | 9 | 7 | 95 | 90 | 70 | 40 | 6 | 9% | ST 7, PE 7, EN 8, CH 8, IN 7, AG 7, LK 5; carry weight 200 |
+| 1 | 93 | 10 | 7 | 105 | 100 | 75 | 40 | 8 | 13% | LK 6 |
+| 2 | 103 | 10 | 7 | 115 | 110 | 80 | 50 | 9 | 17% | — |
+| 3 | 113 | 11 | 7 | 130 | 120 | 85 | 60 | 10 | 22% | — |
+| 4 | 123 | 11 | 7 | 140 | 130 | 90 | 70 | 11 | 23% | LK 7 |
+| 5 | 134 | 12 | 7 | 150 | 140 | 105 | 80 | 13 | 32% | ST 8; carry weight 225 |
+| 6 | 146 | 13 | 7 | 160 | 150 | 110 | 90 | 14 | 43% | EN 9, LK 8; healing rate 3 (was 2) |
+
+Throwing climbs from 80 to 110 and Sneak from 75 to 85. First Aid (30–35), Energy Weapons (14–45) and
+Big Guns (14) stay low. Without armour his normal damage threshold and resistance are 0.
+
+If he is with you from your level 6, his first level-up comes between your levels 6 and 8 and his
+last by level 23.
+
+## Gear
+
+He arrives with a <Item>Leather Jacket</Item> (AC 8, DR 20%) and a <Item>Sledgehammer</Item>, and
+nothing else.
+
+### What he can wield
+
+His art has animations for **knives, hammers, spears and SMGs**, plus throwing frames for knives,
+spears, rocks and grenades. Unarmed weapons need no animation. That leaves out clubs, pistols, rifles,
+shotguns and every big gun — and every energy weapon, since none of them uses one of his animations.
+
+The **14mm Pistol, .223 Pistol, H&K G11 and G11E** use the SMG animation, so he can use them.
+
+### What to give him
+
+His Melee Weapons is 25–50 points higher than his Small Guns at every stage, and his Strength (7, then
+8) covers everything below. Compare in full on [Weapons and Armour](/equipment).
+
+| Weapon | Skill | Damage | AP | Min ST | Notes |
+| --- | --- | --- | --- | --- | --- |
+| <Item>Combat Knife</Item> | Melee | 3–10 | 3 | 2 | Three attacks at 9 AP |
+| <Item>"Little Jesus"</Item> | Melee | 5–14 | 3 | 2 | Penetrate |
+| <Item>Sharpened Spear</Item> | Melee | 4–12 | 4 | 4 | Reach of 2 hexes |
+| <Item>Ripper</Item> | Melee | 15–32 | 4 | 4 | Penetrate; takes Small Energy Cells |
+| <Item>Super Sledge</Item> | Melee | 18–36 | 3 swing, 4 thrust | 5 | Knockback |
+| <Item>Power Fist</Item> / Mega Power Fist | Unarmed | 12–24 / 20–40 | 3 | 1 | Penetrate; Small Energy Cells; see below |
+| <Item>10mm SMG</Item> | Small Guns | 5–12 | 5, burst 6 | 4 | 10-round burst |
+| <Item>H&K P90c</Item> | Small Guns | 12–16 | 4, burst 5 | 4 | 12-round burst |
+| <Item>.223 Pistol</Item> | Small Guns | 20–30 | 5 | 5 | Penetrate; single shot only |
+| <Item>H&K G11E</Item> | Small Guns | 13–23 | 5, burst 6 | 6 | 7-round burst; 4.7mm caseless |
+
+:::tip[Take the sledgehammer off him]
+On his default settings he uses a melee weapon's **second** attack whenever his chance to hit is 50%
+or better, and keeps using that same attack until he cannot afford another. The Sledgehammer's thrust
+costs 5 AP, so at his starting 9 AP he makes **one** attack a turn (4–9 damage) where a Spear gets two
+and a Combat Knife three. From his first level-up (10 AP) he manages two.
+:::
+
+:::caution[Power Fists need a different weapon preference]
+A Power Fist punches, and punching is an **unarmed** attack. His default Weapon Pref., "Ranged then
+melee", does not include unarmed, so he will never use one. Set Weapon Pref. to **"Unarmed"**. "None"
+allows it too, but ranks any gun, thrown weapon or melee weapon he carries above the fist.
+:::
+
+Guns with a burst mode fire bursts whenever his chance to hit is 50% or better and the game's weak
+safety check passes, and the Burst setting
+offers him nothing stricter than "Be careful not to hit me". If he keeps catching you in the spray,
+give him the single-shot .223 or <Item>14mm Pistol</Item>, or switch his bursts off with Party Orders
+(see [the overview](/companions/overview)).
+
+Grenades are only thrown under Weapon Pref. "None", which Sulik's settings do offer — and even then,
+any usable gun he carries comes first.
+
+### Armour
+
+With the NPC Armor mod bundled with RPU, his appearance follows his armour:
+
+| He wears | He looks like |
+| --- | --- |
+| <Item>Leather Jacket</Item>, <Item>Combat Leather Jacket</Item> | Sulik in a jacket |
+| <Item>Leather Armor</Item>, <Item>Leather Armor Mark II</Item> | Sulik in leather |
+| <Item>Metal Armor</Item>, <Item>Metal Armor Mark II</Item>, <Item>Tesla Armor</Item> | Sulik in metal |
+| <Item>Combat Armor</Item>, <Item>Combat Armor Mark II</Item>, <Item>Brotherhood Armor</Item> | Sulik in combat armour |
+| <Item>Power Armor</Item>, Hardened Power Armor | Sulik in power armour |
+| <Item>Advanced Power Armor</Item>, <Item>Adv. Power Armor MKII</Item>, <Item>Robes</Item>, <Item>Bridgekeeper's Robes</Item> | The player's own advanced power armour or robe |
+
+His own armoured looks have the same weapon animations as his normal art. The borrowed advanced power
+armour and robe looks have every animation, but the mod still allows him only knives, hammers, spears
+and SMGs, so armour never changes what he can wield. The mod hooks into the engine through sfall script hooks that FOR:CE
+implements; that it works under FOR:CE has been checked in the source, not in a running game.
+
+He never changes armour on his own. Put armour in his pack and press **Use Best Armor** on his combat
+control screen; his dialogue can take it off again.
+
+## Using him
+
+**Combat settings.** Open his combat control screen when he joins. Compared with the full menu, his
+choices are limited:
+
+| Setting | Default | Choices |
+| --- | --- | --- |
+| Burst | Be careful not to hit me | Always!, Sometimes, Be careful not to hit me |
+| Weapon Pref. | Ranged then melee | None, Melee, Melee then ranged, Ranged then melee, Unarmed — **no "Ranged"** |
+| Distance | Charge! | All five |
+| Attack Who | The strongest | Whoever is attacking me, The strongest, Whomever you want, Whoever is closest |
+| Chem Use | Stimpaks when hurt a lot | All five |
+| Run Away | You need a tourniquet | You need a tourniquet, Never! |
+| Disposition | Custom | Custom, Defensive, Aggressive, Berserk — no Coward |
+
+On the default settings he also runs when crippled or blinded, or below 10 HP.
+
+**Outdoorsman.** When the game checks whether you spot an encounter on the world map, it uses the best
+Outdoorsman in the party. His goes from 40% to **90%** at his last stage.
+
+**He never uses your skills for you.** A companion only takes over a skill when it is their own best
+skill and higher than everyone else's. Sulik's best is always Melee Weapons.
+
+**Healing.** Told "You should heal yourself now.", he uses a Super Stimpak, Stimpak, Healing Powder,
+Doctor's Bag or First Aid Kit from his pack, in that order; with none, he rolls First Aid. Out of
+combat he also treats himself from his pack, depending on his Chem Use setting.
+
+**Keep your record clean.** He walks out over low karma and bad reputations, and over trouble in
+Klamath — see [Losing him](#losing-him).
 
 ## Consulting the spirits
 
-Sulik can "consult the spirits" for location-dependent hints. They are extremely vague and not worth
-studying.
+His menu has **"Sulik, can you consult the spirits for me?"** Each question you then ask makes a
+**Luck roll** for you (a d10 against your Luck):
 
-:::note
-RPU unlocks Sulik's voiced dialogue about his sister. You will not notice until you reach the
-[Umbra Tribe](/walkthrough/umbra-tribe).
-<Vanilla>The lines exist in the files but are never triggered.</Vanilla>
-:::
+- **Success:** a remark about where you are, for most towns and sites in the game. Anywhere else, "They
+  don't want to talk right now."
+- **Failure:** one of ten generic riddles.
+
+Both questions roll the same way, so at Luck 10 you always get the answer for where you are.
+
+**"Where exactly is your tribe, Sulik?"** (or "Tell me about the Great Salt Water.") puts the
+[Umbra Tribe](/walkthrough/umbra-tribe) on your world map.
+
+## At the Umbra Tribe
+
+If you bring him to his village before you have found his sister, he says "This here be our village.
+We and I go speak with our friends." and **leaves the party** to wander the village. He does the same
+after Kurisu's homecoming.
+
+For two game hours after he leaves you, he only says "We do some byes and catch you up on the road
+out." After that he asks to come back with you. Tell him to stay ("No, I think it is time we part our
+ways…" or "No, I think it's time you looked for her yourself.") and say goodbye, and he **hands you his
+entire inventory** and stays in the village; you can still ask him back later.
+
+This homecoming is RPU's.
+<Vanilla>The voiced lines for it are in the original game's files, but the original has no Umbra Tribe
+map, so they never play.</Vanilla>
 
 ## Losing him
 
-- **Leaves** if you become a Childkiller or Berserker, or your karma drops to −101 or lower
-- **Attacks** if you become a Slaver, or cause trouble **while in Klamath**
-- **Will not rejoin** if your Klamath reputation is Hated or worse
+| What happens | Result |
+| --- | --- |
+| Karma drops below −100 (as he sees it: the Karma Beacon doubles it, Cult of Personality counts it as good) | Leaves; will rejoin once it recovers |
+| You become a Berserker | Leaves, and walks out again if you take him back |
+| You become a Childkiller | Leaves, never talks to you again |
+| You become a Slaver | Leaves, never rejoins, and attacks you on sight |
+| You are in Klamath while the town is hostile | Leaves and never rejoins. Out of the party, he attacks you there. |
+| You are in the Umbra Tribe while it is hostile | Leaves and turns hostile |
+| You hurt him while he is **not** in your party (before you recruit him, or while he waits) | Attacks you. Hurting him in downtown Klamath also turns the town hostile. |
+| You steal from him while he is out of the party | Turns hostile |
+
+Neither of the last two is permanent. After his first attack he calms down, and away from a hostile
+Klamath he can be talked to and recruited again. Hitting him while he is **in** your party — on
+purpose or with a stray burst — does not set him off at all.
+
+**Rejoining after "wait here"** fails, and he stays put, if your Charisma is 1, the party is full, or
+your **Klamath reputation is −15 or lower** — wherever you are, unless you have Cult of Personality.
+The same check applies when you ask him back at the Umbra Tribe.
+
+**If he dies**, his gear stays on the body — until you leave the map or load a save, when a companion
+killed in combat vanishes with everything he carried (see [Death](/companions/overview#death)). Kurisu
+and the Umbra chief mourn him.
+
+**Selling him** is possible in three places, each for bad karma:
+
+- **Metzger** ([the Den](/walkthrough/the-den)) pays 2 × 600 × (160 + your Barter) ÷ (160 + Metzger's
+  Barter) and keeps his gear; −15 karma. Sulik ends up in the slave pen.
+- **Mordino** ([New Reno](/walkthrough/new-reno)) says 100 chips but actually pays **$200**. Haggling
+  (a Barter roll at +10) leaves it at $200 on a success and cuts it to $100 on a failure. −3 karma for
+  the offer, −3 for haggling and −10 for the sale. Sulik is killed off-screen and his gear comes back
+  to you.
+- **Barkus** ([Vault City](/walkthrough/vault-city)) pays $100, or $200 if you haggle and pass a
+  Barter roll; −3 karma for considering it, −3 for haggling, −10 for the sale. His gear goes into
+  Barkus's box.
+
+Mordino and Barkus take one companion at a time and pick Miria, then Davin, before Sulik.

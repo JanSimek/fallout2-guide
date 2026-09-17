@@ -98,6 +98,12 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
+          sidebarId: 'companionsSidebar',
+          position: 'left',
+          label: 'Companions',
+        },
+        {
+          type: 'docSidebar',
           sidebarId: 'referenceSidebar',
           position: 'left',
           label: 'Reference',
@@ -133,6 +139,8 @@ const config: Config = {
             {label: 'Installation', to: '/getting-started/installation'},
             {label: 'Character Creation', to: '/character/overview'},
             {label: 'Walkthrough', to: '/walkthrough/overview'},
+            {label: 'Companions', to: '/companions/overview'},
+            {label: 'Weapons and Armour', to: '/equipment'},
             {label: 'Quest Index', to: '/reference/quest-index'},
           ],
         },

@@ -1,120 +1,445 @@
 ---
 sidebar_position: 12
 title: RPU Companions
-description: Kitsune, Cat Jules and Dex — the three hibernation chambers on the EPA Blue Level.
+description: Kitsune, Cat Jules and Dex, frozen on the EPA Blue Level — a lockpicker, a gunman and a knife man, of whom you can wake only one.
 ---
 
 # RPU Companions
 
-:::note[RPU only]
-Three companions sleep in hibernation chambers on the [EPA](/walkthrough/epa) **Blue Level**. None of
-them exists in the unmodded game.
+Kitsune, Cat Jules and Dex are frozen in hibernation chambers on the EPA's Blue Level, and **only one
+of them can be woken alive**. Cat Jules is the easy pick and a good shot with anything. Kitsune fights
+well unarmed and picks locks for you. Dex is good with a knife and teaches the biggest per-skill bonus.
+<Vanilla>None of the three exists in the original game.</Vanilla>
+
+## Waking them
+
+### Reaching the chambers
+
+The chambers are on the [Blue Level](/walkthrough/epa#blue-level). The automap calls it the Secret
+Level. You get there by the service elevator on the Violet Level, and its door opens only once the
+static hologram has given you the password, **FLOWERPOT**. The EPA page has the full route.
+
+Between the elevator and the chambers are aliens: a Queen Alien, a dozen more of them and eleven
+Wanamingo Eggs. A force field then blocks the way. Using **Repair** on its control panel is a roll at
+**−80%**. You can retry as often as you like, and the first success gives **70 XP**. Damaging the panel
+works too (an explosive next to it will do): the panel explodes, and shortly afterwards the field is
+destroyed for good.
+
+### The Hibernation Computer
+
+The Hibernation Computer has three options:
+
+- **"Subject history."** Their files: Subject A is Kitsune, B is Dex, C is Cat Jules. **Read Dex's
+  file before you wake him**, because it changes what he lets you say.
+- **"Retrieve a test subject."** It warns that the subject needs ERSI (Environmental Rejection Syndrome
+  Inhibitors). With a canister in your inventory you get "Place ERSI canister into the dispenser." and
+  the computer uses one canister. Without one you can pick "Proceed anyway."
+- **"[DONE]"**
+
+Once you pick a subject, their chamber is opened. Walk up to it and they start talking. If ERSI was
+used, the conversation goes normally. **Without ERSI, the companion dies at the first line.**
+
+### Only one ERSI canister
+
+[Mr. Chemmie](/walkthrough/epa#mr-chemmie) on the Violet Level makes ERSI, and it is the only source
+in the game. He has "just enough chemicals" for **one batch**, and the option appears only after the
+Hibernation Computer has warned you. So do it in this order:
+
+1. At the computer, pick **"Retrieve a test subject."**, read the warning and back out.
+2. At Mr. Chemmie: **"More Options."** → **"Something Special"** → **"Environmental Rejection Syndrome
+   Inhibitors."** → **"Create."** No ingredients or Science roll needed.
+3. Pick the canister up from the machine ("Please collect the item from the machine!").
+4. Go back to the computer with it and retrieve the companion you want.
+
+:::danger[You get one]
+The computer will let you retrieve the other two as well, but there is no second canister, so they die
+on waking. Doing that is still worth something: **it unlocks their lockers.**
 :::
 
-:::danger[You get exactly one]
-Extracting one permanently locks the other two chambers **and their personal lockers**, which cannot
-be opened by any means afterwards. Choose deliberately.
+### Their lockers
+
+Each companion's belongings are in a locker on the same level:
+
+| Locker of | Contents |
+| --- | --- |
+| Kitsune | <Item>Necklace</Item> |
+| Cat Jules | <Item>Leather Jacket</Item> |
+| Dex | <Item>Knife</Item>, <Item>Lighter</Item>, <Item>Human Ear</Item>, <Item>Pack of Cigarettes</Item>, <Item>A watch</Item>, <Item>Fuzzy Painting</Item> |
+
+Until its owner has been retrieved, a locker only answers "This locker is electronically locked. There
+is no way to unlock it from here." After that it opens like any other container.
+
+:::danger[RPU 2.4.34 bug: they join empty-handed]
+Each companion's script is meant to move their locker's contents into their inventory when they join,
+but it looks for the locker on the wrong hex. It finds nothing, and the companion arrives with nothing.
+Dex and Cat Jules still talk as if they had taken their things.
+
+**Open the locker yourself and give the items to your companion.** Joining is not affected. Only the
+item transfer fails.
 :::
 
-The computer inside the door describes all three and performs the extraction. It warns you that you
-need a can of **ERSI** — go and make one at [Mr. Chemmie](/walkthrough/epa) on the Violet Level, where
-the recipe becomes available only at this point. Or ignore the warning and see what happens.
+### What all three share
+
+- **A free party slot.** Your limit is Charisma ÷ 2, plus one with Magnetic Personality, and never more
+  than 5. It is checked again whenever you ask a waiting companion to rejoin. See
+  [Companions](/companions/overview).
+- **Intelligence 4 or more.** Every line in their dialogue needs it (Smooth Talker counts). A
+  [low-Intelligence](/systems/low-intelligence) character gets no options at all and cannot recruit
+  any of them.
+- **No quests.** No XP or karma for recruiting them.
+- **Five level-ups.** Their first stage comes at one of your levels 12–14 and their last at one of your
+  levels 24–26, provided they are in the party the whole time. How this works is on the
+  [overview](/companions/overview).
+- **Strength 6 at every stage.** They meet every weapon's Strength requirement except the Strength 7
+  guns (M60, Minigun, Avenger Minigun, Vindicator Minigun).
+- **One lesson each.** Each lesson takes **2 hours**. A tagged skill gets the same bonus, except that
+  Dex's +15 comes out as +14 on a tagged skill.
+- **The same default combat settings**: Distance "Charge!", Attack Who "The strongest", Chem Use
+  "Stimpaks when hurt a lot", and Burst "Be careful not to hit me". With that Burst setting they fire a
+  burst only at 50% or better to hit, and only if the burst safety check passes.
+- **They heal themselves.** Out of combat they use healing items from their own inventory once they
+  are hurt badly enough (how badly depends on their Chem Use setting), so **keep a few
+  <Item>Stimpak</Item>s on them**. Told to heal, they use items first and then their First Aid skill:
+  Kitsune 48% (83% at her last stage), Dex 22%, Cat Jules 24%.
+- **Metzger buys them.** [Metzger in the Den](/walkthrough/the-den) buys any of them, for −15 karma,
+  and whatever they carry goes with them.
+- **No consequences when they die.** Their scripts do nothing when they die.
 
 ---
 
 ## Kitsune
 
-A Chinese spy who worked for the Americans.
-
-**Recruiting:** needs **CH 5**, or **CH 2+ with Speech above 80%**.
-
-:::danger[One attempt]
-Fail the recruitment and she is gone permanently. The same applies if you leave her behind and later
-try to pick her up while at **CH 1**.
-:::
-
-**Training:** ask about her past and follow the thread. Eventually she teaches you **+10% Sneak,
-Lockpick and Steal**.
+A Chinese spy who worked for the Americans. She is the best unarmed fighter of the three, has 9 AP
+from the start, and **picks locks for you**. Take her if your own Lockpick is weak and you have the
+Charisma or Speech to talk her round.
 
 | | |
 | --- | --- |
-| **Main skill** | **Lockpick** |
-| **Combat, best first** | Unarmed, Melee, Small Guns, Throwing |
-| **Bad at** | Energy Weapons, Big Guns |
-| **HP** | 80 → 130 |
-| **AP** | 9 throughout |
+| **Where** | [EPA](/walkthrough/epa#blue-level), Blue Level, hibernation chambers |
+| **Joins if** | Charisma 5 (7 for the blunter line), or Speech 81%+ as a second chance; a free slot |
+| **Costs** | The ERSI canister |
+| **Best at** | Lockpick 135%, Unarmed 125%, Melee 115%, Small Guns 107%, Throwing 102% |
+| **Weapons** | Every class: knife, club, hammer, spear, pistol, SMG, rifle/shotgun, big guns (laser-rifle class, minigun, rocket launcher), plus the Lightsaber |
+| **Levels** | 5 level-ups, one per three of your levels from level 12 ([levelling](/companions/overview)) |
 
-She can equip **any weapon in the game**.
+### Recruiting
 
-:::tip
-As long as her Lockpick exceeds yours, she picks locks for you automatically — the way Vic handles
-Repair. That is a real convenience if you did not tag Lockpick.
+She talks as soon as she wakes. The conversation follows a fixed path to "What are you going to do
+now?", where you have two lines to persuade her:
+
+| Line | Needs |
+| --- | --- |
+| "I know it's a wasteland out there, but you've still got a whole life to live…" | Charisma 5 |
+| "It doesn't look like you've got much of a choice…" | Charisma 7 |
+
+If the check fails, she says "Forget it…" and you answer "I'll come back. Maybe you'll change your
+mind." At **Speech 81% or higher** that leads to a second chance, and she comes along. Otherwise the
+conversation ends with her striking out on her own, and **she is gone for good**.
+
+:::tip[Charisma 4 is enough with shades]
+The check uses your current Charisma, and a pair of <Item>Mirrored Shades</Item> **held in a hand
+slot** adds 1. So does the Gain Charisma perk.
 :::
+
+If you pass and have room, she joins with "Don't make me regret this." If your party is full, she stays
+where she is. Talk to her again when you have space, pick "You ready to take me with you?" and then
+"Let's go." A Charisma 1 character can only get this far through the Speech route, and she walks out on
+them for good ("Jesus, you look like the Grim Reaper.").
+
+### Stats by level
+
+AP 9, AC 8 and melee damage 9 at every stage.
+
+| Stage | HP | Unarmed | Melee | Small Guns | Throwing | Energy, Big Guns | Lockpick | Critical chance |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Start | 80 | 125% | 115% | 107% | 102% | 21% | 135% | 5% |
+| 1 | 90 | 135% | 125% | 117% | 112% | 36% | 145% | 8% |
+| 2 | 100 | 145% | 135% | 127% | 122% | 46% | 155% | 11% |
+| 3 | 110 | 155% | 145% | 137% | 132% | 56% | 165% | 14% |
+| 4 | 120 | 165% | 155% | 147% | 142% | 66% | 175% | 17% |
+| 5 | 130 | 170% | 160% | 152% | 147% | 76% | 180% | 20% |
+
+Her Sneak goes from 109% to 149% and her Steal from 104% to 144%.
+
+### Gear
+
+She can animate every weapon class, but **her default Weapon Pref. is "Unarmed"**, so she ignores guns
+and melee weapons until you change it in combat control. She can choose None, Melee, Ranged, Ranged
+then melee or Unarmed; "Melee then ranged" is not available to her.
+
+- **Unarmed (her default and best combat skill).** Knuckles and the <Item>Power Fist</Item> count as
+  unarmed, so she uses them without any setting change. The Power Fist does 12–24 for 3 AP, which
+  means **three punches a turn**. <Item>Spiked Knuckles</Item> (4–10) do the same job early on.
+- **Melee.** Set Weapon Pref. to "Melee" and give her a <Item>Super Sledge</Item>: 18–36, 3 AP a
+  swing, Strength 5. That is also three swings a turn.
+- **Small Guns.** Set it to "Ranged". The <Item>PPK12 Gauss Pistol</Item> (22–32, 4 AP, range 50)
+  fires twice a turn with her 9 AP.
+
+Compare weapons on [Weapons and Armour](/equipment).
+
+**Armour.** RPU bundles the NPC Armor mod, which changes how she looks in armour:
+
+| She wears | She looks like |
+| --- | --- |
+| <Item>Leather Jacket</Item>, <Item>Combat Leather Jacket</Item> | herself |
+| <Item>Leather Armor</Item>, <Item>Leather Armor Mark II</Item> | a woman in leather armour |
+| <Item>Metal Armor</Item>, <Item>Metal Armor Mark II</Item>, <Item>Tesla Armor</Item> | a woman in metal armour |
+| <Item>Combat Armor</Item>, <Item>Combat Armor Mark II</Item>, <Item>Brotherhood Armor</Item> | a woman in combat armour |
+| Power armour of any kind | your own look in that armour (power or advanced power armour) |
+| <Item>Robes</Item>, <Item>Bridgekeeper's Robes</Item> | your own look in robes |
+| anything else | herself |
+
+Every one of these looks has frames for every weapon class, the Lightsaber included, so armour never
+limits her weapons.
+
+### Picking locks
+
+When you use Lockpick on something and **her Lockpick is higher than everyone else's in the party,
+yours included**, she does the job instead of you. A tie goes to you. Lockpick is her best skill at
+every stage, which this also requires. It does not work in combat, and the engine never does it for
+Steal.
+
+### Her past and her lesson
+
+Once, from her party menu: "Kitsune, I'm pretty sure you wouldn't have been frozen in a cryo tank for no
+good reason…". She tells you about her work as a spy and about the FEV. **Once the story starts, you
+cannot leave it.** It ends with you asking what she can teach you, and she gives you **+10% Sneak,
+Steal and Lockpick**. Two hours pass.
+
+"About your eyes..." is flavour only.
+
+### Losing her
+
+- She never turns hostile.
+- Failing the recruitment without Speech 81% loses her for good (above).
+- **Rejoining at Charisma 1:** if you tell her to wait and come back with Charisma 1, she leaves and is
+  **deleted along with everything she carries**. With a full party she just stays where she is.
 
 ---
 
 ## Cat Jules
 
-Ex-army, reassigned to EPA guard duty, and volunteered for human/feline DNA experimentation. A tribute
-to Cat from *Red Dwarf*.
-
-**Training:** ask and he gives **+10% Small Guns, Big Guns and Energy Weapons**.
+Sergeant Christopher "Cat" Jules served in the 205th Airborne, then was assigned to EPA security and
+became a subject of the "Human Reflex Enhancement Project". The feline DNA explains his teeth. He is
+**the safe pick**: nothing to pass beyond Charisma 2, no way to make him hostile, every weapon class,
+and the best Small Guns of the three.
 
 | | |
 | --- | --- |
-| **Combat, best first** | Small Guns, Energy Weapons, Unarmed, Melee |
-| **Late game** | A passable Big Guns skill on his final level |
-| **Bad at** | Throwing |
-| **HP** | 80 → 130 |
-| **AP** | 8 → 10 |
+| **Where** | [EPA](/walkthrough/epa#blue-level), Blue Level, hibernation chambers |
+| **Joins if** | You ask him; Charisma 2+; a free slot |
+| **Costs** | The ERSI canister |
+| **Best at** | Small Guns 111%, Unarmed 110%, Melee 100%, Energy Weapons 98% |
+| **Weapons** | Every class: knife, club, hammer, spear, pistol, SMG, rifle/shotgun, big guns (laser-rifle class, minigun, rocket launcher) |
+| **Levels** | 5 level-ups, one per three of your levels from level 12 ([levelling](/companions/overview)) |
 
-He can equip any weapon.
+### Recruiting
 
-:::danger
-Same as Kitsune: **CH 1** when recruiting or re-recruiting and he vanishes from the game.
-:::
+The conversation is the same for male and female characters apart from some wording. When he asks
+"What am I gonna to do now though?":
+
+- **"Well, I could use a companion. Want to join me?"** He joins.
+- "Well, I really must be going. Best of luck to you out there." He leaves and **is gone for good**.
+
+With a full party he waits ("Come back when you got less people…"). Come back later and pick "You
+ready to take me with you?" and then "Let's go." At Charisma 1 he calls you ugly and leaves for good.
+
+### Stats by level
+
+AC 9 at every stage. His melee damage drops from 7 to 6 at stage 5.
+
+| Stage | HP | AP | Small Guns | Unarmed | Energy Weapons | Melee | Big Guns | Critical chance |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Start | 80 | 8 | 111% | 110% | 98% | 100% | 58% | 5% |
+| 1 | 90 | 9 | 121% | 115% | 108% | 105% | 68% | 6% |
+| 2 | 100 | 9 | 131% | 125% | 118% | 115% | 78% | 7% |
+| 3 | 110 | 9 | 141% | 135% | 128% | 125% | 88% | 8% |
+| 4 | 120 | 9 | 151% | 145% | 138% | 135% | 98% | 9% |
+| 5 | 130 | 10 | 166% | 155% | 153% | 145% | 108% | 10% |
+
+Throwing is his weakest combat skill, rising from 51% to 76%.
+
+### Gear
+
+He can animate every weapon class. The Lightsaber is the exception: his own look and his leather,
+metal and robe looks have no frames for it, but his combat-armour and power-armour looks do. His
+default Weapon Pref. is **"Ranged then
+melee"**, so he uses guns straight away. That setting ignores unarmed weapons, though. **To give him
+the <Item>Power Fist</Item> he asks for, set Weapon Pref. to "Unarmed" or "None".** He can choose
+the same options as Kitsune.
+
+- **Small Guns.** The <Item>PPK12 Gauss Pistol</Item> (22–32, 4 AP) fires twice a turn even at 8 AP.
+  The <Item>Pancor Jackhammer</Item> fires a 5-round burst of 18–29 for 6 AP. At stage 5, with 10 AP,
+  he fires the <Item>M72 Gauss Rifle</Item> (32–43, 5 AP) twice a turn.
+- **Energy Weapons**, which he says he prefers. The <Item>YK42B Pulse Rifle</Item> (54–78) and the
+  <Item>Plasma Rifle</Item> (30–65) each cost 5 AP, so they fire once a turn until his 10 AP at stage
+  5, then twice.
+- **Big Guns** are only worth it late (108% at stage 5). The Minigun and Avenger Minigun need
+  Strength 7, and each point short costs him 20% to hit.
+
+Compare weapons on [Weapons and Armour](/equipment).
+
+**Armour.** NPC Armor treats his armour groups the same way as [Kitsune's](#gear): jackets keep his own
+look, leather, metal and combat armour each get a sprite of their own, and power armour gives him
+your own look in that armour. Robes get a robe sprite that the mod adds. His locker's Leather Jacket
+leaves his look unchanged. Every one of these looks has frames for all the other weapon classes, so
+armour never takes a gun out of his hands.
+
+### His story and his lesson
+
+Both once each, from his party menu:
+
+- "So, how did you end up in that cryo chamber? And what happened to your teeth?" His backstory,
+  flavour only.
+- **"Since you were in the army, you think you might be able to teach me anything?"** gives you **+10%
+  Small Guns, Energy Weapons and Big Guns**. Two hours pass.
+
+### Losing him
+
+- He never turns hostile.
+- Choosing "I really must be going" at the chambers loses him for good.
+- **Rejoining at Charisma 1:** if you tell him to wait and come back with Charisma 1, he leaves and is
+  **deleted along with everything he carries**. With a full party he just stays where he is.
 
 ---
 
 ## Dex
 
-A sociopathic killer, according to his file. Innocent, according to himself.
-
-:::note
-Play an **evil character** — negative karma — and he drops the pretence entirely. Ask for his life
-story and he tells you all of it. Good characters never find out.
-:::
-
-**Training:** ask for tips and he teaches **+15% Speech and Barter**, the largest single training bonus
-of the three.
+Dexter "Dex" Patrick. His file calls him "a narcissistic, woman hating, sociopathic murderer" with 68
+confirmed victims. To a character with karma 0 or above he insists he is innocent. He is the best melee fighter here but
+**can use only knives, pistols, SMGs and his fists**, his look never changes with armour, and any
+answer that does not take him along makes him attack. Take him for the lesson, or for the dialogue on
+an evil character.
 
 | | |
 | --- | --- |
-| **Main skill** | Speech — which he cannot help you with |
-| **Also good at** | Melee, Unarmed. Small Guns is adequate. |
-| **Late game** | Passable Energy Weapons and Throwing |
-| **Weapons** | **Unarmed weapons, knives, pistols and SMGs only** |
-| **HP** | 80 → 130 |
-| **AP** | 8, rising to 9 on his last level |
+| **Where** | [EPA](/walkthrough/epa#blue-level), Blue Level, hibernation chambers |
+| **Joins if** | You choose a line that takes him along; Charisma 2+; a free slot |
+| **Costs** | The ERSI canister |
+| **Best at** | Speech 145% (used for your Speech rolls), Melee 144%, Unarmed 114%, Small Guns 89% |
+| **Weapons** | Knife, pistol and SMG only, plus unarmed |
+| **Levels** | 5 level-ups, one per three of your levels from level 12 ([levelling](/companions/overview)) |
 
-:::danger[He angers easily]
-Pick your lines carefully before recruiting him or he turns hostile.
+### Recruiting
 
-Female characters can sleep with him beforehand. **At 0 or positive karma he kills you afterwards.**
+What he says first depends on your sex and your karma. At **0 or above** he plays the innocent.
+**Below 0** he makes no secret of what he is. If you read his file at the computer first, you get
+different options throughout.
+
+:::danger[Every refusal makes him hostile]
+Any ending that does not take him along makes him attack. That includes the polite one, "The doc? Oh,
+he's probably around here somewhere… Bye!". Pick a line that invites him, such as "I say you've got a
+deal... partner.", "Sure, I suppose we could partner up. Welcome to the team, Dex.", "Fair enough. Let's
+go." or "Hell, no need to try and convince me…".
+
+If he does attack, he fights without his locker's knife, because of the same bug.
 :::
 
-:::note
-Dex carries a **pack of cigarettes**, which you may not have seen before. Male characters can smoke
-with a lighter in inventory.
+:::danger[Female characters]
+A female character is offered the line "Forget about names. How 'bout you take those clothes back off
+and show me what pre-war men are made of."
+
+- **Karma 0 or above:** he stabs you afterwards, and **you die.**
+- **Karma below 0:** the scene ends with you catching him reaching for a knife, and he joins ("I... think I'm in love."). Game
+  time passes.
 :::
+
+With a full party he stays ("It's a bit crowded. Let me know if things open up."). Come back later and
+pick "You ready to take me with you?" and then "Let's go." At Charisma 1 he refuses ("No way in hell
+I'm traveling with you.") but stays put rather than attacking.
+
+### Stats by level
+
+Melee damage 8 at every stage.
+
+| Stage | HP | AP | AC | Melee | Unarmed | Small Guns | Energy Weapons | Critical chance |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Start | 80 | 8 | 6 | 144% | 114% | 89% | 42% | 5% |
+| 1 | 90 | 8 | 8 | 154% | 124% | 99% | 52% | 10% |
+| 2 | 100 | 8 | 8 | 164% | 134% | 109% | 62% | 15% |
+| 3 | 110 | 8 | 8 | 174% | 144% | 119% | 72% | 20% |
+| 4 | 120 | 8 | 8 | 184% | 154% | 129% | 92% | 25% |
+| 5 | 130 | 9 | 10 | 194% | 164% | 139% | 112% | 30% |
+
+His Speech rises from 145% to 195%, and it is his best skill at every stage. While his Speech is higher
+than yours, any Speech **roll** made for you uses his value. Dialogue checks that simply compare your
+Speech with a number still use yours. Throwing rises from 54% to 104%.
+
+### Gear
+
+His sprite has only knife, pistol and SMG animations, so the engine will not let him use clubs,
+spears, hammers, rifles, shotguns or big guns. His default Weapon Pref. is **"Ranged then melee"**,
+which means he reaches for a gun before a knife even though his Melee is far higher. **Set it to
+"Melee" or "Melee then ranged" once he has a good knife.** He can choose all six options, but under
+Run Away only "You need a tourniquet" and "Never!".
+
+- **Melee (knives).** The <Item>Ripper</Item> (15–32, 4 AP, Strength 4) gives him two swings a turn.
+  <Item>"Little Jesus"</Item> (5–14, 3 AP) is the lighter choice.
+- **Unarmed.** The <Item>Power Fist</Item> (12–24, 3 AP) gives him two punches a turn, and three at
+  stage 5. It needs Weapon Pref. "Unarmed" or "None".
+- **Small Guns.** The <Item>PPK12 Gauss Pistol</Item> (22–32, 4 AP) fires twice a turn. The
+  <Item>H&K G11E</Item> uses his SMG animation, needs Strength 6 (which he has) and fires a 7-round
+  burst of 13–23 for 6 AP.
+- **Energy Weapons.** Pistols only, and worth it only late (112% at stage 5).
+
+Compare weapons on [Weapons and Armour](/equipment).
+
+**Armour** protects him normally, but NPC Armor does not cover him, so **his look never changes.**
+
+His locker holds a <Item>Pack of Cigarettes</Item> and a <Item>Lighter</Item>. With both in inventory, a
+male character can smoke the pack: 10 uses, not in combat or in Advanced Power Armor, and only while
+RPU's smoking option is on (the default).
+
+### Talking to him
+
+From his party menu:
+
+- **"Any tips you might be able to give me?"** Once only. It gives you **+15% Speech and Barter**, and
+  two hours pass.
+- "So, what's your story?" Offered only **while your karma is below 0**, so a character who turns evil
+  later still gets it. It is his life story, quick or detailed.
+- "So, what can you tell me about the Vaults?" He has forgotten the first three times. Ask a fourth
+  time and he remembers living by the Chicago Vault.
+- "Is there anything useful you can tell me about the time before the Great Silence?" Six tall tales,
+  with no effect.
+
+### Losing him
+
+- **Any refusal at the chambers** makes him attack, and he stays hostile on sight after that.
+- A non-evil female character who takes his offer dies (above).
+- Once he has joined, nothing in his script makes him leave or turn on you.
+- Told to wait, he refuses to rejoin at Charisma 1 or with a full party, but he stays where he is. His
+  script never deletes him.
 
 ---
 
+## Comparison
+
+| | Kitsune | Cat Jules | Dex |
+| --- | --- | --- | --- |
+| **To recruit** | Charisma 5 or Speech 81%+ | Ask him | A joining line |
+| **Refuse or fail** | Gone for good | Gone for good | Attacks you |
+| **Lesson** | +10% Sneak, Steal, Lockpick | +10% Small Guns, Energy Weapons, Big Guns | +15% Speech, Barter |
+| **Best combat skill** | Unarmed 125% → 170% | Small Guns 111% → 166% | Melee 144% → 194% |
+| **HP** | 80 → 130 | 80 → 130 | 80 → 130 |
+| **AP** | 9 | 8 → 10 | 8 → 9 |
+| **Weapons** | All classes | All classes | Knife, pistol, SMG, unarmed |
+| **Default Weapon Pref.** | Unarmed | Ranged then melee | Ranged then melee |
+| **Visible armour** | Yes | Yes | No |
+| **Works for you** | Picks locks | — | Speech rolls |
+| **Rejoining at Charisma 1** | Deleted with her gear | Deleted with his gear | Refuses, stays |
+| **Metzger pays (base)** | $650 | $650 | $600 |
+
 ## Which to take
 
-**Kitsune** for the automatic lockpicking and the thief-skill training, **Cat Jules** for the broadest
-weapon training and the best all-round combat, **Dex** for the Speech and Barter bonus and the most
-interesting dialogue on an evil playthrough.
+**Cat Jules** is the one to take if you just want a fighter. He has no check to fail and no way to turn
+on you. He can use any gun you find, has the best Small Guns and gets the most AP by the end.
 
-Cat Jules is the safest pick. Kitsune is the most *useful* if you skipped Lockpick at character
-creation.
+**Kitsune** is the one to take for work outside combat. If you did not build for Lockpick, her
+135%–180% opens things for you. Give her a Power Fist and she hits hard from the day she joins, but
+you need Charisma 5 or 81% Speech to recruit her.
+
+**Dex** gives the best lesson for a talker, makes your Speech rolls with his 145%–195% unless yours is higher, and an evil
+character gets the most out of his dialogue. In
+combat his weapon limits leave him behind the other two unless you give him a Ripper or a Power Fist.
+Female characters with karma 0 or above must never pick the "clothes back off" line.
