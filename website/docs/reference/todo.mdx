@@ -1,0 +1,180 @@
+---
+sidebar_position: 90
+title: To Check
+description: What this guide is not yet sure about — claims awaiting confirmation, and the checks still to run.
+---
+
+# To Check
+
+Most of this guide is checked against the game's own files: RPU's scripts and dialogue, the item and
+critter protos, and the [FOR:CE](https://github.com/fallout2-ce/fallout2-ce) engine source. This page
+is the other part — what has **not** been settled, kept in the open rather than quietly asserted.
+
+Two kinds of thing are listed:
+
+- **Marked claims.** Anywhere you see the <Unverified>Like this one: an icon in the text, with a note
+  saying what could not be confirmed.</Unverified> icon, the claim is on this list. Most are things a
+  script cannot decide — how the engine behaves at runtime, or whether a bug still bites.
+- **Open work**, below: whole areas that have not had the same treatment yet.
+
+If you settle one at the keyboard, the fix is usually a one-line change on the page it came from.
+
+## Open work
+
+### The guide describes RPU 2.3; the object database is built from 2.4
+
+The [companions section](/companions/overview) and everything in the
+[object database](/database) were checked against **RPU v2.4.34**. The rest of the guide was written
+against the 2.3 line, and in places against RPU changes that are in no release at all. Between 2.3.34
+and 2.4.34, 194 map files change (Pixote's updated maps), along with scripts at the EPA, Sierra Army
+Depot, Vault City and Vault Village.
+
+**What needs doing:** re-check the walkthrough against 2.4.34, starting with those four locations and
+with any direction that depends on where something sits on a map.
+
+### Pages checked only where they mention companions
+
+The walkthrough was corrected wherever a companion was involved, which is not the same as being
+checked. Quest steps, XP figures, skill checks and directions that never mention a companion have not
+been read against the scripts.
+
+**What needs doing:** a page-by-page pass, in the order the walkthrough runs. `check-rpu-drift.py`
+already catches quests and XP figures that no script awards; the rest is reading.
+
+### Engine claims inherited from the 1998 executable
+
+The guide inherited a set of bugs and tricks from Per Jorner's guide, written for the original
+executable. Many are fixed in FOR:CE, and the audited ones say so — see
+[Known Issues](/reference/known-issues). The rest are neither confirmed nor ruled out, because they
+depend on runtime behaviour that reading the source does not settle; they are in the list below,
+alongside everything else still open.
+
+**What needs doing:** playing. Each of these is a save, a reload and five minutes.
+
+### Nothing here has been verified in play
+
+Every fact in this guide comes from reading the game's files and the engine's source. That is a good
+way to get numbers and conditions right, and a poor way to notice that something does not work the
+way the code implies. Where those two can disagree, the claim is marked.
+
+## Claims awaiting confirmation
+
+{/* generated:unverified — python3 scripts/list-unverified.py */}
+
+The guide carries **30** of these, on 18 pages.
+
+### [Broken Hills](/walkthrough/broken-hills)
+
+- [ ] [All reset every three days — even Jacob's after you jail him.](/walkthrough/broken-hills#shops) *(Shops)*<br />
+  **Why it is unconfirmed:** The restock timing is inherited and was not verified against the container scripts.
+
+### [Cassidy](/companions/cassidy)
+
+- [ ] [Doc Jubilee in NCR has lines about them while Cassidy is with you.](/companions/cassidy#curing-it) *(Curing it)*<br />
+  **Why it is unconfirmed:** Whether you can get a real pill from him was not traced through his script.
+
+### [Companions](/companions/overview)
+
+- [ ] [When a companion wields a lit Flare, their light radius goes up, and nothing turns it back down when the flare burns out. They stay a walking light source.](/companions/overview#armour) *(Armour)*<br />
+  **Why it is unconfirmed:** The light staying on is from the FOR:CE source. Getting a companion to wield the flare has not been tried in play.
+- [ ] [Using an item is an animation, and a companion with a weapon out puts it away first.](/companions/overview#healing) *(Healing)*<br />
+  **Why it is unconfirmed:** The old advice that you may have to close the conversation before they heal was not tested.
+- [ ] [Only your own carry weight limits what you can take from a party member.](/companions/overview#carrying-and-trading) *(Carrying and trading)*<br />
+  **Why it is unconfirmed:** Worked out from the FOR:CE source; not tried in a running game.
+- [ ] [Death removes them from the party at once.](/companions/overview#death) *(Death)*<br />
+  **Why it is unconfirmed:** Saving in combat with a dead companion is said to produce a save that freezes at the end of the turn. Not confirmed either way.
+- [ ] [](/companions/overview#what-makes-them-leave) *(What makes them leave)*<br />
+  **Why it is unconfirmed:** From the RPU script and the FOR:CE source; not tested in game.
+- [ ] [before you recruit them, or while they wait.](/companions/overview#attacking-a-companion) *(Attacking a companion)*<br />
+  **Why it is unconfirmed:** Their scripts ignore the attack. Whether they fight back during that fight was not checked.
+
+### [Dogmeat](/companions/dogmeat)
+
+- [ ] [There is a loose Iguana-on-a-stick on the cafe map, and a crate holding eight more.](/companions/dogmeat#recruiting) *(Recruiting)*<br />
+  **Why it is unconfirmed:** The Random Encounters page says recruiting him with food usually crashes the game. The script path is ordinary, but a crash can't be ruled out from source.
+- [ ] [There is **one** in the whole game, in a box on the EPA surface.](/companions/dogmeat#gear) *(Gear)*<br />
+  **Why it is unconfirmed:** The EPA page places it in the locked storage shed north of the white shed. The tools used don't report which building the box is in or whether it is locked.
+
+### [Goris](/companions/goris)
+
+- [ ] [Brass Knuckles, Spiked Knuckles, Boxing Gloves, Plated Boxing Gloves, the Power Fist (12–24) and the Mega Power Fist (20–40) — the last two with Penetrate, like his claws.](/companions/goris#gear) *(Gear)*<br />
+  **Why it is unconfirmed:** FOR:CE explicitly lets Goris pick weapons from his inventory, and a punching weapon passes every engine check on paper, but nobody has confirmed that he actually wields one in play.
+- [ ] [Goris is said to simply die at the Enclave, and to be impossible to keep alive in Navarro.](/companions/goris#using-him) *(Using him)*<br />
+  **Why it is unconfirmed:** Both warnings are inherited. No Enclave or Navarro script treats Goris specially — the one Enclave script that names him, the reactor, shocks you and every companion alike when it is blown up.
+
+### [K-9](/companions/k9)
+
+- [ ] [It then attacks you the next time it sees you, though its script attacks only that once.](/companions/k9#losing-it) *(Losing it)*<br />
+  **Why it is unconfirmed:** Whether it stays hostile after that fight was not traced.
+
+### [Karma and Reputation](/character/reputation)
+
+- [ ] [A handful of scripts check for a specific title or threshold; the general "everyone reacts to your reputation" system the manual describes is barely wired up and does not work properly.](/character/reputation)<br />
+  **Why it is unconfirmed:** Reaction handling is spread across the engine and every critter script; this is an inherited summary rather than something checked end to end.
+
+### [Lenny](/companions/lenny)
+
+- [ ] [The new art has no running frames, so he may trail behind when you run.](/companions/lenny#weapons-and-the-new-look) *(Weapons and the new look)*<br />
+  **Why it is unconfirmed:** The missing frames are confirmed; whether he actually falls behind in play is not.
+
+### [Modoc](/walkthrough/modoc)
+
+- [ ] [Both entries are inherited from Per Jorner.](/walkthrough/modoc#miria-and-davin) *(Miria and Davin)*<br />
+  **Why it is unconfirmed:** Neither was re-checked against the Modoc scripts.
+
+### [New Reno](/walkthrough/new-reno)
+
+- [ ] [Save and reload on the top floor after going upstairs with either Bishop woman and **your whole party vanishes** when you return to the first floor.](/walkthrough/new-reno#the-bishop-residence) *(The Bishop residence)*<br />
+  **Why it is unconfirmed:** Inherited; this is party state across a save, which the scripts do not settle.
+
+### [Other Companions](/companions/other-companions)
+
+- [ ] [If Jo is dead, he is brought back for the ceremony.](/companions/other-companions#the-wedding) *(The wedding)*<br />
+  **Why it is unconfirmed:** The Modoc page reports that a dead Grisham or a dead Jo freezes the game. RPU's scripts handle both cases, but a freeze can't be ruled out from source.
+
+### [Redding](/walkthrough/redding)
+
+- [ ] [They can dissolve on the world map for no visible reason, and leaders sometimes fail to appear or refuse to talk at the destination.](/walkthrough/redding#caravans) *(Caravans)*<br />
+  **Why it is unconfirmed:** Inherited from Per Jorner. Caravan handling spans the worldmap engine and several scripts, and nothing in RPU obviously fixes or causes it.
+
+### [Robodog](/companions/robodog)
+
+- [ ] [The script does not check that the target is alive, so a super mutant's corpse should also count.](/companions/robodog#testing-the-serum) *(Testing the serum)*<br />
+  **Why it is unconfirmed:** Derived from the serum's script; not tested in game.
+- [ ] [**There is no way to dismiss it for good.** **Hurting it:** its script ignores damage you deal it, and while it is in your party the game does not even run that part of it.](/companions/robodog#losing-it) *(Losing it)*<br />
+  **Why it is unconfirmed:** Whether the engine turns it against you for the rest of that fight was not traced.
+- [ ] [**Parked dogs rejoin NCR's side.** Whenever Robodog is not in your party, including while it waits for you, it is put back on NCR's team the next time you enter its map.](/companions/robodog#losing-it) *(Losing it)*<br />
+  **Why it is unconfirmed:** Whether a waiting Robodog then fights alongside NCR's guards against you was not traced.
+
+### [San Francisco](/walkthrough/san-francisco)
+
+- [ ] [Inherited from Per Jorner, and not re-checked against the ring scripts.](/walkthrough/san-francisco#martial-arts-training) *(Martial arts training)*<br />
+  **Why it is unconfirmed:** Every entry in this block wants confirming at the keyboard.
+- [ ] [Playing it straight gets you 9000 from the mainframe plus 3000 from Handy.](/walkthrough/san-francisco#3-the-tanker-needs-fuel) *(3. The tanker needs fuel)*<br />
+  **Why it is unconfirmed:** The repeatable half is inherited and was not traced; the fuel double-dip it used to rely on is now closed, so the totals may no longer hold.
+
+### [Sierra Army Depot](/walkthrough/sierra-army-depot)
+
+- [ ] [Hacking either the forcefields or the shock plates (**Science 90%**) gives **200 XP** and turns the shock plates off — the forcefields stay up regardless. You cannot get the XP twice.](/walkthrough/sierra-army-depot#level-2) *(Level 2)*<br />
+  **Why it is unconfirmed:** Inherited; the terminal scripts were not traced end to end for this guide.
+- [ ] [The extractor does not work on Laddie, K-9, the Robodog, or the Brain Bot unless it has the best brain.](/walkthrough/sierra-army-depot#the-organ-extractor) *(The organ extractor)*<br />
+  **Why it is unconfirmed:** Inherited; not checked against the extractor script.
+
+### [Skynet](/companions/skynet)
+
+- [ ] [Once you leave the map its script runs again, and it does not try a second time.](/companions/skynet#angering-skynet) *(Angering Skynet)*<br />
+  **Why it is unconfirmed:** Worked out from the RPU script and the FOR:CE source; not tested in game.
+- [ ] [**Shooting it:** its script does not react, and while it is in your party the game does not even run that part of it.](/companions/skynet#losing-it) *(Losing it)*<br />
+  **Why it is unconfirmed:** Whether the engine turns it against you for the rest of that fight was not traced.
+
+### [Sulik](/companions/sulik)
+
+- [ ] [RPU's script notes that this closes an exploit that paid it twice.](/companions/sulik#recruiting) *(Recruiting)*<br />
+  **Why it is unconfirmed:** How the original game handled this was not checked: its scripts ship only in compiled form.
+
+### [The Den](/walkthrough/the-den)
+
+- [ ] [A patch bug means that after a female character sleeps with him, he relocates east of Becky's and then vanishes from the game permanently when you leave the map.](/walkthrough/the-den#shops-and-people) *(Shops and people)*<br />
+  **Why it is unconfirmed:** killap replaced the teleport that moved him with logic that walks him back to his post, so the relocation half looks fixed. Whether he still disappears for good is not something the script settles.
+
+{/* /generated:unverified */}
