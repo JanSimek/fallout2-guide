@@ -111,20 +111,41 @@ There is no content reason to prefer it.
 
 ## Installer options
 
-The installer asks a number of questions. The ones worth thinking about:
+The installer asks for your language, an ammunition damage formula, and a handful of optional
+components:
 
 | Option | Recommendation |
 | --- | --- |
-| **High resolution patch** | **Yes** on the original engine — not optional in practice, since parts of the EPA cannot be navigated at 640×480 without it. **Skip it on FOR:CE**, which has high resolution built in. |
-| **Cassidy talking head** | Yes. A restored talking head with good voice work. |
-| **New Lenny model** | Personal taste. He looks better but uses rifles instead of pistols and has no run animation, so he trails behind the party. |
-| **New player model when boxing / ring fighting** | Cosmetic. Either is fine. |
-| **NPC armor** | Yes. Companions visibly change appearance with the armour you give them, and it unlocks Dogmeat's kevlar armour in Broken Hills. |
-| **Party orders** | Yes. Lets you give companions standing combat orders instead of fighting the AI. |
-| **High quality music** | Yes, unless disk space is tight. |
+| **Ammo damage formula** — Default, Glovz's or YAAM | Read [Damage formulas](/systems/combat#damage-formulas) before you move off Default; YAAM in particular needs its own ammunition protos. |
+| **Talking head and voice for Cassidy** | Yes. A restored talking head with good voice work. |
+| **Walk speed fix** and **Faster derobing for Goris** | Each offers a *High FPS* and a *Low FPS* variant. The Low FPS one ships a replacement animation file, which is the version that works under FOR:CE — see [Goris](/companions/goris). |
+| **Enable sfall QoL features** | Writes a block of `ddraw.ini` conveniences: action point bar, karma and bonus damage messages, numbered dialogue options, extra party member info. |
+| **Weapon animations** — new rifle, wakizashi, extended flamer | They give several companions frames for weapons they otherwise cannot hold. See [Companions](/companions/overview). |
+| **Visually enhanced world map** | Cosmetic. |
+| **Improved Mysterious Stranger** | Changes how the Stranger behaves — see [Perks](/character/perks). |
+| **Alternative explosion animations** | Cosmetic; the animations come from *Fallout Tactics*. |
 
-After installation, `mods/rpu.ini` and `mods/upu.ini` in the game directory expose a large
-number of individual toggles. See [Configuration](/getting-started/configuration).
+Nothing else is asked. The **high resolution patch** (`f2_res.dll`, configured with
+`f2_res_config.exe`) ships with the core files: on the original engine it is not optional in
+practice, since parts of the EPA cannot be navigated at 640×480 without it, and FOR:CE ignores it
+and has high resolution built in. The **high quality music** set is bundled as well, in
+`data/sound/music`.
+
+So are **NPC Armor** and **Party Orders** — RPU installs both with the core files, and FOR:CE loads
+them along with the rest of `mods/`. NPC Armor makes companions visibly change appearance with the
+armour you give them. Party Orders adds hotkeys that issue **one-shot** orders — heal, loot, regroup,
+spread out, holster, switch ammo type — rather than standing orders; only the burst toggle persists.
+
+Two things that look like installer questions are `mods/rpu.ini` switches instead, set after
+installation and on by default:
+
+- **`lenny_new_look`** — the new Lenny model. Personal taste. He looks better but uses rifles instead
+  of pistols and has no run animation, so he trails behind the party.
+- **`vault_boxer`** — the new player model when boxing / ring fighting. Cosmetic. Either is fine.
+
+`mods/rpu.ini` and `mods/upu.ini` expose a good many more toggles — Dogmeat's kevlar armour in
+Broken Hills is one of them (`dogmeat_armor`), not part of NPC Armor. See
+[Configuration](/getting-started/configuration).
 
 ## Recommended extras
 
