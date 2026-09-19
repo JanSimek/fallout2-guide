@@ -22,9 +22,10 @@ PIN=scripts/database-release.txt
 # Relative to static/ — every directory build-database.py writes into.
 DIRS=(data img/db img/maps)
 
-# Bump when build-database.py's output changes (a new file, a new field). Part of the release tag, so
-# the hook rebuilds for a new generator as well as for a new RPU release.
-DATABASE_REVISION=4
+# Bump when the generated bundle's shape changes — a new file, a new field, from either
+# build-database.py or build-perks.py. Part of the release tag, so the hook rebuilds for a new
+# generator as well as for a new RPU release.
+DATABASE_REVISION=5
 
 # The release line the database follows. 2.4.x is 2.3.x plus Pixote's updated maps.
 RPU_REPO=BGforgeNet/Fallout2_Restoration_Project
