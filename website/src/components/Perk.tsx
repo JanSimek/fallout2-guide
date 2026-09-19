@@ -1,16 +1,7 @@
 import React, {useId} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {usePerks, lookupPerk, requirementText} from '@site/src/data/perks';
+import {usePerks, lookupPerk, requirementText, grantedEffects, specialName} from '@site/src/data/perks';
 
-const SPECIAL_NAMES: Record<string, string> = {
-  ST: 'Strength',
-  PE: 'Perception',
-  EN: 'Endurance',
-  CH: 'Charisma',
-  IN: 'Intelligence',
-  AG: 'Agility',
-  LK: 'Luck',
-};
 
 /**
  * A perk the reader can hover for what it does and what it costs to take.
@@ -24,30 +15,49 @@ const SPECIAL_NAMES: Record<string, string> = {
  *   Take <Perk>Educated</Perk> as early as you can.
  *   <Perk name="Bonus Rate of Fire">BRoF</Perk>
  */
-export default function Perk({children, name}: {children?: React.ReactNode; name?: string}) {
+export default function Perk({
+  children,
+  name,
+  id: perkId,
+}: {
+  children?: React.ReactNode;
+  name?: string;
+  /** Perk id, for callers that already have one (the database page's weapon and armour rows). */
+  id?: number;
+}) {
   const id = useId();
   const baseUrl = useBaseUrl('/');
   const perks = usePerks(baseUrl);
   const label = name ?? (typeof children === 'string' ? children : undefined);
-  const perk = lookupPerk(perks, label);
+  const perk = lookupPerk(perks, label, perkId);
   const text = children ?? perk?.name ?? label;
 
   if (!perk) {
     return <span className="item-ref item-ref--plain">{text}</span>;
   }
 
-  // What it costs to take, as one line: level first, then SPECIAL, then skills or gvars.
-  const cost: string[] = [`Level ${perk.level}`];
-  for (const stat of perk.special) {
-    cost.push(requirementText({...stat, name: SPECIAL_NAMES[stat.stat] ?? stat.stat}));
+  // An item-granted perk (ranks -1) is never chosen, so it has no cost to state — what it gives is
+  // the whole story. Showing its table columns as "Level 1 · Strength 3" would read as a price the
+  // wearer has to pay, which is backwards: those columns are the bonus.
+  const granted = perk.ranks === -1;
+  const summary: string[] = granted ? grantedEffects(perk) : [`Level ${perk.level}`];
+
+  if (!granted) {
+    for (const stat of perk.special) {
+      summary.push(requirementText({...stat, name: specialName(stat.stat)}));
+    }
+    const gates = perk.requires.map((r) => requirementText(r, r.kind === 'skill' ? '%' : ''));
+    if (gates.length) {
+      summary.push(gates.join(perk.requiresMode === 'or' ? ' or ' : ' and '));
+    }
+    if (perk.ranks > 1) {
+      summary.push(`${perk.ranks} ranks`);
+    }
   }
-  const gates = perk.requires.map((r) => requirementText(r, r.kind === 'skill' ? '%' : ''));
-  if (gates.length) {
-    cost.push(gates.join(perk.requiresMode === 'or' ? ' or ' : ' and '));
-  }
-  if (perk.ranks > 1) {
-    cost.push(`${perk.ranks} ranks`);
-  }
+
+  // perk.msg has no text for the weapon and armour perks — the entry just repeats the name — so
+  // suppress it rather than printing the title twice inside its own card.
+  const description = perk.description.trim() === perk.name.trim() ? '' : perk.description;
 
   return (
     <span className="item-ref">
@@ -61,11 +71,13 @@ export default function Perk({children, name}: {children?: React.ReactNode; name
         <span className="item-ref__head">
           <span>
             <strong className="item-ref__name">{perk.name}</strong>
-            <span className="item-ref__places">{cost.join(' · ')}</span>
+            {summary.length > 0 && (
+              <span className="item-ref__places">{summary.join(' · ')}</span>
+            )}
           </span>
         </span>
-        <span className="item-ref__desc">{perk.description}</span>
-        {perk.effect && (
+        {description && <span className="item-ref__desc">{description}</span>}
+        {!granted && perk.effect && (
           <span className="item-ref__places">
             {perk.effect.amount > 0 ? '+' : ''}
             {perk.effect.amount} {perk.effect.stat}

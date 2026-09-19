@@ -151,20 +151,34 @@ def requirement(param, value, skills, gvar_names):
     return out
 
 
-def special_requirements(row):
-    """The primary-stat minimums, as {stat, op, value}.
+def special_columns(row, selectable):
+    """The seven primary-stat columns — which mean opposite things depending on the perk.
 
-    perk.cc:611-616 gives a negative entry the same inverted sense as a skill requirement: the
-    engine fails the check when the stat is >= -value, i.e. the perk wants the stat BELOW that.
-    Gain Strength is the one that matters — it is ST -10, meaning it cannot be taken at ST 10, not
-    that it requires minus ten Strength. Emitting the sense here keeps that out of the UI.
+    For a perk the player can choose they are minimums (perk.cc:611-616), and a negative entry
+    inverts the test: the engine fails when the stat is >= -value, so ST -10 on Gain Strength means
+    "not at Strength 10", not "requires minus ten".
+
+    For a perk maxRank -1 — the ones granted by armour, chems and scripts, which perkCanAddAtLevel
+    rejects outright — the very same columns are BONUSES, applied stat by stat on equip:
+
+        if (perkDescription->maxRank == -1) {                          // perk.cc, perkAddEffect
+            for (Stat stat = STAT_FIRST; stat < PRIMARY_STAT_COUNT; stat++)
+                critterSetBonusStat(critter, stat, value + perkDescription->stats[stat]);
+        }
+
+    That is where Power Armor's +3 Strength comes from. Reading those as requirements would put
+    "Strength 3" on a card as a cost the wearer has to meet, which is backwards, so the two are
+    emitted under different keys and never confused downstream.
     """
     out = []
     for key in SPECIAL:
         value = number(row[key])
         if not value:
             continue
-        out.append({'stat': key, 'op': 'below' if value < 0 else 'atLeast', 'value': abs(value)})
+        if selectable:
+            out.append({'stat': key, 'op': 'below' if value < 0 else 'atLeast', 'value': abs(value)})
+        else:
+            out.append({'stat': key, 'amount': value})
     return out
 
 
@@ -210,6 +224,12 @@ def build():
         if mode == 'first_only':
             requires = requires[:1]
 
+        # maxRank -1 is the engine's own flag for "the player can never pick this": perkCanAddAtLevel
+        # returns false on it before any other check.
+        ranks = number(row['maxRank'])
+        selectable = ranks != -1
+        columns = special_columns(row, selectable)
+
         slug = re.sub(r'_+', '_', re.sub(r'[^A-Za-z0-9]+', '_', name)).strip('_')
         if slug in used:
             slug = f'{slug}_{index}'
@@ -220,12 +240,14 @@ def build():
             'name': name,
             'slug': slug,
             'description': description,
-            'ranks': number(row['maxRank']),
+            'ranks': ranks,
             'level': number(row['minLevel']),
-            'special': special_requirements(row),
+            # Selectable perks carry requirements; item-granted ones carry the bonuses they apply.
+            'special': columns if selectable else [],
+            'grants': [] if selectable else columns,
             'effect': effect,
-            'requires': requires,
-            'requiresMode': mode if len(requires) > 1 else None,
+            'requires': requires if selectable else [],
+            'requiresMode': mode if selectable and len(requires) > 1 else None,
         })
 
     return {'source': f'RPU {RPU_VERSION} + fallout2-ce gPerkDescriptions', 'perks': perks}
@@ -258,8 +280,10 @@ def main():
         json.dump(payload, handle, separators=(',', ':'), ensure_ascii=False)
     ranked = sum(1 for p in payload['perks'] if p['ranks'] > 1)
     gated = sum(1 for p in payload['perks'] if p['requires'])
+    granted = sum(1 for p in payload['perks'] if p['ranks'] == -1)
     print(f'wrote {path} ({os.path.getsize(path) / 1024:.0f} KB): {len(payload["perks"])} perks, '
-          f'{ranked} with multiple ranks, {gated} with a skill or gvar requirement')
+          f'{ranked} with multiple ranks, {gated} with a skill or gvar requirement, '
+          f'{granted} granted by items or scripts rather than chosen')
     return 0
 
 
