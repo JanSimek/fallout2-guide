@@ -9,7 +9,7 @@ writes the results where Docusaurus can serve them. Nothing here parses game dat
     python3 scripts/build-database.py --no-icons # data only (fast; icons need a GL context)
 
 Outputs:
-    static/data/protos.json     what things are — name, description, art  (~25 KB gzipped)
+    static/data/protos.json     what things are — every proto, name, description, art
     static/data/entities.json   where they are — the location rows       (~172 KB gzipped)
     static/data/maps.json       which renders exist, and how each was framed
     static/data/equipment.json  every weapon, ammunition and armour, for the /equipment page
@@ -79,6 +79,16 @@ def gecko(tool, arguments=None):
 
 def export_entities():
     return gecko('export_entities')
+
+
+def export_protos():
+    """Every proto the game can load — each line of items.lst and critters.lst.
+
+    Not the same question as export_entities, which walks the maps: a quest item a script hands
+    out (the fuel cell controller), shop stock and unused protos appear in no map's object records,
+    so the map walk cannot see them. It stays the source of the exit-grid protos, which are neither
+    an item nor a critter, and of the placement counts."""
+    return gecko('export_protos')
 
 
 def areas():
@@ -353,7 +363,7 @@ def main():
     print('exporting entities...', flush=True)
     t0 = time.time()
     export = export_entities()
-    print(f'  {export["entityCount"]} entities, {len(export["protos"])} protos, '
+    print(f'  {export["entityCount"]} entities, {len(export["protos"])} placed protos, '
           f'{len(export["maps"])} maps in {time.time() - t0:.0f}s')
     if export['mapsUnreadable']:
         # An item that appears nowhere only means something if every map was read.
@@ -363,14 +373,48 @@ def main():
         if args.strict:
             return 1
 
+    print('exporting protos...', flush=True)
+    t0 = time.time()
+    catalogue = export_protos()
+    lists = ', '.join('{} ({})'.format(l['path'], l['entries']) for l in catalogue['lists'])
+    print(f'  {len(catalogue["protos"])} protos from {lists} in {time.time() - t0:.0f}s')
+    if catalogue['unreadable']:
+        # The counterpart of mapsUnreadable: "this item is in no database" only means something
+        # when every .lst entry actually loaded.
+        print(f'  WARNING: {len(catalogue["unreadable"])} proto(s) unreadable:', file=sys.stderr)
+        for u in catalogue['unreadable'][:10]:
+            print(f'    {u["file"]}: {u["reason"]}', file=sys.stderr)
+        if args.strict:
+            return 1
+
+    # What the page needs of a proto; export_protos also carries the full stat block, which
+    # /equipment reads out of equipment.json instead of making every page pay for it here.
+    def slim(proto):
+        return {k: proto[k] for k in ('pid', 'kind', 'name', 'description', 'fid')}
+
+    by_pid = {p['pid']: slim(p) for p in catalogue['protos']}
+    placed_only = 0
+    for p in export['protos']:
+        if p['pid'] not in by_pid:  # exit grids, and anything else the two .lst files omit
+            by_pid[p['pid']] = slim(p)
+            placed_only += 1
+
     # How many places each proto turns up, so a hover card can say "found in 3 places" without
-    # holding the rows that say where.
+    # holding the rows that say where. A proto no map places is kept, at n = 0 — that is the whole
+    # point of the catalogue, and the page says "not placed on any map" for it.
     counts = {}
     for row in export['entities']:
         counts[row['pid']] = counts.get(row['pid'], 0) + 1
-    protos = [{**p, 'n': counts.get(p['pid'], 0)} for p in export['protos']]
+
+    # Protos the game never hands out all share one name; they would fill a search with identical
+    # rows. Nameless ones cannot be searched for at all.
+    protos = [p for p in by_pid.values() if p['name'] and p['name'] != PLACEHOLDER]
+    dropped = len(by_pid) - len(protos)
+    protos = [{**p, 'n': counts.get(p['pid'], 0)} for p in protos]
     slug_of = slugs(protos)
     protos = [{**p, 'slug': slug_of[p['pid']]} for p in protos]
+    print(f'  {len(protos)} in the database ({placed_only} from the map walk only, '
+          f'{sum(1 for p in protos if not p["n"])} placed on no map, {dropped} unnamed or placeholder)')
 
     area_of = areas()
     maps = [{**m, 'area': area_of.get(os.path.basename(m['file']).lower())} for m in export['maps']]
@@ -394,7 +438,7 @@ def main():
     # Everything with art, critters included. A critter's FRM is a directional animation, so take
     # one direction and one frame and you get a clean standing sprite — which is exactly what a
     # hover card wants.
-    items = [p for p in export['protos'] if p['fid'] >= 0]
+    items = [p for p in protos if p['fid'] >= 0]
     print(f'rendering {len(items)} sprites...', flush=True)
     t0, written, failed = time.time(), 0, []
     for i, proto in enumerate(items, 1):

@@ -268,6 +268,25 @@ a.quest--rpu {
   border-bottom: 1px dotted var(--ifm-color-emphasis-400);
 }
 
+/* A <Perk> has no /database route to go to, so its trigger is a button rather than a link — it
+   describes the card instead of navigating. Stripped back to inline text so it reads as prose,
+   keeping the dotted affordance in the body colour: it must not promise a page that isn't there. */
+.item-ref__link--static {
+  /* Inline, not the button default of inline-block: a multi-word perk name sits inside a sentence
+     and has to wrap with it rather than being pushed whole onto the next line. */
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px dotted var(--ifm-color-emphasis-500);
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  cursor: help;
+}
+
 .item-ref__card {
   position: absolute;
   bottom: calc(100% + 0.5em);
