@@ -114,6 +114,20 @@ python3 scripts/generate-quest-index.py > /tmp/body.md   # prints base/rpu count
 Regenerate it after renaming or renumbering any quest heading. Quests described under a
 differently-named section are mapped in `scripts/quest-section-overrides.json`.
 
+## The To Check page
+
+`docs/reference/todo.mdx` lists what the guide is not sure about. The part between the
+`{/* generated:unverified */}` markers is generated from every `<Unverified>` in the docs — claim,
+note, and a link built from the anchors the built site emits:
+
+```bash
+cd website && npm run build
+python3 scripts/list-unverified.py     # rewrites the block in place
+```
+
+Everything outside the markers is written by hand. Re-run it after adding or settling an
+`<Unverified>`, and the count on the page stays honest.
+
 ## After an RPU update
 
 ```bash

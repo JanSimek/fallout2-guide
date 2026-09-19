@@ -155,6 +155,7 @@ const sidebars: SidebarsConfig = {
         'reference/keyboard-shortcuts',
         // React pages, not docs, so they join the sidebar as plain links.
         {type: 'link', label: 'Object Database', href: '/database'},
+        'reference/todo',
         'reference/credits',
       ],
     },
