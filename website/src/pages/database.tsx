@@ -198,13 +198,15 @@ function Stats({
       </Row>,
     );
     if (a.perk) {
-      // The bonuses are real table columns, so they are read out of perks.json rather than kept in
-      // a second hand-written list here; the name stays hoverable for the rest of the card.
+      // Name it and spell it out: the bonuses are read from perks.json rather than kept in a second
+      // hand-written list, and the perk keeps its name — and so its tooltip — beside them. Before
+      // the data arrives the name stands alone, which is what it used to show anyway.
       const armorPerk = lookupPerk(perks, undefined, a.perk.id);
       const bonuses = armorPerk ? grantedEffects(armorPerk) : [];
       rows.push(
         <Row key="perk" label="Wearing it gives">
-          {bonuses.length ? bonuses.join(', ') : <Perk id={a.perk.id}>{a.perk.name}</Perk>}
+          <Perk id={a.perk.id}>{a.perk.name}</Perk>
+          {bonuses.length ? ` — ${bonuses.join(', ')}` : ''}
         </Row>,
       );
     }
