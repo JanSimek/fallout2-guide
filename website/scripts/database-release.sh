@@ -155,7 +155,11 @@ update() {
   fi
 
   local missing=()
-  for f in "$GECKO_DIR/gecko-cli" "$GECKO_DIR/gecko-mcp" "$FALLOUT2_DATA/master.dat" "$FALLOUT2_DATA/critter.dat"; do
+  # perk.cc is as much an input as the .dat files: the perk table is compiled into the engine, so
+  # build-perks.py needs a fallout2-ce checkout. Checked here rather than discovered after the
+  # rebuild, which would abort the commit instead of taking the skip path below.
+  for f in "$GECKO_DIR/gecko-cli" "$GECKO_DIR/gecko-mcp" "$FALLOUT2_DATA/master.dat" \
+           "$FALLOUT2_DATA/critter.dat" "$FALLOUT2_CE/src/perk.cc"; do
     [[ -e $f ]] || missing+=("$f")
   done
   command -v cwebp >/dev/null || missing+=(cwebp)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useId} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {usePerks, lookupPerk, requirementText} from '@site/src/data/perks';
 
@@ -25,6 +25,7 @@ const SPECIAL_NAMES: Record<string, string> = {
  *   <Perk name="Bonus Rate of Fire">BRoF</Perk>
  */
 export default function Perk({children, name}: {children?: React.ReactNode; name?: string}) {
+  const id = useId();
   const baseUrl = useBaseUrl('/');
   const perks = usePerks(baseUrl);
   const label = name ?? (typeof children === 'string' ? children : undefined);
@@ -50,10 +51,13 @@ export default function Perk({children, name}: {children?: React.ReactNode; name
 
   return (
     <span className="item-ref">
-      <span className="item-ref__link item-ref__link--static" tabIndex={0}>
+      {/* A button, and aria-describedby pointing at the card: the same pairing Vanilla uses, so a
+          keyboard or screen-reader user gets the requirements and description rather than just the
+          perk's name. */}
+      <button type="button" className="item-ref__link item-ref__link--static" aria-describedby={id}>
         {text}
-      </span>
-      <span role="tooltip" className="item-ref__card">
+      </button>
+      <span role="tooltip" id={id} className="item-ref__card">
         <span className="item-ref__head">
           <span>
             <strong className="item-ref__name">{perk.name}</strong>
