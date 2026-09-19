@@ -24,7 +24,7 @@ DIRS=(data img/db img/maps)
 
 # Bump when build-database.py's output changes (a new file, a new field). Part of the release tag, so
 # the hook rebuilds for a new generator as well as for a new RPU release.
-DATABASE_REVISION=3
+DATABASE_REVISION=4
 
 # The release line the database follows. 2.4.x is 2.3.x plus Pixote's updated maps.
 RPU_REPO=BGforgeNet/Fallout2_Restoration_Project
@@ -32,6 +32,7 @@ RPU_LINE=2.4
 CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/fallout2-guide"
 GECKO_DIR=${GECKO_DIR:-$HOME/Development/geck-map-editor/build}
 FALLOUT2_DATA=${FALLOUT2_DATA:-$HOME/Development}
+FALLOUT2_CE=${FALLOUT2_CE:-$HOME/Development/fallout2-ce}
 
 say() { echo "database: $*" >&2; }
 
@@ -114,10 +115,13 @@ out = sys.argv[1]
 entities = json.load(open(f'{out}/data/entities.json'))
 protos = json.load(open(f'{out}/data/protos.json'))['protos']
 maps = json.load(open(f'{out}/data/maps.json'))['maps']
+perks = json.load(open(f'{out}/data/perks.json'))['perks']
 problems = []
+if len(perks) != 119:
+    problems.append(f'{len(perks)} perks, expected 119')
 if entities['mapsUnreadable']:
     problems.append(f"{len(entities['mapsUnreadable'])} unreadable map(s)")
-if not entities['entities'] or not protos or not maps:
+if not entities['entities'] or not protos or not maps or not perks:
     problems.append('an empty export')
 missing = [image for m in maps for level in m['levels'] for key in ('base', 'detail')
            if (image := level.get(key)) and not os.path.exists(f'{out}/img/maps/{image}')]
@@ -126,7 +130,8 @@ if missing:
 if problems:
     sys.exit('database: refusing to publish — ' + '; '.join(problems))
 print(f"database: {len(entities['maps'])} maps, {len(entities['entities'])} entities, "
-      f"{len(protos)} protos, {sum(len(m['levels']) for m in maps)} renders", file=sys.stderr)
+      f"{len(protos)} protos, {len(perks)} perks, "
+      f"{sum(len(m['levels']) for m in maps)} renders", file=sys.stderr)
 EOF
 }
 
@@ -176,6 +181,10 @@ update() {
   RPU_VERSION="$latest" FALLOUT2_RPU="$src" FALLOUT2_DATA="$FALLOUT2_DATA" \
     GECKO_MCP="$GECKO_DIR/gecko-mcp" GECKO_CLI="$GECKO_DIR/gecko-cli" \
     python3 scripts/build-database.py --strict --out "$out" >&2
+  # Perks are the one table that is not in the game data — it is compiled into the engine, so this
+  # needs a fallout2-ce checkout rather than gecko and the .dat files.
+  RPU_VERSION="$latest" FALLOUT2_RPU="$src" FALLOUT2_CE="$FALLOUT2_CE" \
+    python3 scripts/build-perks.py --out "$out" >&2
   check_build "$out"
   publish "$tag" "$out"
   install_into_static "$out"

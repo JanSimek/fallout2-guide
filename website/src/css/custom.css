@@ -268,6 +268,13 @@ a.quest--rpu {
   border-bottom: 1px dotted var(--ifm-color-emphasis-400);
 }
 
+/* A <Perk> has no /database route to go to, so its trigger is not a link: same dotted affordance,
+   but in the body colour and with a help cursor, so it does not promise a page that isn't there. */
+.item-ref__link--static {
+  border-bottom-color: var(--ifm-color-emphasis-500);
+  cursor: help;
+}
+
 .item-ref__card {
   position: absolute;
   bottom: calc(100% + 0.5em);
