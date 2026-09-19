@@ -153,7 +153,8 @@ export const specialName = (stat: string) => SPECIAL_NAMES[stat] ?? stat;
  * neither; its effect is hardcoded in the combat code, so WEAPON_PERK_EFFECTS answers for those.
  */
 export function grantedEffects(perk: Perk): string[] {
-  const parts = perk.grants.map((g) => `${signed(g.amount)} ${specialName(g.stat)}`);
+  // ?? [] so a database built before `grants` existed degrades instead of throwing mid-render.
+  const parts = (perk.grants ?? []).map((g) => `${signed(g.amount)} ${specialName(g.stat)}`);
   if (perk.effect) {
     // The resistances are percentages; the SPECIAL stats and the rest are flat points.
     const unit = /Resistance$/.test(perk.effect.stat) ? '%' : '';
