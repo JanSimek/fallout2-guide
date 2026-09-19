@@ -186,16 +186,6 @@ export const ANIMATION_LABEL: Record<string, string> = {
 /** "Weapon Long Range" → "Long Range". */
 export const perkLabel = (perk: Named | null) => (perk ? perk.name.replace(/^Weapon /, '') : '');
 
-/**
- * What an armour's perk gives its wearer, from fallout2-ce perk.cc gPerkDescriptions (the stat and
- * per-SPECIAL columns; applied on equip to the player and companions, inventory.cc).
- */
-export const ARMOR_PERKS: Record<number, string> = {
-  62: '+3 Strength, +30% radiation resistance',
-  63: '+20% radiation resistance',
-  68: '+4 Strength, +60% radiation resistance',
-  69: '+4 Strength, +75% radiation resistance',
-};
 
 export const signed = (n: number) => (n > 0 ? `+${n}` : `${n}`);
 
