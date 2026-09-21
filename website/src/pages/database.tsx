@@ -21,6 +21,7 @@ import {
 import MapView, {useMaps, type MapEntry} from '@site/src/components/MapView';
 import Perk from '@site/src/components/Perk';
 import {usePerks, lookupPerk, grantedEffects} from '@site/src/data/perks';
+import {useQuestLinks, visibleQuestLinks, relationLabel} from '@site/src/data/questLinks';
 
 interface Entity {
   kind: string;
@@ -416,6 +417,36 @@ function Locations({
   );
 }
 
+/**
+ * The quests an item belongs to, read out of the scripts that hand it over or take it away.
+ *
+ * Absent for the great majority of items, which is the point: the ones that do have a link are the
+ * quest items, and most of them are placed on no map at all — until the database covered those,
+ * they were the entries nobody could find.
+ */
+function QuestLinks({proto, baseUrl}: {proto: Proto; baseUrl: string}) {
+  const index = useQuestLinks(baseUrl);
+  const links = visibleQuestLinks(index?.get(proto.pid), proto.n);
+  if (!links.length) {
+    return null;
+  }
+  return (
+    <>
+      <h3>{links.length === 1 ? 'Quest' : 'Quests'}</h3>
+      <table className="db-stats">
+        <tbody>
+          {links.map((link) => (
+            <Row key={`${link.gvar}:${link.quest}`} label={relationLabel(link)}>
+              {link.quest}
+              <span className="db-stats__note"> {link.area}</span>
+            </Row>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
 function Detail({
   proto,
   rows,
@@ -448,6 +479,8 @@ function Detail({
       {proto.description && <p className="db-detail__desc">{proto.description}</p>}
 
       {entry && <Stats entry={entry} equipment={equipment!} slugOf={slugOf} />}
+
+      <QuestLinks proto={proto} baseUrl={baseUrl} />
 
       <h3>
         {rows.length === 0
