@@ -435,18 +435,25 @@ def main():
         return 0
 
     os.makedirs(OUT_ICONS, exist_ok=True)
+    # An item's picture is its inventory art, not its ground art. The ground sprite is a speck the
+    # game shares freely — the Crowbar and both Cattle Prods are one diagonal stick, 439 of the 596
+    # items share one — while the inventory sprite is the item's own. Furniture containers have no
+    # inventory art and keep their ground sprite.
+    inventory = {p['pid']: p['inventoryFid'] for p in catalogue['protos']
+                 if p.get('inventoryFid', -1) >= 0}
     # Everything with art, critters included. A critter's FRM is a directional animation, so take
     # one direction and one frame and you get a clean standing sprite — which is exactly what a
     # hover card wants.
-    items = [p for p in protos if p['fid'] >= 0]
+    items = [(p, inventory.get(p['pid'], p['fid'])) for p in protos]
+    items = [(p, art) for p, art in items if art >= 0]
     print(f'rendering {len(items)} sprites...', flush=True)
     t0, written, failed = time.time(), 0, []
-    for i, proto in enumerate(items, 1):
+    for i, (proto, art) in enumerate(items, 1):
         path = os.path.join(OUT_ICONS, f'{proto["pid"]}.png')
         if os.path.exists(path):
             written += 1
             continue
-        if render_icon(proto['fid'], path):
+        if render_icon(art, path):
             written += 1
         else:
             failed.append(proto['name'] or proto['pid'])

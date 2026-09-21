@@ -320,10 +320,13 @@ a.quest--rpu {
   align-items: center;
 }
 
+/* Items show their inventory art — typically 85px wide, a rifle 193px — and critters a 45x61
+   standing frame. A box they all fit inside, rather than a width that would stretch the one and
+   shrink the other to a sliver. */
 .item-ref__icon {
-  width: 40px;
-  height: auto;
-  image-rendering: pixelated; /* 45x61 sprites; smoothing turns them to mush */
+  flex-shrink: 0;
+  max-width: 96px;
+  max-height: 56px;
 }
 
 .item-ref__name {
@@ -435,11 +438,11 @@ a.quest--rpu {
   background: var(--ifm-color-emphasis-300);
 }
 
+/* Shrunk around fourfold, so smoothed: nearest-neighbour would drop whole rows of pixels. */
 .db-row__icon {
-  width: 24px;
+  width: 32px;
   height: 24px;
   object-fit: contain;
-  image-rendering: pixelated;
 }
 
 .db-row__name {
@@ -463,9 +466,9 @@ a.quest--rpu {
 }
 
 .db-detail__icon {
-  width: 64px;
-  height: auto;
-  image-rendering: pixelated;
+  max-width: 200px;
+  max-height: 136px;
+  image-rendering: pixelated; /* shown near its own size, so keep the pixels sharp */
 }
 
 .db-detail__name {
