@@ -25,7 +25,7 @@ DIRS=(data img/db img/maps)
 # Bump when the generated bundle's shape changes — a new file, a new field, from either
 # build-database.py or build-perks.py. Part of the release tag, so the hook rebuilds for a new
 # generator as well as for a new RPU release.
-DATABASE_REVISION=5
+DATABASE_REVISION=6
 
 # The release line the database follows. 2.4.x is 2.3.x plus Pixote's updated maps.
 RPU_REPO=BGforgeNet/Fallout2_Restoration_Project
@@ -117,12 +117,16 @@ entities = json.load(open(f'{out}/data/entities.json'))
 protos = json.load(open(f'{out}/data/protos.json'))['protos']
 maps = json.load(open(f'{out}/data/maps.json'))['maps']
 perks = json.load(open(f'{out}/data/perks.json'))['perks']
+questlinks = json.load(open(f'{out}/data/questlinks.json'))['links']
 problems = []
 if len(perks) != 119:
     problems.append(f'{len(perks)} perks, expected 119')
+# The known-good item: if the fuel cell controller has lost its link, the SSL reading has broken.
+if '253' not in questlinks:
+    problems.append('no quest link for the fuel cell controller (proto 253)')
 if entities['mapsUnreadable']:
     problems.append(f"{len(entities['mapsUnreadable'])} unreadable map(s)")
-if not entities['entities'] or not protos or not maps or not perks:
+if not entities['entities'] or not protos or not maps or not perks or not questlinks:
     problems.append('an empty export')
 missing = [image for m in maps for level in m['levels'] for key in ('base', 'detail')
            if (image := level.get(key)) and not os.path.exists(f'{out}/img/maps/{image}')]
@@ -131,7 +135,7 @@ if missing:
 if problems:
     sys.exit('database: refusing to publish — ' + '; '.join(problems))
 print(f"database: {len(entities['maps'])} maps, {len(entities['entities'])} entities, "
-      f"{len(protos)} protos, {len(perks)} perks, "
+      f"{len(protos)} protos, {len(perks)} perks, {len(questlinks)} quest-linked items, "
       f"{sum(len(m['levels']) for m in maps)} renders", file=sys.stderr)
 EOF
 }
@@ -190,6 +194,10 @@ update() {
   # needs a fallout2-ce checkout rather than gecko and the .dat files.
   RPU_VERSION="$latest" FALLOUT2_RPU="$src" FALLOUT2_CE="$FALLOUT2_CE" \
     python3 scripts/build-perks.py --out "$out" >&2
+  # Which item belongs to which quest, read from RPU's .ssl sources via gecko.
+  RPU_VERSION="$latest" FALLOUT2_RPU="$src" FALLOUT2_DATA="$FALLOUT2_DATA" \
+    GECKO_MCP="$GECKO_DIR/gecko-mcp" \
+    python3 scripts/build-quest-links.py --out "$out" >&2
   check_build "$out"
   publish "$tag" "$out"
   install_into_static "$out"
