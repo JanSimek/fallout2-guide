@@ -88,21 +88,29 @@ def numeric_defines(path, prefix):
 
 
 def gvar_writing_macros(gvars):
-    """Header macros that write a global variable: {'set_car_part_pip': 550}.
+    """Header macros that write global variables: {'set_car_part_pip': {550}}.
 
     Most scripts never name a quest's gvar — they call an alias from the area's header — so without
     this layer the great majority of links are invisible.
+
+    A macro can write several: set_smitty_deliver touches the delivery timer before the quest flag
+    it is named for, so taking only the first match maps it to the wrong variable and loses the
+    quest entirely.
     """
     out = {}
     for header in glob.glob(os.path.join(SRC, 'headers/*.h')):
-        text = open(header, encoding='latin-1').read()
+        # A macro body runs across backslash-continued lines, and the gvar write is usually on a
+        # later one — set_smitty_deliver puts it on line 2 of 8. Reading line by line finds 138 of
+        # the 223 macros that write a gvar, so the rest of their quests never link at all.
+        text = re.sub(r'\\[ \t]*\n', ' ', open(header, encoding='latin-1').read())
         # A macro's parameter list touches its name: `FOO(x) body`. A plain value define has a gap
         # before it: `FOO   (0)`. Without that distinction every value define swallows the line
         # after it as its body.
         for m in re.finditer(r'^#define[ \t]+(\w+)(?:\([^)]*\))?[ \t]+(.+)$', text, re.M):
-            written = re.search(r'set_global_var\([ \t]*(GVAR_[A-Z_0-9]+)', m.group(2))
-            if written and written.group(1) in gvars:
-                out[m.group(1)] = gvars[written.group(1)]
+            written = {gvars[g] for g in re.findall(r'set_global_var\([ \t]*(GVAR_[A-Z_0-9]+)', m.group(2))
+                       if g in gvars}
+            if written:
+                out.setdefault(m.group(1), set()).update(written)
     return out
 
 
@@ -112,17 +120,69 @@ PROCEDURE = re.compile(r'^procedure[ \t]+(\w+)[^\n]*\bbegin(.*?)^end', re.M | re
 # dialogue node, so the handler's name is not used to judge — only the verbs are.
 TAKES = ('remove_pid_qty', 'rm_obj_from_inven', 'destroy_object', 'remove_obj_from_inven')
 GIVES = ('create_object', 'add_obj_to_inven', 'give_pid_qty', 'add_mult_objs_to_inven')
-# How far either side of the item's name to look for those verbs. A dialogue node is short; this is
-# wide enough to span the `item := create_object(...)` / `add_obj_to_inven(...)` pair that always
-# straddles two lines, and narrow enough not to reach the next unrelated statement block.
-WINDOW = 220
+
+# A call and its argument list, tolerating one level of nesting inside the arguments.
+CALL = re.compile(r'\b(\w+)[ \t]*\(((?:[^()]|\([^()]*\))*)\)')
+# `item := dude_item(PID_FOO)` — the variable now stands for that item.
+BINDING = re.compile(r'(\w+)[ \t]*:=[ \t]*([^;\n]+)')
+# `if ((Tool == PID_DYNAMITE) or (Tool == PID_PLASTIC_EXPLOSIVES)) then` — the other way a variable
+# comes to stand for an item, used by every "use this on that" handler. The whole condition is one
+# group, because its branch runs for any of the items it names.
+CONDITION = re.compile(r'\bif[ \t]*\(((?:[^()]|\([^()]*\))*)\)[ \t]*then')
+COMPARISON = re.compile(r'(\w+)[ \t]*==[ \t]*(PID_[A-Z_0-9]+)')
 
 
-def relation(body, pid_name):
-    near = ''.join(body[max(0, m.start() - WINDOW): m.end() + WINDOW]
-                   for m in re.finditer(re.escape(pid_name), body))
-    takes = any(v in near for v in TAKES)
-    gives = any(v in near for v in GIVES)
+def item_actions(body, pid_by_name):
+    """Every take/give call in the procedure, paired with the proto ids it acts on.
+
+    Resolved by position, because these scripts reuse one variable for several items:
+
+        item := dude_item(PID_SUPER_TOOL_KIT);      // the kit the player hands over
+        rm_obj_from_inven(dude_obj, item);
+        item := create_object(PID_CAR_FUEL_CELL_CONTROLLER, 0, 0);   // rebound
+        add_obj_to_inven(dude_obj, item);
+
+    Ask merely "is `item` ever bound to the controller" and the earlier removal counts against it
+    too, turning a plain reward into a trade. So each call resolves its arguments against the last
+    binding made BEFORE that call, which is what the engine does when it runs the line.
+    """
+    bindings = [(m.start(), m.group(1), m.group(2)) for m in BINDING.finditer(body)]
+    # A condition contributes one binding per variable it tests, carrying every item that variable
+    # is allowed to be in the branch that follows.
+    for condition in CONDITION.finditer(body):
+        tested = {}
+        for var, pid_name in COMPARISON.findall(condition.group(1)):
+            tested.setdefault(var, []).append(pid_name)
+        for var, pid_names in tested.items():
+            bindings.append((condition.start(), var, ' '.join(pid_names)))
+    bindings.sort()
+
+    def pids_in(expression, before, depth=0):
+        found = set()
+        if depth > 3:
+            return found                     # a binding cycle; stop rather than recurse forever
+        for name in re.findall(r'\b(\w+)\b', expression):
+            if name in pid_by_name:
+                found.add(pid_by_name[name])
+                continue
+            prior = [b for b in bindings if b[1] == name and b[0] < before]
+            if prior:
+                offset, _, bound = max(prior, key=lambda b: b[0])
+                found |= pids_in(bound, offset, depth + 1)
+        return found
+
+    actions = []
+    for call in CALL.finditer(body):
+        verb, arguments = call.group(1), call.group(2)
+        if verb in TAKES or verb in GIVES:
+            actions.append((verb, pids_in(arguments, call.start())))
+    return actions
+
+
+def classify(actions, pid):
+    """What this procedure does to one item, from the calls that actually named it."""
+    takes = any(verb in TAKES and pid in acted for verb, acted in actions)
+    gives = any(verb in GIVES and pid in acted for verb, acted in actions)
     if takes and gives:
         return 'exchanged'
     if takes:
@@ -148,7 +208,6 @@ def build():
     for quest in registry['quests']:
         by_gvar[quest['gvar']].append(quest)
 
-    pid_names = {v: k for k, v in pids.items()}
     links = defaultdict(dict)          # pid -> (gvar, description) -> link
     for path in sorted(glob.glob(os.path.join(SRC, '*/*.ssl'))):
         script = os.path.basename(path)[:-4]
@@ -157,9 +216,11 @@ def build():
             items = {pids[name] for name in re.findall(r'\b(PID_[A-Z_0-9]+)\b', body) if name in pids}
             if not items:
                 continue
+            actions = item_actions(body, pids)
             written = {gvars[g] for g in re.findall(r'set_global_var\([ \t]*(GVAR_[A-Z_0-9]+)', body)
                        if g in gvars}
-            written |= {aliases[a] for a in re.findall(r'\b(\w+)[ \t]*\(', body) if a in aliases}
+            for alias in re.findall(r'\b(\w+)[ \t]*\(', body):
+                written |= aliases.get(alias, set())
             for gvar in written & set(by_gvar):
                 for quest in by_gvar[gvar]:
                     for pid in items:
@@ -173,7 +234,7 @@ def build():
                             'relations': set(),
                             'scripts': set(),
                         })
-                        link['relations'].add(relation(body, pid_names[pid]))
+                        link['relations'].add(classify(actions, pid))
                         link['scripts'].add(f'{script}:{proc}')
 
     out = {}
