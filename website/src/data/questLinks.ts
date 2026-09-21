@@ -65,7 +65,7 @@ export function visibleQuestLinks(links: QuestLink[] | undefined, placements: nu
     link.relations.some((r) => r === 'required' || r === 'exchanged') || placements === 0);
 }
 
-/** "Needed for" / "Reward from" / "Traded for" — how to head one link. */
+/** The label for one link: "Needed for", "Traded for" or "Reward from". */
 export function relationLabel(link: QuestLink): string {
   if (link.relations.includes('required')) return 'Needed for';
   if (link.relations.includes('exchanged')) return 'Traded for';
