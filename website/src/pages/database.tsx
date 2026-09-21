@@ -6,7 +6,6 @@ import {useHistory, useLocation} from '@docusaurus/router';
 import {useProtos, type Proto} from '@site/src/data/protos';
 import {
   ANIMATION_LABEL,
-  ARMOR_PERKS,
   DAMAGE_TYPES,
   MODE_LABEL,
   SKILL_LABEL,
@@ -20,6 +19,8 @@ import {
   type EquipmentIndex,
 } from '@site/src/data/equipment';
 import MapView, {useMaps, type MapEntry} from '@site/src/components/MapView';
+import Perk from '@site/src/components/Perk';
+import {usePerks, lookupPerk, grantedEffects} from '@site/src/data/perks';
 
 interface Entity {
   kind: string;
@@ -84,6 +85,8 @@ function Stats({
   equipment: EquipmentIndex;
   slugOf: (pid: number) => string | null;
 }) {
+  const baseUrl = useBaseUrl('/');
+  const perks = usePerks(baseUrl);
   const rows: React.ReactNode[] = [];
   const {kind, item} = entry;
 
@@ -135,7 +138,7 @@ function Stats({
     if (w.perk) {
       rows.push(
         <Row key="perk" label="Perk">
-          {perkLabel(w.perk)}
+          <Perk id={w.perk.id}>{perkLabel(w.perk)}</Perk>
         </Row>,
       );
     }
@@ -195,9 +198,15 @@ function Stats({
       </Row>,
     );
     if (a.perk) {
+      // Name it and spell it out: the bonuses are read from perks.json rather than kept in a second
+      // hand-written list, and the perk keeps its name — and so its tooltip — beside them. Before
+      // the data arrives the name stands alone, which is what it used to show anyway.
+      const armorPerk = lookupPerk(perks, undefined, a.perk.id);
+      const bonuses = armorPerk ? grantedEffects(armorPerk) : [];
       rows.push(
         <Row key="perk" label="Wearing it gives">
-          {ARMOR_PERKS[a.perk.id] ?? a.perk.name}
+          <Perk id={a.perk.id}>{a.perk.name}</Perk>
+          {bonuses.length ? ` — ${bonuses.join(', ')}` : ''}
         </Row>,
       );
     }
