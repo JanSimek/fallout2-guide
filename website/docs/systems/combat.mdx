@@ -42,6 +42,30 @@ While you are in there, use as many as you expect to need and reload any readied
 ammunition onto the slot.
 :::
 
+## How melee damage is rolled
+
+**The melee damage bonus raises the top of the range, not the whole of it.** A weapon's damage is
+rolled between its own minimum and its maximum *plus* your melee damage — so a Spear listed as 3–10
+in the hands of a character with 10 melee damage rolls **3–20**, not 13–20. Low rolls stay exactly as
+low as they were; what improves is the ceiling, and the average.
+
+Melee damage itself is **Strength − 5**, minimum 1, plus **+4 for Heavy Handed** and **+2 per rank of
+Bonus HtH Damage**. A Strength 9 character with Heavy Handed and one rank of the perk has 10 of it.
+
+This applies to unarmed attacks the same way. It does **not** apply to ranged weapons: Bonus Ranged
+Damage is a flat +2 per rank added to every round instead, which is why it behaves so differently
+across a burst.
+
+:::note[The number in the database is the weapon's, not yours]
+Every weapon entry lists the damage the *weapon* does. For anything swung or thrown, add your melee
+damage to the upper figure to see what you will actually roll.
+:::
+
+**One rank of Bonus HtH Damage also lifts the minimum by 2.** So the perk is worth more than it looks
+on a light weapon: it adds 2 to the floor and 2 to the ceiling, narrowing the spread from below.
+<Vanilla>Only the ceiling moves. The minimum-damage half is sfall's `BonusHtHDamageFix`, which RPU
+ships enabled in `ddraw.ini`; the 1998 executable raises the maximum alone.</Vanilla>
+
 ## Ammunition
 
 :::danger[AP ammunition does not work]
