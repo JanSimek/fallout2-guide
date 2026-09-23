@@ -105,7 +105,7 @@ def areas():
 
 
 def slugs(protos):
-    """A readable URL for every proto: /database/10mm_SMG. Names repeat (two Flares, two
+    """A readable URL for every proto: /database/10mm_SMG. Names repeat (two Keys, two
     Lightsabers), so a repeat carries its pid — the first one keeps the clean name."""
     used, out = {}, {}
     for proto in sorted(protos, key=lambda p: p['pid']):
@@ -132,6 +132,32 @@ WEAPON_ANIMATIONS = {1: 'knife', 2: 'club', 3: 'hammer', 4: 'spear', 5: 'pistol'
                      11: 'sfall_s', 12: 'sfall_o', 13: 'sfall_p', 14: 'sfall_q', 15: 'sfall_t'}
 # Protos the game never hands out carry this name; they are not equipment.
 PLACEHOLDER = 'Nothing out of the ordinary'
+
+
+_active = None
+
+
+def active_states():
+    """Pids that are another item switched on: the lit Flare, the ticking Dynamite, the Geiger
+    Counter that is on. Using the item swaps its pid for the twin (fallout2-ce item.cc), so the
+    twin has the same name and art and is never found anywhere — as a second entry it only reads
+    as a duplicate. RPU's itempid.h names every one PID_ACTIVE_*."""
+    global _active
+    if _active is None:
+        found = gecko('find_text', {'pattern': r'#define\s+PID_ACTIVE_\w+\s+\(\d+\)',
+                                    'regex': True, 'scope': 'source'})
+        _active = {int(re.search(r'\((\d+)\)', m['text']).group(1))
+                   for m in found['matches'] if m['file'] == 'itempid'}
+        if not _active:
+            raise SystemExit('find_text: no PID_ACTIVE_* in itempid.h — is scripts_src mounted?')
+    return _active
+
+
+def listable(proto):
+    """Whether a proto gets an entry: it has a name a reader could search for, and is an item
+    in its own right rather than the placeholder or another item's active state."""
+    return (bool(proto.get('name')) and proto['name'] != PLACEHOLDER
+            and proto['pid'] not in active_states())
 
 
 def weapon_skill(attack_skill, damage_type, big_gun):
@@ -172,7 +198,7 @@ def build_equipment():
         export = gecko('export_protos', {'itemType': item_type})
         if export.get('unreadable'):
             raise SystemExit(f'export_protos: {len(export["unreadable"])} unreadable {item_type} protos')
-        return [p for p in export['protos'] if p.get('name') and p['name'] != PLACEHOLDER]
+        return [p for p in export['protos'] if listable(p)]
 
     weapons = []
     for p in listed('weapon'):
@@ -407,14 +433,14 @@ def main():
         counts[row['pid']] = counts.get(row['pid'], 0) + 1
 
     # Protos the game never hands out all share one name; they would fill a search with identical
-    # rows. Nameless ones cannot be searched for at all.
-    protos = [p for p in by_pid.values() if p['name'] and p['name'] != PLACEHOLDER]
+    # rows. Nameless ones cannot be searched for at all, and an item's active state is the item.
+    protos = [p for p in by_pid.values() if listable(p)]
     dropped = len(by_pid) - len(protos)
     protos = [{**p, 'n': counts.get(p['pid'], 0)} for p in protos]
     slug_of = slugs(protos)
     protos = [{**p, 'slug': slug_of[p['pid']]} for p in protos]
     print(f'  {len(protos)} in the database ({placed_only} from the map walk only, '
-          f'{sum(1 for p in protos if not p["n"])} placed on no map, {dropped} unnamed or placeholder)')
+          f'{sum(1 for p in protos if not p["n"])} placed on no map, {dropped} unnamed, placeholder or active state)')
 
     area_of = areas()
     maps = [{**m, 'area': area_of.get(os.path.basename(m['file']).lower())} for m in export['maps']]
@@ -435,18 +461,25 @@ def main():
         return 0
 
     os.makedirs(OUT_ICONS, exist_ok=True)
+    # An item's picture is its inventory art, not its ground art. The ground sprite is a speck the
+    # game shares freely — the Crowbar and both Cattle Prods are one diagonal stick, 439 of the 596
+    # items share one — while the inventory sprite is the item's own. Furniture containers have no
+    # inventory art and keep their ground sprite.
+    inventory = {p['pid']: p['inventoryFid'] for p in catalogue['protos']
+                 if p.get('inventoryFid', -1) >= 0}
     # Everything with art, critters included. A critter's FRM is a directional animation, so take
     # one direction and one frame and you get a clean standing sprite — which is exactly what a
     # hover card wants.
-    items = [p for p in protos if p['fid'] >= 0]
+    items = [(p, inventory.get(p['pid'], p['fid'])) for p in protos]
+    items = [(p, art) for p, art in items if art >= 0]
     print(f'rendering {len(items)} sprites...', flush=True)
     t0, written, failed = time.time(), 0, []
-    for i, proto in enumerate(items, 1):
+    for i, (proto, art) in enumerate(items, 1):
         path = os.path.join(OUT_ICONS, f'{proto["pid"]}.png')
         if os.path.exists(path):
             written += 1
             continue
-        if render_icon(proto['fid'], path):
+        if render_icon(art, path):
             written += 1
         else:
             failed.append(proto['name'] or proto['pid'])
