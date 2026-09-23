@@ -20,9 +20,8 @@ in your hands.
 
 **+40% to hit against a prone target.** Take the opportunity for an aimed shot.
 
-**Unarmed special attacks can turn a hit into a critical.** Melee *weapons* get nothing of the kind —
-the +5% often quoted is Hammer Punch's, not a property of melee. See [Unarmed](#unarmed) for the
-table.
+**Unarmed special attacks can turn a hit into a critical.** Melee weapons cannot. See
+[Unarmed](#unarmed) for the table.
 
 **Burst fire treats each bullet individually** for penetration and damage. A full burst can do very
 little against an armoured target — try a 10mm SMG on the Redding wanamingos to see it. This makes
@@ -46,10 +45,9 @@ ammunition onto the slot.
 
 ## How melee damage is rolled
 
-**The melee damage bonus raises the top of the range, not the whole of it.** A weapon's damage is
-rolled between its own minimum and its maximum *plus* your melee damage — so a Spear listed as 3–10
-in the hands of a character with 10 melee damage rolls **3–20**, not 13–20. Low rolls stay exactly as
-low as they were; what improves is the ceiling, and the average.
+**The melee damage bonus raises the top of the range.** A weapon's damage is rolled between its own
+minimum and its maximum *plus* your melee damage: a Spear listed as 3–10, carried by a character with
+10 melee damage, rolls **3–20**. The floor stays where it is; the ceiling and the average rise.
 
 Melee damage itself is **Strength − 5**, minimum 1, plus **+4 for Heavy Handed** and **+2 per rank of
 Bonus HtH Damage**. A Strength 9 character with Heavy Handed and one rank of the perk has 10 of it.
@@ -58,13 +56,13 @@ This applies to unarmed attacks the same way. It does **not** apply to ranged we
 Damage is a flat +2 per rank added to every round instead, which is why it behaves so differently
 across a burst.
 
-:::note[The number in the database is the weapon's, not yours]
+:::note[The database lists the weapon's damage]
 Every weapon entry lists the damage the *weapon* does. For anything swung or thrown, add your melee
 damage to the upper figure to see what you will actually roll.
 :::
 
-**One rank of Bonus HtH Damage also lifts the minimum by 2.** So the perk is worth more than it looks
-on a light weapon: it adds 2 to the floor and 2 to the ceiling, narrowing the spread from below.
+**One rank of Bonus HtH Damage also lifts the minimum by 2**, adding 2 to the floor as well as the
+ceiling and narrowing the spread on a light weapon.
 <Vanilla>Only the ceiling moves. The minimum-damage half is sfall's `BonusHtHDamageFix`, which RPU
 ships enabled in `ddraw.ini`; the 1998 executable raises the maximum alone.</Vanilla>
 
@@ -78,8 +76,7 @@ has already bitten. Meanwhile AP rounds halve base damage where JHP doubles it: 
 DR −25, 10mm JHP ×2/1 with DR +25. Four times the damage beats twenty-five points of resistance
 against anything you will actually meet.
 
-**Use JHP.** Sell every AP round you find — with two exceptions, both of which are better than the
-"keeps full damage" they are usually described as:
+**Use JHP.** Sell every AP round you find, with two exceptions:
 
 | Round | Damage | DR modifier | AC modifier |
 | --- | --- | --- | --- |
@@ -87,8 +84,7 @@ against anything you will actually meet.
 | **AP Rocket** | ×1 — unhalved | **−50** | −15 |
 
 The Needler's AP round is strictly better than its standard one: double the damage for the same
-modifiers. And the AP Rocket takes fifty points off the target's resistance on top of full damage,
-which is the one place the armour-piercing idea works as advertised.
+modifiers. The AP Rocket keeps full damage and takes fifty points off the target's resistance.
 :::
 
 ### Damage formulas
@@ -136,7 +132,7 @@ scratching you.
 with the level is the *speed*: the interval between ticks is `10 × (505 − 5 × level)` game ticks, so
 a mild dose trickles away over hours while a heavy one pours. **Past 100 that interval reaches zero**
 and the whole of it lands at once — 130 poison is 65 hit points in about the time it takes to read
-this sentence. That is the threshold worth fearing, not a change in the exchange rate.
+this sentence.
 
 **Poison Resistance is `5 × EN`, and it applies on the way in.** At Endurance 10 half of every dose
 simply does not land, which is the one defence that matters, since armour does nothing here.
@@ -252,8 +248,8 @@ than melee, because the Mega Power Fist has **no knockback** — you do not spen
 target you just hit.
 :::
 
-The specials unlock on level and Unarmed skill, and each rolls a flat chance to turn a landed hit
-into a critical — it is not added to your critical chance, it is a second roll after the hit.
+The specials unlock on level and Unarmed skill. Each carries its own chance, rolled separately once
+the hit has landed, to turn it into a critical.
 
 | Attack | Level | Unarmed | + Damage | Critical | AP | Ignores armour |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -312,9 +308,11 @@ thrown weapons.** Use your grenades early and switch to a real combat skill.
 
 Your ranged and thrown attacks lose **4% for every hex** beyond an allowance of **2 × (PE − 2)** hexes,
 and gain 4% for every hex inside it, up to +8% × PE. Each rank of Sharpshooter counts as +2 PE here. A
-companion's allowance is 2 × PE, without the −2. Every other critter standing in the line of fire costs
-another 10% (20% for a large, multi-hex one) — but only if it is **still standing**: anything dead,
-knocked down or knocked out is not counted, so you can fire past a body or a stunned enemy for free. Four weapon perks change the odds. Each weapon's perk is listed in the
+companion's allowance is 2 × PE, without the −2. Every other critter on its feet in the line of
+fire costs another 10% (20% for a large, multi-hex one); anything dead, knocked down or knocked out
+is not counted, so you can fire past a body or a stunned enemy for free.
+
+Four weapon perks change the odds. Each weapon's perk is listed in the
 [Object Database](/database).
 
 | Perk | Effect | Weapons |
@@ -342,7 +340,7 @@ only. The **Sniper Rifle** has Long Range instead and works fine at any range.
 | **Frank Horrigan** | **Electrical** — the Pulse Rifle works well |
 | Vorpal rat, bridgekeeper | Nothing. They resist everything. |
 
-Enclave soldiers and Horrigan are **not** vulnerable to EMP, despite what you might expect.
+Enclave soldiers and Horrigan are **not** vulnerable to EMP.
 
 :::caution
 Electrical weapons make enemies **disintegrate and scatter their equipment**, which you then have to
