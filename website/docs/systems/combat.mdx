@@ -129,9 +129,17 @@ in shops and trade for the ammunition separately.
 ## Poison and radiation
 
 Poison only becomes dangerous when you are surrounded by **floaters and centaurs**. They apply poison
-counters even when they cannot penetrate your armour, and once your Poison Level reaches **100**,
-every further point converts to **2 points of damage**. They can hurt you badly without ever
+counters even when they cannot penetrate your armour, so they can hurt you badly without ever
 scratching you.
+
+**Poison costs 1 hit point for every 2 points of it**, ticking down to zero on its own. What changes
+with the level is the *speed*: the interval between ticks is `10 × (505 − 5 × level)` game ticks, so
+a mild dose trickles away over hours while a heavy one pours. **Past 100 that interval reaches zero**
+and the whole of it lands at once — 130 poison is 65 hit points in about the time it takes to read
+this sentence. That is the threshold worth fearing, not a change in the exchange rate.
+
+**Poison Resistance is `5 × EN`, and it applies on the way in.** At Endurance 10 half of every dose
+simply does not land, which is the one defence that matters, since armour does nothing here.
 
 Wanamingo-like aliens and centaurs in random encounters do the same with radiation.
 
