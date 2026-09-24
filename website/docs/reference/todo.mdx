@@ -61,7 +61,7 @@ way the code implies. Where those two can disagree, the claim is marked.
 
 {/* generated:unverified — python3 scripts/list-unverified.py */}
 
-The guide carries **30** of these, on 18 pages.
+The guide carries **28** of these, on 18 pages.
 
 ### [Broken Hills](/walkthrough/broken-hills)
 
@@ -75,10 +75,6 @@ The guide carries **30** of these, on 18 pages.
 
 ### [Companions](/companions/overview)
 
-- [ ] [When a companion wields a lit Flare, their light radius goes up, and nothing turns it back down when the flare burns out. They stay a walking light source.](/companions/overview#armour) *(Armour)*<br />
-  **Why it is unconfirmed:** The light staying on is from the FOR:CE source. Getting a companion to wield the flare has not been tried in play.
-- [ ] [Using an item is an animation, and a companion with a weapon out puts it away first.](/companions/overview#healing) *(Healing)*<br />
-  **Why it is unconfirmed:** The old advice that you may have to close the conversation before they heal was not tested.
 - [ ] [Only your own carry weight limits what you can take from a party member.](/companions/overview#carrying-and-trading) *(Carrying and trading)*<br />
   **Why it is unconfirmed:** Worked out from the FOR:CE source; not tried in a running game.
 - [ ] [Death removes them from the party at once.](/companions/overview#death) *(Death)*<br />
@@ -157,8 +153,8 @@ The guide carries **30** of these, on 18 pages.
 
 - [ ] [Hacking either the forcefields or the shock plates (**Science 90%**) gives **200 XP** and turns the shock plates off — the forcefields stay up regardless. You cannot get the XP twice.](/walkthrough/sierra-army-depot#level-2) *(Level 2)*<br />
   **Why it is unconfirmed:** Inherited; the terminal scripts were not traced end to end for this guide.
-- [ ] [The extractor does not work on Laddie, K-9, the Robodog, or the Brain Bot unless it has the best brain.](/walkthrough/sierra-army-depot#the-organ-extractor) *(The organ extractor)*<br />
-  **Why it is unconfirmed:** Inherited; not checked against the extractor script.
+- [ ] [The moment you leave the depot it goes for **whichever companion is nearest** — nobody is exempt, not Marcus, not Goris, not a dog — hits them for **1000 explosion damage** and turns on you.](/walkthrough/sierra-army-depot#building-the-robot) *(Building the robot)*<br />
+  **Why it is unconfirmed:** RPU's routine looks broken: it picks the closest member of a list that includes the robot itself, then measures the distance with a tile number where the engine wants an object. Whether the kill ever lands was not tested in play.
 
 ### [Skynet](/companions/skynet)
 
