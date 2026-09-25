@@ -69,14 +69,9 @@ Each companion's belongings are in a locker on the same level:
 Until its owner has been retrieved, a locker only answers "This locker is electronically locked. There
 is no way to unlock it from here." After that it opens like any other container.
 
-:::danger[RPU 2.4.34 bug: they join empty-handed]
-Each companion's script is meant to move their locker's contents into their inventory when they join,
-but it looks for the locker on the wrong hex. It finds nothing, and the companion arrives with nothing.
-Dex and Cat Jules still talk as if they had taken their things.
-
-**Open the locker yourself and give the items to your companion.** Joining is not affected. Only the
-item transfer fails.
-:::
+Recruiting a companion empties their locker into their own inventory, which is why Dex and Cat Jules
+talk as though they have collected their things.<Vanilla>They arrived with nothing: the remade maps
+moved the three lockers, and each companion's script kept looking at the old hex.</Vanilla>
 
 ### What all three share
 
