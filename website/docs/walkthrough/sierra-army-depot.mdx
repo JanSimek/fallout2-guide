@@ -203,19 +203,29 @@ Activating the robot before it is complete makes it **explode**.
 | **Cybernetic Brain** | The real Skynet: auto-repair, levels up, genuinely good. |
 
 :::danger[Angry Skynet]
-Assemble the bot with the **Cybernetic Brain** after angering Skynet and it is *meant* to turn on
-you the moment you step out onto the depot surface, killing whichever companion is nearest with
-1000 points of explosion damage. It never does.
-
-The routine is broken twice over. It asks for the closest party member from a list that includes
-the robot itself, so it always picks itself; and it then measures the distance with a tile number
-where the engine wants an object, which FOR:CE refuses outright and answers with its no-path value
-of 9999. The kill can never fire, and neither can the branch that would have made the bot hostile.
-What you get instead is a companion that re-arms a three-tick timer and shuffles one tile at a
-time, on every map you enter, for the rest of the game.
+Assemble the bot with the **Cybernetic Brain** after angering Skynet and it turns on you the moment
+you step out onto the depot surface. It walks to whichever companion is nearest and kills them
+outright — 1000 points of explosion damage, no save, no check — then leaves the party and opens
+fire on the rest of you.
 
 Assemble the bot **before talking to Skynet at all** and it is friendly, even if the level 3 alarm
-is active.
+is active. If you cannot, send your companions away before you walk out.
+:::
+
+:::note[RPU 2.4.34 and earlier: the betrayal never fires]
+For years this did nothing at all. `Kill_The_Party` asked for the closest party member from a list
+that included the robot itself, then measured the distance with a tile *number* where the engine
+wants an object — so it aborted on its first comparison, every time.
+
+What you saw depended on your engine. FOR:CE refuses the argument outright and abandons the
+procedure, so the robot simply stayed friendly and was never heard from again. Under sfall the
+opcode answers 9999 instead, and the script falls to its retry branch: the robot picks a tile,
+walks to it, waits three seconds and tries again, for as long as you keep it. If you are on an
+older RPU and Skynet will not stand still, that is why.
+
+Fixed upstream in [RPU #398](https://github.com/BGforgeNet/Fallout2_Restoration_Project/issues/398).
+On any build carrying that fix, the warning above applies and your nearest companion really does
+die.
 :::
 
 :::caution
