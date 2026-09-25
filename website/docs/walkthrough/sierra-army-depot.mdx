@@ -203,35 +203,29 @@ Activating the robot before it is complete makes it **explode**.
 | **Cybernetic Brain** | The real Skynet: auto-repair, levels up, genuinely good. |
 
 :::danger[Angry Skynet]
-Assemble the bot with the **Cybernetic Brain** after angering Skynet and it is *meant* to turn on
-you the moment you step out onto the depot surface, killing whichever companion is nearest with
-1000 points of explosion damage. It never does.
-
-The routine is broken twice over. It asks for the closest party member from a list that includes
-the robot itself, so it always picks itself; and it then measures the distance with a tile *number*
-where the engine wants an object. The interpreter refuses the second one before the call even
-happens, and the error kills the whole procedure:
-
-```
-Error during execution: pointer expected, got c001
-Current script: scripts\WCBrnBot.int, procedure Kill_The_Party
-```
-
-`c001` is the engine's tag for an integer. Because the script aborts there, nothing further in it
-runs — not the 1000 damage, not the branch that would have turned the bot hostile, not even the
-retry timer. It fails once as you arrive and is not heard from again. Played through: Skynet
-angered, the bot built with the Cybernetic Brain and recruited, then out onto the surface — the
-party took no damage at all, and thirty seconds of walking about produced no further attempt.
-
-**On the original engine it fails more noisily.** That strict type check is FOR:CE's; the 1998
-interpreter passed the value straight through to the opcode, which spots a tile number by its
-size, complains to the debug log and answers 9999. The script then takes its *retry* branch
-instead: the robot picks a tile, walks to it, and sets a three-second timer to try again. Nothing
-ever resolves, so it does that for as long as you keep it. If you are playing under sfall and
-Skynet will not stand still, this is why.
+Assemble the bot with the **Cybernetic Brain** after angering Skynet and it turns on you the moment
+you step out onto the depot surface. It walks to whichever companion is nearest and kills them
+outright — 1000 points of explosion damage, no save, no check — then leaves the party and opens
+fire on the rest of you.
 
 Assemble the bot **before talking to Skynet at all** and it is friendly, even if the level 3 alarm
-is active.
+is active. If you cannot, send your companions away before you walk out.
+:::
+
+:::note[RPU 2.4.34 and earlier: the betrayal never fires]
+For years this did nothing at all. `Kill_The_Party` asked for the closest party member from a list
+that included the robot itself, then measured the distance with a tile *number* where the engine
+wants an object — so it aborted on its first comparison, every time.
+
+What you saw depended on your engine. FOR:CE refuses the argument outright and abandons the
+procedure, so the robot simply stayed friendly and was never heard from again. Under sfall the
+opcode answers 9999 instead, and the script falls to its retry branch: the robot picks a tile,
+walks to it, waits three seconds and tries again, for as long as you keep it. If you are on an
+older RPU and Skynet will not stand still, that is why.
+
+Fixed upstream in [RPU #398](https://github.com/BGforgeNet/Fallout2_Restoration_Project/issues/398).
+On any build carrying that fix, the warning above applies and your nearest companion really does
+die.
 :::
 
 :::caution
