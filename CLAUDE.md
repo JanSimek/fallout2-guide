@@ -58,6 +58,24 @@ overrides every file RPU patches — `quests.txt`, `endgame.txt`, `vault13.gam`,
 `city.txt`, `maps.txt`, `ai.txt`. It fails silently: the tools answer confidently about vanilla.
 **Sanity check before trusting any answer: `quests` must report 157, not 110.**
 
+**`$FALLOUT2_RPU` is the fork, not the release.** It defaults to
+`~/Development/Fallout2_Restoration_Project`, which sits on **v2.3.34 plus ~137 unreleased
+commits** — a different line from the v2.4.x the guide describes and the database pins. Check with
+`git -C $FALLOUT2_RPU describe --tags`: anything of the form `v2.3.34-137-g…` is the fork, and
+`v2.4.34` is the release. The pre-commit hook keeps a clean release checkout at
+`~/.cache/fallout2-guide/rpu-<tag>` (deleted when a newer release lands), which is the tree to
+settle a claim against.
+
+Most files are identical between the two, so an audit run against the fork is usually right and
+silently so — which is the trap. Diff the specific files a finding cites before trusting it:
+
+```bash
+diff ~/.cache/fallout2-guide/rpu-v2.4.34/scripts_src/<path> "$FALLOUT2_RPU/scripts_src/<path>"
+```
+
+Expect noise from the working tree's own edits: the fork carries ~50 uncommitted fixes to
+malformed comment terminators (`/* … *  /` → `*/`) that let `gcc -E` preprocess the scripts.
+
 ## Engine-level claims need checking against FOR:CE
 
 The guide inherited a set of engine bugs from Per Jorner, who documented the 1998 executable. The
