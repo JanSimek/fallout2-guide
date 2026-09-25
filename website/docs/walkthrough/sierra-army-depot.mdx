@@ -223,6 +223,13 @@ retry timer. It fails once as you arrive and is not heard from again. Played thr
 angered, the bot built with the Cybernetic Brain and recruited, then out onto the surface — the
 party took no damage at all, and thirty seconds of walking about produced no further attempt.
 
+**On the original engine it fails more noisily.** That strict type check is FOR:CE's; the 1998
+interpreter passed the value straight through to the opcode, which spots a tile number by its
+size, complains to the debug log and answers 9999. The script then takes its *retry* branch
+instead: the robot picks a tile, walks to it, and sets a three-second timer to try again. Nothing
+ever resolves, so it does that for as long as you keep it. If you are playing under sfall and
+Skynet will not stand still, this is why.
+
 Assemble the bot **before talking to Skynet at all** and it is friendly, even if the level 3 alarm
 is active.
 :::
