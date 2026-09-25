@@ -210,22 +210,9 @@ fire on the rest of you.
 
 Assemble the bot **before talking to Skynet at all** and it is friendly, even if the level 3 alarm
 is active. If you cannot, send your companions away before you walk out.
-:::
-
-:::note[RPU 2.4.34 and earlier: the betrayal never fires]
-For years this did nothing at all. `Kill_The_Party` asked for the closest party member from a list
-that included the robot itself, then measured the distance with a tile *number* where the engine
-wants an object — so it aborted on its first comparison, every time.
-
-What you saw depended on your engine. FOR:CE refuses the argument outright and abandons the
-procedure, so the robot simply stayed friendly and was never heard from again. Under sfall the
-opcode answers 9999 instead, and the script falls to its retry branch: the robot picks a tile,
-walks to it, waits three seconds and tries again, for as long as you keep it. If you are on an
-older RPU and Skynet will not stand still, that is why.
-
-Fixed upstream in [RPU #398](https://github.com/BGforgeNet/Fallout2_Restoration_Project/issues/398).
-On any build carrying that fix, the warning above applies and your nearest companion really does
-die.
+<Vanilla>The betrayal never fired: it measured the distance with a tile number where the engine
+wants an object, and died there. On sfall the robot shuffled a tile every three seconds instead,
+for as long as you kept it.</Vanilla>
 :::
 
 :::caution
