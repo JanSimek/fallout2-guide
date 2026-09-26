@@ -547,7 +547,7 @@ Opening a downed companion's inventory runs their "stolen from" script.
 | Marcus | Never leaves once in. Won't rejoin from waiting at Charisma 1, as a Slaver or Childkiller, or at karma below −100. Hostile in Broken Hills if the town is. |
 | Goris | Walks home at karma below 0, or as a Childkiller or Berserker. Also leaves for home about two weeks after you fix the Vault 13 computer, unless Gruthar or Dr. Schreber is dead. Won't rejoin at Vault 13 reputation −15 or lower. |
 | K-9 | Refuses you for good if you are at karma below −100, or a Childkiller, **when you repair it**. Never checks again. |
-| Skynet | With the Cybernetic brain and the depot hostile, it is scripted to turn on the party on the depot's surface map. Under FOR:CE that script stops with an error instead: on that map it stops following you and can't be talked to, and it attacks nobody. See [Skynet](/companions/skynet). <Unverified>From the RPU script and the FOR:CE source; not tested in game.</Unverified> |
+| Skynet | With the Cybernetic brain and the depot hostile, it is scripted to turn on the party on the depot's surface map. Under FOR:CE that script stops with an error instead: on that map it stops following you and can't be talked to, and it attacks nobody. See [Skynet](/companions/skynet). |
 | Kitsune, Cat Jules | Rejoining from waiting at Charisma 1 **deletes them**, with their gear. |
 | Davin, Miria | Leave, for good, if Modoc turns on you. |
 | Laddie | Leaves when he reaches Jonny, or if you hit Jonny. Turns on you if Modoc does. |
@@ -556,12 +556,14 @@ Opening a downed companion's inventory runs their "stolen from" script.
 ### Attacking a companion
 
 Shooting a companion **who is in your party** — on purpose or with a stray burst — hurts them, but
-never triggers their grudge. That only happens when they are **out of your party**: before you
-recruit them, or while they wait.
+never triggers their grudge, and never turns them on you: the game does not run their "you hurt me"
+script when one party member hits another, and it does not write you down as their attacker either,
+so their AI has nobody to retaliate against. Grudges only happen when they are **out of your
+party**: before you recruit them, or while they wait.
 
 | What happens | Who |
 | --- | --- |
-| No grudge <Unverified>Their scripts ignore the attack. Whether they fight back during that fight was not checked.</Unverified> | Laddie, Robodog, Skynet, Kitsune, Cat Jules |
+| No grudge — though the engine may still have them hit back during that fight, since it remembers an attacker whenever the two are on opposite sides, and a parked companion often is: Robodog, for one, is put on NCR's team the moment it leaves your party | Laddie, Robodog, Skynet, Kitsune, Cat Jules |
 | Fights back once, then can be talked to again | Sulik (not in Klamath, which turns hostile if you hit him there), Lenny (not in Gecko, likewise), K-9 while waiting |
 | Holds a grudge, but can still be recruited if you talk to him before he sees you | Cassidy |
 | **Hostile for good** | Vic, Myron, Goris, Dogmeat (who also brings a friend); Marcus if you attack him in Broken Hills |
