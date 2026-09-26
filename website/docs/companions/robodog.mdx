@@ -161,8 +161,10 @@ Its menu offers:
   critter only when the two are on different teams, and a companion shares yours, so its AI has no
   attacker to retaliate against.
 - **Parked dogs rejoin NCR's side.** Whenever Robodog is not in your party, including while it waits
-  for you, it is put back on NCR's team the next time you enter its map. <Unverified>Whether a
-  waiting Robodog then fights alongside NCR's guards against you was not traced.</Unverified>
+  for you, it is put back on NCR's team the next time you enter its map — so if you fight NCR, the
+  game counts it as one of theirs. It will not pick the fight itself, though: the branch that would
+  attack you needs a value its script never sets anywhere, and the "personal enemy" flag its damage
+  handler writes is never read back.
 - **Stealing from it** is impossible: the game does not let you steal from Robodog.
 - **The EPA:** it cannot follow you down the broken elevator shaft. It leaves the party and waits at the
   top.

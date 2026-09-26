@@ -169,9 +169,10 @@ There is no order to dismiss it for good.
 
 - **Hurting it:** while K-9 is in your party, nothing happens beyond the damage: the game does not run
   its "you hurt me" script when one party member hits another, deliberately or with a stray burst.
-  Only while it waits does your attack count. It then attacks you the next time it sees you, though
-  its script attacks only that once. <Unverified>Whether it stays hostile after that fight was not
-  traced.</Unverified> It still offers its menu afterwards, and "Let's go." still works. Your
+  Only while it waits does your attack count. Hitting it then makes it **leave the party** and
+  attack you the next time it sees you — once. It does not stay hostile: the flag that drives that
+  attack is cleared as it strikes, and nothing in its script reads the cleared value, so it never
+  starts a second fight. It still offers its menu afterwards, and "Let's go." still works. Your
   companions' attacks never count.
 - **Rejoining:** while it waits, "Let's go." brings it back, unless you have Charisma 1 ("You are a
   cretin. I will not go anywhere with you. Go away.") or a full party ("I will wait here until a
