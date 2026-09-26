@@ -252,11 +252,15 @@ Male characters can sleep with her — but follow her upstairs and then turn her
 :::
 
 :::caution[The disappearing party bug]
-Save and reload on the top floor after going upstairs with either Bishop woman and **your whole
-party vanishes** when you return to the first floor.<Unverified>Inherited; this is party state across
-a save, which the scripts do not settle.</Unverified> Fix it by sleeping with one of them again,
-or simply dismiss everyone before you go up. The car trunk may also become inaccessible until you
-drive to another map.
+Going upstairs with either Bishop woman **hides your whole party**, and the game brings them back
+in exactly one place: the map script restores them while you are standing on the **middle floor**,
+and nowhere else. Both bedrooms are on the floor above it, so get from there to the ground floor
+without passing through the middle — which saving and reloading up there lets you do — and they
+stay hidden.
+
+**Standing on the middle floor brings them back.** Dismissing everyone before you go up avoids the
+whole thing. Your car's trunk can be lost the same way, which is why the map script rebuilds it on
+every tick.
 :::
 
 **Mr. Bishop's safe** is trapped. Use Traps on it before picking, or set the trap off with
