@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -49,6 +49,42 @@ jobs:
         run: npm run build
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
+
+      # The To Check page's generated block is derived from every <Unverified> in the docs, and its
+      # links are read back out of the HTML just built, so a link cannot exist unless its target
+      # does. That makes it a build product, and one every branch would otherwise rewrite: two open
+      # PRs that each settle a claim always collided here, even when their prose never overlapped.
+      # CI owns it on master instead. Branches leave it alone.
+      - name: Regenerate the To Check page
+        id: todo
+        run: |
+          python3 scripts/list-unverified.py
+          if git diff --quiet -- docs/reference/todo.mdx; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Anything it added has to reach the deployed site, and its own links point at the build.
+      - name: Rebuild with the regenerated page
+        if: steps.todo.outputs.changed == 'true'
+        run: npm run build
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+
+      # Only on master, and only when it actually moved. [skip ci] keeps this from re-triggering
+      # itself: the commit is a build product, not a change anyone needs a second build for.
+      - name: Commit the regenerated page
+        if: >-
+          steps.todo.outputs.changed == 'true'
+          && github.ref == 'refs/heads/master'
+          && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/reference/todo.mdx
+          git commit -m "Regenerate the To Check page [skip ci]"
+          git push
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
