@@ -146,17 +146,14 @@ message says Levels 1–4, but the alarms it clears are those on Levels 1–3.
 Once a Cybernetic Brain is installed, both of those terminals show only error screens, so after that
 you can no longer anger Skynet. A Dixon answer given before you install the brain still counts, though.
 
-:::danger[The betrayal, and why it misfires]
-If the depot is hostile, a Cybernetic robot is scripted to turn on you when you reach the depot's
-surface map (the Battlefield). You can tell in advance: while the depot is hostile, talking to it gets
-only "Give weapon / Proceed to surface." and "Bye", so you cannot order it to wait or leave.
+:::danger[The betrayal]
+If the depot is hostile, a Cybernetic robot turns on you when you reach the depot's surface map (the
+Battlefield). You can tell in advance: while the depot is hostile, talking to it gets only "Give
+weapon / Proceed to surface." and "Bye", so you cannot order it to wait or leave.
 
-The script means it to run at your nearest companion, deal them 1000 explosion damage, then leave the
-party and attack you: "Skynet is FREE! Your purpose is at an end." As written, it never gets that far
-while the robot is in your party. The "nearest party member" it looks for is always the robot itself,
-and its distance check is handed a tile number where the engine expects a character. Under FOR:CE that
-stops the robot's script with an error: on that map it attacks nobody, stops following you and cannot
-be talked to. Once you leave the map its script runs again, and it does not try a second time.
+It runs at whichever companion is nearest, deals them **1000 explosion damage**, then leaves the
+party and attacks you: "Skynet is FREE! Your purpose is at an end." Send your companions away before
+you go up, or build the robot before you anger Skynet at all.
 :::
 
 ## Stats by level
