@@ -143,8 +143,21 @@ cd website && npm run build
 python3 scripts/list-unverified.py     # rewrites the block in place
 ```
 
-Everything outside the markers is written by hand. Re-run it after adding or settling an
-`<Unverified>`, and the count on the page stays honest.
+Everything outside the markers is written by hand.
+
+**Do not commit that block from a branch — CI regenerates it on `master`.** It is a build product
+derived from every page, so any two branches that each settle a claim rewrite the same lines and
+collide on merge, however unrelated their prose. That happened on three PRs in a row before the
+deploy workflow took it over. Settle the claim, leave `todo.mdx` alone, and let the push to master
+regenerate it.
+
+Run the generator locally whenever you want to see the count — just do not stage the result. If a
+rebase does leave you holding a conflict in it, take `master`'s copy and re-run the generator
+rather than merging two machine-written blocks by hand:
+
+```bash
+git checkout --ours website/docs/reference/todo.mdx && git add website/docs/reference/todo.mdx
+```
 
 ## After an RPU update
 
