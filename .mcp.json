@@ -7,6 +7,7 @@
         "--data", "${FALLOUT2_DATA:-/Users/jansimek/Development}/master.dat",
         "--data", "${FALLOUT2_DATA:-/Users/jansimek/Development}/critter.dat",
         "--data", "${FALLOUT2_RPU:-/Users/jansimek/Development/Fallout2_Restoration_Project}/data",
+        "--data", "${FALLOUT2_RPU_DAT:-/Users/jansimek/Development/fallout2-ce-mcp/run/mods/rpu.dat}",
         "--data", "${FALLOUT2_RPU:-/Users/jansimek/Development/Fallout2_Restoration_Project}/scripts_src"
       ],
       "env": {}
