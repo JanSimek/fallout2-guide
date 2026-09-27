@@ -9,12 +9,19 @@ description: Karma titles, town standings and the special reputations you can pi
 Fallout 2 tracks three separate things: a global **karma** number, a hidden **reputation**
 per town, and a set of named **special reputations** that behave like badges.
 
-None of them matter as much as you would expect. A handful of scripts check for a specific
-title or threshold; the general "everyone reacts to your reputation" system the manual
-describes is barely wired up and does not work properly.<Unverified>Reaction handling is spread across
-the engine and every critter script; this is an inherited summary rather than something checked
-end to end.</Unverified> There is no practical difference
-between 500 karma and 1500.
+None of them matter as much as you would expect, and the numbers are stark. Of RPU's 1,538
+scripts, **337 work out a reaction to you and only 38 do anything with the answer**. The rest
+compute it and throw it away.
+
+Karma feeds that reaction at roughly **one point per 100 karma**, and a critter only leaves the
+neutral band at 25 — so it takes about **2,500 karma to shift anyone's reaction by one step**.
+That is why there is no practical difference between 500 karma and 1500: both are worth +5 and
++15 on a scale that does nothing until 25.
+
+The **karma titles below are almost decorative**. Nothing in the game checks for Holy Warrior,
+Guardian, Defender, Wanderer, Betrayer, Scourge or Demon at all. What people actually react to
+are three badges earned by deeds rather than by score: **Slaver** (74 scripts), **Childkiller**
+(23) and **Berserker** (21).
 
 ## Karma titles
 
