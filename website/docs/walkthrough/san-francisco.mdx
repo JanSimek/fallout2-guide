@@ -234,19 +234,22 @@ Several sources, **5000 XP** unless noted:
 | **Dr. Jing**, after quest 12 | Ask for tanker fuel as your payment |
 | **Badger**, after quest 8 | He hacks it for you |
 | A **Shi chemistry workstation** | The only way to get Shi fuel after it has already been moved |
-| The **Shi mainframe** | **+3000 XP** if you had not yet got Ken Lee's permission |
+| The **Shi mainframe** | Hacking in pays a bonus of its own, once: **7000 XP** at Science 115% or better, **3000 XP** below that — and the low roll also turns the **Shi against you**. Ken Lee's permission lets you skip the hack, and gives up the bonus with it |
 | **Dave Handy** | 5000 XP if you told him Vikki mocked him and he takes it from the Shi; 3000 XP if from the Hubologists; **no XP** if you told him she likes him |
 
 :::tip[Maximum fuel experience]
-Give the plans to the **Hubologists**. Route fuel from the **Shi mainframe** to the Hubologists
-(9000 XP). Have **Badger** fetch it from the Hubologists for the tanker. Have **Dave Handy** move
-fuel to the tanker (3000 XP) and get a copy of the plans. Use a Shi **workstation** to move fuel to
-the Hubologists again (6000 XP), wait, and return to Badger (6000 XP).
+Fuelling the **tanker** pays its 5000 exactly once. Every source checks the tanker first, and
+nothing in the game ever clears that flag again.
 
-That is **24,000 XP** from a system that should give you 12,000, and it relies on three separate
-bugs. Playing it straight gets you 9000 from the mainframe plus 3000 from Handy.<Unverified>The
-repeatable half is inherited and was not traced; the fuel double-dip it used to rely on is now
-closed, so the totals may no longer hold.</Unverified>
+Fuelling the **Hubologist ship** pays **6000**, and that one can be had twice. Fuel the ship from
+the Shi mainframe or a Shi workstation, then have **Dave Handy** move the fuel to the tanker — that
+clears the ship's flag, and a Shi workstation will fuel it a second time. Dave himself only acts
+once, since his own options need the tanker still empty.
+
+Hack the mainframe instead of asking Ken Lee and the hack bonus is yours on top of all of it.
+
+**Badger's leg of the old loop is gone.** His Hubologist-fuel award is commented out of the script
+entirely, and his tanker award now checks the tanker first, so neither pays a second time.
 :::
 
 :::note[RPU: use the Hubologist mainframe yourself]
