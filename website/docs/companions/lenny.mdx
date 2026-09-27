@@ -120,10 +120,12 @@ RPU's `lenny_new_look` option (in `mods/rpu.ini`) picks his art, and the art dec
 
 The option can be changed mid-game in either direction. It is read when a game is loaded and applied
 then and on every map change, and a weapon the new art cannot hold is taken out of his hand first. His
-*"what weapons can you use"* answer follows the setting. The new art has no running frames, so he may
-trail behind when you run.
-<Unverified>The missing frames are confirmed; whether he actually falls behind in play is
-not.</Unverified>
+*"what weapons can you use"* answer follows the setting.
+
+**The new art has no running frames, so Lenny cannot run.** Whenever the game would have him run he
+walks instead, which means he falls steadily behind the rest of the party and has to catch up every
+time you stop. Nothing in the game tells you this is happening. If it bothers you more than the
+rifles are worth, `lenny_new_look=0` gives him back the original art, which can run.
 
 He has **ST 4** (each point short of a weapon's requirement is −20% to hit), **7 AP** (one shot a turn
 with any of the guns below) and Small Guns as his only real weapon skill. Compare the options on
