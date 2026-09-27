@@ -94,8 +94,13 @@ Return trips pay the same, with the parity of the months reversed.
 
 :::caution[Caravans are buggy]
 They can dissolve on the world map for no visible reason, and leaders sometimes fail to appear
-or refuse to talk at the destination.<Unverified>Inherited from Per Jorner. Caravan handling spans the
-worldmap engine and several scripts, and nothing in RPU obviously fixes or causes it.</Unverified>
+or refuse to talk at the destination.<Unverified>Inherited from Per Jorner — but not for want of
+attention from RPU, which is worth knowing before blaming a stuck caravan on this. The all-clear now
+fires when the hostile count reaches *or passes* zero rather than having to hit it exactly, each
+leader gained a flag for having run out of caravans, and the condition for offering the next one was
+rewritten. killap's own note beside one of those guards reads "probably doesn't help, but doesn't
+hurt either". Nothing about caravans lives in the engine, so it is all script — but whether the
+symptom survives is not something the scripts answer.</Unverified>
 
 If the leader dies but you complete the trip, a clerk *may* appear and pay a reduced wage. You
 can talk to him repeatedly for $50, $100 or $150 each time — he only names the correct figure
