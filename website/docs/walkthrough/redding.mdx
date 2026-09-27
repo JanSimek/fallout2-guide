@@ -106,10 +106,7 @@ theirs and are usually safe.
 
 :::caution[Caravans are buggy]
 They can dissolve on the world map for no visible reason, and a leader is sometimes present but
-will not talk.<Unverified>Inherited from Per Jorner. The vanishing leader above is settled and has
-a specific cause; these two are not. A leader who stands there and only floats a line would be the
-arrival check failing to recognise a finished run, which RPU rewrote and which looks like it should
-now hold — but that is not the same as having watched it happen.</Unverified>
+will not talk.<Unverified>Inherited from Per Jorner. The vanishing leader above is settled and has a specific cause; these two are not. One promising explanation has been ruled out, so nobody need chase it twice: `bhrnddst.ssl` converts a caravan out of its abandoned state with two chains that each read the medicine, cattle and jet caravans in that order, so only one caravan is converted per map update, and an abandoned Wade run never clears because his `Node005` sets only the no-more-caravans flag. It looks as though Wade's dead caravan should eat the conversion and leave someone else's live one marked abandoned, and mid-trip it does exactly that — with Wade abandoned, the first encounter map of a Savinelli caravan reads `MEDICINE=ON_CARAVAN, JET=ABANDONED`. It corrects itself: the second chain sits outside the "last encounter" branch, so on the final map both run, the first converting the medicine caravan out of the abandoned state and the second then finding the jet caravan and converting that. Two full runs played this way paid $1,500 and $1,700.</Unverified>
 
 If the leader dies but you complete the trip, a clerk *may* appear and pay a reduced wage. You
 can talk to him repeatedly for $50, $100 or $150 each time — he only names the correct figure
