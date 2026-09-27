@@ -58,6 +58,17 @@ overrides every file RPU patches — `quests.txt`, `endgame.txt`, `vault13.gam`,
 `city.txt`, `maps.txt`, `ai.txt`. It fails silently: the tools answer confidently about vanilla.
 **Sanity check before trusting any answer: `quests` must report 157, not 110.**
 
+The mounts, in order: `master.dat`, `critter.dat`, the fork's `data/`, **`mods/rpu.dat`** (the
+2.4.34 release, `$FALLOUT2_RPU_DAT`), then `scripts_src`. The release is mounted *after* the fork
+so it wins — the guide describes released RPU, and the fork is a different line. It is the art,
+`.msg` and proto answers this changes; `find_text` with `scope: source` still reads the fork's
+`.ssl`, because only the fork has sources at all.
+
+**The release ships more than `rpu.dat`.** `run/mods/mods_order.txt` lists 25 enabled archives,
+and some carry art: `rpu_rifle_animations.dat` adds 12 LAGHUL (new Lenny) frames on top of
+`rpu.dat`'s 52. Only `rpu.dat` is mounted, so a "that file does not exist" answer about art is
+worth re-checking against the rest of that list before it goes in the guide.
+
 **`$FALLOUT2_RPU` is the fork, not the release.** It defaults to
 `~/Development/Fallout2_Restoration_Project`, which sits on **v2.3.34 plus ~137 unreleased
 commits** — a different line from the v2.4.x the guide describes and the database pins. Check with
