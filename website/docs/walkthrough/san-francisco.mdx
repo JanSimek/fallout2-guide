@@ -82,10 +82,16 @@ over 99%.
 - **Lose and you start over.** Failing puts the opponent counter back to zero, so all six have to
   be beaten again — including the ones already dead.
 - **End combat after killing your opponent but before the "You win" sign and you are trapped in the
-  ring.** Reload immediately. Always use **end turn**, never end combat.<Unverified>The script only
-  walks you back out once combat has finished — while it is still running it terminates combat and
-  re-arms a timer to try again — so ending it by hand at the wrong moment is a plausible way to
-  strand yourself. Not reproduced at the keyboard.</Unverified>
+  ring.** Reload immediately. Always use **end turn**, never end combat.<Unverified>The window is
+  narrow and specific. `fcdragon.ssl` notices you have won inside `combat_p_proc`, which only runs
+  while combat is running: when the opponent drops below a quarter of their hit points it arms a
+  timer, and that timer is the only thing that ever gives your inventory back, heals you and moves
+  you out of the ring. If combat is still going when the timer fires it calls `terminate_combat`
+  and re-arms itself, so ordinarily it cannot lose you — but end combat by hand before the
+  opponent's health is ever checked and no timer is armed at all, and nothing is left to restore
+  you. That is the shape of the reported bug, and it is consistent with it. Still not reproduced at
+  the keyboard: the ring fight is deep in the Dragon's training chain and its state lives in script
+  local variables, which cannot be set from outside.</Unverified>
 - The extra round after "You win" exists so you can **save**. Using it to kill the opponent is what
   causes most of the trouble.
 :::
