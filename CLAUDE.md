@@ -118,6 +118,9 @@ asserting it. Do not silently delete an inherited claim either — it may well s
 - **`{#custom-id}` does not work in `.mdx`** — MDX v3 parses braces as a JS expression. Heading
   anchors are auto-generated, which is why the quest index is generated rather than hand-written.
 - **Quest headings are plain text.** No JSX in headings.
+- **`<Unverified>` cannot span a blank line.** MDX ends the paragraph there, and the build dies with
+  *"Expected a closing tag for `<Unverified>` before the end of `paragraph`"*. A long note has to be
+  one paragraph, however unwieldy — the same goes for `<Vanilla>`.
 
 ## quests.txt is the authority on quest names
 
