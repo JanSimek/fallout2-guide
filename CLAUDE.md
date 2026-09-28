@@ -122,6 +122,27 @@ asserting it. Do not silently delete an inherited claim either — it may well s
   *"Expected a closing tag for `<Unverified>` before the end of `paragraph`"*. A long note has to be
   one paragraph, however unwieldy — the same goes for `<Vanilla>`.
 
+## Looking a proto up is two traps deep
+
+Both of these have already put a wrong number into the guide.
+
+**A `.pro` filename is not its PID.** `00000010.pro` holds pid 11 and `00000011.pro` holds pid 10;
+**14 item protos are transposed** that way. Keying a dump on the filename silently mislabels them —
+that is how PR #64 "corrected" a weapon perk table that was right to begin with, and it was caught
+only because the user asked whether it had been checked in game. Ask `proto_info` for a pid and let
+it do the lookup; never map a filename to a pid yourself.
+
+**A proto's name is not the name the guide uses.** The Frank Horrigan you fight is pid
+`0x01000120`, called **"Pres. Bodyguard"** in `pro_crit.msg`. The proto actually named "Frank
+Horrigan" is `BOSS_TORSO_PID` in `qcfrank.ssl` — the corpse prop, 1 HP, no resistances, and it
+answers a name search perfectly plausibly. Go from the script to the map to the placed pid
+(`find_script` → `describe_map` → the critter's `pid`) rather than searching `pro_crit.msg` by name.
+
+**A proto stat is base plus bonus.** Base alone reads a Turret at 30 hit points against the engine's
+75, and reports every critter as resisting nothing — a critter's resistances live entirely in the
+bonus arrays. `proto_info` adds them for you as of JanSimek/gecko#145; anything read before that, or
+read by hand, needs checking.
+
 ## quests.txt is the authority on quest names
 
 `scripts/quests-from-game.json` is the in-game registry (157 entries) pulled from RPU's
