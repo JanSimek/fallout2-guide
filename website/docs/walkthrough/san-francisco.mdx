@@ -86,7 +86,12 @@ over 99%.
   narrow and specific. `fcdragon.ssl` notices you have won inside `combat_p_proc`, which only runs
   while combat is running: when the opponent drops below a quarter of their hit points it arms a
   timer, and that timer is the only thing that ever gives your inventory back, heals you and moves
-  you out of the ring. If combat is still going when the timer fires it calls `terminate_combat`
+  you out of the ring — during a test `ReturnInven` is reached only from `endTestPass` and
+  `endTestFail`, and nothing but those timers calls either. Killing outright is covered rather than
+  missed: a dead, prone or knocked-out opponent is scored as 0 hit points out of 4, so it counts as
+  below the quarter and arms the timer exactly like a blow that leaves them standing. What is at
+  risk is not the kill but the Dragon's next turn, since his is the `combat_p_proc` doing the
+  looking. If combat is still going when the timer fires it calls `terminate_combat`
   and re-arms itself, so ordinarily it cannot lose you — but end combat by hand before the
   opponent's health is ever checked and no timer is armed at all, and nothing is left to restore
   you. That is the shape of the reported bug, and it is consistent with it. Still not reproduced,
