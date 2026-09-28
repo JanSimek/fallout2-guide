@@ -124,20 +124,42 @@ in shops and trade for the ammunition separately.
 
 ## Poison and radiation
 
-Poison only becomes dangerous when you are surrounded by **floaters and centaurs**. They apply poison
-counters even when they cannot penetrate your armour, so they can hurt you badly without ever
-scratching you.
+Neither one is dealt by the attack. The critter's **script** applies it the moment a hit *lands*,
+which is why armour is no defence: a floater that cannot scratch your Combat Armour still poisons
+you. There is no such thing as poison or radiation damage — the engine has seven damage types and
+neither is among them.
+
+**Luck decides whether it lands at all.** Every one of these scripts rolls 1d10 against `Luck − 1`
+and only applies the dose when that roll *fails*, so the chance per landed hit is `(11 − Luck) / 10`:
+
+| Luck | 1 | 3 | 5 | 7 | 10 |
+| --- | --- | --- | --- | --- | --- |
+| Chance per hit | 100% | 80% | 60% | 40% | **10%** |
+
+That is much the largest lever you have, and nothing else in the game advertises it.
+
+| Encounter | Applies | Per landed hit |
+| --- | --- | --- |
+| Floater | poison | 10–40 |
+| Centaur | poison **and** radiation | 10–20 of each |
+| Alien | radiation | 10–40 |
+| Scorpion | poison | 3–15 in encounters, 1–6 around Klamath, 2–12 for the raiders' |
+| Plant man (San Francisco) | poison | 6–12 |
+| Rats, mole rats | poison | 1–6 |
+
+So floaters are the ones to worry about, at up to 40 a hit, and centaurs are the only thing that
+poisons and irradiates at once.
 
 **Poison costs 1 hit point for every 2 points of it**, ticking down to zero on its own. What changes
-with the level is the *speed*: the interval between ticks is `10 × (505 − 5 × level)` game ticks, so
-a mild dose trickles away over hours while a heavy one pours. **Past 100 that interval reaches zero**
-and the whole of it lands at once — 130 poison is 65 hit points in about the time it takes to read
-this sentence.
+with the dose is the *speed*: the interval between ticks is `10 × (505 − 5 × poison)` game ticks, so
+a mild dose trickles away over hours while a heavy one pours. **At 101 that interval hits zero and
+then goes negative**, which schedules each remaining tick in the past — they fire back to back and
+the whole dose lands at once. 130 poison is 65 hit points in about the time it takes to read this
+sentence.
 
-**Poison Resistance is `5 × EN`, and it applies on the way in.** At Endurance 10 half of every dose
-simply does not land, which is the one defence that matters, since armour does nothing here.
-
-Wanamingo-like aliens and centaurs in random encounters do the same with radiation.
+**Poison Resistance is `5 × EN`, and it applies on the way in**, so at Endurance 10 half of whatever
+got past the Luck roll does not land either. **Vault City Inoculations** adds 10 more, and the stat
+caps at 95.
 
 ## Tactics
 
@@ -248,23 +270,32 @@ than melee, because the Mega Power Fist has **no knockback** — you do not spen
 target you just hit.
 :::
 
-The specials unlock on level and Unarmed skill. Each carries its own chance, rolled separately once
-the hit has landed, to turn it into a critical.
+The specials unlock on level, Unarmed skill **and Strength and Agility** — all four are hard gates.
+Each carries its own chance, rolled separately once the hit has landed, to turn it into a critical.
 
-| Attack | Level | Unarmed | + Damage | Critical | AP | Ignores armour |
-| --- | --- | --- | --- | --- | --- | --- |
-| Strong Punch | — | 55% | +3 | — | 3 | |
-| Jab | 5 | 75% | +3 | 10% | 3 | |
-| Hammer Punch | 6 | 75% | +5 | 5% | 3 | |
-| Haymaker | 9 | 100% | +7 | 15% | 3 | |
-| Palm Strike | 12 | 115% | +7 | 20% | 6 | yes |
-| Piercing Strike | 16 | 130% | +10 | 40% | 8 | yes |
-| Strong Kick | — | 40% | +5 | — | 4 | |
-| Snap Kick | 6 | 60% | +7 | — | 4 | |
-| Power Kick | 9 | 80% | +9 | 5% | 4 | |
-| Hip Kick | 6 | 60% | +7 | — | 7 | |
-| Hook Kick | 12 | 100% | +9 | 10% | 7 | yes |
-| Piercing Kick | 15 | 125% | +12 | 50% | 9 | yes |
+| Attack | Level | Unarmed | ST / AG | + Damage | Critical | AP | Ignores armour |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Strong Punch | — | 55% | — / 6 | +3 | — | 3 | |
+| Hammer Punch | 6 | 75% | 5 / 6 | +5 | 5% | 3 | |
+| Haymaker | 9 | 100% | 5 / 7 | +7 | 15% | 3 | |
+| Jab | 5 | 75% | 5 / 7 | +3 | 10% | 3 | |
+| Palm Strike | 12 | 115% | 5 / 7 | +7 | 20% | 6 | yes |
+| Piercing Strike | 16 | 130% | 5 / 7 | +10 | 40% | 8 | yes |
+| Strong Kick | — | 40% | — / 6 | +5 | — | 4 | |
+| Snap Kick | 6 | 60% | — / 6 | +7 | — | 4 | |
+| Power Kick | 9 | 80% | 6 / 6 | +9 | 5% | 4 | |
+| Hip Kick | 6 | 60% | 6 / 7 | +7 | — | 7 | |
+| Hook Kick | 12 | 100% | 6 / 7 | +9 | 10% | 7 | yes |
+| Piercing Kick | 15 | 125% | 6 / 8 | +12 | 50% | 9 | yes |
+
+**Agility 6 is the floor for all of it** — below that you punch and kick for 1–2 damage the whole
+game, whatever your skill. Piercing Kick is the steepest at Agility 8 and Strength 6.
+
+You do not pick from that list. The game hands you the best you qualify for in each of two slots,
+and they are separate attacks on the weapon button: **primary** covers Strong Punch, Hammer Punch,
+Haymaker, Strong Kick, Snap Kick and Power Kick; **secondary** covers Jab, Palm Strike, Piercing
+Strike, Hip Kick, Hook Kick and Piercing Kick. So Piercing Strike does not replace Haymaker — you
+carry both, the cheap 3 AP hit and the 8 AP one that ignores armour.
 
 The four marked **ignores armour** cut the target's Damage Threshold to a fifth, which is the same
 discount the Penetrate weapon perk gives. At 7–9 AP the heavy ones cost most of a turn, so the Power
