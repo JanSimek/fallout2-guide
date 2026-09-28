@@ -89,9 +89,14 @@ over 99%.
   you out of the ring. If combat is still going when the timer fires it calls `terminate_combat`
   and re-arms itself, so ordinarily it cannot lose you — but end combat by hand before the
   opponent's health is ever checked and no timer is armed at all, and nothing is left to restore
-  you. That is the shape of the reported bug, and it is consistent with it. Still not reproduced at
-  the keyboard: the ring fight is deep in the Dragon's training chain and its state lives in script
-  local variables, which cannot be set from outside.</Unverified>
+  you. That is the shape of the reported bug, and it is consistent with it. Still not reproduced,
+  though the ring fight itself has now been played: the Dragon will only teach you at 250 karma or
+  better, and a test is a separate dialogue branch from the lessons. Through it the ordinary path
+  is sturdy — the timer arms, the next opponent is fetched, the fight resumes on the ring tile. The
+  end-combat attempt is simply refused throughout, since Fallout 2 binds it to the same key that
+  declines to end a fight anyone is still engaged in, and in the ring the Dragon's men and the
+  Chinatown crowd are all in combat. Whether a quieter ring lets the key through, and with it the
+  window above, is the part still open.</Unverified>
 - The extra round after "You win" exists so you can **save**. Using it to kill the opponent is what
   causes most of the trouble.
 :::
