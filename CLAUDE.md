@@ -56,7 +56,20 @@ a permissions problem, the schemas simply are not loaded.
 **Later `--data` mounts win.** RPU's `data/` must be mounted *after* `master.dat`, or vanilla
 overrides every file RPU patches — `quests.txt`, `endgame.txt`, `vault13.gam`, `worldmap.txt`,
 `city.txt`, `maps.txt`, `ai.txt`. It fails silently: the tools answer confidently about vanilla.
-**Sanity check before trusting any answer: `quests` must report 157, not 110.**
+**Sanity check before trusting any answer: call `mounts`.** It lists what is actually mounted, in
+order, and grows a `failedMounts` key when a `--data` path did not open. A directory that is a git
+work tree also reports `gitDescribe`, which is the only thing that tells RPU's released 2.4.x from
+the fork — the fork answers `v2.3.34-137-g…`.
+
+`quests` reporting 157 rather than 110 is still worth knowing, but **it is not this check**: it
+separates RPU from vanilla, not the release from the fork. A session that had lost `rpu.dat`
+entirely still answered 157, because the fork is RPU too, and every map, art and `.msg` answer it
+gave for hours came from the 2.3 line. If you only want one call, make it `mounts`; to check a
+specific file, `resource_find maps/epax.map` should name `rpu.dat`.
+
+**The mount set is captured when the server connects.** Editing `.mcp.json` does nothing to a
+running session — the same trap as the tool schemas. Reconnect with `/mcp` (pick `gecko` →
+reconnect) after any mount change, then call `mounts` to confirm it took.
 
 The mounts, in order: `master.dat`, `critter.dat`, the fork's `data/`, **`mods/rpu.dat`** (the
 2.4.34 release, `$FALLOUT2_RPU_DAT`), then `scripts_src`. The release is mounted *after* the fork
