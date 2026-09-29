@@ -30,8 +30,30 @@ three facts reached these pages and all three have been fixed.
 
 **What needs doing:** the remaining risk is not numbers but *directions* — "north of the white
 shed", "the locker on the left". Those were written against the old maps, and the EPA storage room
-turned out to be one of them. Any instruction that depends on where something physically sits is
-worth checking against the game.
+turned out to be one of them.
+
+The scope is now measured rather than guessed. 170 of the 176 maps changed, but comparing the two
+releases object by object shows what that change *is*: scenery is cut by 10–40% on every town map,
+while **critters, Misc and containers stay put**. Re-tiling, not re-planning. So a direction that
+points at a person or a container is almost always safe, and one that points at decorative
+scenery — a shed, a barrel, a parked truck — is the kind that rots.
+
+Checked and clear:
+
+| Page | Result |
+| --- | --- |
+| The Den | every critter identical across `denbus1`, `denbus2`, `denres1`; gravesites identical |
+| Broken Hills | every critter identical across `broken1`, `broken2` |
+| Redding | one Gun Guard moved a hex in `reddown`; nothing the guide mentions |
+| EPA | the one page that did drift — see the plant counts, now fixed |
+
+The item counts move by one or two on three maps (a Locker, Tool Board and Workbench gone from
+Broken Hills downtown, a Bookcase from the residential map, a Knife added in the Den), and none is
+a container the guide sends you to.
+
+**Still to do:** the 85 remaining directional claims on the other pages, by the same method — diff
+the two releases for that town's maps first, and only read the claims whose landmark actually
+moved. `mounts` must report `rpuVersion: v2.4.34` before any of it counts.
 
 ### Pages checked only where they mention companions
 
