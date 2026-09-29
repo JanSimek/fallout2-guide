@@ -51,9 +51,23 @@ The item counts move by one or two on three maps (a Locker, Tool Board and Workb
 Broken Hills downtown, a Bookcase from the residential map, a Knife added in the Den), and none is
 a container the guide sends you to.
 
-**Still to do:** the 85 remaining directional claims on the other pages, by the same method — diff
-the two releases for that town's maps first, and only read the claims whose landmark actually
-moved. `mounts` must report `rpuVersion: v2.4.34` before any of it counts.
+**Directions that point at a person are now settled, everywhere.** Every one of the 176 maps was
+read out of both releases and compared critter by critter: **145 are identical**, and of the 31
+that differ, most move a single wanderer by a hex. Taking the whole game together, only **15
+critters moved more than eight hexes east or west** — the axis a "west side of town" claim turns
+on — and every one of them is ambient life with no name: five New Reno junkies, three
+prostitutes, two Enclave guards, two scorpions, a rat, an EPA critter and a Hubologist guard. Not
+one named NPC moved anywhere. Some maps shifted wholesale rather than internally — the Vault City
+village slid about three rows, the desert encounter exactly 600 hexes — which moves every hex
+number while leaving every direction between things intact.
+
+**Still to do:** the landmarks that are *scenery*, which is the part the remake actually rewrote
+and the part the EPA's white shed belonged to. A shed, a barrel, a parked truck or a fence can be
+gone or redrawn without anything else moving, and no comparison here covers them, because the
+tooling reports scenery by kind and count rather than by position. That wants eyes on a render, or
+a walk through the map, page by page.
+
+`mounts` must report `rpuVersion: v2.4.34` before any of this counts.
 
 ### Pages checked only where they mention companions
 
