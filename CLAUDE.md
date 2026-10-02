@@ -49,6 +49,26 @@ connects, so new tools stay invisible until you reconnect it with `/mcp` (pick t
 reconnect). Restarting Claude Code also works. Until then the new tools cannot be called at all — not
 a permissions problem, the schemas simply are not loaded.
 
+The same staleness hits *existing* tools whose **output** got richer: the connected process is the
+old binary, so `proto_info` answered with just `{pid, type, name, flat}` and no stats long after the
+stats block was merged. That reads like "gecko doesn't expose this", which is the trap. You do not
+have to reconnect to get past it — **spawn the current binary yourself** over stdio and call the
+tool directly, which is what `mapq.py` in the scratchpad does:
+
+```python
+tool("proto_info", {"pid": 16777600})   # → critter.hitPoints = 750
+```
+
+It mounts the same five `--data` paths as `.mcp.json`, in the same order. Worth doing whenever a
+gecko answer looks thinner than the source says it should be.
+
+**`gecko-cli proto export` is the way to proto fields `proto_info` does not emit.** It dumps every
+item and critter proto listed in `proto/items/items.lst` and `proto/critters/critters.lst` as JSON
+with the full `.pro` contents — including `killType` and `xp`, neither of which `proto_info`
+returns. `--kind critter|item` and `--item-type armor|weapon|…` narrow it. That is how "which
+critters count as children" (7 protos) and "what does killing the bridgekeeper pay" (7500) get
+answered without hand-parsing a `.pro`.
+
 **Script indices are 0-based; `headers/scripts.h` is 1-based.** `SCRIPT_EPAC17 (1413)` is
 `programIndex` 1412, and passing the constant unadjusted silently describes `epac18` instead. Pass
 `name` ("epac17") rather than an index, and check the `sslConstant` each result echoes.
