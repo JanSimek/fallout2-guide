@@ -164,17 +164,34 @@ already catches quests and XP figures that no script awards; the rest is reading
 
 The guide inherited a set of bugs and tricks from Per Jorner's guide, written for the original
 executable. Many are fixed in FOR:CE, and the audited ones say so — see
-[Known Issues](/reference/known-issues). The rest are neither confirmed nor ruled out, because they
-depend on runtime behaviour that reading the source does not settle; they are in the list below,
-alongside everything else still open.
+[Known Issues](/reference/known-issues).
 
-**What needs doing:** playing. Each of these is a save, a reload and five minutes.
+**The ones that needed playing have now been played.** Saving in combat and reloading does not
+freeze, either plainly or with dead party members lying on the map, which is the case the old
+warning singled out. Saving with a lit stick of dynamite in your pack does not destroy the slot.
+And the "too many items" corruption did not reproduce against 476 separate item objects dropped on
+one map and then walked away from — not a proof, since the bug was reported on maps that grew
+cluttered over a hundred hours rather than one afternoon, but the leading theory about it does not
+hold.
+
+**What needs doing:** the tricks, as opposed to the bugs. Bonus Move refilling on reload and the
+0-damage critical XP loss were settled by reading `fallout2-ce`, not by doing them, and a few
+smaller inherited habits have never been tried at the keyboard at all.
 
 ### Nothing here has been verified in play
 
-Every fact in this guide comes from reading the game's files and the engine's source. That is a good
+Most facts in this guide come from reading the game's files and the engine's source. That is a good
 way to get numbers and conditions right, and a poor way to notice that something does not work the
 way the code implies. Where those two can disagree, the claim is marked.
+
+Some of it has been played now, and it is worth being precise about which: the two Redding caravan
+bugs were reproduced and filmed, Dogmeat's recruitment was run five times over, the EPA's missing
+white shed was settled by walking the map rather than reading it, the hit-chance formula was
+measured against a running game, and the four engine claims above were tested with saves and
+reloads. That is a handful of pages out of fifty.
+
+**What needs doing:** the ordinary thing. Play through a town with the page open and see what does
+not match.
 
 ## Claims awaiting confirmation
 
