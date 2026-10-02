@@ -44,11 +44,23 @@ The single best defence against everything below.
 
 ## The "too many items" bug
 
-The most serious problem on the original engine. **Status on FOR:CE: probably fixed, not confirmed.**
+The most serious problem on the original engine. **Status on FOR:CE: it did not reproduce when
+provoked.** Nearly six hundred distinct item types were conjured onto New Reno's Virgin Street and
+dropped, leaving 476 separate item objects lying on one map; walking out to 2nd Street and back
+brought every one of them back intact, with no lock-up. That is a deliberate attempt to break it
+rather than a game that happened not to break, which is worth more than the old "probably" — but it
+is still not the thing the bug was reported under, so see the note below.
 
 **What happened:** late in the game, if a single map held too many *different* items, the map became
 corrupted when you left it. Next time you tried to enter, the game locked up completely — the
 orbiting rocket cursor appeared and never animated.
+
+:::note[What the test did and did not show]
+A pile conjured in one sitting is not a hundred hours of play. The bug was reported late in the
+game, on maps that had accumulated their clutter over many visits, and the cause was never pinned
+down — so a map that was *made* crowded may not stress whatever the real trigger was. What can be
+said is that sheer count of distinct items on one map, which was the leading theory, did not do it.
+:::
 
 :::note[Why "probably"]
 The cause was never precisely pinned down, even by the guides that documented it best — the leading
