@@ -13,10 +13,18 @@ None of them matter as much as you would expect, and the numbers are stark. Of R
 scripts, **337 work out a reaction to you and only 38 do anything with the answer**. The rest
 compute it and throw it away.
 
-Karma feeds that reaction at roughly **one point per 100 karma**, and a critter only leaves the
-neutral band at 25 — so it takes about **2,500 karma to shift anyone's reaction by one step**.
-That is why there is no practical difference between 500 karma and 1500: both are worth +5 and
-+15 on a scale that does nothing until 25.
+Karma feeds that reaction at a rate **each critter sets for itself**. The script multiplies your
+karma by that critter's `Karma_Perception` and divides by 1000, and a critter only leaves the
+neutral band at 25. Most of them barely notice: **159 scripts use the lowest real setting, worth
+one point per 100 karma**, which is the 2,500 karma it then takes to move them a single step.
+That is why there is usually no practical difference between 500 karma and 1500 — both are worth
++5 and +15 on a scale that does nothing until 25.
+
+The exceptions are worth knowing, because they are the people whose opinion you can actually
+change. Thirty scripts set it lower still and effectively ignore karma altogether; about seventy
+set it higher, and at the top of the range a critter reads your karma ten times more sharply, so
+250 karma moves it a step rather than 2,500. The Karma Beacon perk doubles whatever that
+critter's rate happens to be.
 
 The **karma titles below are almost decorative**. Nothing in the game checks for Holy Warrior,
 Guardian, Defender, Wanderer, Betrayer, Scourge or Demon at all. What people actually react to
