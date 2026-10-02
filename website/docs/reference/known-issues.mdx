@@ -30,7 +30,10 @@ The single best defence against everything below.
    `ExtraSaveSlots=1` in `ddraw.ini`. See [Configuration](/getting-started/configuration).
 2. **Rotate slots.** Keep a save from the start of each town.
 3. **Avoid saving in combat mode**, especially with a dead companion on the map. On the original
-   engine such saves froze on end of turn when loaded. *Not confirmed on FOR:CE* — and note that
+   engine such saves froze on end of turn when loaded. *On FOR:CE the plain case does not freeze* —
+   saved mid-combat, reloaded, ended the turn, and combat finished normally with the engine still
+   answering. The variant the warning actually singles out, a **dead companion on the map**, is
+   still untested: companions heal between turns faster than this could arrange one. Note also that
    loading a save made during combat restarts your turn, which is what refills Bonus Move AP.
 4. **Avoid saving while explosives are waiting to detonate.** Reported to corrupt the save slot
    entirely on the original engine. *Not confirmed on FOR:CE.*
