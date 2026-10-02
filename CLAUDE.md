@@ -260,3 +260,16 @@ stranded on `docs/guide-corrections` this way until #5 brought it over.
 The same goes for pushing more commits to a PR branch: check `gh pr view <n> --json state` first,
 because a PR merged in the meantime keeps its branch, and anything pushed afterwards goes nowhere.
 The hook commit meant for #5 went to that branch after #5 had been merged, and had to be moved to #6.
+
+**Run that check as its own step and read the answer before pushing.** Putting it in the same
+command as the commit and push does not count: the state scrolls past in the same output and the
+push has already happened. That has now cost three recoveries — #5's hook commit, gecko #149's
+tests, and #79's money paragraph, where `MERGED` was printed by the very command that pushed over
+it. The recovery is always the same, so it is worth recognising early:
+
+```bash
+git checkout -b <new-branch> master && git cherry-pick <stranded-sha>
+```
+
+Nothing is lost as long as the local branch still exists, which is why the stale branches are
+worth pruning only *after* their PRs are confirmed merged.
