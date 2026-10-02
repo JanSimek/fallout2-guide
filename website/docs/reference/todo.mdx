@@ -140,8 +140,22 @@ really does ask for `dude_caps < 120` and take 120, and pays the 100 the page qu
 turned up, but unlike the skill gates this one is a sample rather than a proof, because the guide's
 `$` figures mix rewards, prices and totals and only the rewards are mechanically checkable.
 
-What is still unread is the rest — quest steps, item placements and the prose around them on pages
-no companion ever touches.
+**Item placements have been read too, now that gecko reports what a container holds**
+(JanSimek/gecko#151 — the inventories were parsed all along and never emitted). All 2,395
+containers across the 108 maps that have any were dumped and matched against the loot the pages
+name. Everything the guide puts in a container really is in one: the Vertibird Plans and the Tanker
+FOB in their Navarro lockers, the gas mask in the EPA's, Doc Jubilee's heart pills in his bookcase.
+
+The one thing that did not survive was the EPA's facility loot, where the Super Tool Kit and the
+Electronic Lockpick turned out to be in a workbench rather than the lockers the page named, beside
+a Water Chip nobody had mentioned. That is fixed.
+
+Items the guide names that are in no container are not errors: quest items are usually made by a
+script when you earn them, so the Brave Little Toaster, the ERSI canisters and the Command Chart
+are absent from this data by design.
+
+What is still unread is the rest — quest steps and the prose around them on pages no companion ever
+touches.
 
 **What needs doing:** a page-by-page pass, in the order the walkthrough runs. `check-rpu-drift.py`
 already catches quests and XP figures that no script awards; the rest is reading.
