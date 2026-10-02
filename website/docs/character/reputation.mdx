@@ -100,10 +100,12 @@ The important quirk: **you get the label after one child, but nearly every scrip
 game checks for two or more.** So a single accidental kill marks your character sheet
 without triggering most of the consequences.
 
-:::caution
-Three children increment the counter **twice** because of a scripting redundancy, making you
-a "real" Childkiller instantly: **Jonny in Modoc**, the **Slag children**, and **Curtis in
-Vault City**. Be careful with area-effect weapons anywhere near them.
+:::note
+Every child raises the counter by exactly one, so becoming a "real" Childkiller always takes
+two of them.
+<Vanilla>Jonny in Modoc, the Slag children and Curtis in Vault City each raised it by two,
+because their own scripts called the childkiller macro that the kill handler had already
+called — so any one of those three was enough on its own.</Vanilla>
 :::
 
 :::note
