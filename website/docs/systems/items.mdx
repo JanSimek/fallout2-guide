@@ -8,10 +8,12 @@ description: Books, chems, weapon upgrades, addiction, and the items that are ac
 
 ## Skill books
 
-Books raise a skill by an amount that shrinks as the skill grows: **6–7 points** at 20–30%, down to
-**1–2** at 70–90%. **Tagged skills gain double.**
+A book gives `(100 − current skill) / 10` skill points, rounded down: 8 at 20%, 6–7 through the 20s
+and 30s, and 1 at 90%. **Tagged skills gain double**, because each point is worth 2% on a tagged
+skill. The **Comprehension** perk multiplies the count by 1.5.
 
-**They stop working at 91%** — 92% if you raise a tagged skill from 90.
+**They stop working at 91%**, where that formula reaches zero — 92% if you raise a tagged skill
+from 90.
 
 Reading takes `11 − Intelligence` hours.
 
@@ -110,7 +112,7 @@ The **Jet Antidote** is not consumed if you are addicted to jet when you use it.
 
 | Chem | Risk | Withdrawal | Duration |
 | --- | --- | --- | --- |
-| **Jet** | **50%** | AP −2, ST −1, PE −1 | **Indefinite** |
+| **Jet** | **50%** | AP −1, ST −1, PE −1 | **Indefinite** |
 | Buffout | 25% | ST −2, EN −2, AG −3 | 7 days |
 | Psycho | 20% | IN −2 | 7 days |
 | Mentats | 15% | IN −3, AG −2 | 7 days |
