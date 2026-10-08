@@ -176,6 +176,29 @@ answers a name search perfectly plausibly. Go from the script to the map to the 
 bonus arrays. `proto_info` adds them for you as of JanSimek/gecko#145; anything read before that, or
 read by hand, needs checking.
 
+## A dialogue option's requirements are macro arguments, not `if` tests
+
+`NOption(x, y, z)` expands to `giQ_Option(z, NAME, x, y, NEUTRAL_REACTION)`, and that **`z` is the
+minimum Intelligence** for the option to appear. So a Speech- or IQ-gated reply often has no
+`dude_iq` anywhere near it:
+
+```
+NOption(605, Node152, 009)     // needs IN 9 — this is the Lingual Enhancer gate
+```
+
+Grepping for `dude_iq` finds nothing and makes a correct claim look wrong. That nearly cost the
+guide its (right) "needs IN 9" on Mrs. Bishop's safe.
+
+**A negative value is a low-Intelligence gate.** `LOW_IQ` is `(-3)`, and `NLowOption(x, y)` is just
+`giQ_Option(LOW_IQ, ...)` — but scripts also write the number inline:
+
+```
+NOption(276, Node062, -003)    // mcjo.ssl: the same thing as NLowOption
+```
+
+So a search for `NLowOption` alone under-reports low-IQ content. There is none at all in
+`modoc/*.ssl` by that name, yet Jo carries the whole Slag-note route for a stupid character.
+
 ## quests.txt is the authority on quest names
 
 `scripts/quests-from-game.json` is the in-game registry (157 entries) pulled from RPU's
