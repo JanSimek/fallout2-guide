@@ -11,6 +11,17 @@
         "--data", "${FALLOUT2_RPU:-/Users/jansimek/Development/Fallout2_Restoration_Project}/scripts_src"
       ],
       "env": {}
+    },
+    "fallout2": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "${FALLOUT2_CE_MCP:-/Users/jansimek/Development/fallout2-ce-mcp}/tools/mcp_bridge.py",
+        "--game", "${FALLOUT2_CE_MCP:-/Users/jansimek/Development/fallout2-ce-mcp}/run/Fallout II Community Edition.app",
+        "--cwd", "${FALLOUT2_CE_MCP:-/Users/jansimek/Development/fallout2-ce-mcp}/run",
+        "--no-autostart"
+      ],
+      "env": {}
     }
   }
 }

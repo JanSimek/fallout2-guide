@@ -120,6 +120,17 @@ diff ~/.cache/fallout2-guide/rpu-v2.4.34/scripts_src/<path> "$FALLOUT2_RPU/scrip
 Expect noise from the working tree's own edits: the fork carries ~50 uncommitted fixes to
 malformed comment terminators (`/* … *  /` → `*/`) that let `gcc -E` preprocess the scripts.
 
+**`fallout2` MCP server** drives a live game: FOR:CE built from `~/Development/fallout2-ce-mcp`
+(`$FALLOUT2_CE_MCP`), run out of its `run/` directory with RPU 2.4.34 installed. It starts with
+`--no-autostart`, so at first only the bridge's own four tools exist — `start_game`,
+`restart_game`, `game_output`, `is_running`. **The ~50 game tools appear only after `start_game`.**
+Before then, "there is no `load_game`" just means the engine is not up yet. `start_game` comes up
+headless; pass `headless: false` (or `restart_game` with it) when someone wants to watch. `quit`
+does not end the process — check `pgrep` and kill it when done.
+
+Its saves live in `run/data/SAVEGAME/`, separate from any real install. Slots 9 and 17–19 hold evidence
+for filed RPU bugs; do not save over them.
+
 ## Engine-level claims need checking against FOR:CE
 
 The guide inherited a set of engine bugs from Per Jorner, who documented the 1998 executable. The
